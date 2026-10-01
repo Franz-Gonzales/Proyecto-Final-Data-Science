@@ -1,0 +1,127 @@
+/* ==========================================================================
+   CATÁLOGO OFICIAL DE MEDIDAS DAX — PROYECTO MONOGRAFÍA DIPLOMADO DATA SCIENCE
+   Tema: Análisis de Desocupación Juvenil en Bolivia (ECE 4T-2025)
+   Autor: Gonzales Suyo Franz Reinaldo
+   Institución: USFX CEPI (2026)
+   ========================================================================== */
+
+// -------------------------------------------------------------------------
+// 1. MÉTRICAS BASE Y MUESTREO (VOLÚMENES Y EXPANSIONES POBLACIONALES)
+// -------------------------------------------------------------------------
+
+// Muestra de encuestados en la PEA urbana (16 a 28 años)
+Muestra Jovenes PEA = 
+COUNTROWS('Fact_Jovenes_PEA')
+
+// Población total estimada representada en la PEA juvenil urbana
+PEA Juvenil Ponderada = 
+SUM('Fact_Jovenes_PEA'[peso_trimestral])
+
+// Población de jóvenes ocupados estimada
+Poblacion Ocupada = 
+CALCULATE(
+    SUM('Fact_Jovenes_PEA'[peso_trimestral]),
+    'Fact_Jovenes_PEA'[es_ocupado] = 1
+)
+
+// Población de jóvenes desocupados abierta estimada
+Poblacion Desocupada = 
+CALCULATE(
+    SUM('Fact_Jovenes_PEA'[peso_trimestral]),
+    'Fact_Jovenes_PEA'[es_desocupado] = 1
+)
+
+// -------------------------------------------------------------------------
+// 2. TASAS MACROECONÓMICAS Y LABORALES PONDERADAS (%)
+// -------------------------------------------------------------------------
+
+// Tasa de desocupación juvenil oficial ponderada (Meta: 3.71%)
+Tasa Desocupacion Ponderada = 
+DIVIDE(
+    [Poblacion Desocupada],
+    [PEA Juvenil Ponderada],
+    0
+)
+
+// Población juvenil subocupada (trabajan menos horas de las deseadas)
+Poblacion Subocupada = 
+CALCULATE(
+    SUM('Fact_Jovenes_PEA'[peso_trimestral]),
+    'Fact_Jovenes_PEA'[es_subocupado] = 1
+)
+
+// Tasa de subocupación juvenil sobre ocupados (Meta: 8.70%)
+Tasa Subocupacion Ponderada = 
+DIVIDE(
+    [Poblacion Subocupada],
+    [Poblacion Ocupada],
+    0
+)
+
+// -------------------------------------------------------------------------
+// 3. CARACTERIZACIÓN DE DESOCUPACIÓN: CESANTES VS. ASPIRANTES
+// -------------------------------------------------------------------------
+
+// Jóvenes desocupados cesantes (con empleo anterior)
+Desocupados Cesantes = 
+CALCULATE(
+    SUM('Fact_Jovenes_PEA'[peso_trimestral]),
+    'Fact_Jovenes_PEA'[es_cesante] = 1
+)
+
+// Jóvenes desocupados aspirantes (primer empleo)
+Desocupados Aspirantes = 
+CALCULATE(
+    SUM('Fact_Jovenes_PEA'[peso_trimestral]),
+    'Fact_Jovenes_PEA'[es_aspirante] = 1
+)
+
+// Proporción de aspirantes sobre el total de desocupados (%)
+Proporcion Aspirantes % = 
+DIVIDE(
+    [Desocupados Aspirantes],
+    [Poblacion Desocupada],
+    0
+)
+
+// Proporción de cesantes sobre el total de desocupados (%)
+Proporcion Cesantes % = 
+DIVIDE(
+    [Desocupados Cesantes],
+    [Poblacion Desocupada],
+    0
+)
+
+// -------------------------------------------------------------------------
+// 4. BRECHAS DE GÉNERO
+// -------------------------------------------------------------------------
+
+// Tasa de desocupación masculina ponderada
+Tasa Desocupacion Hombres = 
+CALCULATE(
+    [Tasa Desocupacion Ponderada],
+    'Fact_Jovenes_PEA'[sexo] = "Hombre"
+)
+
+// Tasa de desocupación femenina ponderada
+Tasa Desocupacion Mujeres = 
+CALCULATE(
+    [Tasa Desocupacion Ponderada],
+    'Fact_Jovenes_PEA'[sexo] = "Mujer"
+)
+
+// Brecha de género en puntos porcentuales (Mujeres - Hombres)
+Brecha Desocupacion Genero pp = 
+[Tasa Desocupacion Mujeres] - [Tasa Desocupacion Hombres]
+
+// -------------------------------------------------------------------------
+// 5. EDUCACIÓN Y CAPITAL HUMANO
+// -------------------------------------------------------------------------
+
+// Promedio ponderado de años de estudio
+Promedio Anios Estudio Ponderado = 
+DIVIDE(
+    SUMX('Fact_Jovenes_PEA', 'Fact_Jovenes_PEA'[anios_estudio] * 'Fact_Jovenes_PEA'[peso_trimestral]),
+    [PEA Juvenil Ponderada],
+    0
+)
