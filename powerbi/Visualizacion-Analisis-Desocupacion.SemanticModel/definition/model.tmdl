@@ -10,5 +10,14 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DevMode"]
 
+ref table _Medidas
+ref table Fact_MercadoLaboral
+ref table Dim_Sexo
+ref table Dim_GrupoEdad
+ref table Dim_Departamento
+ref table Dim_NivelEducativo
+ref table Dim_CondicionLaboral
+ref table Dim_Hogar
+
 ref cultureInfo es-ES
 

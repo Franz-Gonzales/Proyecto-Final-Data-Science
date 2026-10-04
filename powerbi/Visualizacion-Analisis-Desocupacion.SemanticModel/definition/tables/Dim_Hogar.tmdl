@@ -1,0 +1,28 @@
+table Dim_Hogar
+	lineageTag: 4a46326a-116c-420c-9682-0c228c039b3a
+
+	column tipo_hogar
+		dataType: string
+		isKey
+		lineageTag: bf2d725c-d718-4611-ac40-4980f48cda56
+		sourceColumn: tipo_hogar
+
+	partition Dim_Hogar = m
+		mode: import
+		source =
+				let
+				    Origen = #table(
+				        type table [tipo_hogar = text],
+				        {
+				            {"Nuclear biparental con hijos"},
+				            {"Nuclear biparental sin hijos"},
+				            {"Extendido"},
+				            {"Unipersonal"},
+				            {"Otros / Sin núcleo"},
+				            {"Nuclear monoparental"},
+				            {"Compuesto"}
+				        }
+				    )
+				in
+				    Origen
+

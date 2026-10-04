@@ -1,0 +1,32 @@
+table Dim_NivelEducativo
+	lineageTag: f5b50f12-8c76-4aea-b8ca-97f8e50b3b4a
+
+	column nivel_educativo
+		dataType: string
+		isKey
+		lineageTag: 37c74341-b5a9-4bec-899e-ccd3b948a8b8
+		sourceColumn: nivel_educativo
+		sortByColumn: OrdenEducativo
+
+	column OrdenEducativo
+		dataType: int64
+		lineageTag: 2df3d970-57b4-4ad5-b8c9-9a97c74cd420
+		sourceColumn: OrdenEducativo
+
+	partition Dim_NivelEducativo = m
+		mode: import
+		source =
+				let
+				    Origen = #table(
+				        type table [nivel_educativo = text, OrdenEducativo = Int64.Type],
+				        {
+				            {"Sin instrucción", 1},
+				            {"Primaria", 2},
+				            {"Secundaria", 3},
+				            {"Superior Universitario", 4},
+				            {"No especificado", 5}
+				        }
+				    )
+				in
+				    Origen
+

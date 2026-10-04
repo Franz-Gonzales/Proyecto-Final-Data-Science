@@ -1,0 +1,181 @@
+table _Medidas
+	lineageTag: 4970f3fe-56ac-4615-b365-6e800033c8d5
+
+	measure 'Muestra Jovenes PEA' = COUNTROWS('Fact_MercadoLaboral')
+		formatString: #,##0
+		displayFolder: 01_Volumenes_Poblacionales
+		lineageTag: f2469983-6295-47e9-a1fa-94535897dee4
+
+	measure 'PEA Juvenil Ponderada' = SUM('Fact_MercadoLaboral'[peso_trimestral])
+		formatString: #,##0
+		displayFolder: 01_Volumenes_Poblacionales
+		lineageTag: 3530a079-43b3-4ef6-abbc-62bffb59f15d
+
+	measure 'Poblacion Ocupada' =
+			CALCULATE(
+			    SUM('Fact_MercadoLaboral'[peso_trimestral]),
+			    'Fact_MercadoLaboral'[es_ocupado] = 1
+			)
+		formatString: #,##0
+		displayFolder: 01_Volumenes_Poblacionales
+		lineageTag: 48d87e4c-6aba-4a4e-b71c-4ed7171e4032
+
+	measure 'Poblacion Desocupada' =
+			CALCULATE(
+			    SUM('Fact_MercadoLaboral'[peso_trimestral]),
+			    'Fact_MercadoLaboral'[es_desocupado] = 1
+			)
+		formatString: #,##0
+		displayFolder: 01_Volumenes_Poblacionales
+		lineageTag: 653ae51d-8cb4-4a24-b9e0-a6742fbbaba6
+
+	measure 'Poblacion Subocupada' =
+			CALCULATE(
+			    SUM('Fact_MercadoLaboral'[peso_trimestral]),
+			    'Fact_MercadoLaboral'[es_subocupado] = 1
+			)
+		formatString: #,##0
+		displayFolder: 01_Volumenes_Poblacionales
+		lineageTag: 21e4b08f-96ec-45cf-93c6-625828393c83
+
+	measure 'Desocupados Cesantes' =
+			CALCULATE(
+			    SUM('Fact_MercadoLaboral'[peso_trimestral]),
+			    'Fact_MercadoLaboral'[es_cesante] = 1
+			)
+		formatString: #,##0
+		displayFolder: 01_Volumenes_Poblacionales
+		lineageTag: 664924e1-b2d2-43d5-bc97-085adc0a5990
+
+	measure 'Desocupados Aspirantes' =
+			CALCULATE(
+			    SUM('Fact_MercadoLaboral'[peso_trimestral]),
+			    'Fact_MercadoLaboral'[es_aspirante] = 1
+			)
+		formatString: #,##0
+		displayFolder: 01_Volumenes_Poblacionales
+		lineageTag: a021838c-a55e-4ede-b0fe-4d66ee83b2e8
+
+	measure 'Tasa Desocupacion Ponderada' =
+			DIVIDE(
+			    [Poblacion Desocupada],
+			    [PEA Juvenil Ponderada],
+			    0
+			)
+		formatString: 0.00%
+		displayFolder: 02_Tasas_Analiticas
+		lineageTag: 5df0d1af-d60a-4807-afae-eb65cea5205c
+
+	measure 'Tasa Subocupacion Ponderada' =
+			DIVIDE(
+			    [Poblacion Subocupada],
+			    [Poblacion Ocupada],
+			    0
+			)
+		formatString: 0.00%
+		displayFolder: 02_Tasas_Analiticas
+		lineageTag: 35160b45-74c2-4b66-b990-0c7a6a05abb8
+
+	measure 'Tasa Desocupacion Urbana General' = 0.0230
+		formatString: 0.00%
+		displayFolder: 02_Tasas_Analiticas
+		lineageTag: a8d4b8b5-4b56-4e42-8494-eebcb8695584
+
+	measure 'Ratio Desocupacion Juvenil vs General' =
+			DIVIDE(
+			    [Tasa Desocupacion Ponderada],
+			    [Tasa Desocupacion Urbana General],
+			    0
+			)
+		formatString: 0.00
+		displayFolder: 02_Tasas_Analiticas
+		lineageTag: 9554cf92-fc56-4d84-b7f2-19a6f6fa99aa
+
+	measure 'Tasa Desocupacion Mujeres' =
+			CALCULATE(
+			    [Tasa Desocupacion Ponderada],
+			    'Dim_Sexo'[sexo] = "Mujer"
+			)
+		formatString: 0.00%
+		displayFolder: 03_Brechas_Genero_Territorio
+		lineageTag: 55d23de8-83b4-4c70-91ab-049aaff0a449
+
+	measure 'Tasa Desocupacion Hombres' =
+			CALCULATE(
+			    [Tasa Desocupacion Ponderada],
+			    'Dim_Sexo'[sexo] = "Hombre"
+			)
+		formatString: 0.00%
+		displayFolder: 03_Brechas_Genero_Territorio
+		lineageTag: b17f96c0-19d4-4ce8-8aa9-baa1567dc6df
+
+	measure 'Brecha Desocupacion Genero pp' = [Tasa Desocupacion Mujeres] - [Tasa Desocupacion Hombres]
+		formatString: +0.00%;-0.00%
+		displayFolder: 03_Brechas_Genero_Territorio
+		lineageTag: 0496c8d2-77ec-4b29-8f1d-c1f2f434b6e8
+
+	measure 'Porcentaje Mujeres Desocupadas' =
+			DIVIDE(
+			    CALCULATE([Poblacion Desocupada], 'Dim_Sexo'[sexo] = "Mujer"),
+			    [Poblacion Desocupada],
+			    0
+			)
+		formatString: 0.00%
+		displayFolder: 03_Brechas_Genero_Territorio
+		lineageTag: dc24cdbc-8d53-427c-9a35-3522a661ac8b
+
+	measure 'Anios Estudio Promedio Desocupados' =
+			DIVIDE(
+			    CALCULATE(
+			        SUMX('Fact_MercadoLaboral', 'Fact_MercadoLaboral'[anios_estudio] * 'Fact_MercadoLaboral'[peso_trimestral]),
+			        'Fact_MercadoLaboral'[es_desocupado] = 1
+			    ),
+			    [Poblacion Desocupada],
+			    0
+			)
+		formatString: 0.00
+		displayFolder: 04_Educacion_Escolaridad
+		lineageTag: 2476e74c-ed9b-4626-ab53-06d20b6fd7a8
+
+	measure 'Anios Estudio Promedio Ocupados' =
+			DIVIDE(
+			    CALCULATE(
+			        SUMX('Fact_MercadoLaboral', 'Fact_MercadoLaboral'[anios_estudio] * 'Fact_MercadoLaboral'[peso_trimestral]),
+			        'Fact_MercadoLaboral'[es_ocupado] = 1
+			    ),
+			    [Poblacion Ocupada],
+			    0
+			)
+		formatString: 0.00
+		displayFolder: 04_Educacion_Escolaridad
+		lineageTag: 144cc046-329f-4294-8f92-dbc34edce289
+
+	measure 'Diferencia Escolaridad Anios' = [Anios Estudio Promedio Desocupados] - [Anios Estudio Promedio Ocupados]
+		formatString: +0.00;-0.00
+		displayFolder: 04_Educacion_Escolaridad
+		lineageTag: ad71bd04-14ba-404a-bf55-0b589bbb8490
+
+	measure 'Porcentaje Desocupados Cesantes' =
+			DIVIDE(
+			    [Desocupados Cesantes],
+			    [Poblacion Desocupada],
+			    0
+			)
+		formatString: 0.00%
+		displayFolder: 05_Trayectoria_Busqueda
+		lineageTag: ce770429-ab09-4e89-93b0-8ecc84897d4f
+
+	measure 'Porcentaje Desocupados Aspirantes' =
+			DIVIDE(
+			    [Desocupados Aspirantes],
+			    [Poblacion Desocupada],
+			    0
+			)
+		formatString: 0.00%
+		displayFolder: 05_Trayectoria_Busqueda
+		lineageTag: d2fb5949-2971-4c7b-ac86-baa68e6944be
+
+	partition _Medidas = calculated
+		mode: import
+		source = ROW("Indice", 1)
+

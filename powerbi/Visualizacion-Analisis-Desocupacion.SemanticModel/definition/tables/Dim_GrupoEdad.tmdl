@@ -1,0 +1,31 @@
+table Dim_GrupoEdad
+	lineageTag: 3234fe56-f865-43bb-b8f7-f5d408305da2
+
+	column grupo_edad
+		dataType: string
+		isKey
+		lineageTag: 62cc8049-159c-4f04-922d-034f56ba7ca8
+		sourceColumn: grupo_edad
+		sortByColumn: OrdenEtario
+
+	column OrdenEtario
+		dataType: int64
+		lineageTag: d24ac6ad-d3f3-467b-a170-5835ee786821
+		sourceColumn: OrdenEtario
+
+	partition Dim_GrupoEdad = m
+		mode: import
+		source =
+				let
+				    Origen = #table(
+				        type table [grupo_edad = text, OrdenEtario = Int64.Type],
+				        {
+				            {"16 a 17 años", 1},
+				            {"18 a 20 años", 2},
+				            {"21 a 24 años", 3},
+				            {"25 a 28 años", 4}
+				        }
+				    )
+				in
+				    Origen
+

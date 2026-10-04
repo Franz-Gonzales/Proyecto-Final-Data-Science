@@ -1,0 +1,40 @@
+table Dim_Departamento
+	lineageTag: 6526ab0d-c1e9-47d7-a787-b8ce22142cc9
+
+	column departamento
+		dataType: string
+		isKey
+		lineageTag: 79404bca-d77d-4227-ac7a-3ddd6be998f5
+		sourceColumn: departamento
+
+	column depto_cod
+		dataType: int64
+		lineageTag: bc24b6d6-4c4e-4528-947f-99baafd2606d
+		sourceColumn: depto_cod
+
+	column RegionGeografica
+		dataType: string
+		lineageTag: 226bbead-639e-4775-ae46-5d333a012a25
+		sourceColumn: RegionGeografica
+
+	partition Dim_Departamento = m
+		mode: import
+		source =
+				let
+				    Origen = #table(
+				        type table [departamento = text, depto_cod = Int64.Type, RegionGeografica = text],
+				        {
+				            {"Chuquisaca", 1, "Valles"},
+				            {"La Paz", 2, "Altiplano"},
+				            {"Cochabamba", 3, "Valles"},
+				            {"Oruro", 4, "Altiplano"},
+				            {"Potosí", 5, "Altiplano"},
+				            {"Tarija", 6, "Valles"},
+				            {"Santa Cruz", 7, "Llanos"},
+				            {"Beni", 8, "Llanos"},
+				            {"Pando", 9, "Llanos"}
+				        }
+				    )
+				in
+				    Origen
+

@@ -1,0 +1,28 @@
+table Dim_Sexo
+	lineageTag: 1e530e97-97d4-42c3-8ec1-a9544996b80a
+
+	column sexo
+		dataType: string
+		isKey
+		lineageTag: 698af902-773c-4765-a0e6-392d3015ab1c
+		sourceColumn: sexo
+
+	column sexo_cod
+		dataType: int64
+		lineageTag: 96626650-7f67-437c-99fa-87fd66892380
+		sourceColumn: sexo_cod
+
+	partition Dim_Sexo = m
+		mode: import
+		source =
+				let
+				    Origen = #table(
+				        type table [sexo = text, sexo_cod = Int64.Type],
+				        {
+				            {"Hombre", 1},
+				            {"Mujer", 2}
+				        }
+				    )
+				in
+				    Origen
+

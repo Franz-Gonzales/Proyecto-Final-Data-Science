@@ -1,0 +1,24 @@
+relationship Fact_MercadoLaboral_sexo_Dim_Sexo_sexo
+	fromColumn: Fact_MercadoLaboral.sexo
+	toColumn: Dim_Sexo.sexo
+
+relationship Fact_MercadoLaboral_grupo_edad_Dim_GrupoEdad_grupo_edad
+	fromColumn: Fact_MercadoLaboral.grupo_edad
+	toColumn: Dim_GrupoEdad.grupo_edad
+
+relationship Fact_MercadoLaboral_departamento_Dim_Departamento_departamento
+	fromColumn: Fact_MercadoLaboral.departamento
+	toColumn: Dim_Departamento.departamento
+
+relationship Fact_MercadoLaboral_nivel_educativo_Dim_NivelEducativo_nivel_educativo
+	fromColumn: Fact_MercadoLaboral.nivel_educativo
+	toColumn: Dim_NivelEducativo.nivel_educativo
+
+relationship Fact_MercadoLaboral_tipo_condicion_laboral_Dim_CondicionLaboral_tipo_condicion_laboral
+	fromColumn: Fact_MercadoLaboral.tipo_condicion_laboral
+	toColumn: Dim_CondicionLaboral.tipo_condicion_laboral
+
+relationship Fact_MercadoLaboral_tipo_hogar_Dim_Hogar_tipo_hogar
+	fromColumn: Fact_MercadoLaboral.tipo_hogar
+	toColumn: Dim_Hogar.tipo_hogar
+

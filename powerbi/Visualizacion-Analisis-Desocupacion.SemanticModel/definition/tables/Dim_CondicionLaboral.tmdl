@@ -1,0 +1,29 @@
+table Dim_CondicionLaboral
+	lineageTag: 155ea846-8126-4e9f-b463-a34192c2628e
+
+	column tipo_condicion_laboral
+		dataType: string
+		isKey
+		lineageTag: ab73e269-e5e6-4bf6-8368-c34212c639ae
+		sourceColumn: tipo_condicion_laboral
+
+	column Categoria
+		dataType: string
+		lineageTag: 4ab42989-8a68-4f7f-8aa3-ccd76bc54625
+		sourceColumn: Categoria
+
+	partition Dim_CondicionLaboral = m
+		mode: import
+		source =
+				let
+				    Origen = #table(
+				        type table [tipo_condicion_laboral = text, Categoria = text],
+				        {
+				            {"Ocupado", "Ocupado"},
+				            {"Desocupado Cesante", "Desocupado"},
+				            {"Desocupado Aspirante", "Desocupado"}
+				        }
+				    )
+				in
+				    Origen
+

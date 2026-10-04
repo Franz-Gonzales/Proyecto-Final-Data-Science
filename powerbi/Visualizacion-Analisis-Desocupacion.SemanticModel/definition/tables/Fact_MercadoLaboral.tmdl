@@ -1,0 +1,99 @@
+table Fact_MercadoLaboral
+	lineageTag: b77c95eb-0cc1-40d3-8f99-f25daf4763f3
+
+	column id_persona
+		dataType: int64
+		lineageTag: 25a5adbf-cf04-4f02-aab5-278958c1feb0
+		sourceColumn: id_persona
+
+	column edad
+		dataType: int64
+		lineageTag: 7a3ed13f-5c17-4eae-aeb9-ef9eb0d8d962
+		sourceColumn: edad
+
+	column grupo_edad
+		dataType: string
+		lineageTag: 45e958c7-12f6-4c9b-a8f1-0e0c32f8a940
+		sourceColumn: grupo_edad
+
+	column sexo
+		dataType: string
+		lineageTag: 2b81d8b3-e0fd-4256-9ce9-19eb4bea1850
+		sourceColumn: sexo
+
+	column departamento
+		dataType: string
+		lineageTag: d4650100-71a2-49a3-9c77-28e36e73fe9b
+		sourceColumn: departamento
+
+	column nivel_educativo
+		dataType: string
+		lineageTag: 75d2d46a-2112-4c5a-bc25-abf554495230
+		sourceColumn: nivel_educativo
+
+	column anios_estudio
+		dataType: int64
+		lineageTag: 30c723f7-5c2a-4218-a086-7843149d237b
+		sourceColumn: anios_estudio
+
+	column asiste_estudio
+		dataType: string
+		lineageTag: 00a32760-ba83-4990-bc3f-cf55ce1b8fc3
+		sourceColumn: asiste_estudio
+
+	column tipo_condicion_laboral
+		dataType: string
+		lineageTag: fce8cff1-6a19-4ab7-86a7-b7ce568cf953
+		sourceColumn: tipo_condicion_laboral
+
+	column tipo_hogar
+		dataType: string
+		lineageTag: 7b9dac51-6e63-4e27-9d15-02667d8bcf42
+		sourceColumn: tipo_hogar
+
+	column mecanismo_busqueda
+		dataType: string
+		lineageTag: 3490e9f3-d0f8-4732-9465-90178400b0ad
+		sourceColumn: mecanismo_busqueda
+
+	column es_ocupado
+		dataType: int64
+		lineageTag: 06c6d295-3670-4a6b-820e-7419062d9dab
+		sourceColumn: es_ocupado
+
+	column es_desocupado
+		dataType: int64
+		lineageTag: 54cd42ac-8f31-4ef9-846c-ffa5167bedc1
+		sourceColumn: es_desocupado
+
+	column es_cesante
+		dataType: int64
+		lineageTag: 53fa4bd5-f1aa-4088-8753-74561994cf94
+		sourceColumn: es_cesante
+
+	column es_aspirante
+		dataType: int64
+		lineageTag: c2bed9ee-4806-4a03-94cc-71da780ebfe2
+		sourceColumn: es_aspirante
+
+	column es_subocupado
+		dataType: int64
+		lineageTag: 936db257-4be7-4f50-98d6-286d3420a85e
+		sourceColumn: es_subocupado
+
+	column peso_trimestral
+		dataType: double
+		lineageTag: db5b821c-90d9-49a3-9dc7-aa9addd19a20
+		sourceColumn: peso_trimestral
+
+	partition Fact_MercadoLaboral = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("c:/Users/franz/workspace/diplomado/Proyecto-Final-Data-Science/data/processed/ECE_4T2025_Jovenes_PEA.csv"), [Delimiter=";", Columns=156, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Seleccion = Table.SelectColumns(Encabezados, {"id_persona", "edad", "grupo_edad", "sexo", "departamento", "nivel_educativo", "anios_estudio", "asiste_estudio", "tipo_condicion_laboral", "tipo_hogar", "mecanismo_busqueda", "es_ocupado", "es_desocupado", "es_cesante", "es_aspirante", "es_subocupado", "peso_trimestral"}),
+				    Tipos = Table.TransformColumnTypes(Seleccion, {{"id_persona", Int64.Type}, {"edad", Int64.Type}, {"grupo_edad", type text}, {"sexo", type text}, {"departamento", type text}, {"nivel_educativo", type text}, {"anios_estudio", Int64.Type}, {"asiste_estudio", type text}, {"tipo_condicion_laboral", type text}, {"tipo_hogar", type text}, {"mecanismo_busqueda", type text}, {"es_ocupado", Int64.Type}, {"es_desocupado", Int64.Type}, {"es_cesante", Int64.Type}, {"es_aspirante", Int64.Type}, {"es_subocupado", Int64.Type}, {"peso_trimestral", type number}})
+				in
+				    Tipos
+

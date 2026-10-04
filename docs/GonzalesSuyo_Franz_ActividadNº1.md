@@ -270,98 +270,208 @@ FIGURA N.º 10: *Tasa de desocupación juvenil según tipología de hogar*
 
 En la estructura del hogar, los jóvenes en hogares monoparentales (5,68%) y en hogares extendidos (5,37%) presentan tasas de desocupación superiores al promedio nacional (3,71%), mientras que en hogares compuestos y biparentales con hijos la incidencia es menor.
 
-### 3.1.7. Arquitectura del modelo dimensional para Power BI
-Para facilitar la exploración visual y la toma de decisiones basada en datos, los microdatos procesados se organizaron en un esquema en estrella (*Star Schema*). El modelo sitúa en el centro una tabla de hechos conectada a tablas dimensionales normalizadas con relaciones de uno a muchos:
+### 3.1.7. Arquitectura del modelo dimensional para Power BI Desktop
+Para facilitar la exploración visual y la toma de decisiones basada en datos, los microdatos procesados se organizaron en un esquema en estrella (*Star Schema*) dentro del proyecto de Power BI (`powerbi/Visualizacion-Analisis-Desocupacion.pbip`). El modelo semántico, serializado bajo el estándar TMDL (*Tabular Model Definition Language*), sitúa en el centro una tabla de hechos conectada a seis tablas dimensionales mediante relaciones unidireccionales de uno a muchos (1:N) con integridad referencial activa:
 
-DIAGRAMA N.º 2: *Arquitectura del modelo dimensional en estrella (Star Schema) para Power BI Desktop*
+DIAGRAMA N.º 2: *Arquitectura del modelo dimensional en estrella (Star Schema) implementado en Power BI Desktop*
 
 ```mermaid
 flowchart TD
-    DIM_T["<b>DIM_TIEMPO</b><br/>• gestion_trimestre (PK)<br/>• gestion<br/>• trimestre"]
-    DIM_G["<b>DIM_GEOGRAFIA</b><br/>• depto_cod (PK)<br/>• departamento<br/>• area_urbana"]
-    DIM_D["<b>DIM_DEMOGRAFIA</b><br/>• sexo_cod (PK)<br/>• sexo<br/>• grupo_edad<br/>• edad"]
-    DIM_E["<b>DIM_EDUCACION</b><br/>• niv_ed_cod (PK)<br/>• nivel_educativo<br/>• asiste_estudio"]
-    DIM_C["<b>DIM_CONDICION_LABORAL</b><br/>• condact_cod (PK)<br/>• tipo_condicion_laboral"]
-    DIM_H["<b>DIM_HOGAR</b><br/>• tipohogar_cod (PK)<br/>• tipo_hogar<br/>• parentesco"]
+    DIM_E["<b>Dim_GrupoEdad</b><br/>• grupo_edad (PK)<br/>• OrdenEtario (Sort)"]
+    DIM_S["<b>Dim_Sexo</b><br/>• sexo (PK)<br/>• sexo_cod"]
+    DIM_D["<b>Dim_Departamento</b><br/>• departamento (PK)<br/>• depto_cod<br/>• RegionGeografica"]
+    DIM_N["<b>Dim_NivelEducativo</b><br/>• nivel_educativo (PK)<br/>• OrdenEducativo (Sort)"]
+    DIM_C["<b>Dim_CondicionLaboral</b><br/>• tipo_condicion_laboral (PK)<br/>• Categoria"]
+    DIM_H["<b>Dim_Hogar</b><br/>• tipo_hogar (PK)"]
 
-    FACT["<b>FACT_MERCADO_LABORAL</b><br/>• id_persona (PK)<br/>• peso_trimestral<br/>• es_ocupado<br/>• es_desocupado<br/>• es_cesante<br/>• es_aspirante<br/>• es_subocupado<br/>• anios_estudio"]
+    FACT["<b>Fact_MercadoLaboral</b><br/>• id_persona (PK)<br/>• edad | anios_estudio<br/>• es_ocupado | es_desocupado<br/>• es_cesante | es_aspirante<br/>• es_subocupado<br/>• peso_trimestral (Factor Exp.)"]
 
-    DIM_T -->|1:N| FACT
-    DIM_G -->|1:N| FACT
-    DIM_D -->|1:N| FACT
+    MEDIDAS["<b>_Medidas</b><br/>• 20 Medidas DAX Ponderadas<br/>• Carpetas Jerárquicas 01 a 05"]
+
     DIM_E -->|1:N| FACT
+    DIM_S -->|1:N| FACT
+    DIM_D -->|1:N| FACT
+    DIM_N -->|1:N| FACT
     DIM_C -->|1:N| FACT
     DIM_H -->|1:N| FACT
+    FACT -.-> MEDIDAS
 ```
+
+*FUENTE: Elaboración propia a partir del modelo semántico TMDL en Power BI.*
+
+El modelo dimensional asegura que las medidas analíticas en lenguaje DAX operen de forma ponderada aplicando el factor de expansión muestral (`peso_trimestral`) en cualquier combinación de filtros temporales, territoriales o demográficos.
+
+### 3.1.8. Evidencia del cuadro de mando interactivo en Power BI Desktop
+Como componente de transferencia tecnológica y despliegue del proyecto de ciencia de datos, se desarrolló un cuadro de mando analítico interactivo de seis páginas en Power BI Desktop (`powerbi/Visualizacion-Analisis-Desocupacion.pbip`), estructurado en formato PBIR (*Power BI Project Report*).
+
+El diseño visual adopta la identidad institucional de la Universidad San Francisco Xavier de Chuquisaca (USFX CEPI), aplicando una paleta armónica compuesta por azul marino institucional (`#0F2C59`), rojo colonial de alerta (`#8B0000`), dorado ocre (`#C59B27`) y verde esmeralda para ocupación (`#2E7D32`), sobre un lienzo gris claro suave (`#F8F9FA`) con tarjetas en blanco puro (`#FFFFFF`) y tipografía corporativa Segoe UI.
+
+TABLA N.º 11: *Estructura y catálogo de páginas del cuadro de mando analítico en Power BI Desktop*
+
+| Página | Denominación temática | Foco analítico principal | Segmentadores activos | Medidas DAX rectoras |
+| :---: | :--- | :--- | :--- | :--- |
+| 1 | Panorama Laboral Juvenil | Indicadores macro, estructura de la PEA y sobre-exposición al desempleo | Departamento, Sexo, Rango de Edad | `[PEA Juvenil Ponderada]`, `[Tasa Desocupacion Ponderada]`, `[Tasa Subocupacion Ponderada]` |
+| 2 | Vulnerabilidad Etaria | Fricción en la transición de la secundaria al mercado formal (18 a 20 años) | Tramo etario, Condición de actividad | `[Tasa Desocupacion Ponderada]`, `[Poblacion Desocupada]`, `[Porcentaje Desocupados Tramo]` |
+| 3 | Educación y Escolaridad | Capital humano, niveles formativos y tensión entre estudio y empleo | Nivel educativo, Asistencia escolar | `[Escolaridad Promedio Ocupados]`, `[Escolaridad Promedio Desocupados]`, `[Tasa Desocupacion Ponderada]` |
+| 4 | Género y Territorio | Brecha estructural mujer-hombre y disparidades entre departamentos | Sexo, Departamento, Región geográfica | `[Tasa Desocupacion Mujeres]`, `[Tasa Desocupacion Hombres]`, `[Brecha Desocupacion Genero]` |
+| 5 | Perfil del Desocupado | Dinámica de desvinculación laboral (cesantes) frente al primer empleo (aspirantes) | Condición laboral, Mecanismo de búsqueda | `[Desocupados Cesantes]`, `[Desocupados Aspirantes]`, `[Proporcion Cesantes Pct]` |
+| 6 | Políticas Públicas | Matriz de priorización estratégica, hojas de ruta y síntesis ejecutiva | Eje de intervención, Nivel de urgencia | `[Poblacion Objetivo Focalizada]`, Matriz Impacto-Factibilidad |
 
 *FUENTE: Elaboración propia.*
 
-El modelo dimensional permite que las medidas analíticas en lenguaje DAX operen de forma ponderada aplicando el factor de expansión muestral en cualquier combinación de filtros temporales, territoriales o demográficos.
+#### 3.1.8.1. Página 1: Panorama laboral juvenil urbano
+La primera página sintetiza la magnitud general del mercado laboral para la población de 16 a 28 años en el área urbana de Bolivia. En la fila superior se integran cinco tarjetas con indicadores clave que exponen el volumen ponderado de la PEA (1.380.841 personas), la población ocupada (1.329.645 personas), la población desocupada (51.196 personas), la tasa oficial de desocupación (3,71%) y la tasa de subocupación por tiempo (8,70%). En el cuerpo central se despliegan un gráfico de dona con la distribución porcentual de la PEA, un gráfico de barras comparativo entre la tasa de desocupación urbana general (2,30%) y la juvenil (3,71%), y un desglose de la subutilización laboral.
+
+FIGURA N.º 11: *Vista del cuadro de mando en Power BI: Panorama laboral juvenil urbano (Página 1)*
+
+![Cuadro de mando: Panorama laboral juvenil](figures/dashboard_pagina_1.png)
+
+*FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
+
+#### 3.1.8.2. Página 2: Desocupación por tramo etario y trayectoria
+La segunda página aborda el análisis desagregado de los cuatro tramos de edad establecidos en el proyecto. Permite constatar visualmente que los jóvenes de 18 a 20 años enfrentan la tasa de desocupación más crítica del país (4,65%), superando en casi un punto porcentual el promedio nacional juvenil. Asimismo, evidencia que el grupo de 25 a 28 años concentra el mayor volumen absoluto de desocupados (19.349 personas), vinculado a la búsqueda de plazas técnicas y profesionales.
+
+FIGURA N.º 12: *Vista del cuadro de mando en Power BI: Desocupación por tramo etario (Página 2)*
+
+![Cuadro de mando: Desocupación por tramo etario](figures/dashboard_pagina_2.png)
+
+*FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
+
+#### 3.1.8.3. Página 3: Nivel formativo, capital humano y escolaridad
+La tercera página examina la interacción entre el nivel educativo y la inserción laboral. Presenta la paradoja del desempleo según credenciales académicas, donde los jóvenes con formación secundaria (4,07%) y universitaria (3,74%) exhiben tasas superiores a quienes poseen solo instrucción primaria (1,89%). Incluye también la comparativa de desocupación entre quienes asisten a un centro educativo (4,14%) y quienes no asisten (3,52%), ilustrando las dificultades de compatibilizar horarios académicos y laborales.
+
+FIGURA N.º 13: *Vista del cuadro de mando en Power BI: Capital humano y nivel formativo (Página 3)*
+
+![Cuadro de mando: Capital humano y nivel formativo](figures/dashboard_pagina_3.png)
+
+*FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
+
+#### 3.1.8.4. Página 4: Disparidades de género y brechas territoriales
+La cuarta página expone la doble asimetría sociodemográfica que caracteriza al mercado laboral boliviano. A la izquierda se presenta la brecha de género, donde las mujeres registran un 4,69% de desempleo abierto frente al 2,85% de los varones (brecha de 1,84 puntos porcentuales). A la derecha se visualiza el ranking de los nueve departamentos, encabezado por Chuquisaca (5,80%), Tarija (4,72%) y Cochabamba (4,71%), contrastando con las tasas menores registradas en los departamentos del oriente y norte del país.
+
+FIGURA N.º 14: *Vista del cuadro de mando en Power BI: Género y disparidades departamentales (Página 4)*
+
+![Cuadro de mando: Género y disparidades departamentales](figures/dashboard_pagina_4.png)
+
+*FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
+
+#### 3.1.8.5. Página 5: Perfil del joven desocupado y mecanismos de búsqueda
+La quinta página profundiza en la composición interna de los desocupados. Mediante un gráfico de dona y barras agrupadas se muestra que el 89,62% (45.882 personas) corresponde a desocupados cesantes con trayectoria laboral previa, mientras que solo el 10,38% (5.314 personas) busca trabajo por primera vez. Asimismo, detalla los canales de intermediación utilizados, destacando las redes de parentesco y amistades junto con la presentación directa de credenciales.
+
+FIGURA N.º 15: *Vista del cuadro de mando en Power BI: Perfil de cesantes y aspirantes (Página 5)*
+
+![Cuadro de mando: Perfil de cesantes y aspirantes](figures/dashboard_pagina_5.png)
+
+*FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
+
+#### 3.1.8.6. Página 6: Síntesis ejecutiva y matriz de políticas públicas
+La sexta página traduce la evidencia estadística en directrices orientadas a la toma de decisiones. Articula una matriz de priorización cuadrantal (impacto potencial frente a factibilidad operativa) y presenta tres hojas de ruta concretas: el fomento al primer empleo formal para jóvenes de 18 a 20 años, medidas de corresponsabilidad en el cuidado para mujeres jóvenes, y fondos de dinamización productiva regional para Chuquisaca y Tarija.
+
+FIGURA N.º 16: *Vista del cuadro de mando en Power BI: Síntesis estratégica y políticas públicas (Página 6)*
+
+![Cuadro de mando: Síntesis estratégica y políticas públicas](figures/dashboard_pagina_6.png)
+
+*FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
 ---
 
 ## 3.2. ANÁLISIS DE RESULTADOS
 
+DIAGRAMA N.º 3: *Modelo conceptual de interrelación entre factores determinantes y la desocupación juvenil urbana*
+
+```mermaid
+flowchart LR
+    subgraph Factores["Factores Determinantes"]
+        direction TB
+        F1["<b>Vulnerabilidad Etaria</b><br/>Pico en 18 a 20 años (4,65%)<br/>Fricción salida escolar"]
+        F2["<b>Brecha de Género</b><br/>Mujeres 4,69% vs Hombres 2,85%<br/>Carga de cuidados no remunerados"]
+        F3["<b>Desequilibrio Territorial</b><br/>Chuquisaca 5,80%, Tarija 4,72%<br/>Saturación de servicios"]
+        F4["<b>Descalce Educativo</b><br/>Mayor escolaridad en desocupados<br/>13,01 vs 12,64 años"]
+    end
+
+    subgraph Dinamica["Dinámica Laboral"]
+        direction TB
+        D1["<b>Desocupación Abierta</b><br/>51.196 jóvenes (3,71%)<br/>89,6% Cesantes | 10,4% Aspirantes"]
+        D2["<b>Subocupación por Horas</b><br/>115.736 jóvenes (8,70%)<br/>Subutilización de capacidades"]
+    end
+
+    subgraph Politicas["Intervención Estratégica"]
+        direction TB
+        P1["<b>Mi Primer Empleo</b><br/>Subsidio salarial temporal"]
+        P2["<b>Cuidados y STEM</b><br/>Centros de cuidado y equidad"]
+        P3["<b>Desarrollo Regional</b><br/>Crédito blando e innovación"]
+    end
+
+    F1 --> D1
+    F2 --> D1
+    F3 --> D1
+    F4 --> D1
+    D1 -.-> D2
+    D1 --> P1
+    D1 --> P2
+    D1 --> P3
+```
+
+*FUENTE: Elaboración propia con base en el marco analítico del proyecto.*
+
 ### 3.2.1. Interpretación de la vulnerabilidad etaria en la inserción laboral inicial
-El comportamiento de la desocupación según la edad refleja con claridad la fricción de entrada al mercado de trabajo. El tramo de 18 a 20 años alcanza la tasa más alta de desocupación con 4,65%, lo que se explica por la confluencia de varios factores propios del ciclo de vida:
+El comportamiento de la desocupación según la edad refleja con claridad la fricción de entrada al mercado de trabajo. El tramo de 18 a 20 años alcanza la tasa más alta de desocupación con 4,65%, lo que responde a la confluencia de condiciones propias de esa etapa del ciclo de vida.
 
-En primer lugar, esta etapa coincide con la salida de la educación secundaria y la desvinculación escolar. Quienes deciden no continuar estudios superiores buscan un puesto remunerado en un entorno que exige experiencia laboral previa, un requisito que la mayoría de los egresados de bachillerato no cumple. En segundo lugar, a diferencia de los adolescentes de 16 y 17 años, que en su mayoría continúan estudiando o residen bajo la tutela económica de sus padres, los jóvenes de 18 a 20 años asumen una mayor presión para aportar al sustento personal y familiar.
+Esta fase coincide con la culminación de la educación secundaria y la desvinculación escolar obligatoria. Quienes deciden no ingresar de forma inmediata a estudios superiores buscan una ocupación remunerada en un entorno laboral que demanda experiencia previa comprobada, un requisito que la gran mayoría de los egresados de bachillerato no posee. A diferencia de los adolescentes de 16 y 17 años, que en su mayoría continúan estudiando o residen bajo la cobertura económica familiar, las personas de 18 a 20 años enfrentan una presión inmediata por generar ingresos propios.
 
-Hacia los tramos de 21 a 24 años (3,55%) y de 25 a 28 años (3,88%), la tasa de desocupación abierta disminuye y se mantiene estable. No obstante, en estas cohortes la dificultad principal ya no es únicamente acceder a un empleo, sino la calidad del mismo. El mercado absorbe a estos jóvenes mediante empleos informales, actividades por cuenta propia y modalidades con jornada reducida involuntaria, lo que concuerda con la tasa de subocupación juvenil observada de 8,70%.
+Hacia los tramos de 21 a 24 años (3,55%) y de 25 a 28 años (3,88%), la desocupación abierta disminuye. No obstante, en estas cohortes el desafío principal no se limita al acceso al empleo, sino a la calidad contractual. El mercado urbano absorbe a estos jóvenes mediante actividades por cuenta propia, ocupaciones en el sector informal y modalidades con jornada reducida involuntaria, lo que concuerda con la tasa de subocupación juvenil observada del 8,70%.
 
 ### 3.2.2. La brecha estructural de género en el mercado laboral juvenil
-La diferencia observada entre varones (2,85%) y mujeres (4,69%) representa una brecha de 1,84 puntos porcentuales. Esta disparidad, confirmada estadísticamente mediante la prueba Chi-cuadrado ($\chi^2 = 5,24; p = 0,0221$), responde a condicionantes estructurales bien documentados en el entorno laboral urbano:
+La diferencia observada entre varones (2,85%) y mujeres (4,69%) representa una brecha de 1,84 puntos porcentuales. Esta disparidad, confirmada estadísticamente mediante la prueba Chi-cuadrado ($\chi^2 = 5,24; p = 0,0221$), responde a condicionantes estructurales bien documentados en el entorno laboral urbano boliviano.
 
-La distribución desigual de las tareas de cuidado no remunerado y del trabajo doméstico restringe el tiempo disponible de las mujeres jóvenes para buscar empleo y para cumplir horarios fijos de jornada completa. Además, el mercado laboral urbano mantiene una segregación ocupacional por sexo. Los varones jóvenes acceden con mayor facilidad a ocupaciones operativas en construcción, transporte y manufactura básica, sectores que absorben mano de obra de forma rápida y con pocas exigencias formales. Por el contrario, las mujeres se orientan hacia servicios personales, comercio minorista y puestos administrativos, ramas con mayor competencia y saturación en los centros urbanos.
+La distribución desproporcionada de las tareas de cuidado no remunerado y del trabajo doméstico reduce el tiempo efectivo del que disponen las mujeres jóvenes para buscar empleo y cumplir horarios continuos de jornada completa. Además, el mercado laboral urbano mantiene patrones marcados de segregación ocupacional por sexo. Los varones jóvenes acceden con rapidez a ocupaciones manuales en construcción, transporte y manufactura básica, sectores caracterizados por una rápida absorción de mano de obra con pocas exigencias de cualificación formal. Las mujeres jóvenes, por el contrario, se concentran en servicios personales, comercio minorista y puestos administrativos, ramas con mayor competencia y saturación en los centros urbanos.
 
-A esto se suman prácticas de contratación que discriminan de manera preventiva a las mujeres jóvenes en edad fértil por el costo asociado a licencias y permisos familiares, prolongando sus tiempos de búsqueda y aumentando su presencia en el desempleo abierto.
+A estos factores se añaden prácticas de contratación que discriminan de forma preventiva a las mujeres en edad reproductiva por los costos y permisos asociados a la maternidad, lo que extiende sus periodos de búsqueda y eleva su permanencia en el desempleo abierto.
 
-### 3.2.3. Asimetría territorial y fragilidad laboral en Chuquisaca y regiones no troncales
-Las diferencias departamentales confirman una heterogeneidad espacial significativa ($\chi^2 = 23,69; p = 0,0026$). Chuquisaca encabeza la tasa de desocupación juvenil urbana con 5,80%, seguida por Tarija con 4,72% y Cochabamba con 4,71%.
+### 3.2.3. Asimetría territorial y fragilidad laboral en Chuquisaca y regiones del sur
+Las diferencias departamentales confirman una heterogeneidad espacial significativa ($\chi^2 = 23,69; p = 0,0026$). Chuquisaca registra la tasa de desocupación juvenil urbana más elevada del país con 5,80%, seguida por Tarija con 4,72% y Cochabamba con 4,71%.
 
-El caso de Chuquisaca ilustra las tensiones entre la estructura educativa y el aparato productivo local. Sucre concentra una población estudiantil considerable en instituciones de formación superior técnica y universitaria. Sin embargo, su economía urbana se basa fundamentalmente en el sector público, los servicios tradicionales y el comercio minorista, con una industria manufacturera reducida. Esta configuración limita la capacidad de absorber a los contingentes de egresados que ingresan cada año al mercado de trabajo local, lo que eleva el desempleo abierto y fomenta la migración posterior hacia Santa Cruz, Cochabamba o La Paz.
+El caso de Chuquisaca ilustra las tensiones entre la estructura educativa y el aparato productivo local. La ciudad de Sucre concentra una población estudiantil considerable en institutos técnicos y carreras universitarias. Sin embargo, su economía urbana se basa predominantemente en la administración pública, los servicios tradicionales y el comercio minorista, con un sector manufacturero e industrial reducido. Esta estructura restringe la capacidad de absorción para los contingentes de técnicos y profesionales que egresan anualmente, lo que incrementa el desempleo abierto y propicia la emigración hacia los departamentos del eje central.
 
-En el eje central, departamentos como Santa Cruz (3,33%) y La Paz (3,84%) cuentan con mercados urbanos más amplios y diversificados que permiten incorporar mano de obra juvenil con mayor celeridad, principalmente en actividades comerciales y de servicios. Por otro lado, la reducida tasa de desempleo observada en Potosí (1,64%) no denota un mercado laboral equilibrado, sino una necesidad económica apremiante que obliga a la población joven a autoemplearse de inmediato en la minería informal o el comercio de subsistencia, donde no es posible sostener un periodo prolongado de búsqueda abierta sin percibir ingresos.
+En contraste, los mercados urbanos de Santa Cruz (3,33%) y La Paz (3,84%) cuentan con mayor escala y diversificación, lo que facilita incorporar mano de obra juvenil con mayor rapidez en actividades de comercio y servicios empresariales. Por su parte, la baja tasa observada en Potosí (1,64%) no refleja un mercado dinámico o equilibrado, sino una necesidad de ingresos que fuerza a los jóvenes a autoemplearse de forma inmediata en labores de subsistencia o minería informal, entornos donde no es viable sostener periodos prolongados de búsqueda abierta.
 
 ### 3.2.4. La paradoja del desempleo ilustrado en el mercado informal
-La comparación estadística de los años de estudio entre personas ocupadas y desocupadas confirma una diferencia relevante: los jóvenes desocupados promedian 13,01 años de escolaridad, frente a 12,64 años entre quienes se encuentran ocupados ($p = 0,0174$).
+La comparación estadística de la escolaridad acumulada entre personas ocupadas y desocupadas confirma una diferencia relevante: los jóvenes desocupados promedian 13,01 años de estudio frente a 12,64 años entre quienes se encuentran ocupados ($p = 0,0174$).
 
-Este resultado refleja la lógica de funcionamiento del mercado de trabajo boliviano, caracterizado por una informalidad que supera el 75%:
+Este comportamiento se asocia a las características del mercado laboral boliviano, donde la informalidad supera el 75%. Los jóvenes con menor nivel formativo provienen con mayor frecuencia de hogares con escasos recursos económicos, sin redes de seguridad financiera que les permitan extender la búsqueda de empleo. Por necesidad urgente, se incorporan a cualquier labor disponible en el comercio informal o en servicios no calificados, siendo computados estadísticamente como ocupados a pesar de la precariedad de sus condiciones.
 
-Los jóvenes con menor nivel de instrucción (primaria o secundaria incompleta) provienen con mayor frecuencia de hogares de bajos ingresos donde no existen ahorros ni redes de apoyo que permitan sostener una búsqueda prolongada. Por necesidad material inmediata, aceptan cualquier ocupación disponible en el comercio callejero, talleres informales o servicios manuales. Al estar trabajando, el sistema estadístico los clasifica como ocupados, a pesar de que sus ingresos y estabilidad laboral sean precarios.
-
-En cambio, los jóvenes con bachillerato concluido, formación técnica o estudios universitarios suelen contar con un respaldo familiar que les permite rechazar empleos precarios y extender su periodo de búsqueda a la espera de un puesto acorde con su nivel de formación. La oferta formativa universitaria no siempre coincide con las cualificaciones requeridas por las empresas urbanas, lo que prolonga los tiempos de colocación y eleva la tasa de desempleo entre las personas con mayor preparación académica.
+En contraposición, los jóvenes con bachillerato concluido, formación técnica o estudios universitarios suelen contar con cierto respaldo familiar que les permite rechazar puestos precarios a la espera de opciones vinculadas con su perfil formativo. La oferta educativa superior presenta desajustes respecto a las competencias requeridas por el sector productivo privado, lo que dilata los tiempos de inserción y aumenta la tasa de desocupación entre las personas con mayor nivel de instrucción.
 
 ### 3.2.5. Dinámica de cesantía y canales de intermediación laboral
-Que el 89,62% de los jóvenes desocupados sean cesantes desmonta la idea común de que el desempleo juvenil es principalmente un problema de inserción por primera vez. Nueve de cada diez jóvenes sin trabajo ya tuvieron una ocupación anterior y salieron de ella por despido, finalización de contrato temporal, renuncia ante malas condiciones o cierre de emprendimientos informales. La inestabilidad en el puesto y la alta rotación contractual son las causas determinantes de la desocupación juvenil urbana.
+El hecho de que el 89,62% de los jóvenes desocupados corresponda a cesantes cuestiona la premisa de que el desempleo juvenil boliviano sea predominantemente un problema de acceso al primer trabajo. Nueve de cada diez jóvenes desocupados ya contaban con una ocupación previa y salieron de ella por despido, término de contrato, renuncia ante malas condiciones o cese de emprendimientos informales. La inestabilidad en el puesto y la rotación contractual constituyen factores centrales de la desocupación juvenil urbana.
 
-Por su parte, el uso preferente de medios digitales y avisos (38,82%) y de presentación directa de currículum (31,62%) muestra que la juventud urbana recurre a canales formales y estructurados para colocarse en el mercado. Sin embargo, las bolsas de trabajo institucionales tienen un alcance residual en Bolivia, lo que deja a la mayoría de los postulantes dependiendo de publicaciones abiertas en redes sociales sin acompañamiento ni verificación de condiciones laborales.
+En cuanto a los métodos de búsqueda, el uso preferente de medios digitales (38,82%) y la entrega directa de solicitudes (31,62%) reflejan una juventud urbana que recurre a mecanismos estructurados para colocarse en el mercado. Sin embargo, la escasa cobertura de las bolsas públicas de empleo deja a la mayoría de los postulantes dependiendo de ofertas en redes sociales y redes personales de parentesco, sin garantías laborales ni orientación formal de carrera.
 
 ### 3.2.6. Articulación de los resultados con los objetivos específicos del trabajo
-Los hallazgos empíricos alcanzados dan respuesta y cumplimiento directo a cada uno de los cuatro objetivos específicos formulados en el proyecto:
+Los hallazgos empíricos del análisis responden de forma puntual a cada uno de los cuatro objetivos específicos formulados en el proyecto:
 
-1. Respecto al primer objetivo específico (recopilar, depurar y estructurar microdatos oficiales de la ECE 4T-2025): se logró consolidar un conjunto de datos limpio de 6.649 observaciones de jóvenes en la PEA urbana a partir de la base de 52.650 registros del INE, garantizando la consistencia del factor de expansión (`peso_trimestral`) para representar a 1.380.841 jóvenes.
-2. Respecto al segundo objetivo específico (procesar los datos en Python y aplicar técnicas de tasas ponderadas y asociaciones estadísticas): se implementaron rutinas vectorizadas que calcularon con precisión la tasa de desocupación (3,71%), la tasa de subocupación (8,70%) y contrastaron formalmente las asociaciones mediante pruebas Chi-cuadrado, V de Cramér y diferencias de escolaridad ($t$-Student y Mann-Whitney U).
-3. Respecto al tercer objetivo específico (diseñar y construir visualizaciones analíticas y un modelo dimensional en Power BI): se generó un catálogo de diez figuras en alta resolución a 300 DPI y se estructuró la arquitectura en estrella (*Star Schema*) con medidas DAX ponderadas para alimentar el reporte analítico interactivo.
-4. Respecto al cuarto objetivo específico (validar los resultados frente a los boletines oficiales del INE y la literatura laboral): se demostró una coincidencia exacta con la línea base oficial del INE (3,7% y 8,7%), y se contrastaron las brechas de género y edad con los diagnósticos regionales de la OIT y la CEPAL.
+1. En relación con el primer objetivo específico (recopilar, depurar y estructurar microdatos oficiales de la ECE 4T-2025): se consolidó un conjunto de datos limpio de 6.649 observaciones de jóvenes de la PEA urbana a partir de la base de 52.650 registros del INE, asegurando la consistencia del factor de expansión muestral (`peso_trimestral`) para representar con exactitud a 1.380.841 jóvenes.
+2. En relación con el segundo objetivo específico (procesar los datos en Python y aplicar técnicas de tasas ponderadas y contrastes de asociación estadística): se implementaron rutinas de cálculo que determinaron con rigor la tasa de desocupación (3,71%), la tasa de subocupación (8,70%) y evaluaron la significancia estadística de los factores mediante pruebas Chi-cuadrado, coeficientes V de Cramér y contrastes de escolaridad ($t$ de Student y Mann-Whitney U).
+3. En relación con el tercer objetivo específico (diseñar y construir visualizaciones analíticas y un modelo dimensional en Power BI): se produjo un catálogo de diez figuras a 300 DPI y se implementó un modelo en estrella (*Star Schema*) con 20 medidas analíticas DAX ponderadas que sustentan las seis páginas del cuadro de mando interactivo.
+4. En relación con el cuarto objetivo específico (validar los resultados frente a los boletines del INE y la literatura laboral): se comprobó la correspondencia exacta con las estimaciones oficiales de línea base (3,7% y 8,7%), y se contrastaron las brechas observadas de género y edad con los estudios regionales de la OIT y la CEPAL.
 
 ### 3.2.7. Implicaciones prácticas y metodológicas de los resultados
 
 #### Implicaciones prácticas para la toma de decisiones
-1. Atención focalizada en el tramo de 18 a 20 años: diseñar programas de transición entre secundaria y trabajo que incluyan pasantías formativas remuneradas, certificación de competencias básicas e incentivos a empresas para la contratación formal de personas sin experiencia previa.
-2. Medidas de corresponsabilidad en el cuidado: habilitar y subsidiar servicios de guardería infantil pública en zonas comerciales urbanas, con el fin de reducir las barreras temporales que enfrentan las mujeres jóvenes para participar en el mercado formal.
-3. Articulación productiva regional en Chuquisaca y regiones del sur: establecer acuerdos entre universidades, institutos técnicos y sectores empresariales locales para adecuar los perfiles formativos a oportunidades de emprendimiento, servicios digitales y actividades agroindustriales con capacidad de absorción local.
-4. Fortalecimiento y digitalización de los servicios públicos de empleo: modernizar las plataformas estatales de intermediación laboral para vincular perfiles juveniles con vacantes formales verificadas, reduciendo la dispersión y la desprotección que acompañan a las búsquedas por redes sociales.
+1. Focalización en la franja de 18 a 20 años: implementar esquemas de transición formativo-laboral que combinen capacitación técnica breve, pasantías remuneradas e incentivos a empresas privadas para contratar formalmente a egresados de bachillerato sin experiencia laboral previa.
+2. Corresponsabilidad pública en el cuidado infantil: crear y subsidiar servicios de guardería diurna en zonas comerciales y productivas urbanas, reduciendo las barreras temporales que limitan la inserción de las mujeres jóvenes en empleos formales a tiempo completo.
+3. Articulación productiva regional en los valles del sur: coordinar convenios entre universidades, institutos técnicos y gremios empresariales en Chuquisaca y Tarija para orientar las carreras técnicas hacia áreas con demanda efectiva, impulsando servicios tecnológicos y encadenamientos productivos con valor agregado local.
+4. Modernización de plataformas de intermediación: fortalecer las bolsas públicas de empleo mediante herramientas digitales verificadas, conectando la oferta juvenil con requerimientos reales de las empresas y evitando la precariedad de las convocatorias informales en redes sociales.
 
 #### Implicaciones metodológicas en ciencia de datos
-En el ámbito de la ciencia de datos aplicada al sector público, el trabajo evidencia la necesidad inquebrantable de utilizar factores de expansión muestral al manipular encuestas por muestreo probabilístico complejo. Calcular indicadores mediante recuentos directos simples (*counts*) en herramientas de analítica o paneles de Business Intelligence genera distorsiones severas en la magnitud de las brechas y en la priorización de decisiones presupuestarias. La integración de Python para el cálculo paramétrico con modelos dimensionales en Power BI representa una pauta técnica transferible a otros estudios del mercado de trabajo.
+En la aplicación de ciencia de datos a políticas públicas, los resultados evidencian la necesidad estricta de aplicar ponderaciones muestrales en encuestas complejas como la ECE. El uso de recuentos simples no ponderados en tableros de analítica o herramientas de Business Intelligence produce distorsiones cuantitativas en la magnitud de las brechas y en la priorización de recursos públicos. La articulación de scripts reproducibles en Python con modelos dimensionales en Power BI ofrece un marco metodológico confiable para el análisis de microdatos sociolaborales.
 
 ### 3.2.8. Limitaciones del alcance analítico
-1. Carácter transversal de la encuesta: la información del cuarto trimestre de 2025 captura la situación laboral en un momento específico, lo que no permite observar la duración individual de los periodos de desempleo ni las transiciones entre ocupación e inactividad a lo largo del año.
-2. Dimensión de subutilización laboral: la tasa de desocupación abierta (3,71%) refleja únicamente a las personas sin empleo que realizan gestiones activas de búsqueda. Este indicador debe interpretarse junto con la tasa de subocupación (8,70%) y con la presencia de personas inactivas desalentadas que dejaron de buscar trabajo.
-3. Desagregación geográfica: si bien la muestra garantiza representatividad departamental urbana, el tamaño muestral no permite descender al nivel de municipios específicos o ciudades intermedias no capitales.
+1. Temporalidad transversal: la información de la ECE 4T-2025 captura las condiciones laborales en un periodo trimestral específico, lo que impide registrar la duración continua de los episodios de desocupación o las transiciones individuales entre ocupación, inactividad y desempleo a lo largo del año.
+2. Alcance del indicador de desocupación: la tasa de desocupación abierta (3,71%) considera únicamente a quienes realizaron gestiones activas de búsqueda. Requiere complementarse con la tasa de subocupación (8,70%) y con el seguimiento a personas inactivas desalentadas que dejaron de buscar trabajo formal.
+3. Nivel de desagregación geográfica: si bien el diseño muestral garantiza representatividad estadística para el ámbito urbano de cada departamento, el tamaño de la muestra no permite desagregar las estimaciones a nivel de municipios específicos o localidades intermedias.
 
-TABLA N.º 11: *Matriz sintética de hallazgos del análisis del mercado laboral juvenil urbano*
+TABLA N.º 12: *Matriz sintética de hallazgos del análisis del mercado laboral juvenil urbano*
 
 | Eje de análisis | Hallazgo cuantitativo y técnico | Evidencia y métrica clave | Implicancia operativa y toma de decisiones |
 | :--- | :--- | :--- | :--- |

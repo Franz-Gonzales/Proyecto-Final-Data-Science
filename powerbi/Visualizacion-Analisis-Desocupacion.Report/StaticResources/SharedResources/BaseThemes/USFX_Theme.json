@@ -1,0 +1,110 @@
+{
+  "name": "USFX_Theme",
+  "dataColors": [
+    "#0F2C59",
+    "#8B0000",
+    "#C59B27",
+    "#2E7D32",
+    "#8E44AD",
+    "#E67E22",
+    "#16A085",
+    "#2980B9",
+    "#D35400",
+    "#34495E"
+  ],
+  "foreground": "#212529",
+  "foregroundNeutralSecondary": "#495057",
+  "foregroundNeutralTertiary": "#6C757D",
+  "background": "#F8F9FA",
+  "backgroundLight": "#FFFFFF",
+  "backgroundNeutral": "#E9ECEF",
+  "tableAccent": "#0F2C59",
+  "good": "#2E7D32",
+  "neutral": "#C59B27",
+  "bad": "#8B0000",
+  "minimum": "#2E7D32",
+  "center": "#C59B27",
+  "maximum": "#8B0000",
+  "textClasses": {
+    "callout": {
+      "fontSize": 24,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#0F2C59"
+    },
+    "title": {
+      "fontSize": 14,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#0F2C59"
+    },
+    "header": {
+      "fontSize": 11,
+      "fontFace": "Segoe UI",
+      "color": "#212529"
+    },
+    "label": {
+      "fontSize": 10,
+      "fontFace": "Segoe UI",
+      "color": "#495057"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "outspacePane": [
+          {
+            "backgroundColor": {
+              "solid": {
+                "color": "#F8F9FA"
+              }
+            }
+          }
+        ],
+        "visualContainer": [
+          {
+            "background": {
+              "solid": {
+                "color": "#FFFFFF"
+              },
+              "transparency": 0
+            },
+            "border": {
+              "show": true,
+              "color": {
+                "solid": {
+                  "color": "#E2E8F0"
+                }
+              },
+              "radius": 8
+            },
+            "dropShadow": {
+              "show": true,
+              "color": {
+                "solid": {
+                  "color": "#000000"
+                }
+              },
+              "transparency": 92,
+              "angle": 90,
+              "distance": 4,
+              "blur": 8
+            }
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F8F9FA"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

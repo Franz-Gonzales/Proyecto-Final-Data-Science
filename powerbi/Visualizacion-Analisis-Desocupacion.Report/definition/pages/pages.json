@@ -1,7 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
   "pageOrder": [
-    "a8fdba9956ea9bd4ed02"
+    "page_01_panorama_laboral",
+    "page_02_vulnerabilidad_etaria",
+    "page_03_educacion_escolaridad",
+    "page_04_brechas_genero_territorio",
+    "page_05_perfil_desocupado",
+    "page_06_sintesis_politicas"
   ],
-  "activePageName": "a8fdba9956ea9bd4ed02"
+  "activePageName": "page_01_panorama_laboral"
 }
