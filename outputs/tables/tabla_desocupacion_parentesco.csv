@@ -1,0 +1,9 @@
+﻿parentesco;Casos_Muestra_n;Poblacion_PEA_N;Poblacion_Desocupada_N;Tasa_Desocupacion_Pct;Distribucion_Desocupados_Pct;Representatividad_Muestral
+Cónyuge / Conviviente;757;155541.6;5340.0;3.43;10.43;Confiable (n >= 30)
+Hermano(a) / Cuñado(a);138;30766.9;1573.4;5.11;3.07;Confiable (n >= 30)
+Hijo(a) / Hijastro(a);3698;785936.7;30347.2;3.86;59.28;Confiable (n >= 30)
+Jefe(a) de hogar;1616;312113.7;9196.9;2.95;17.96;Confiable (n >= 30)
+Nieto(a);29;7151.8;406.4;5.68;0.79;Referencial (n < 30)
+Otros parientes;96;21306.6;855.8;4.02;1.67;Confiable (n >= 30)
+Padre / Madre / Suegro(a);158;32323.6;1889.4;5.85;3.69;Confiable (n >= 30)
+Yerno / Nuera;157;35700.1;1586.6;4.44;3.1;Confiable (n >= 30)

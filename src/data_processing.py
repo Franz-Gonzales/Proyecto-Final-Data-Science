@@ -18,7 +18,12 @@ from src.config import (
     DEPTO_MAP,
     SEXO_MAP,
     NIV_ED_G_MAP,
-    ASISTENCIA_ED_MAP
+    ASISTENCIA_ED_MAP,
+    TIPO_HOGAR_MAP,
+    PARENTESCO_MAP,
+    MECANISMO_BUSQUEDA_MAP,
+    COB_GRUPOS_MAP,
+    CAEB_RAMAS_MAP
 )
 
 def cargar_microdatos_crudos(filepath=DATA_RAW_CSV) -> pd.DataFrame:
@@ -115,6 +120,27 @@ def transformar_y_recodificar(df: pd.DataFrame) -> pd.DataFrame:
     df['es_cesante'] = df['peadces_val']
     df['es_aspirante'] = df['peadasp_val']
     df['es_subocupado'] = df['psubocup_val']
+    
+    # Estructura del hogar y parentesco
+    if 'tipohogar' in df.columns:
+        df['tipohogar_cod'] = pd.to_numeric(df['tipohogar'], errors='coerce').fillna(0).astype(int)
+        df['tipo_hogar'] = df['tipohogar_cod'].map(TIPO_HOGAR_MAP).fillna("Otros / Sin núcleo")
+    if 's1_05' in df.columns:
+        df['parentesco_cod'] = pd.to_numeric(df['s1_05'], errors='coerce').fillna(0).astype(int)
+        df['parentesco'] = df['parentesco_cod'].map(PARENTESCO_MAP).fillna("Otros parientes")
+        
+    # Trayectoria de búsqueda y antecedentes para desocupados
+    if 's2_08a' in df.columns:
+        df['mecanismo_cod'] = pd.to_numeric(df['s2_08a'], errors='coerce').fillna(0).astype(int)
+        df['mecanismo_busqueda'] = df['mecanismo_cod'].map(MECANISMO_BUSQUEDA_MAP).fillna("No aplica / No declaró")
+        
+    # Grupo ocupacional previo (COB) y rama previa (CAEB) para cesantes
+    if 'cob_uo' in df.columns:
+        cob_dig = df['cob_uo'].astype(str).str.strip().str[:1]
+        df['cob_uo_grupo'] = cob_dig.map(COB_GRUPOS_MAP).fillna("No aplica / Sin ocupación previa")
+    if 'caeb_uo' in df.columns:
+        caeb_clean = df['caeb_uo'].astype(str).str.strip()
+        df['caeb_uo_grupo'] = caeb_clean.map(CAEB_RAMAS_MAP).fillna("No aplica / Sin rama previa")
     
     # Ponderador trimestral (maneja coma decimal del INE)
     df['peso_trimestral'] = df['fact_trim_act'].astype(str).str.replace(',', '.').astype(float)

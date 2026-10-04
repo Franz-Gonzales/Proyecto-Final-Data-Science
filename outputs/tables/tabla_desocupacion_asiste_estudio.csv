@@ -1,3 +1,3 @@
-﻿asiste_estudio;Casos_Muestra;Poblacion_PEA;Poblacion_Desocupada;Tasa_Desocupacion_Pct
-Asiste;3691;762426.7;26959.5;3.54
-No asiste;2958;618414.4;24236.1;3.92
+﻿asiste_estudio;Casos_Muestra_n;Poblacion_PEA_N;Poblacion_Desocupada_N;Tasa_Desocupacion_Pct;Distribucion_Desocupados_Pct;Representatividad_Muestral
+Asiste;3691;762426.7;26959.5;3.54;52.66;Confiable (n >= 30)
+No asiste;2958;618414.4;24236.1;3.92;47.34;Confiable (n >= 30)

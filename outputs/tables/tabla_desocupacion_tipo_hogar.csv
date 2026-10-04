@@ -1,0 +1,8 @@
+﻿tipo_hogar;Casos_Muestra_n;Poblacion_PEA_N;Poblacion_Desocupada_N;Tasa_Desocupacion_Pct;Distribucion_Desocupados_Pct;Representatividad_Muestral
+Compuesto;70;20981.3;375.6;1.79;0.73;Confiable (n >= 30)
+Extendido;737;171000.5;9175.2;5.37;17.92;Confiable (n >= 30)
+Nuclear biparental con hijos;3172;656989.6;17560.4;2.67;34.3;Confiable (n >= 30)
+Nuclear biparental sin hijos;1548;316931.3;13002.1;4.1;25.4;Confiable (n >= 30)
+Nuclear monoparental;239;51096.7;2902.0;5.68;5.67;Confiable (n >= 30)
+Otros / Sin núcleo;343;66398.9;4101.5;6.18;8.01;Confiable (n >= 30)
+Unipersonal;540;97442.6;4078.8;4.19;7.97;Confiable (n >= 30)

@@ -1,6 +1,8 @@
-﻿variable;n_muestra;chi2;p_value;grados_libertad;v_cramer;asociacion_significativa
-grupo_edad;6649;11.2332;0.010529405006095055;3;0.0411;True
-sexo;6649;5.2367;0.02211555160020754;1;0.0281;True
-nivel_educativo;6649;3.6356;0.4575623564071709;4;0.0234;False
-departamento;6649;23.692;0.0025806187253587113;8;0.0597;True
-asiste_estudio;6649;1.5264;0.21665080333644796;1;0.0152;False
+﻿Variable;Muestra_n;Grados_Libertad;Chi2_Estadistico;p_valor;V_Cramer;Intensidad_Efecto;Asociacion_Significativa;Veredicto_Estadistico
+grupo_edad;6649;3;11.2332;0.010529;0.0411;Asociación Débil;True;Rechaza H0 (Significativa al 95%)
+sexo;6649;1;5.2367;0.022116;0.0281;Asociación Débil;True;Rechaza H0 (Significativa al 95%)
+nivel_educativo;6649;4;3.6356;0.457562;0.0234;Asociación Débil;False;No rechaza H0 (Independientes)
+departamento;6649;8;23.692;0.002581;0.0597;Asociación Débil;True;Rechaza H0 (Significativa al 95%)
+asiste_estudio;6649;1;1.5264;0.216651;0.0152;Asociación Débil;False;No rechaza H0 (Independientes)
+tipo_hogar;6649;6;17.4287;0.00783;0.0512;Asociación Débil;True;Rechaza H0 (Significativa al 95%)
+parentesco;6649;7;17.2553;0.015822;0.0509;Asociación Débil;True;Rechaza H0 (Significativa al 95%)

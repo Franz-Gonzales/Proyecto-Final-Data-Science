@@ -1,10 +1,10 @@
-﻿departamento;Casos_Muestra;Poblacion_PEA;Poblacion_Desocupada;Tasa_Desocupacion_Pct
-Beni;435;60886.3;1259.0;2.07
-Chuquisaca;486;62899.4;3648.1;5.8
-Cochabamba;1196;251504.8;11840.0;4.71
-La Paz;1731;338687.9;13016.4;3.84
-Oruro;348;67935.2;2026.8;2.98
-Pando;370;11078.9;209.7;1.89
-Potosí;517;70378.1;1154.7;1.64
-Santa Cruz;1311;459614.7;15312.8;3.33
-Tarija;255;57855.7;2728.1;4.72
+﻿departamento;Casos_Muestra_n;Poblacion_PEA_N;Poblacion_Desocupada_N;Tasa_Desocupacion_Pct;Distribucion_Desocupados_Pct;Representatividad_Muestral
+Beni;435;60886.3;1259.0;2.07;2.46;Confiable (n >= 30)
+Chuquisaca;486;62899.4;3648.1;5.8;7.13;Confiable (n >= 30)
+Cochabamba;1196;251504.8;11840.0;4.71;23.13;Confiable (n >= 30)
+La Paz;1731;338687.9;13016.4;3.84;25.42;Confiable (n >= 30)
+Oruro;348;67935.2;2026.8;2.98;3.96;Confiable (n >= 30)
+Pando;370;11078.9;209.7;1.89;0.41;Confiable (n >= 30)
+Potosí;517;70378.1;1154.7;1.64;2.26;Confiable (n >= 30)
+Santa Cruz;1311;459614.7;15312.8;3.33;29.91;Confiable (n >= 30)
+Tarija;255;57855.7;2728.1;4.72;5.33;Confiable (n >= 30)

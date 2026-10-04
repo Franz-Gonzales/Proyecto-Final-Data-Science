@@ -1,4 +1,10 @@
 **/.pbi/localSettings.json
 **/.pbi/cache.abf
 
+# Python & Jupyter caches
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
 data/
