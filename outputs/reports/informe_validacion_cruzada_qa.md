@@ -40,20 +40,23 @@ La suite automatizada de control de calidad ha verificado la correspondencia mat
 | `Dim_NivelEducativo.tmdl` | SÍ | 825 bytes |
 | `Dim_CondicionLaboral.tmdl` | SÍ | 750 bytes |
 | `Dim_Hogar.tmdl` | SÍ | 686 bytes |
-| `_Medidas.tmdl` | SÍ | 5,541 bytes |
+| `Dim_ComparativaUrbana.tmdl` | SÍ | 660 bytes |
+| `Dim_PresionLaboral.tmdl` | SÍ | 687 bytes |
+| `_Medidas.tmdl` | SÍ | 10,248 bytes |
 | `relationships.tmdl` (6 Relaciones 1:N) | SÍ | 988 bytes |
 
 ## 4. Estructura y Arquitectura del Reporte Power BI (PBIR)
 
-| Página del Reporte | Nombre Técnico | Configuración Conforme |
-| :--- | :--- | :---: |
-| page_01_panorama_laboral | `page.json` | SÍ |
-| page_02_vulnerabilidad_etaria | `page.json` | SÍ |
-| page_03_educacion_escolaridad | `page.json` | SÍ |
-| page_04_brechas_genero_territorio | `page.json` | SÍ |
-| page_05_perfil_desocupado | `page.json` | SÍ |
-| page_06_sintesis_politicas | `page.json` | SÍ |
-| Tema Institucional USFX | `USFX_Theme.json` | SÍ |
+| Página del Reporte | Nombre Técnico | Configuración Conforme | Objetos Visuales Activos |
+| :--- | :--- | :---: | :---: |
+| page_01_panorama_laboral | `page.json` | SÍ | 8 visuales |
+| page_02_vulnerabilidad_etaria | `page.json` | SÍ | 6 visuales |
+| page_03_educacion_escolaridad | `page.json` | SÍ | 6 visuales |
+| page_04_brechas_genero_territorio | `page.json` | SÍ | 6 visuales |
+| page_05_perfil_desocupado | `page.json` | SÍ | 7 visuales |
+| page_06_sintesis_politicas | `page.json` | SÍ | 6 visuales |
+| **Total Visuales en el Reporte** | **39 visuales interactivos** | **CONFORME** | **39 visuales** |
+| Tema Institucional USFX | `USFX_Theme.json` | SÍ | Paleta USFX |
 
 ## 5. Auditoría de Figuras Analíticas y Evidencia Visual (300 DPI)
 

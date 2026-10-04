@@ -7,7 +7,138 @@
         "x": 0,
         "y": 0
       },
-      "nodes": [],
+      "nodes": [
+        {
+          "location": {
+            "x": 863.85240655067685,
+            "y": 267.46644321290319
+          },
+          "nodeIndex": "_Medidas",
+          "nodeLineageTag": "4970f3fe-56ac-4615-b365-6e800033c8d5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 629.852406550677,
+            "y": 166.85704811877247
+          },
+          "nodeIndex": "Dim_CondicionLaboral",
+          "nodeLineageTag": "155ea846-8126-4e9f-b463-a34192c2628e",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 308.84194408233981,
+            "y": 632.9328864258066
+          },
+          "nodeIndex": "Dim_Departamento",
+          "nodeLineageTag": "6526ab0d-c1e9-47d7-a787-b8ce22142cc9",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50.514822873975504,
+            "y": 450.95706337257207
+          },
+          "nodeIndex": "Dim_GrupoEdad",
+          "nodeLineageTag": "3234fe56-f865-43bb-b8f7-f5d408305da2",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 339.93046262106213,
+            "y": -50
+          },
+          "nodeIndex": "Dim_Hogar",
+          "nodeLineageTag": "4a46326a-116c-420c-9682-0c228c039b3a",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 74.283070915907047
+          },
+          "nodeIndex": "Dim_NivelEducativo",
+          "nodeLineageTag": "f5b50f12-8c76-4aea-b8ca-97f8e50b3b4a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 623.89390664696066,
+            "y": 560.07803873491
+          },
+          "nodeIndex": "Dim_Sexo",
+          "nodeLineageTag": "1e530e97-97d4-42c3-8ec1-a9544996b80a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 339.91282498953342,
+            "y": 207.67364592418278
+          },
+          "nodeIndex": "Fact_MercadoLaboral",
+          "nodeLineageTag": "b77c95eb-0cc1-40d3-8f99-f25daf4763f3",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1097.8524065506767,
+            "y": 353.4664432129033
+          },
+          "nodeIndex": "Dim_ComparativaUrbana",
+          "nodeLineageTag": "c1d2e3f4-0001-4000-8000-000000000001",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1381.8524065506767,
+            "y": 353.4664432129033
+          },
+          "nodeIndex": "Dim_PresionLaboral",
+          "nodeLineageTag": "c1d2e3f4-0004-4000-8000-000000000004",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
       "name": "Todas las tablas",
       "zoomValue": 100,
       "pinKeyFieldsToTop": false,

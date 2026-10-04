@@ -1,0 +1,29 @@
+table Dim_ComparativaUrbana
+	lineageTag: c1d2e3f4-0001-4000-8000-000000000001
+
+	column Categoria
+		dataType: string
+		isKey
+		lineageTag: c1d2e3f4-0002-4000-8000-000000000002
+		sourceColumn: Categoria
+		sortByColumn: Orden
+
+	column Orden
+		dataType: int64
+		lineageTag: c1d2e3f4-0003-4000-8000-000000000003
+		sourceColumn: Orden
+
+	partition Dim_ComparativaUrbana = m
+		mode: import
+		source =
+				let
+				    Origen = #table(
+				        type table [Categoria = text, Orden = Int64.Type],
+				        {
+				            {"Población Total Urbana (INE)", 1},
+				            {"Jóvenes Urbanos (16 a 28 años)", 2}
+				        }
+				    )
+				in
+				    Origen
+

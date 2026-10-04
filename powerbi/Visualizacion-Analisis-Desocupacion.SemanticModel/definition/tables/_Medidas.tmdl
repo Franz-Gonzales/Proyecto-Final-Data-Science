@@ -175,6 +175,114 @@ table _Medidas
 		displayFolder: 05_Trayectoria_Busqueda
 		lineageTag: d2fb5949-2971-4c7b-ac86-baa68e6944be
 
+	measure 'Brecha Desocupacion Genero' = [Tasa Desocupacion Mujeres] - [Tasa Desocupacion Hombres]
+		formatString: +0.00%;-0.00%
+		displayFolder: 03_Brechas_Genero_Territorio
+		lineageTag: a1b2c3d4-0001-4000-8000-000000000001
+
+	measure 'Tasa Desocupacion Chuquisaca' = CALCULATE([Tasa Desocupacion Ponderada], 'Dim_Departamento'[departamento] = "Chuquisaca")
+		formatString: 0.00%
+		displayFolder: 03_Brechas_Genero_Territorio
+		lineageTag: a1b2c3d4-0002-4000-8000-000000000002
+
+	measure 'Escolaridad Promedio Desocupados' = [Anios Estudio Promedio Desocupados]
+		formatString: 0.00
+		displayFolder: 04_Educacion_Escolaridad
+		lineageTag: a1b2c3d4-0003-4000-8000-000000000003
+
+	measure 'Escolaridad Promedio Ocupados' = [Anios Estudio Promedio Ocupados]
+		formatString: 0.00
+		displayFolder: 04_Educacion_Escolaridad
+		lineageTag: a1b2c3d4-0004-4000-8000-000000000004
+
+	measure 'Brecha Escolaridad Meses' = ([Anios Estudio Promedio Desocupados] - [Anios Estudio Promedio Ocupados]) * 12
+		formatString: +0.0;-0.0
+		displayFolder: 04_Educacion_Escolaridad
+		lineageTag: a1b2c3d4-0005-4000-8000-000000000005
+
+	measure 'Proporcion Cesantes Pct' = [Porcentaje Desocupados Cesantes]
+		formatString: 0.00%
+		displayFolder: 05_Trayectoria_Busqueda
+		lineageTag: a1b2c3d4-0006-4000-8000-000000000006
+
+	measure 'Proporcion Aspirantes Pct' = [Porcentaje Desocupados Aspirantes]
+		formatString: 0.00%
+		displayFolder: 05_Trayectoria_Busqueda
+		lineageTag: a1b2c3d4-0007-4000-8000-000000000007
+
+	measure 'Presion Total Empleo' = [Tasa Desocupacion Ponderada] + [Tasa Subocupacion Ponderada]
+		formatString: 0.00%
+		displayFolder: 02_Tasas_Analiticas
+		lineageTag: a1b2c3d4-0008-4000-8000-000000000008
+
+	measure 'Tasa Desocupacion 18 a 20' = CALCULATE([Tasa Desocupacion Ponderada], 'Dim_GrupoEdad'[grupo_edad] = "18 a 20 años")
+		formatString: 0.00%
+		displayFolder: 02_Tasas_Analiticas
+		lineageTag: a1b2c3d4-0009-4000-8000-000000000009
+
+	measure 'Desocupados 18 a 20 Anios' = CALCULATE([Poblacion Desocupada], 'Dim_GrupoEdad'[grupo_edad] = "18 a 20 años")
+		formatString: #,##0
+		displayFolder: 01_Volumenes_Poblacionales
+		lineageTag: a1b2c3d4-0010-4000-8000-000000000010
+
+	measure 'Desocupados 25 a 28 Anios' = CALCULATE([Poblacion Desocupada], 'Dim_GrupoEdad'[grupo_edad] = "25 a 28 años")
+		formatString: #,##0
+		displayFolder: 01_Volumenes_Poblacionales
+		lineageTag: a1b2c3d4-0011-4000-8000-000000000011
+
+	measure 'Mujeres Desocupadas' = CALCULATE([Poblacion Desocupada], 'Dim_Sexo'[sexo] = "Mujer")
+		formatString: #,##0
+		displayFolder: 01_Volumenes_Poblacionales
+		lineageTag: a1b2c3d4-0012-4000-8000-000000000012
+
+	measure 'Tasa Desocupacion Secundaria' = CALCULATE([Tasa Desocupacion Ponderada], 'Dim_NivelEducativo'[nivel_educativo] = "Secundaria")
+		formatString: 0.00%
+		displayFolder: 04_Educacion_Escolaridad
+		lineageTag: a1b2c3d4-0013-4000-8000-000000000013
+
+	measure 'Tasa Desocupacion Superior Universitario' = CALCULATE([Tasa Desocupacion Ponderada], 'Dim_NivelEducativo'[nivel_educativo] = "Superior Universitario")
+		formatString: 0.00%
+		displayFolder: 04_Educacion_Escolaridad
+		lineageTag: a1b2c3d4-0014-4000-8000-000000000014
+
+	measure 'Desocupados Aspirantes 18 a 20' = CALCULATE([Desocupados Aspirantes], 'Dim_GrupoEdad'[grupo_edad] = "18 a 20 años")
+		formatString: #,##0
+		displayFolder: 05_Trayectoria_Busqueda
+		lineageTag: a1b2c3d4-0015-4000-8000-000000000015
+
+	measure 'Porcentaje Desocupados Aspirantes 18 a 20' = DIVIDE([Desocupados Aspirantes 18 a 20], [Desocupados Aspirantes], 0)
+		formatString: 0.00%
+		displayFolder: 05_Trayectoria_Busqueda
+		lineageTag: a1b2c3d4-0016-4000-8000-000000000016
+
+	measure 'Tasa Comparativa General vs Juvenil' =
+			SWITCH(
+			    SELECTEDVALUE('Dim_ComparativaUrbana'[Categoria]),
+			    "Población Total Urbana (INE)", [Tasa Desocupacion Urbana General],
+			    "Jóvenes Urbanos (16 a 28 años)", [Tasa Desocupacion Ponderada],
+			    [Tasa Desocupacion Ponderada]
+			)
+		formatString: 0.00%
+		displayFolder: 02_Tasas_Analiticas
+		lineageTag: a1b2c3d4-0017-4000-8000-000000000017
+
+	measure 'Tasa Presion Laboral' =
+			SWITCH(
+			    SELECTEDVALUE('Dim_PresionLaboral'[Indicador]),
+			    "Desocupación Abierta", [Tasa Desocupacion Ponderada],
+			    "Subocupación por Tiempo", [Tasa Subocupacion Ponderada],
+			    "Presión Total de Empleo", [Presion Total Empleo],
+			    [Tasa Desocupacion Ponderada]
+			)
+		formatString: 0.00%
+		displayFolder: 02_Tasas_Analiticas
+		lineageTag: a1b2c3d4-0018-4000-8000-000000000018
+
+	column Indice
+		lineageTag: ae48dc84-4f39-4485-9351-e563f361e8a3
+		isNameInferred
+		sourceColumn: [Indice]
+
 	partition _Medidas = calculated
 		mode: import
 		source = ROW("Indice", 1)

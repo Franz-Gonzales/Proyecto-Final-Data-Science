@@ -10,6 +10,8 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DevMode"]
 
+annotation PBI_QueryOrder = ["Fact_MercadoLaboral","Dim_Sexo","Dim_GrupoEdad","Dim_Departamento","Dim_NivelEducativo","Dim_CondicionLaboral","Dim_Hogar","Dim_ComparativaUrbana","Dim_PresionLaboral"]
+
 ref table _Medidas
 ref table Fact_MercadoLaboral
 ref table Dim_Sexo
@@ -18,6 +20,8 @@ ref table Dim_Departamento
 ref table Dim_NivelEducativo
 ref table Dim_CondicionLaboral
 ref table Dim_Hogar
+ref table Dim_ComparativaUrbana
+ref table Dim_PresionLaboral
 
 ref cultureInfo es-ES
 
