@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoría de Ciencia de Datos — Lead Data Scientist AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b132b;
+            --surface: #1c2541;
+            --surface-hover: #243056;
+            --border: #3a506b;
+            --primary: #4cc9f0;
+            --primary-accent: #4895ef;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --card-glow: rgba(76, 201, 240, 0.15);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            padding: 40px 20px;
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge-institution {
+            display: inline-block;
+            background: rgba(72, 149, 239, 0.15);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            border: 1px solid rgba(76, 201, 240, 0.3);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        
+        /* KPI Banner */
+        .kpi-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .kpi-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-accent));
+        }
+        
+        .kpi-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .kpi-value {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        
+        .kpi-subtext {
+            font-size: 0.85rem;
+            color: var(--success);
+            font-weight: 600;
+        }
+        
+        /* Grid de Pilares */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .pillar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px var(--card-glow);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        
+        .pillar-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--primary);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        
+        .pillar-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+        
+        .score-box {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 8px 14px;
+            text-align: right;
+        }
+        
+        .score-val {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--success);
+            display: block;
+            line-height: 1;
+        }
+        
+        .score-max {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+        
+        .progress-bar-bg {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+            border-radius: 4px;
+        }
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 14px;
+        }
+        
+        .status-tag {
+            color: var(--success);
+            font-weight: 600;
+        }
+        
+        .details-section h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .details-section ul {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+        
+        .details-section li {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 14px;
+        }
+        
+        .details-section li::before {
+            content: '•';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .vuln-title {
+            color: var(--warning) !important;
+        }
+        
+        .vuln-text {
+            font-size: 0.82rem;
+            color: #e2e8f0;
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 3px solid var(--warning);
+            padding: 8px 12px;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.4;
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="badge-institution">USFX — CEPI | Diplomado en Data Science</div>
+            <h1>Panel de Control de Auditoría Externa IA</h1>
+            <p class="subtitle">Evaluación Integral e Inspección Automatizada de Calidad (Lead Data Scientist Evaluator)</p>
+        </header>
+        
+        <div class="kpi-banner">
+            <div class="kpi-card">
+                <div class="kpi-title">Calificación Global</div>
+                <div class="kpi-value">9.70</div>
+                <div class="kpi-subtext">Escala 1.0 a 10.0</div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-title">Veredicto Oficial</div>
+                <div class="kpi-value" style="font-size: 1.5rem; color: var(--success); padding-top: 10px;">APROBADO CON DISTINCIÓN MÁXIMA (EXCELENCIA)</div>
+                <div class="kpi-subtext">100% Pilares Aprobados</div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-title">Concordancia Matemática INE</div>
+                <div class="kpi-value" style="color: var(--success);">100%</div>
+                <div class="kpi-subtext">12/12 Benchmarks Exactos</div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-title">Integridad de Modelado BI</div>
+                <div class="kpi-value" style="color: var(--primary);">39/39</div>
+                <div class="kpi-subtext">Visuales PBIR Sincronizados</div>
+            </div>
+        </div>
+        
+        <div class="pillars-grid">
+            
+        <div class="pillar-card">
+            <div class="card-header">
+                <div>
+                    <span class="pillar-badge">P1</span>
+                    <h3 class="pillar-title">Rigor en Ingeniería de Datos y Muestreo Ponderado</h3>
+                </div>
+                <div class="score-box score-high">
+                    <span class="score-val">9.8</span>
+                    <span class="score-max">/ 10.0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 98.0%;"></div>
+            </div>
+            
+            <div class="card-meta">
+                <span><strong>Peso:</strong> 15%</span>
+                <span><strong>Aporte:</strong> +1.47 pts</span>
+                <span class="status-tag">APROBADO CON EXCELENCIA</span>
+            </div>
+            
+            <div class="details-section">
+                <h4>Evidencias Clave</h4>
+                <ul>
+                    <li>Microdatos verificados en: data\processed\ECE_4T2025_Jovenes_PEA.csv</li><li>Muestra depurada idéntica al universo objetivo: n = 6.649 registros.</li><li>Todos los registros pertenecen estrictamente al área urbana (area_num=1).</li>
+                </ul>
+                
+                <h4 class="vuln-title">Vulnerabilidad Crítica (Mundo Real)</h4>
+                <p class="vuln-text">La base procesada asume un muestreo aleatorio simple ponderado para el cálculo de errores estándar en paquetes estándar, omitiendo el ajuste por diseño de conglomerados en dos etapas (estratos y UPMs) que la ECE utiliza en campo. Si bien no altera las tasas puntuales, puede subestimar ligeramente los intervalos de confianza.</p>
+            </div>
+        </div>
+        
+        <div class="pillar-card">
+            <div class="card-header">
+                <div>
+                    <span class="pillar-badge">P2</span>
+                    <h3 class="pillar-title">Consistencia Matemática y Réplica Oficial INE</h3>
+                </div>
+                <div class="score-box score-high">
+                    <span class="score-val">10.0</span>
+                    <span class="score-max">/ 10.0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 100.0%;"></div>
+            </div>
+            
+            <div class="card-meta">
+                <span><strong>Peso:</strong> 20%</span>
+                <span><strong>Aporte:</strong> +2.00 pts</span>
+                <span class="status-tag">APROBADO CON EXCELENCIA (100% COMPLIANT)</span>
+            </div>
+            
+            <div class="details-section">
+                <h4>Evidencias Clave</h4>
+                <ul>
+                    <li>PEA Juvenil Ponderada: Calculado 1380841personas vs Oficial 1380841personas (Δ = 0.00personas) [OK]</li><li>Población Ocupada Ponderada: Calculado 1329645personas vs Oficial 1329645personas (Δ = 0.00personas) [OK]</li><li>Población Desocupada Ponderada: Calculado 51196personas vs Oficial 51196personas (Δ = 0.00personas) [OK]</li>
+                </ul>
+                
+                <h4 class="vuln-title">Vulnerabilidad Crítica (Mundo Real)</h4>
+                <p class="vuln-text">La definición de desocupación del INE exige búsqueda activa en las últimas 4 semanas; esto excluye a jóvenes desalentados que están disponibles para trabajar pero dejaron de gestionar solicitudes activas.</p>
+            </div>
+        </div>
+        
+        <div class="pillar-card">
+            <div class="card-header">
+                <div>
+                    <span class="pillar-badge">P3</span>
+                    <h3 class="pillar-title">Robustez Estadística e Inferencia Bivariada</h3>
+                </div>
+                <div class="score-box score-high">
+                    <span class="score-val">9.6</span>
+                    <span class="score-max">/ 10.0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 96.0%;"></div>
+            </div>
+            
+            <div class="card-meta">
+                <span><strong>Peso:</strong> 15%</span>
+                <span><strong>Aporte:</strong> +1.44 pts</span>
+                <span class="status-tag">APROBADO CON EXCELENCIA</span>
+            </div>
+            
+            <div class="details-section">
+                <h4>Evidencias Clave</h4>
+                <ul>
+                    <li>Se auditaron 7 contrastes de asociación Chi-cuadrado bivariados.</li><li>Grupo de edad: Chi2=11.2332, p=0.010529 (Significativo al 95%).</li><li>Sexo: Chi2=5.2367, p=0.022116 (Significativo al 95%).</li>
+                </ul>
+                
+                <h4 class="vuln-title">Vulnerabilidad Crítica (Mundo Real)</h4>
+                <p class="vuln-text">Los valores de V de Cramér oscilan entre 0.028 y 0.060, lo cual confirma estadísticamente que ninguna variable aislada explica por sí sola más del 1% al 3% de la varianza en la condición de desocupación. La desocupación juvenil es multicausal.</p>
+            </div>
+        </div>
+        
+        <div class="pillar-card">
+            <div class="card-header">
+                <div>
+                    <span class="pillar-badge">P4</span>
+                    <h3 class="pillar-title">Arquitectura de Business Intelligence, Modelo Semántico y DAX</h3>
+                </div>
+                <div class="score-box score-high">
+                    <span class="score-val">9.7</span>
+                    <span class="score-max">/ 10.0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 97.0%;"></div>
+            </div>
+            
+            <div class="card-meta">
+                <span><strong>Peso:</strong> 20%</span>
+                <span><strong>Aporte:</strong> +1.94 pts</span>
+                <span class="status-tag">APROBADO CON EXCELENCIA</span>
+            </div>
+            
+            <div class="details-section">
+                <h4>Evidencias Clave</h4>
+                <ul>
+                    <li>Tablas del Modelo Semántico TMDL verificadas: 7/11 tablas activas.</li><li>Catálogo de Medidas DAX: 38 medidas analíticas compiladas.</li><li>Regla inquebrantable de DAX validada: Todas las tasas ponderan mediante factor de expansión.</li>
+                </ul>
+                
+                <h4 class="vuln-title">Vulnerabilidad Crítica (Mundo Real)</h4>
+                <p class="vuln-text">El proyecto utiliza el nuevo formato PBIR (Power BI Enhanced Report Format) que ofrece control total en Git, pero requiere que el usuario disponga de Power BI Desktop moderno (2024+) con la característica de vista previa de PBIR habilitada.</p>
+            </div>
+        </div>
+        
+        <div class="pillar-card">
+            <div class="card-header">
+                <div>
+                    <span class="pillar-badge">P5</span>
+                    <h3 class="pillar-title">Coherencia de Interpretación y Storytelling Académico</h3>
+                </div>
+                <div class="score-box score-high">
+                    <span class="score-val">9.7</span>
+                    <span class="score-max">/ 10.0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 97.0%;"></div>
+            </div>
+            
+            <div class="card-meta">
+                <span><strong>Peso:</strong> 15%</span>
+                <span><strong>Aporte:</strong> +1.45 pts</span>
+                <span class="status-tag">APROBADO CON EXCELENCIA</span>
+            </div>
+            
+            <div class="details-section">
+                <h4>Evidencias Clave</h4>
+                <ul>
+                    <li>Monografía formal inspeccionada: 530 líneas de redacción académica.</li><li>Estructura formal USFX CEPI validada: Secciones 3.1 (Presentación) y 3.2 (Análisis Crítico) implementadas.</li><li>Trazabilidad metodológica validada: Marco CRISP-DM explícito en la estructura del documento.</li>
+                </ul>
+                
+                <h4 class="vuln-title">Vulnerabilidad Crítica (Mundo Real)</h4>
+                <p class="vuln-text">El documento es sumamente denso y técnico. Aunque es óptimo para el tribunal de posgrado, carece de una sección de síntesis ejecutiva ultracompacta (1 carilla) orientada a ministros o directores de empleo que no leen anexos metodológicos.</p>
+            </div>
+        </div>
+        
+        <div class="pillar-card">
+            <div class="card-header">
+                <div>
+                    <span class="pillar-badge">P6</span>
+                    <h3 class="pillar-title">Viabilidad y Pragmatismo de Políticas Públicas en el Mundo Real</h3>
+                </div>
+                <div class="score-box score-med">
+                    <span class="score-val">9.3</span>
+                    <span class="score-max">/ 10.0</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 93.0%;"></div>
+            </div>
+            
+            <div class="card-meta">
+                <span><strong>Peso:</strong> 15%</span>
+                <span><strong>Aporte:</strong> +1.40 pts</span>
+                <span class="status-tag">APROBADO CON DISTINCIÓN (OBSERVACIONES DE VIABILIDAD REAL)</span>
+            </div>
+            
+            <div class="details-section">
+                <h4>Evidencias Clave</h4>
+                <ul>
+                    <li>Evaluación de 4 ejes de recomendación: Subsidios al primer empleo, Centros de cuidado infantil, Descentralización Chuquisaca/Tarija e Intermediación digital.</li><li>Análisis de consistencia con las restricciones macroeconómicas de Bolivia al cierre de 2025/2026.</li>
+                </ul>
+                
+                <h4 class="vuln-title">Vulnerabilidad Crítica (Mundo Real)</h4>
+                <p class="vuln-text">Restricción de Espacio Fiscal: Proponer subsidios salariales estatales directos al primer empleo resulta de difícil viabilidad en el actual contexto fiscal de Bolivia, donde el déficit del TGN y la escasez de divisas limitan la expansión del gasto corriente. Los incentivos deben rediseñarse hacia simplificación tributaria, deducciones de aportes patronales o esquemas de cofinanciamiento con cooperación internacional.</p>
+            </div>
+        </div>
+        
+        </div>
+        
+        <footer>
+            <p>Proyecto de Titulación de Posgrado: Análisis de Desocupación Juvenil en Bolivia (ECE 4T-2025)</p>
+            <p>Generado automáticamente mediante el framework de auditoría <code>src/audit/</code></p>
+        </footer>
+    </div>
+</body>
+</html>
