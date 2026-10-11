@@ -180,13 +180,15 @@ TABLA N.º 7: *Tasa de desocupación juvenil según sexo (Bolivia urbana, 4T-202
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
+La Tabla N.º 7 organiza la información laboral según el sexo de la persona joven. La columna de muestra (*n*) indica el conteo de encuestados en el operativo de campo, mientras que la población PEA (*N*) y desocupada (*N*) representan los totales expandidos para el área urbana de Bolivia. La tasa de desocupación refleja la incidencia del desempleo en cada grupo (4,69% en mujeres frente a 2,85% en hombres), y el porcentaje de desocupados muestra que casi seis de cada diez jóvenes sin trabajo en el país son mujeres (59,10%), a pesar de que su participación en la fuerza de trabajo activa es menor a la de los varones.
+
 FIGURA N.º 3: *Tasa de desocupación juvenil según sexo y brecha de género (cuarto trimestre de 2025)*
 
 ![Brecha de género en desocupación](figures/figura_3_brecha_genero.png)
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-La tasa de desocupación en mujeres jóvenes se sitúa en 4,69%, mientras que en los varones es de 2,85%. La diferencia representa una brecha absoluta de 1,84 puntos porcentuales. Aunque las mujeres constituyen el 46,72% de la fuerza laboral juvenil urbana, reúnen casi el 60% (59,10%) de las personas desocupadas.
+La Figura N.º 3 ilustra la disparidad de género mediante dos barras comparativas: la barra azul de los hombres registra 2,85%, mientras que la barra carmesí de las mujeres alcanza 4,69%. El cuadro superior destaca la brecha neta de +1,84 puntos porcentuales en desmedro de las mujeres jóvenes, confirmada como estadísticamente significativa en el pie de figura ($\chi^2 = 5,24; p = 0,022$). Esta representación visual evidencia que una mujer joven en el área urbana de Bolivia enfrenta una probabilidad 1,65 veces mayor de encontrarse desocupada respecto a un varón de su misma edad.
 
 #### C. Dimensión territorial y departamental
 El análisis por departamento revela marcadas disparidades entre las diferentes regiones urbanas de Bolivia.
@@ -208,13 +210,15 @@ TABLA N.º 8: *Tasa de desocupación juvenil por departamento (Bolivia urbana, 4
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
+La Tabla N.º 8 presenta el panorama laboral juvenil en los nueve departamentos del país. La columna de muestra (*n*) y de población PEA (*N*) dimensionan el tamaño de la fuerza de trabajo urbana departamental, mientras que la tasa (%) mide la probabilidad de desocupación dentro de cada mercado local. Por su parte, la columna de porcentaje de desocupados (%) muestra la contribución de cada territorio al desempleo nacional, evidenciando que el eje central (Santa Cruz, La Paz y Cochabamba) concentra el 78,46% de los desocupados absolutos por su volumen demográfico, aunque las tasas relativas más severas corresponden a Chuquisaca (5,80%) y Tarija (4,72%).
+
 FIGURA N.º 4: *Tasa de desocupación juvenil por departamento (cuarto trimestre de 2025)*
 
 ![Desocupación por departamento](figures/figura_4_desocupacion_por_departamento.png)
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-Chuquisaca presenta la tasa de desocupación más elevada del país con 5,80%, seguida por Tarija con 4,72% y Cochabamba con 4,71%. Los departamentos del eje central concentran en conjunto más del 78% del total de jóvenes desocupados debido a su peso poblacional, pero en términos relativos los valles del sur registran la mayor intensidad de desempleo abierto. Potosí y Pando registran las tasas más bajas (1,64% y 1,89%, respectivamente).
+La Figura N.º 4 ordena los nueve departamentos de forma descendente mediante barras horizontales y los compara frente a la línea vertical dorada que marca el promedio nacional juvenil (3,71%). La barra superior en color rojo oscuro resalta a Chuquisaca con la tasa más elevada de Bolivia (5,80%), seguida por Tarija (4,72%), Cochabamba (4,71%) y La Paz (3,84%), las cuatro regiones que rebasan el promedio urbano. En contraste, los departamentos mineros y amazónicos como Beni (2,07%), Pando (1,89%) y Potosí (1,64%) se sitúan a la izquierda de la referencia, reflejando marcadas asimetrías productivas validadas por una prueba Chi-cuadrado altamente significativa ($\chi^2 = 23,69; p = 0,0026$).
 
 #### D. Dimensión educativa y escolaridad acumulada
 Al evaluar la tasa de desocupación según el máximo nivel educativo alcanzado, se registra una relación ascendente: las personas sin instrucción formal tienen una tasa de 2,31%, quienes completaron primaria alcanzan 3,43%, quienes cuentan con nivel secundario registran 4,02% y quienes accedieron a estudios universitarios registran 4,04%.
@@ -228,13 +232,15 @@ TABLA N.º 9: *Comparación de años de escolaridad entre jóvenes ocupados y de
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
+La Tabla N.º 9 compara el capital educativo acumulado entre jóvenes ocupados y desocupados. Las columnas de media ponderada y desviación estándar resumen el promedio y la dispersión de los años de estudio formal expandidos con el factor muestral. Para comprobar si la brecha observada es estadísticamente sólida, se aplicaron tanto la prueba paramétrica t de Welch ($t = -2,39; p = 0,0174$) como la no paramétrica de Mann-Whitney ($U = 714.498,5; p = 0,0293$), confirmando con un $p$-valor inferior a 0,05 que los jóvenes desocupados poseen en promedio mayor escolaridad (13,01 años frente a 12,64 años), lo que equivale a casi cuatro meses lectivos adicionales de instrucción.
+
 FIGURA N.º 5: *Distribución de años de estudio: jóvenes ocupados y desocupados urbanos*
 
 ![Distribución de años de estudio](figures/figura_8_distribucion_anios_estudio.png)
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-Tanto la prueba paramétrica t de Student como la prueba no paramétrica Mann-Whitney U confirmaron que los jóvenes desocupados cuentan, en promedio, con mayor cantidad de años de estudio acumulados (13,01 años) que los jóvenes ocupados (12,64 años), con una diferencia estadísticamente significativa de casi cuatro meses lectivos adicionales.
+La Figura N.º 5 analiza la distribución de la escolaridad mediante un gráfico de doble panel. En el panel superior, el diagrama de cajas muestra que la caja de los desocupados (color salmón) se encuentra desplazada a la derecha con una mediana de 13 años respecto a los 12 años de los ocupados (color verde), observándose además que estos últimos presentan mayor dispersión hacia niveles educativos bajos con valores atípicos entre 0 y 7 años de estudio. En el panel inferior, las curvas de densidad kernel (KDE) evidencian que los jóvenes ocupados se concentran densamente en el bachillerato (12 años), mientras que los desocupados sostienen una masa superior en el tramo de 14 a 18 años de estudio, lo que demuestra visualmente que el desempleo urbano abierto afecta de forma desproporcionada a jóvenes con estudios superiores o técnicos que buscan inserción calificada.
 
 FIGURA N.º 6: *Tasa de desocupación juvenil según nivel educativo formal*
 
