@@ -68,6 +68,7 @@ class DataEngineeringEvaluator(BaseEvaluator):
         
         # 2. Carga y verificación de reglas de negocio INE
         df = pd.read_csv(data_path, sep=';', encoding='utf-8')
+        df.columns = df.columns.str.strip()
         n_rows = len(df)
         
         # Tamaño de muestra esperado
@@ -160,6 +161,7 @@ class MathematicalConsistencyEvaluator(BaseEvaluator):
     def evaluate(self) -> Dict[str, Any]:
         data_path = self.project_root / "data" / "processed" / "ECE_4T2025_Jovenes_PEA.csv"
         df = pd.read_csv(data_path, sep=';', encoding='utf-8')
+        df.columns = df.columns.str.strip()
         
         # Métricas calculadas
         total_pea = df["peso_trimestral"].sum()

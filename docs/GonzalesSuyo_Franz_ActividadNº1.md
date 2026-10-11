@@ -40,6 +40,8 @@ flowchart TD
 
 *FUENTE: Elaboración con base en el diseño metodológico de la ECE 4T-2025 (INE).*
 
+El Diagrama N.º 1 esquematiza el embudo metodológico de depuración y calibración muestral aplicado a los microdatos de la Encuesta Continua de Empleo (ECE 4T-2025). A partir de la base nacional de 52.650 registros brutos, se implementan tres filtros sucesivos de delimitación: residencia en área urbana (`area == 1`), rango etario normativo de 16 a 28 años cumplidos según la Ley N.º 342 y pertenencia estricta a la Población Económicamente Activa (`pea == 1`), consolidando una muestra efectiva de 6.649 personas encuestadas. La aplicación del factor de calibración trimestral (`fact_trim_act`) expande este subconjunto al universo representativo de 1.380.841 jóvenes urbanos, suministrando una base metodológica única y ponderada tanto para las pruebas de inferencia estadística en Python como para el modelo dimensional en Power BI Desktop.
+
 ### 3.1.2. Trazabilidad del desarrollo bajo la metodología CRISP-DM
 El procesamiento de la información se organizó siguiendo las seis fases de la metodología CRISP-DM aplicadas al análisis de microdatos laborales.
 
@@ -56,6 +58,8 @@ TABLA N.º 2: *Cumplimiento de hitos del proceso metodológico (CRISP-DM)*
 
 *FUENTE: Elaboración con base en el plan de trabajo del proyecto.*
 
+La Tabla N.º 2 resume el avance de las seis etapas del ciclo CRISP-DM, el estándar de trabajo utilizado en proyectos de ciencia de datos. Confirma que cada fase completó sus metas al 100%, lo que asegura que el estudio transitó de forma ordenada desde la delimitación conceptual del desempleo juvenil hasta la publicación de los tableros interactivos y reportes finales.
+
 ### 3.1.3. Componentes del trabajo final e ingeniería de datos
 La articulación entre la ciencia de datos y los resultados del mercado de trabajo juvenil se resume en tres componentes técnicos:
 
@@ -69,6 +73,8 @@ TABLA N.º 3: *Componentes técnicos de la solución en ciencia de datos*
 
 *FUENTE: Elaboración propia.*
 
+La Tabla N.º 3 describe los tres pilares informáticos que sostienen la investigación: la ingesta automatizada de los microdatos del INE, la aplicación de operaciones estadísticas con factores de expansión y la creación de productos finales reproducibles, tales como scripts modulares en Python y el modelo analítico para Power BI.
+
 La base de datos original contiene 52.650 observaciones. El primer filtro eliminó a 8.602 personas residentes en el área rural. El segundo filtro excluyó a 34.436 personas cuyas edades quedaban fuera del rango de 16 a 28 años, dejando a 9.612 jóvenes urbanos. De ese total, 2.963 personas fueron identificadas como económicamente inactivas (principalmente estudiantes sin búsqueda laboral, personas dedicadas al cuidado del hogar o con incapacidad permanente). La muestra resultante quedó constituida por 6.649 jóvenes activos en el mercado de trabajo.
 
 La variable del factor de expansión `fact_trim_act` presentaba valores textuales con coma decimal, por ejemplo `'207,52'`. Este formato requirió una conversión a tipo numérico de coma flotante (`float64`) para evitar errores en las operaciones de suma ponderada. Se verificó que ningún registro presentara un factor nulo, negativo o igual a cero. La suma total de los ponderadores reproduce con exactitud la cifra de 1.380.841 personas estimadas por el sistema estadístico nacional para la PEA juvenil urbana.
@@ -77,6 +83,8 @@ La variable del factor de expansión `fact_trim_act` presentaba valores textuale
 La tasa de desocupación se calculó dividiendo la población desocupada ponderada entre la PEA juvenil urbana ponderada y multiplicando por cien:
 
 $$\text{Tasa de desocupación} = \frac{\sum (\text{pead}_i \times \text{peso}_i)}{\sum \text{peso}_i} \times 100$$
+
+Esta expresión matemática calcula la tasa oficial reconociendo que cada persona encuestada representa a cientos de jóvenes en su ciudad. Al multiplicar la condición de desocupado ($\text{pead}_i$) por su ponderador muestral ($\text{peso}_i$), la fórmula suma la cantidad estimada de desocupados reales y la divide entre el total de jóvenes activos en el mercado de trabajo, evitando distorsiones por recuentos simples.
 
 TABLA N.º 4: *Indicadores del mercado laboral juvenil urbano en Bolivia (cuarto trimestre de 2025)*
 
@@ -91,6 +99,8 @@ TABLA N.º 4: *Indicadores del mercado laboral juvenil urbano en Bolivia (cuarto
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
+La Tabla N.º 4 traslada los datos de las encuestas a la escala de la población boliviana urbana. En ella, los casos observados ($n$) corresponden a las personas encuestadas en campo por el INE, mientras que la población ponderada ($N$) proyecta a cuántos jóvenes representan en las ciudades según el factor de expansión muestral. La columna de proporción indica el porcentaje estimado para cada condición laboral y la meta del boletín comprueba que los resultados del estudio coinciden con las cifras oficiales publicadas por el Estado.
+
 La tasa de desocupación juvenil del cuarto trimestre de 2025 se sitúa en 3,71%, coincidente con el 3,7% reportado en el boletín oficial del INE. Por su parte, la subocupación juvenil alcanza el 8,70% sobre la población ocupada, lo que equivale a 115.736 jóvenes que trabajaron menos de la jornada habitual, desearon trabajar más horas y estaban disponibles para hacerlo.
 
 FIGURA N.º 1: *Comparación de la tasa de desocupación general urbana y juvenil (cuarto trimestre de 2025)*
@@ -99,12 +109,16 @@ FIGURA N.º 1: *Comparación de la tasa de desocupación general urbana y juveni
 
 *FUENTE: Elaboración con base en datos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
+La Figura N.º 1 expone la brecha generacional del mercado de trabajo urbano. La barra gris refleja la desocupación en la población general de 14 años o más (2,30%), mientras que la barra azul evidencia la tasa de los jóvenes de 16 a 28 años (3,71%). Esta diferencia gráfica confirma que el desempleo afecta con una intensidad 1,61 veces mayor al segmento juvenil en las ciudades bolivianas.
+
 Al contrastar la tasa de desocupación juvenil (3,71%) con la tasa de desocupación general de la población urbana de 14 años o más (2,30%), se observa que los jóvenes registran una incidencia de desempleo 1,61 veces mayor que la población adulta general.
 
 ### 3.1.5. Resultados del análisis bivariado y pruebas de asociación
 Para determinar si las diferencias observadas entre subgrupos responden a variaciones sistemáticas o a fluctuaciones aleatorias del muestreo, se aplicó la prueba de independencia Chi-cuadrado de Pearson ($\chi^2$) fijando un umbral de significancia de 0,05. La magnitud del efecto se evaluó mediante el coeficiente V de Cramér ($V$):
 
 $$V = \sqrt{\frac{\chi^2}{N \times \min(r - 1, c - 1)}}$$
+
+Esta fórmula normaliza el valor de Chi-cuadrado para medir la intensidad práctica de una relación entre dos variables cualitativas en una escala de 0 a 1. Al dividir el estadístico $\chi^2$ entre el producto de la muestra expandida ($N$) y el menor número de categorías menos uno ($\min(r - 1, c - 1)$), la $V$ de Cramér elimina el sesgo por volumen muestral, permitiendo evaluar si una asociación significativa tiene un efecto real leve, moderado o fuerte.
 
 TABLA N.º 5: *Matriz de pruebas de asociación estadística con la condición de desocupación juvenil*
 
@@ -119,6 +133,8 @@ TABLA N.º 5: *Matriz de pruebas de asociación estadística con la condición d
 | Asistencia escolar | `asiste_estudio` | 6.649 | 1,5264 | 1 | 0,21665 | 0,0152 | Sin significancia agregada (p >= 0,05) |
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
+
+La Tabla N.º 5 sintetiza los contrastes de asociación estadística para cada dimensión analizada. En ella, la columna de casos ($n$) registra las 6.649 personas evaluadas en la muestra; el valor Chi2 ($\chi^2$) mide la discrepancia entre las frecuencias observadas y las esperadas bajo independencia; los grados de libertad indican las categorías libres en la tabla cruzada; el $p$-valor establece la probabilidad de azar (siendo significativo si es menor a 0,05); y la $V$ de Cramér califica la magnitud práctica del efecto.
 
 Las variables de edad, sexo, departamento, tipo de hogar y parentesco presentan un p-valor inferior a 0,05, lo que confirma diferencias estadísticamente significativas en la desocupación de estos grupos. En cambio, las categorías agregadas de nivel educativo y asistencia a centros de enseñanza no mostraron una asociación global significativa mediante la prueba Chi-cuadrado, lo cual motivó un análisis continuo complementario mediante años de escolaridad.
 
@@ -139,6 +155,8 @@ TABLA N.º 6: *Tasa de desocupación juvenil según tramo etario (Bolivia urbana
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
+La Tabla N.º 6 distribuye la desocupación entre los cuatro grupos de edad. La columna de población PEA ($N$) representa a los jóvenes activos en cada tramo y la población desocupada ($N$) proyecta cuántos buscan empleo. La tasa mide el riesgo puntual de desempleo dentro de cada rango etario, mientras que el porcentaje de desocupados señala qué proporción del total nacional de jóvenes desempleados aporta cada segmento.
+
 El grupo de 18 a 20 años exhibe la tasa más alta con un 4,65%, seguido por el grupo de 25 a 28 años con 3,88% y el grupo de 21 a 24 años con 3,55%. El tramo de 16 y 17 años registra la tasa más baja (1,87%), explicada por una menor participación económica activa en ese segmento etario.
 
 FIGURA N.º 2: *Tasa de desocupación juvenil por tramo etario (cuarto trimestre de 2025)*
@@ -146,6 +164,8 @@ FIGURA N.º 2: *Tasa de desocupación juvenil por tramo etario (cuarto trimestre
 ![Desocupación por tramo etario](figures/figura_2_desocupacion_por_tramo_etario.png)
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
+
+La Figura N.º 2 resalta en color rojo el pico de desocupación en el grupo de 18 a 20 años (4,65%), la etapa donde los bachilleres intentan colocarse laboralmente por primera vez sin contar con experiencia ni formación técnica. En las edades posteriores (21 a 24 y 25 a 28 años), las barras descienden y se estabilizan cerca del promedio general, mientras que el tramo de 16 a 17 años muestra el valor más bajo (1,87%) debido a que la gran mayoría aún permanece en la escuela secundaria fuera de la fuerza de trabajo.
 
 #### B. Dimensión de género
 La distribución de la desocupación según el sexo de la persona evidencia una brecha desfavorable para las mujeres jóvenes.
@@ -527,4 +547,222 @@ El análisis externo efectuado por el agente enfatiza dos advertencias sustantiv
 
 1. **La paradoja de la baja desocupación abierta como indicador de vulnerabilidad:** En una economía con una tasa de informalidad laboral superior al 75% y carente de un seguro de desempleo universal, una tasa de desocupación abierta del 3,71% no refleja una situación cercana al pleno empleo ni condiciones óptimas de inserción. Para la mayoría de los jóvenes de sectores populares, permanecer desocupado buscando un puesto acorde a su formación es un lujo inalcanzable. Quienes carecen de ahorros o respaldo familiar se ven obligados a refugiarse en el autoempleo informal, el comercio callejero o actividades de subsistencia de muy baja productividad. En consecuencia, la tasa de desocupación abierta debe interpretarse siempre en conjunción con la tasa de subocupación (8,70%) y la calidad del empleo.
 2. **Restricciones de viabilidad fiscal y alternativas de intervención:** La implementación de programas de empleo juvenil basados en transferencias monetarias directas o subsidios salariales con cargo al Tesoro General de la Nación enfrenta severas limitaciones de liquidez presupuestaria. Las recomendaciones de política pública adquieren mayor viabilidad cuando se diseñan como incentivos no monetarios: simplificación de trámites de formalización empresarial, pasantías técnicas duales cofinanciadas por cámaras sectoriales y descentralización de centros de formación productiva orientados a las ventajas comparativas de Chuquisaca y Tarija.
+
+---
+
+# ANEXOS
+
+Los anexos reúnen el soporte metodológico, matemático y computacional que sustenta los resultados presentados en el Capítulo III. Su propósito es brindar al lector y al tribunal evaluador el detalle formal de las pruebas estadísticas, el diccionario técnico de variables, las fórmulas DAX implementadas y la contrastación de supuestos muestrales, permitiendo la verificación independiente de cada estimación.
+
+---
+
+## Anexo 1: Fundamentación teórica y formulación matemática de las pruebas estadísticas de asociación
+
+### 1.1. Prueba de independencia Chi-cuadrado ($\chi^2$) de Pearson
+La prueba Chi-cuadrado de Pearson es un método inferencial no paramétrico utilizado para evaluar si dos variables categóricas son independientes entre sí dentro de una población de referencia. En este estudio, se contrasta la condición de desocupación laboral juvenil frente a factores sociodemográficos, educativos y territoriales.
+
+#### A. Planteamiento de hipótesis estadísticas
+Para una tabla de contingencia de $r$ filas y $c$ columnas formada por el cruce de dos variables categóricas, las hipótesis formalizadas son:
+
+- **Hipótesis nula ($H_0$):** Las dos variables son estadísticamente independientes. La probabilidad de que un joven esté desocupado no difiere entre las categorías del factor analizado.
+- **Hipótesis alternativa ($H_1$):** Las dos variables no son independientes. Existe una asociación estadística sistemática entre el factor analizado y la condición de desocupación juvenil.
+
+#### B. Cálculo de frecuencias esperadas ($E_{ij}$)
+Bajo el supuesto de que la hipótesis nula es verdadera, la frecuencia esperada en la celda correspondiente a la fila $i$ y la columna $j$ se calcula mediante la regla del producto de probabilidades marginales:
+
+$$E_{ij} = \frac{R_i \times C_j}{N}$$
+
+Donde:
+- $R_i$ representa el total marginal de observaciones en la fila $i$.
+- $C_j$ representa el total marginal de observaciones en la columna $j$.
+- $N$ es el tamaño total de la muestra analizada ($N = 6.649$).
+
+#### C. Estadístico de prueba Chi-cuadrado ($\chi^2$)
+El estadístico mide la magnitud de la discrepancia cuadrática acumulada entre las frecuencias observadas empíricamente en la encuesta ($O_{ij}$) y las frecuencias esperadas bajo independencia ($E_{ij}$):
+
+$$\chi^2 = \sum_{i=1}^r \sum_{j=1}^c \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$$
+
+#### D. Grados de libertad y regla de decisión
+El estadístico se distribuye asintóticamente conforme a una función de probabilidad Chi-cuadrado con grados de libertad ($gl$) definidos por:
+
+$$gl = (r - 1) \times (c - 1)$$
+
+Se fija un nivel de significancia clásico de $\alpha = 0,05$ (confianza del 95%). La regla de decisión estadística establece:
+- Si el valor de probabilidad asociado ($p\text{-valor}$) es menor a 0,05 ($p < 0,05$), se rechaza la hipótesis nula ($H_0$) y se concluye que existe una asociación estadísticamente significativa entre las variables.
+- Si $p \ge 0,05$, no se dispone de evidencia muestral suficiente para rechazar $H_0$, asumiendo independencia estadística.
+
+---
+
+### 1.2. Coeficiente V de Cramér ($V$) para la medición del tamaño del efecto
+Si bien la prueba $\chi^2$ determina si una relación es estadísticamente significativa, presenta la limitación de que su valor numérico escala directamente con el tamaño de la muestra ($N$). En muestras grandes (como los 6.649 registros analizados), diferencias porcentuales muy pequeñas pueden arrojar valores $p$ altamente significativos sin que la asociación tenga relevancia práctica o sustantiva.
+
+Para subsanar esta limitación y cuantificar la fuerza o intensidad real de la relación, se calcula el coeficiente **V de Cramér**:
+
+$$V = \sqrt{\frac{\chi^2}{N \times \min(r - 1, c - 1)}}$$
+
+Donde:
+- $\chi^2$ es el estadístico de Pearson calculado previamente.
+- $N$ es el tamaño total de la muestra.
+- $\min(r - 1, c - 1)$ es el valor mínimo entre el número de filas menos uno y el número de columnas menos uno.
+
+#### Escala de interpretación empírica de la V de Cramér:
+El coeficiente varía en un rango normalizado entre 0 (ausencia absoluta de asociación) y 1 (asociación perfecta determinista). Siguiendo las directrices estandarizadas de Rea y Parker (2014) y Cohen (1988) para tablas de contingencia en ciencias sociales, la magnitud del efecto se clasifica de la siguiente manera:
+
+| Rango del coeficiente $V$ | Clasificación del tamaño del efecto | Interpretación analítica |
+| :---: | :--- | :--- |
+| **Menor a 0,10** | Asociación insignificante o leve | Diferencias estadísticas reales pero con escaso poder discriminante individual. |
+| **0,10 a 0,20** | Asociación débil | Existe una influencia medible del factor en la probabilidad de desocupación. |
+| **0,20 a 0,40** | Asociación moderada | El factor actúa como un diferenciador relevante en el mercado de trabajo. |
+| **Mayor a 0,40** | Asociación fuerte o sustantiva | El factor determina de forma predominante la inserción o exclusión laboral. |
+
+En este estudio, los factores que resultaron significativos (edad, sexo, departamento, tipo de hogar y parentesco) presentaron coeficientes $V$ situados entre 0,028 y 0,060. Esto demuestra que, aunque sus efectos son estadísticamente comprobables y no producto del azar, la desocupación juvenil es multicausal y ninguna variable por sí sola explica una porción dominante del fenómeno.
+
+---
+
+## Anexo 2: Diccionario metodológico y reglas de depuración de microdatos (ECE 4T-2025)
+
+El siguiente cuadro detalla las variables clave extraídas de la base bruta de la Encuesta Continua de Empleo (52.650 registros) y su tratamiento durante el pipeline de depuración en Python:
+
+| Variable INE | Variable en Python | Tipo de dato | Descripción conceptual en la encuesta | Rango o categorías admitidas | Tratamiento y regla de depuración |
+| :--- | :--- | :---: | :--- | :--- | :--- |
+| `id_persona` | `id_persona` | Entero (`int64`) | Clave única de identificación del encuestado | Numérico secuencial | Verificación de unicidad; clave primaria de la tabla de hechos. |
+| `area` | `area_num` | Categórico | Dominio geográfico de la vivienda | 1 = Urbana, 2 = Rural | **Filtro obligatorio:** conservación exclusiva de registros con `area == 1` (eliminó 8.602 casos rurales). |
+| `s1_03a` | `edad` | Numérico (`int64`) | Edad en años cumplidos | 0 a 98 años | **Filtro obligatorio:** conservación de personas entre 16 y 28 años inclusive (eliminó 34.436 casos fuera de rango). |
+| `pea` | `pea_val` | Categórico | Condición de actividad económica | 1 = PEA, 0 = Inactivo | **Filtro obligatorio:** selección exclusiva de personas activas con `pea == 1` (eliminó 2.963 inactivos). |
+| `peao` | `es_ocupado` | Booleano (0/1) | Persona ocupada en la semana de referencia | 1 = Ocupado, 0 = No ocupado | Clasificación dicotómica para cálculo del denominador de ocupación. |
+| `pead` | `es_desocupado` | Booleano (0/1) | Persona desocupada abierta en búsqueda activa | 1 = Desocupado, 0 = No desocupado | **Variable objetivo** de la investigación para el cálculo de tasas y contrastes. |
+| `peadces` | `es_cesante` | Booleano (0/1) | Desocupado con experiencia laboral previa | 1 = Cesante, 0 = No cesante | Componente para descomponer la estructura interna del desempleo. |
+| `peadasp` | `es_aspirante` | Booleano (0/1) | Desocupado en búsqueda de primer empleo | 1 = Aspirante, 0 = No aspirante | Medición de la barrera de inserción inicial de bachilleres y egresados. |
+| `psubocup` | `es_subocupado`| Booleano (0/1) | Subocupado por insuficiencia de tiempo | 1 = Subocupado, 0 = No subocupado | Indicador de subutilización horaria sobre la población ocupada. |
+| `s1_02` | `sexo` | Categórico | Sexo biológico del encuestado | 1 = Hombre, 2 = Mujer | Recodificación textual ('Hombre', 'Mujer') para análisis de brecha de género. |
+| `depto` | `departamento` | Categórico | Departamento de residencia | 1 al 9 (Chuquisaca a Pando) | Mapeo nominal a nombres de departamento para dimensión territorial. |
+| `niv_ed_g` | `nivel_educativo`| Categórico | Nivel de instrucción más alto alcanzado | Primaria, Secundaria, Técnico, Universitario | Agrupación en cuatro niveles formativos comparables. |
+| `aestudio` | `anios_estudio`| Numérico (`float64`)| Años acumulados de escolaridad aprobados | 0 a 25 años | Imputación de nulos y verificación de rango para contrastes de medias. |
+| `s1_09` | `asiste_estudio`| Categórico | Asistencia actual a centros de educación | 1 = Asiste, 2 = No asiste | Análisis de compatibilidad entre estudio formal y trabajo activo. |
+| `fact_trim_act`| `peso_trimestral`| Numérico (`float64`)| Ponderador trimestral del diseño muestral | 12,50 a 1.250,80 | Reemplazo de coma decimal por punto flotante. Validación de suma exacta: 1.380.841 jóvenes. |
+
+---
+
+## Anexo 3: Catálogo y formulación técnica de medidas DAX en Power BI Desktop
+
+Para asegurar consistencia analítica en el reporte interactivo, todas las medidas de Business Intelligence se programaron en lenguaje DAX aplicando de forma estricta el factor de expansión muestral (`peso_trimestral`). Se evitó deliberadamente el uso de la función `COUNT`, ya que un recuento simple distorsiona la representatividad en encuestas con probabilidades desiguales de selección.
+
+### 3.1. Medidas de volumen poblacional expandido
+
+```dax
+// Población Económicamente Activa Juvenil Ponderada
+PEA_Ponderada = 
+SUM(Fact_DesocupacionJuvenil[peso_trimestral])
+
+// Población Ocupada Juvenil Ponderada
+Poblacion_Ocupada_Ponderada = 
+CALCULATE(
+    SUM(Fact_DesocupacionJuvenil[peso_trimestral]),
+    Fact_DesocupacionJuvenil[es_ocupado] = 1
+)
+
+// Población Desocupada Juvenil Ponderada
+Poblacion_Desocupada_Ponderada = 
+CALCULATE(
+    SUM(Fact_DesocupacionJuvenil[peso_trimestral]),
+    Fact_DesocupacionJuvenil[es_desocupado] = 1
+)
+
+// Población Subocupada por Tiempo Ponderada
+Poblacion_Subocupada_Ponderada = 
+CALCULATE(
+    SUM(Fact_DesocupacionJuvenil[peso_trimestral]),
+    Fact_DesocupacionJuvenil[es_subocupado] = 1
+)
+```
+
+### 3.2. Medidas de tasas e indicadores relativos oficiales
+
+```dax
+// Tasa de Desocupación Juvenil Ponderada Oficial (INE: Desocupados / PEA)
+Tasa_Desocupacion_Ponderada = 
+DIVIDE(
+    [Poblacion_Desocupada_Ponderada],
+    [PEA_Ponderada],
+    0
+) * 100
+
+// Tasa de Subocupación Juvenil Ponderada Oficial (INE: Subocupados / Ocupados)
+Tasa_Subocupacion_Ponderada = 
+DIVIDE(
+    [Poblacion_Subocupada_Ponderada],
+    [Poblacion_Ocupada_Ponderada],
+    0
+) * 100
+
+// Tasa de Presión Laboral Global (Desocupación + Subocupación sobre PEA)
+Tasa_Presion_Laboral_Global = 
+DIVIDE(
+    [Poblacion_Desocupada_Ponderada] + [Poblacion_Subocupada_Ponderada],
+    [PEA_Ponderada],
+    0
+) * 100
+
+// Brecha Estructural de Género (Tasa Mujeres - Tasa Hombres en puntos porcentuales)
+Brecha_Genero_Desocupacion = 
+VAR TasaMujeres = 
+    CALCULATE(
+        [Tasa_Desocupacion_Ponderada],
+        Dim_Sexo[sexo] = "Mujer"
+    )
+VAR TasaHombres = 
+    CALCULATE(
+        [Tasa_Desocupacion_Ponderada],
+        Dim_Sexo[sexo] = "Hombre"
+    )
+RETURN
+    TasaMujeres - TasaHombres
+```
+
+---
+
+## Anexo 4: Protocolo de validación y contraste de hipótesis para la variable escolaridad
+
+Al evaluar la educación mediante categorías agregadas (primaria, secundaria, técnico, universitario) en la Tabla N.º 5, la prueba Chi-cuadrado arrojó un estadístico $\chi^2 = 3,6356$ con $p = 0,4576$, lo que no permitió rechazar la hipótesis nula de independencia. Ante esta aparente falta de asociación, se realizó un análisis continuo sobre la variable años acumulados de estudio (`aestudio`), contrastando las distribuciones de jóvenes ocupados y desocupados.
+
+### 4.1. Estadísticos descriptivos de escolaridad
+
+| Condición de actividad laboral | Casos observados ($n$) | Media ponderada (años) | Desviación estándar | Mediana (años) |
+| :--- | :---: | :---: | :---: | :---: |
+| **Jóvenes desocupados** | 243 | **13,01** | 2,74 | 12,0 |
+| **Jóvenes ocupados** | 6.406 | **12,64** | 2,98 | 12,0 |
+| **Diferencia de medias** | — | **+0,37 años** | — | — |
+
+### 4.2. Evaluación de normalidad y pruebas inferenciales
+La distribución de los años de estudio en la población juvenil exhibe concentración en valores enteros (12 años correspondientes a bachillerato concluido), por lo que se aplicaron tanto una prueba paramétrica como una no paramétrica:
+
+1. **Prueba paramétrica ($t$ de Student para muestras independientes con varianzas desiguales de Welch):**
+   - Estadístico $t$: $-2,3914$
+   - Grados de libertad ajustados: $269,4$
+   - $p$-valor bilateral: $0,0174$
+   - Decisión: Rechazo de $H_0$ al nivel de significancia del 5% ($p < 0,05$).
+2. **Prueba no paramétrica (U de Mann-Whitney / Wilcoxon rank-sum test):**
+   - Estadístico $U$: $708.200,0$
+   - Estadístico tipificado $Z$: $-2,3082$
+   - $p$-valor asintótico bilateral: $0,0210$
+   - Decisión: Rechazo de $H_0$ al nivel de significancia del 5% ($p < 0,05$).
+
+### 4.3. Conclusión metodológica del anexo
+Ambos contrastes confirman que los jóvenes desocupados poseen un promedio de escolaridad significativamente superior al de los ocupados ($+0,37$ años; $p < 0,05$). Este resultado valida estadísticamente la paradoja laboral descrita en el marco teórico: en un entorno con alta informalidad económica, la mayor escolaridad permite retrasar la aceptación de empleos precarios, mientras que los jóvenes con menor instrucción deben ocuparse de inmediato por urgencia de ingresos familiares.
+
+---
+
+## Anexo 5: Matriz de trazabilidad metodológica del ciclo de vida CRISP-DM
+
+El proyecto se organizó bajo las seis etapas estándar de la metodología CRISP-DM, asegurando la correspondencia entre los objetivos de la investigación y los artefactos computacionales generados:
+
+| Fase CRISP-DM | Objetivo técnico de la fase | Tareas y procedimientos ejecutados | Artefacto reproducible generado |
+| :--- | :--- | :--- | :--- |
+| **1. Comprensión del problema** | Delimitar el universo y formular las preguntas rectoras sobre desempleo juvenil. | Revisión de la Ley N.º 342, delimitación de la PEA urbana (16 a 28 años) y formulación de objetivos específicos. | Matriz conceptual del perfil y especificación de requerimientos en `AGENTS.md`. |
+| **2. Comprensión de los datos** | Auditar la estructura de la Encuesta Continua de Empleo (ECE 4T-2025). | Inspección de 52.650 registros y 121 variables originales provistas por el INE, verificando tipos de datos y valores perdidos. | Diccionario de variables seleccionadas y reporte exploratorio univariado en Python. |
+| **3. Preparación de los datos** | Construir el dataset depurado y calibrar los factores muestrales de expansión. | Aplicación de filtros de área urbana, edad y PEA; tipado de `fact_trim_act` a punto flotante (`float64`); y recodificación categórica. | Dataset maestro procesado `ECE_4T2025_Jovenes_PEA.csv` ($n = 6.649$ filas, 156 columnas). |
+| **4. Modelado y cálculo analítico** | Calcular tasas ponderadas y contrastar hipótesis de asociación estadística. | Ejecución de rutinas de agregación ponderada con `peso_trimestral`, pruebas $\chi^2$ de Pearson, coeficientes $V$ de Cramér y pruebas de escolaridad. | Scripts modulares `src/statistical_analysis.py` y catálogo de 13 tablas en `outputs/tables/`. |
+| **5. Evaluación y validación** | Contrastar los resultados frente a las metas oficiales del INE y auditar el código. | Verificación exacta frente al boletín de línea base (3,71% desocupación, 8,70% subocupación) y ejecución de auditoría automatizada con IA. | Informe formal de auditoría `informe_evaluacion_experto_ia.md` con calificación 9,70/10,0. |
+| **6. Despliegue y visualización** | Construir el tablero interactivo de Business Intelligence y el cuaderno ejecutable. | Diseño de modelo dimensional Star Schema Kimball, formulación de 36 medidas DAX ponderadas y arquitectura de 6 páginas PBIR. | Proyecto `powerbi/Visualizacion-Analisis-Desocupacion.pbip` y cuaderno `Proyecto-Final.ipynb`. |
+
 
