@@ -4,10 +4,10 @@
   "position": {
     "x": 510,
     "y": 20,
-    "z": 1000,
-    "width": 225,
+    "z": 0,
     "height": 105,
-    "tabOrder": 1003
+    "width": 225,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "card",
@@ -26,11 +26,27 @@
                   "Property": "Poblacion Desocupada"
                 }
               },
-              "queryRef": "_Medidas.Poblacion Desocupada"
+              "queryRef": "_Medidas.Poblacion Desocupada",
+              "format": "G"
             }
           ]
         }
       }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "26D"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
       "title": [

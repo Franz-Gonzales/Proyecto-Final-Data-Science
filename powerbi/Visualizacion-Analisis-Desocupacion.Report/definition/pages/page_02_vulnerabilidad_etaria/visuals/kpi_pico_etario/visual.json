@@ -5,9 +5,9 @@
     "x": 20,
     "y": 20,
     "z": 1000,
-    "width": 285,
     "height": 105,
-    "tabOrder": 1001
+    "width": 285,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "card",
@@ -31,6 +31,21 @@
           ]
         }
       }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "26D"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
       "title": [

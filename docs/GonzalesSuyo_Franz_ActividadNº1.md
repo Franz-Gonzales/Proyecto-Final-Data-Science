@@ -248,13 +248,15 @@ FIGURA N.º 6: *Tasa de desocupación juvenil según nivel educativo formal*
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
+La Figura N.º 6 compara las tasas de desocupación entre cuatro niveles de instrucción frente a la línea dorada discontinua del promedio nacional (3,71%). Las barras reflejan un gradiente ascendente: la población sin instrucción presenta una tasa de 2,31% y primaria alcanza 3,43%, mientras que los niveles secundario (4,02%) y superior universitario (4,04%) superan la media del país. Esta tendencia describe el fenómeno del desempleo ilustrado, donde los jóvenes con mayor preparación prolongan su tiempo de búsqueda hacia empleos acordes a su perfil, mientras que aquellos con menor instrucción deben ocuparse de inmediato en actividades informales de subsistencia ($p = 0,457$).
+
 FIGURA N.º 7: *Tasa de desocupación juvenil según asistencia escolar o académica*
 
 ![Desocupación según asistencia escolar](figures/figura_7_desocupacion_asiste_estudio.png)
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-La asistencia a centros educativos arroja tasas de 3,54% entre quienes estudian activamente y de 3,92% entre quienes no estudian, sin que esta diferencia resulte estadísticamente significativa en el contraste bivariado ($p = 0,2166$).
+La Figura N.º 7 evalúa si la concurrencia activa a centros educativos incide en el desempleo de los jóvenes pertenecientes a la fuerza laboral. La barra azul de quienes asisten a clases registra una tasa de 3,54%, mientras que la barra gris de quienes no asisten se sitúa en 3,92%, marcando una diferencia moderada de 0,38 puntos porcentuales. Al no alcanzar significancia estadística en la prueba Chi-cuadrado ($p = 0,2166$), el gráfico demuestra que la condición de estudiante activo no constituye un factor diferenciador decisivo frente al riesgo de desocupación en el área urbana.
 
 #### E. Dinámica previa y canales de búsqueda de empleo
 La composición interna del desempleo juvenil urbano muestra que 45.882 personas (89,62%) corresponden a desocupados cesantes, es decir, jóvenes que ya contaban con un empleo anterior y se desvincularon por renuncia, despido o culminación de contrato. Los desocupados aspirantes, que buscan trabajo por primera vez, representan a 5.314 personas (10,38%).
@@ -264,6 +266,8 @@ FIGURA N.º 8: *Composición de la desocupación juvenil: cesantes y aspirantes*
 ![Cesantes y aspirantes](figures/figura_5_cesantes_vs_aspirantes.png)
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
+
+La Figura N.º 8 expone la estructura interna de los 51.196 jóvenes desocupados mediante un gráfico circular según su trayectoria de trabajo. El sector mayoritario en color naranja muestra que el 89,6% (45.882 jóvenes) corresponde a cesantes que perdieron o renunciaron a un empleo previo, mientras que el segmento morado de aspirantes concentra el 10,4% (5.314 jóvenes) que buscan trabajo por primera vez. La distribución ilustra que el desempleo juvenil urbano en Bolivia deriva principalmente de la inestabilidad y rotación en puestos de trabajo precarios antes que de barreras exclusivas para ingresar al mercado laboral.
 
 TABLA N.º 10: *Canales de búsqueda de empleo utilizados por jóvenes desocupados urbanos*
 
@@ -280,13 +284,15 @@ TABLA N.º 10: *Canales de búsqueda de empleo utilizados por jóvenes desocupad
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
+La Tabla N.º 10 clasifica las estrategias de postulación adoptadas por los jóvenes sin empleo. La columna de muestra (*n*) reporta los 243 informantes del operativo, la población ponderada (*N*) expande estos casos a 50.611 personas en el universo urbano, y el porcentaje ponderado (%) mide la participación de cada vía de búsqueda. Las cifras revelan el predominio de canales estructurados: los avisos en prensa, internet o redes sociales concentran el 38,82% y la presentación directa de carpetas o solicitudes reúne el 31,62%, sumando entre ambos más del 70% de las gestiones laborales frente a una baja proporción de iniciativas independientes (1,09%).
+
 FIGURA N.º 9: *Mecanismos principales de búsqueda de empleo en jóvenes desocupados*
 
 ![Mecanismos de búsqueda de empleo](figures/figura_9_mecanismos_busqueda.png)
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-Cerca del 70% de los desocupados canaliza su búsqueda a través de avisos en medios digitales, redes sociales o entrega presencial de currículum vitae, reflejando métodos formales o digitalizados de inserción.
+La Figura N.º 9 ordena en barras horizontales las vías de inserción laboral declaradas por la juventud desocupada. Los dos canales principales corresponden a la búsqueda mediante avisos digitales o de prensa (41,4%) y la entrega formal de currículum vitae (31,1%), acumulando conjuntamente más de siete de cada diez postulaciones. En contraste, las barras inferiores reflejan un peso marginal de los contactos interpersonales mediante amigos o parientes (1,8%) y de la gestión de emprendimientos propios (1,3%), lo que evidencia que la mayoría de los jóvenes desocupados busca activamente insertarse como personal dependiente en el mercado formal.
 
 FIGURA N.º 10: *Tasa de desocupación juvenil según tipología de hogar*
 
@@ -294,7 +300,7 @@ FIGURA N.º 10: *Tasa de desocupación juvenil según tipología de hogar*
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-En la estructura del hogar, los jóvenes en hogares monoparentales (5,68%) y en hogares extendidos (5,37%) presentan tasas de desocupación superiores al promedio nacional (3,71%), mientras que en hogares compuestos y biparentales con hijos la incidencia es menor.
+La Figura N.º 10 presenta las tasas de desocupación en siete estructuras familiares contrastadas contra la línea dorada del promedio nacional (3,71%). Las barras más prolongadas corresponden a hogares sin núcleo conyugal (6,18%), nucleares monoparentales (5,68%) y extendidos (5,37%), donde los jóvenes enfrentan mayor vulnerabilidad económica. Por el contrario, los hogares nucleares biparentales con hijos (2,67%) y compuestos (1,79%) registran tasas significativamente menores, patrón que la prueba Chi-cuadrado valida como estadísticamente significativo ($\chi^2 = 17,43; p = 0,0078$) e indicativo de cómo el respaldo del núcleo familiar modula la inserción laboral.
 
 ### 3.1.7. Arquitectura del modelo dimensional para Power BI Desktop
 Para facilitar la exploración visual y la toma de decisiones basada en datos, los microdatos procesados se organizaron en un esquema en estrella (*Star Schema*) dentro del proyecto de Power BI (`powerbi/Visualizacion-Analisis-Desocupacion.pbip`). El modelo semántico, serializado bajo el estándar TMDL (*Tabular Model Definition Language*), sitúa en el centro una tabla de hechos conectada a seis tablas dimensionales mediante relaciones unidireccionales de uno a muchos (1:N) con integridad referencial activa:
@@ -325,7 +331,7 @@ flowchart TD
 
 *FUENTE: Elaboración propia a partir del modelo semántico TMDL en Power BI.*
 
-El modelo dimensional asegura que las medidas analíticas en lenguaje DAX operen de forma ponderada aplicando el factor de expansión muestral (`peso_trimestral`) en cualquier combinación de filtros temporales, territoriales o demográficos.
+El Diagrama N.º 2 expone el modelo dimensional en estrella (*Star Schema*) que estructura los microdatos dentro de Power BI. En el centro, la tabla de hechos `Fact_MercadoLaboral` contiene las observaciones individuales con sus banderas de ocupación y el factor de expansión muestral, rodeada por seis dimensiones descriptivas conectadas mediante relaciones unidireccionales de uno a muchos (1:N). Esta arquitectura permite filtrar simultáneamente por territorio, demografía o nivel formativo, garantizando que el repositorio central de medidas DAX (`_Medidas`) calcule tasas ponderadas exactas sin duplicidad ni sesgos muestrales.
 
 ### 3.1.8. Evidencia del cuadro de mando interactivo en Power BI Desktop
 Como componente de transferencia tecnológica y despliegue del proyecto de ciencia de datos, se desarrolló un cuadro de mando analítico interactivo de seis páginas en Power BI Desktop (`powerbi/Visualizacion-Analisis-Desocupacion.pbip`), estructurado en formato PBIR (*Power BI Project Report*).
@@ -344,6 +350,8 @@ TABLA N.º 11: *Estructura y catálogo de páginas del cuadro de mando analític
 | 6 | Políticas Públicas | Matriz de priorización estratégica, hojas de ruta y síntesis ejecutiva | Eje de intervención, Nivel de urgencia | `[Poblacion Objetivo Focalizada]`, Matriz Impacto-Factibilidad |
 
 *FUENTE: Elaboración propia.*
+
+La Tabla N.º 11 detalla la organización temática y técnica de las seis páginas del cuadro de mando analítico. Las columnas estructuran el propósito de cada sección, los filtros interactivos puestos a disposición del usuario y las fórmulas DAX ponderadas que calculan los indicadores clave. Esta distribución permite transitar desde un diagnóstico general del mercado laboral urbano hasta la focalización específica de brechas de género, territorio y perfiles de cesantía, culminando en una matriz de propuestas de política pública aplicadas al contexto boliviano.
 
 #### 3.1.8.1. Página 1: Panorama laboral juvenil urbano
 La primera página sintetiza la magnitud general del mercado laboral para la población de 16 a 28 años en el área urbana de Bolivia. En la fila superior se integran cinco tarjetas con indicadores clave que exponen el volumen ponderado de la PEA (1.380.841 personas), la población ocupada (1.329.645 personas), la población desocupada (51.196 personas), la tasa oficial de desocupación (3,71%) y la tasa de subocupación por tiempo (8,70%). En el cuerpo central se despliegan un gráfico de dona con la distribución porcentual de la PEA, un gráfico de barras comparativo entre la tasa de desocupación urbana general (2,30%) y la juvenil (3,71%), y un desglose de la subutilización laboral.

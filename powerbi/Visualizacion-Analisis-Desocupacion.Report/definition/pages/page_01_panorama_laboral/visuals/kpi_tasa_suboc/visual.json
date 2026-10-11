@@ -4,10 +4,10 @@
   "position": {
     "x": 1000,
     "y": 20,
-    "z": 1000,
-    "width": 260,
+    "z": 4000,
     "height": 105,
-    "tabOrder": 1005
+    "width": 260,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "card",
@@ -31,6 +31,21 @@
           ]
         }
       }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "26D"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
       "title": [

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "tbl_matriz_focos",
   "position": {
-    "x": 20,
-    "y": 145,
+    "x": 0,
+    "y": 145.1802988160583,
     "z": 5000,
-    "width": 680,
-    "height": 545,
-    "tabOrder": 2001
+    "height": 544.42612056021858,
+    "width": 754.25702119280288,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "tableEx",
@@ -84,6 +84,21 @@
         }
       }
     },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "visualContainerObjects": {
       "title": [
         {
@@ -112,7 +127,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "14D"
                 }
               }
             },

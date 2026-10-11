@@ -5,9 +5,9 @@
     "x": 265,
     "y": 20,
     "z": 1000,
-    "width": 225,
     "height": 105,
-    "tabOrder": 1002
+    "width": 225,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "card",
@@ -26,11 +26,27 @@
                   "Property": "Poblacion Ocupada"
                 }
               },
-              "queryRef": "_Medidas.Poblacion Ocupada"
+              "queryRef": "_Medidas.Poblacion Ocupada",
+              "format": "G"
             }
           ]
         }
       }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "26D"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
       "title": [
@@ -179,6 +195,32 @@
               "expr": {
                 "Literal": {
                   "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "divider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

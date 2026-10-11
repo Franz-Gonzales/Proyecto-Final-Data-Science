@@ -4,10 +4,10 @@
   "position": {
     "x": 630,
     "y": 20,
-    "z": 1000,
-    "width": 285,
+    "z": 3000,
     "height": 105,
-    "tabOrder": 1003
+    "width": 285,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "card",
@@ -31,6 +31,21 @@
           ]
         }
       }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "26D"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
       "title": [
@@ -60,7 +75,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "12D"
                 }
               }
             },
