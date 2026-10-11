@@ -245,7 +245,7 @@ Proyecto-Final-Data-Science/
 │   ├── raw/                     -> Microdatos crudos originales inalterados (ECE_4T2025.csv)
 │   └── processed/               -> Dataset analítico filtrado (ECE_4T2025_Jovenes_PEA.csv)
 ├── outputs/
-│   ├── tables/                  -> Tablas de resultados exportadas en CSV para anexos de la tesis
+│   ├── tables/                  -> Tablas de resultados exportadas en CSV para anexos del proyecto
 │   └── figures/                 -> Gráficos estadísticos exportados en formato PNG de alta resolución
 └── docs/plans/                  -> Planes de propuesta, documentación funcional y trazabilidad
 ```
