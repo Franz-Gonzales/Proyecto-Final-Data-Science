@@ -463,6 +463,8 @@ flowchart LR
 
 *FUENTE: Elaboración propia con base en el marco analítico del proyecto.*
 
+El Diagrama N.º 3 sintetiza el modelo analítico y explicativo del estudio. En el bloque izquierdo se disponen los cuatro determinantes sociolaborales identificados (edad, género, territorio y educación), los cuales convergen en el núcleo central que cuantifica la desocupación abierta (51.196 jóvenes) y su vínculo con la subocupación por horas (115.736 jóvenes). A partir de este diagnóstico empírico, el esquema deriva hacia tres líneas de política pública enfocadas en incentivos a la contratación inicial, corresponsabilidad en el cuidado familiar y dinamización productiva en las regiones más rezagadas.
+
 ### 3.2.1. Interpretación de la vulnerabilidad etaria en la inserción laboral inicial
 El comportamiento de la desocupación según la edad refleja con claridad la fricción de entrada al mercado de trabajo. El tramo de 18 a 20 años alcanza la tasa más alta de desocupación con 4,65%, lo que responde a la confluencia de condiciones propias de esa etapa del ciclo de vida.
 
@@ -491,6 +493,38 @@ Este comportamiento se asocia a las características del mercado laboral bolivia
 
 En contraposición, los jóvenes con bachillerato concluido, formación técnica o estudios universitarios suelen contar con cierto respaldo familiar que les permite rechazar puestos precarios a la espera de opciones vinculadas con su perfil formativo. La oferta educativa superior presenta desajustes respecto a las competencias requeridas por el sector productivo privado, lo que dilata los tiempos de inserción y aumenta la tasa de desocupación entre las personas con mayor nivel de instrucción.
 
+DIAGRAMA N.º 4: *Mecanismo de divergencia laboral y la paradoja del desempleo ilustrado en el entorno urbano boliviano*
+
+```mermaid
+flowchart TD
+    %% ESTILOS MONOCROMÁTICOS CON ACENTO
+    classDef boxVulnerable fill:#FFFBEB,stroke:#D97706,stroke-width:2px,color:#78350F,font-size:14px;
+    classDef boxEducado fill:#F0FDF4,stroke:#16A34A,stroke-width:2px,color:#14532D,font-size:14px;
+    classDef boxOutcome fill:#1E293B,stroke:#0284C7,stroke-width:2.5px,color:#F8FAFC,font-size:14px;
+
+    %% RUTA 1: MENOR ESCOLARIDAD
+    subgraph R1["Trayectoria 1: Menor Escolaridad (Primaria / Sin Instrucción)"]
+        A1["Restricción económica severa<br/>Ausencia de respaldo familiar"]:::boxVulnerable
+        A2["Urgencia de ingresos diarios<br/>Imposibilidad de búsqueda abierta"]:::boxVulnerable
+        A3["Inserción forzada inmediata<br/>Comercio informal o servicios no calificados"]:::boxVulnerable
+        A4["<b>Condición estadística: Ocupado</b><br/>Baja tasa abierta (2,31% a 3,43%)<br/>Alta precariedad y subocupación"]:::boxOutcome
+        A1 --> A2 --> A3 --> A4
+    end
+
+    %% RUTA 2: MAYOR ESCOLARIDAD
+    subgraph R2["Trayectoria 2: Mayor Escolaridad (Secundaria / Superior Universitario)"]
+        B1["Cierto respaldo financiero familiar<br/>Mayor expectativa laboral"]:::boxEducado
+        B2["Búsqueda selectiva de empleo<br/>Rechazo de puestos no cualificados"]:::boxEducado
+        B3["Descalce oferta-demanda<br/>Escasez de vacantes formales técnicas"]:::boxEducado
+        B4["<b>Condición estadística: Desocupado</b><br/>Mayor tasa abierta (4,02% a 4,04%)<br/>Desempleo ilustrado friccional"]:::boxOutcome
+        B1 --> B2 --> B3 --> B4
+    end
+```
+
+*FUENTE: Elaboración propia a partir del marco interpretativo de la ECE 4T-2025.*
+
+El Diagrama N.º 4 expone los mecanismos socioeconómicos que generan la paradoja del desempleo ilustrado. La trayectoria de menor escolaridad obliga a los jóvenes a una inserción inmediata en actividades informales de subsistencia para asegurar su sustento diario, registrándose estadísticamente como ocupados precarios con bajas tasas de desocupación abierta. En contraste, los jóvenes con educación secundaria o universitaria disponen de mayor respaldo familiar para prolongar la búsqueda hacia empleos afines a sus competencias, lo que ante la escasez de plazas formales se traduce en mayores tasas relativas de desocupación abierta (4,04% frente a 2,31%).
+
 ### 3.2.5. Dinámica de cesantía y canales de intermediación laboral
 El hecho de que el 89,62% de los jóvenes desocupados corresponda a cesantes cuestiona la premisa de que el desempleo juvenil boliviano sea predominantemente un problema de acceso al primer trabajo. Nueve de cada diez jóvenes desocupados ya contaban con una ocupación previa y salieron de ella por despido, término de contrato, renuncia ante malas condiciones o cese de emprendimientos informales. La inestabilidad en el puesto y la rotación contractual constituyen factores centrales de la desocupación juvenil urbana.
 
@@ -503,6 +537,48 @@ Los hallazgos empíricos del análisis responden de forma puntual a cada uno de 
 2. En relación con el segundo objetivo específico (procesar los datos en Python y aplicar técnicas de tasas ponderadas y contrastes de asociación estadística): se implementaron rutinas de cálculo que determinaron con rigor la tasa de desocupación (3,71%), la tasa de subocupación (8,70%) y evaluaron la significancia estadística de los factores mediante pruebas Chi-cuadrado, coeficientes V de Cramér y contrastes de escolaridad ($t$ de Student y Mann-Whitney U).
 3. En relación con el tercer objetivo específico (diseñar y construir visualizaciones analíticas y un modelo dimensional en Power BI): se produjo un catálogo de diez figuras a 300 DPI y se implementó un modelo en estrella (*Star Schema*) con 20 medidas analíticas DAX ponderadas que sustentan las seis páginas del cuadro de mando interactivo.
 4. En relación con el cuarto objetivo específico (validar los resultados frente a los boletines del INE y la literatura laboral): se comprobó la correspondencia exacta con las estimaciones oficiales de línea base (3,7% y 8,7%), y se contrastaron las brechas observadas de género y edad con los estudios regionales de la OIT y la CEPAL.
+
+DIAGRAMA N.º 5: *Alineación metodológica entre objetivos específicos, pipeline analítico y resultados validados*
+
+```mermaid
+flowchart LR
+    %% ESTILOS MONOCROMÁTICOS CON ACENTO
+    classDef objBox fill:#F8FAFC,stroke:#334155,stroke-width:2px,color:#0F172A,font-size:13px;
+    classDef toolBox fill:#EFF6FF,stroke:#2563EB,stroke-width:2px,color:#1E3A8A,font-size:13px;
+    classDef resBox fill:#F0FDF4,stroke:#16A34A,stroke-width:2px,color:#14532D,font-size:13px;
+
+    subgraph O1["Objetivo 1: Ingestión y Muestreo"]
+        A1["ECE 4T-2025 INE<br/>52.650 registros"]:::objBox
+        A2["Filtro PEA urbana<br/>16 a 28 años"]:::toolBox
+        A3["Muestra: n = 6.649<br/>Población: N = 1.380.841"]:::resBox
+        A1 --> A2 --> A3
+    end
+
+    subgraph O2["Objetivo 2: Análisis Estadístico"]
+        B1["Pipeline en Python<br/>Pandas / SciPy"]:::objBox
+        B2["Ponderación muestral<br/>Pruebas Chi2 y Cramér"]:::toolBox
+        B3["Desocupación: 3,71%<br/>Subocupación: 8,70%"]:::resBox
+        B1 --> B2 --> B3
+    end
+
+    subgraph O3["Objetivo 3: Business Intelligence"]
+        C1["Power BI Desktop<br/>Modelo Star Schema"]:::objBox
+        C2["36 Medidas DAX<br/>6 Páginas analíticas"]:::toolBox
+        C3["Cuadro de mando PBIR<br/>10 Figuras a 300 DPI"]:::resBox
+        C1 --> C2 --> C3
+    end
+
+    subgraph O4["Objetivo 4: Validación Externa"]
+        D1["Boletines INE y OIT<br/>Literatura regional"]:::objBox
+        D2["Contrastación empírica<br/>Auditoría externa IA"]:::toolBox
+        D3["Discrepancia: 0,00 pp<br/>Auditoría: 9,70 / 10,00"]:::resBox
+        D1 --> D2 --> D3
+    end
+```
+
+*FUENTE: Elaboración propia a partir de la formulación metodológica del estudio.*
+
+El Diagrama N.º 5 resume la correspondencia entre los cuatro objetivos específicos del trabajo, las herramientas técnicas aplicadas y los resultados obtenidos. Cada fase conecta de manera directa la depuración de microdatos con ponderadores muestrales, el análisis inferencial en Python, la arquitectura del cuadro de mando en Power BI y la contrastación final con las estadísticas oficiales del INE.
 
 ### 3.2.7. Implicaciones prácticas y metodológicas de los resultados
 
@@ -533,6 +609,8 @@ TABLA N.º 12: *Matriz sintética de hallazgos del análisis del mercado laboral
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
+La Tabla N.º 12 resume los resultados empíricos del estudio agrupados en cuatro columnas estructuradas para la toma de decisiones. El *Eje de análisis* identifica la variable sociodemográfica evaluada; el *Hallazgo cuantitativo y técnico* sintetiza el patrón observado en los microdatos; la *Evidencia y métrica clave* expone las cifras ponderadas y la significancia del contraste estadístico ($\chi^2$ o $t$); y la *Implicancia operativa* detalla la recomendación concreta orientada a mitigar la problemática identificada.
+
 ---
 
 ### 3.3. Auditoría Externa y Evaluación Crítica mediante Agente Experto de Inteligencia Artificial (Lead Data Scientist)
@@ -556,7 +634,7 @@ TABLA N.º 13: *Matriz de evaluación, rúbrica y calificaciones por pilar técn
 
 *FUENTE: Elaboración propia a partir del framework de auditoría automatizada `src/audit/`.*
 
-FIGURA N.º 11: *Diagrama de radar de la evaluación integral de ciencia de datos por pilares analíticos*
+FIGURA N.º 17: *Diagrama de radar de la evaluación integral de ciencia de datos por pilares analíticos*
 
 ![Diagrama de Radar de Auditoría Externa de Ciencia de Datos](figures/auditoria_radar_evaluacion.png)
 
