@@ -135,7 +135,7 @@ El presente informe recoge la evaluación técnica, matemática, estadística y 
 **Estado:** `APROBADO CON EXCELENCIA` | **Ponderación:** `15%`
 
 **Evidencia Técnica Verificada:**
-- Monografía formal inspeccionada: 782 líneas de redacción académica.
+- Monografía formal inspeccionada: 794 líneas de redacción académica.
 - Estructura formal USFX CEPI validada: Secciones 3.1 (Presentación) y 3.2 (Análisis Crítico) implementadas.
 - Trazabilidad metodológica validada: Marco CRISP-DM explícito en la estructura del documento.
 - Artefactos integrados en texto: 13 tablas normalizadas y 17 referencias a figuras analíticas.

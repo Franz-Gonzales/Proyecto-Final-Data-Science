@@ -362,8 +362,10 @@ FIGURA N.º 11: *Vista del cuadro de mando en Power BI: Panorama laboral juvenil
 
 *FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
+La Figura N.º 11 estructura la visión general del mercado de trabajo juvenil en dos niveles analíticos. En la banda superior, cinco tarjetas de indicadores (KPIs) resumen las cifras ponderadas oficiales: una fuerza laboral de 1,38 millones de jóvenes, de los cuales 1,33 millones se encuentran ocupados y 51,20 mil desocupados, arrojando una tasa de desocupación de 3,71% y una subocupación de 8,70%. En la sección inferior, el gráfico de dona izquierdo evidencia que el desempleo abierto representa al 3,71% de la PEA frente al 96,29% de ocupación; el gráfico de barras central resalta que la tasa juvenil supera con creces a la tasa nacional general urbana (2,30%), confirmando una sobreexposición de 1,61 veces mayor; y el gráfico de barras horizontales derecho desglosa la subutilización de mano de obra, demostrando que al sumar el desempleo abierto y la subocupación por horas, la presión laboral global alcanza un 12,41% de la juventud activa.
+
 #### 3.1.8.2. Página 2: Desocupación por tramo etario y trayectoria
-La segunda página aborda el análisis desagregado de los cuatro tramos de edad establecidos en el proyecto. Permite constatar visualmente que los jóvenes de 18 a 20 años enfrentan la tasa de desocupación más crítica del país (4,65%), superando en casi un punto porcentual el promedio nacional juvenil. Asimismo, evidencia que el grupo de 25 a 28 años concentra el mayor volumen absoluto de desocupados (19.349 personas), vinculado a la búsqueda de plazas técnicas y profesionales.
+La segunda página aborda el análisis desagregado de los cuatro tramos de edad establecidos en el proyecto. Permite constatar visualmente que los jóvenes de 18 a 20 años enfrentan la tasa de desocupación más crítica del país (4,65%), superando en casi un punto porcentual el promedio nacional juvenil. Asimismo, evidencia que el grupo de 25 a 28 años concentra el mayor volumen absoluto de desocupados (19.988 personas), vinculado a la búsqueda de plazas técnicas y profesionales.
 
 FIGURA N.º 12: *Vista del cuadro de mando en Power BI: Desocupación por tramo etario (Página 2)*
 
@@ -371,14 +373,18 @@ FIGURA N.º 12: *Vista del cuadro de mando en Power BI: Desocupación por tramo 
 
 *FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
+La Figura N.º 12 detalla la fricción laboral por edades. En las tarjetas superiores se identifican el pico crítico de desocupación en el tramo de 18 a 20 años (4,65%), el volumen de 13,50 mil jóvenes desempleados en ese rango, la concentración máxima absoluta en el grupo de 25 a 28 años con 19,99 mil personas y la tasa promedio nacional de 3,71%. En el cuerpo inferior, el gráfico de barras vertical izquierdo muestra la curva etaria de desocupación, evidenciando el salto abrupto desde 1,87% en adolescentes de 16 a 17 años hasta el pico de 4,65% en los recién egresados de secundaria, para estabilizarse en 3,55% (21 a 24 años) y 3,88% (25 a 28 años). El gráfico de barras agrupadas derecho, trazado en escala logarítmica, dimensiona a los ocupados (barras azules) frente a los desocupados (barras rojas), demostrando que el volumen de jóvenes insertos crece progresivamente con la edad, alcanzando casi medio millón de ocupados en el tramo superior.
+
 #### 3.1.8.3. Página 3: Nivel formativo, capital humano y escolaridad
-La tercera página examina la interacción entre el nivel educativo y la inserción laboral. Presenta la paradoja del desempleo según credenciales académicas, donde los jóvenes con formación secundaria (4,07%) y universitaria (3,74%) exhiben tasas superiores a quienes poseen solo instrucción primaria (1,89%). Incluye también la comparativa de desocupación entre quienes asisten a un centro educativo (4,14%) y quienes no asisten (3,52%), ilustrando las dificultades de compatibilizar horarios académicos y laborales.
+La tercera página examina la interacción entre el nivel educativo y la inserción laboral. Presenta la paradoja del desempleo según credenciales académicas, donde los jóvenes con formación secundaria (4,02%) y superior universitaria (4,04%) exhiben tasas superiores a quienes poseen solo instrucción primaria (3,43%) o carecen de ella (2,31%). Incluye también la comparativa de desocupación entre quienes asisten a un centro educativo (3,54%) y quienes no asisten (3,92%), evaluando la compatibilidad entre estudio y actividad económica.
 
 FIGURA N.º 13: *Vista del cuadro de mando en Power BI: Capital humano y nivel formativo (Página 3)*
 
 ![Cuadro de mando: Capital humano y nivel formativo](figures/dashboard_pagina_3.png)
 
 *FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
+
+La Figura N.º 13 ilustra la relación entre educación y desocupación abierta. En el bloque superior, las tarjetas reportan las tasas de desempleo en egresados de secundaria (4,02%) y con formación universitaria (4,04%), la escolaridad media de los desocupados (13,01 años) y la brecha adicional de estudio equivalente a +4,5 meses lectivos frente a los ocupados. En el panel inferior izquierdo, el gráfico de barras horizontales hace visible el gradiente del desempleo ilustrado: las personas sin instrucción formal (2,31%) y con primaria (3,43%) registran menores tasas porque la necesidad económica las fuerza a ocuparse en cualquier empleo disponible, mientras que la secundaria y la universidad superan el promedio urbano. En el panel derecho, el gráfico de barras verticales compara la desocupación de quienes asisten a clases (3,54%) frente a quienes no asisten (3,92%), mostrando una brecha menor de 0,38 puntos porcentuales sin significancia estadística global.
 
 #### 3.1.8.4. Página 4: Disparidades de género y brechas territoriales
 La cuarta página expone la doble asimetría sociodemográfica que caracteriza al mercado laboral boliviano. A la izquierda se presenta la brecha de género, donde las mujeres registran un 4,69% de desempleo abierto frente al 2,85% de los varones (brecha de 1,84 puntos porcentuales). A la derecha se visualiza el ranking de los nueve departamentos, encabezado por Chuquisaca (5,80%), Tarija (4,72%) y Cochabamba (4,71%), contrastando con las tasas menores registradas en los departamentos del oriente y norte del país.
@@ -389,6 +395,8 @@ FIGURA N.º 14: *Vista del cuadro de mando en Power BI: Género y disparidades d
 
 *FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
+La Figura N.º 14 sintetiza la dimensión demográfica y geográfica del desempleo. Las tarjetas superiores cuantifican la tasa femenina (4,69%), la tasa masculina (2,85%), la brecha neta desfavorable para las mujeres (+1,84 puntos porcentuales) y la tasa departamental máxima registrada en Chuquisaca (5,80%). En el panel izquierdo, el gráfico de barras verticales compara el desempleo por sexo, haciendo tangible la penalización laboral femenina. A la derecha, el gráfico de barras horizontales rankea a los nueve departamentos urbanos, evidenciando que Chuquisaca (5,80%), Tarija (4,72%), Cochabamba (4,71%) y La Paz (3,84%) se ubican por encima de la media nacional, mientras que Potosí (1,64%), Pando (1,89%) y Beni (2,07%) registran las menores tasas relativas.
+
 #### 3.1.8.5. Página 5: Perfil del joven desocupado y mecanismos de búsqueda
 La quinta página profundiza en la composición interna de los desocupados. Mediante un gráfico de dona y barras agrupadas se muestra que el 89,62% (45.882 personas) corresponde a desocupados cesantes con trayectoria laboral previa, mientras que solo el 10,38% (5.314 personas) busca trabajo por primera vez. Asimismo, detalla los canales de intermediación utilizados, destacando las redes de parentesco y amistades junto con la presentación directa de credenciales.
 
@@ -397,6 +405,8 @@ FIGURA N.º 15: *Vista del cuadro de mando en Power BI: Perfil de cesantes y asp
 ![Cuadro de mando: Perfil de cesantes y aspirantes](figures/dashboard_pagina_5.png)
 
 *FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
+
+La Figura N.º 15 desglosa la trayectoria ocupacional previa y las vías de postulación de la juventud desocupada. En la parte superior, las tarjetas precisan que 45.882 jóvenes son cesantes (89,62% del total) y 5.314 son aspirantes a un primer empleo (10,38%). El gráfico de dona izquierdo refleja este marcado desbalance interno. En el centro, el gráfico de barras agrupadas muestra la distribución etaria en personas, evidenciando que los aspirantes alcanzan su volumen más alto en el tramo de 18 a 20 años (2.560 personas), mientras que los cesantes crecen con la edad hasta concentrar 18.551 personas entre los 25 y 28 años. A la derecha, el gráfico de barras horizontales clasifica los mecanismos de búsqueda activa, donde la consulta de avisos digitales o de prensa (20.848 personas) y la entrega de solicitudes o currículum (15.647 personas) absorben la gran mayoría de las gestiones, frente a una mínima proporción de consultas a parientes (889 personas) o planes de negocio independiente (654 personas).
 
 #### 3.1.8.6. Página 6: Síntesis ejecutiva y matriz de políticas públicas
 La sexta página traduce la evidencia estadística en directrices orientadas a la toma de decisiones. Articula una matriz de priorización cuadrantal (impacto potencial frente a factibilidad operativa) y presenta tres hojas de ruta concretas: el fomento al primer empleo formal para jóvenes de 18 a 20 años, medidas de corresponsabilidad en el cuidado para mujeres jóvenes, y fondos de dinamización productiva regional para Chuquisaca y Tarija.
@@ -407,6 +417,8 @@ FIGURA N.º 16: *Vista del cuadro de mando en Power BI: Síntesis estratégica y
 
 *FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
+La Figura N.º 16 integra los focos prioritarios para la formulación de políticas públicas. Las tarjetas superiores señalan las metas de intervención estratégica: 13.504 desocupados en el tramo etario crítico de 18 a 20 años, 30.258 mujeres jóvenes desocupadas que requieren acciones afirmativas de inserción, una brecha de género a mitigar de +1,84 puntos porcentuales y la tasa más crítica radicada en Chuquisaca (5,80%). En el panel izquierdo, la matriz estratégica cruza los cuatro grupos de edad con sus volúmenes y tasas ponderadas, evidenciando que el tramo de 21 a 24 años registra la mayor subocupación horaria de Bolivia (10,77%), indicando subempleo involuntario en jóvenes universitarios. En el panel derecho, el gráfico de barras horizontales desagrega la desocupación por macrorregión ecológica, destacando que los Valles lideran la desocupación urbana con 4,89%, superando al Altiplano (3,40%) y a los Llanos (3,16%), lo cual delimita el ámbito territorial de mayor urgencia para programas productivos.
+
 ---
 
 ## 3.2. ANÁLISIS DE RESULTADOS
@@ -415,32 +427,35 @@ DIAGRAMA N.º 3: *Modelo conceptual de interrelación entre factores determinant
 
 ```mermaid
 flowchart LR
-    subgraph Factores["Factores Determinantes"]
-        direction TB
-        F1["<b>Vulnerabilidad Etaria</b><br/>Pico en 18 a 20 años (4,65%)<br/>Fricción salida escolar"]
-        F2["<b>Brecha de Género</b><br/>Mujeres 4,69% vs Hombres 2,85%<br/>Carga de cuidados no remunerados"]
-        F3["<b>Desequilibrio Territorial</b><br/>Chuquisaca 5,80%, Tarija 4,72%<br/>Saturación de servicios"]
-        F4["<b>Descalce Educativo</b><br/>Mayor escolaridad en desocupados<br/>13,01 vs 12,64 años"]
-    end
+    %% ESTILOS MONOCROMÁTICOS CON ACENTO
+    classDef cardLeft fill:#FFFFFF,stroke:#334155,stroke-width:2.5px,color:#0F172A,font-size:15px;
+    classDef cardCenter fill:#1E293B,stroke:#0284C7,stroke-width:3px,color:#F8FAFC,font-size:16px;
+    classDef cardWarning fill:#FFFBEB,stroke:#D97706,stroke-width:2.5px,color:#78350F,font-size:15px;
+    classDef cardRight fill:#FFFFFF,stroke:#10B981,stroke-width:2.5px,color:#064E3B,font-size:15px;
 
-    subgraph Dinamica["Dinámica Laboral"]
-        direction TB
-        D1["<b>Desocupación Abierta</b><br/>51.196 jóvenes (3,71%)<br/>89,6% Cesantes | 10,4% Aspirantes"]
-        D2["<b>Subocupación por Horas</b><br/>115.736 jóvenes (8,70%)<br/>Subutilización de capacidades"]
-    end
+    %% BLOQUE CAUSAS
+    F1["<b>Vulnerabilidad Etaria</b><br/>• 18 a 20 años: 4,65%<br/>• Salida escolar"]:::cardLeft
+    F2["<b>Brecha de Género</b><br/>• Mujeres 4,69% vs 2,85%<br/>• Cuidados no remunerados"]:::cardLeft
+    F3["<b>Desbalance Territorial</b><br/>• Chuquisaca 5,80%<br/>• Tarija 4,72%"]:::cardLeft
+    F4["<b>Descalce Educativo</b><br/>• Desocupados: 13,01 años<br/>• Ocupados: 12,64 años"]:::cardLeft
 
-    subgraph Politicas["Intervención Estratégica"]
-        direction TB
-        P1["<b>Mi Primer Empleo</b><br/>Subsidio salarial temporal"]
-        P2["<b>Cuidados y STEM</b><br/>Centros de cuidado y equidad"]
-        P3["<b>Desarrollo Regional</b><br/>Crédito blando e innovación"]
-    end
+    %% NÚCLEO IMPACTO
+    D1["<b>DESOCUPACIÓN ABIERTA</b><br/>=========================<br/><b>51.196 Jóvenes (3,71%)</b><br/>89,6% Cesantes | 10,4% Aspirantes"]:::cardCenter
+    D2["<b>SUBOCUPACIÓN VISIBLE</b><br/>─────────────────────────<br/><b>115.736 Jóvenes (8,70%)</b><br/>Jornada reducida involuntaria"]:::cardWarning
 
+    %% SOLUCIONES
+    P1["<b>Mi Primer Empleo</b><br/>Subsidio temporal"]:::cardRight
+    P2["<b>Cuidados y STEM</b><br/>Centros y equidad"]:::cardRight
+    P3["<b>Desarrollo Regional</b><br/>Créditos e inversión"]:::cardRight
+
+    %% ENLACES
     F1 --> D1
     F2 --> D1
     F3 --> D1
     F4 --> D1
+
     D1 -.-> D2
+
     D1 --> P1
     D1 --> P2
     D1 --> P3
