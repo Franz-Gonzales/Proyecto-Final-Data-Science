@@ -1,3 +1,11 @@
+# RESUMEN
+
+La inserción laboral de la juventud en el área urbana de Bolivia presenta asimetrías estructurales asociadas a la transición entre el sistema educativo y el empleo productivo. Se analizaron los factores sociodemográficos, formativos, territoriales y de trayectoria laboral vinculados a la condición de desocupación en personas de 16 a 28 años pertenecientes a la Población Económicamente Activa. La metodología adaptó el ciclo de vida CRISP-DM a los microdatos oficiales de la Encuesta Continua de Empleo del cuarto trimestre de 2025 del Instituto Nacional de Estadística. Se procesó una muestra depurada de 6.649 registros individuales calibrados mediante el ponderador trimestral a un universo de 1.380.841 jóvenes, aplicando tabulaciones ponderadas, pruebas de independencia Chi-cuadrado de Pearson, coeficientes V de Cramér, contrastes paramétricos t de Student y un modelo dimensional en Power BI Desktop. Los resultados establecieron una tasa de desocupación juvenil del 3,71% y una subocupación por tiempo del 8,70%. Se constató una brecha de género estadísticamente significativa desfavorable hacia las mujeres de 1,84 puntos porcentuales (4,69% frente a 2,85% en varones), una mayor vulnerabilidad en el tramo de 18 a 20 años (4,65%), disparidades regionales encabezadas por Chuquisaca (5,80%) y Tarija (4,72%), un marcado predominio de desocupados cesantes (89,62% frente a 10,38% de aspirantes) y un promedio de escolaridad significativamente superior en jóvenes desocupados respecto a los ocupados (13,01 frente a 12,38 años de estudio). Se determinó que la desocupación juvenil no se origina en un déficit de instrucción formal, sino en dificultades de absorción en puestos calificados y cargas desproporcionadas de cuidado no remunerado, aportando una plataforma interactiva de inteligencia de negocios para orientar políticas públicas focalizadas en inserción temprana y formalización laboral.
+
+***Palabras clave:*** *Desocupación juvenil, mercado laboral urbano, microdatos ECE, análisis de asociación, inteligencia de negocios.*
+
+---
+
 # CAPÍTULO III: RESULTADOS
 
 ## 3.1. PRESENTACIÓN DE RESULTADOS
@@ -73,7 +81,7 @@ TABLA N.º 3: *Componentes técnicos de la solución en ciencia de datos*
 
 *FUENTE: Elaboración propia.*
 
-La Tabla N.º 3 describe los tres pilares informáticos que sostienen la investigación: la ingesta automatizada de los microdatos del INE, la aplicación de operaciones estadísticas con factores de expansión y la creación de productos finales reproducibles, tales como scripts modulares en Python y el modelo analítico para Power BI.
+La Tabla N.º 3 describe los tres pilares informáticos que sostienen el proyecto: la ingesta automatizada de los microdatos del INE, la aplicación de operaciones estadísticas con factores de expansión y la creación de productos finales reproducibles, tales como scripts modulares en Python y el modelo analítico para Power BI.
 
 La base de datos original contiene 52.650 observaciones. El primer filtro eliminó a 8.602 personas residentes en el área rural. El segundo filtro excluyó a 34.436 personas cuyas edades quedaban fuera del rango de 16 a 28 años, dejando a 9.612 jóvenes urbanos. De ese total, 2.963 personas fueron identificadas como económicamente inactivas (principalmente estudiantes sin búsqueda laboral, personas dedicadas al cuidado del hogar o con incapacidad permanente). La muestra resultante quedó constituida por 6.649 jóvenes activos en el mercado de trabajo.
 
@@ -645,7 +653,7 @@ FIGURA N.º 17: *Diagrama de radar de la evaluación integral de ciencia de dato
 1. **Ingeniería de datos y muestreo (P1 — 9,8/10,0):** La base filtrada reproduce con precisión determinista las 6.649 observaciones del universo objetivo, sin valores perdidos espurios en identificadores ni pesos muestrales. El factor de expansión `fact_trim_act` expande a 1.380.841 jóvenes. Como observación metodológica, se hace notar que las funciones estándar de cálculo asumen muestreo aleatorio simple ponderado; para intervalos de confianza a nivel de subpoblaciones muy pequeñas se requeriría el vector completo de Unidades Primarias de Muestreo (UPM) y estratos de diseño del INE.
 2. **Consistencia matemática con el INE (P2 — 10,0/10,0):** La correspondencia frente al boletín oficial de la ECE 4T-2025 es exacta (discrepancia de 0,00 puntos porcentuales). Se reproduce la tasa de desocupación juvenil (3,71%), la tasa de subocupación (8,70% calculada sobre la población ocupada de 1.329.645 jóvenes), el volumen de cesantes (45.882 personas; 89,6%) y la brecha neta de género (+1,84 pp).
 3. **Inferencia estadística y pruebas de hipótesis (P3 — 9,6/10,0):** Se validó el contraste de siete variables mediante $\chi^2$ de Pearson y coeficientes V de Cramér. La evaluación resalta la cautela epistemológica de no atribuir causalidad a relaciones bivariadas. Como limitación analítica, los coeficientes V de Cramér oscilan entre 0,028 y 0,060, lo que evidencia que la condición de desocupación está condicionada por múltiples factores residuales no capturados en encuestas transversales de empleo (p. ej., redes de contactos informales o transferencias intrafamiliares).
-4. **Modelo dimensional y Power BI (P4 — 9,7/10,0):** Se constató la estructura en estrella (*Star Schema*) con 10 tablas activas y 36 medidas DAX ponderadas. Todas las medidas de tasa y población implementan `SUMX` con factor de expansión muestral, sin recurrir a recuentos simples no ponderados. Los 39 componentes visuales distribuidos en las seis páginas del reporte en formato PBIR sincronizan con las cifras de la investigación.
+4. **Modelo dimensional y Power BI (P4 — 9,7/10,0):** Se constató la estructura en estrella (*Star Schema*) con 10 tablas activas y 36 medidas DAX ponderadas. Todas las medidas de tasa y población implementan `SUMX` con factor de expansión muestral, sin recurrir a recuentos simples no ponderados. Los 39 componentes visuales distribuidos en las seis páginas del reporte en formato PBIR sincronizan con las cifras del proyecto.
 5. **Storytelling y cumplimiento de la Guía CEPI (P5 — 9,7/10,0):** El documento respeta de forma estricta la subdivisión formal entre presentación técnica (3.1) y análisis crítico (3.2), asegurando la trazabilidad de las fases CRISP-DM y articulando las conclusiones con los cuatro objetivos específicos del trabajo.
 6. **Viabilidad de políticas en el mundo real (P6 — 9,3/10,0):** La propuesta identifica correctamente que nueve de cada diez desocupados son cesantes, desmitificando que el desempleo juvenil boliviano sea exclusivamente un obstáculo de acceso inicial. No obstante, el evaluador formula observaciones sobre la viabilidad fiscal de subsidios directos al salario en el contexto macroeconómico boliviano, sugiriendo sustituirlos por exenciones temporales de aportes patronales y convenios de educación dual público-privada.
 
@@ -654,6 +662,114 @@ El análisis externo efectuado por el agente enfatiza dos advertencias sustantiv
 
 1. **La paradoja de la baja desocupación abierta como indicador de vulnerabilidad:** En una economía con una tasa de informalidad laboral superior al 75% y carente de un seguro de desempleo universal, una tasa de desocupación abierta del 3,71% no refleja una situación cercana al pleno empleo ni condiciones óptimas de inserción. Para la mayoría de los jóvenes de sectores populares, permanecer desocupado buscando un puesto acorde a su formación es un lujo inalcanzable. Quienes carecen de ahorros o respaldo familiar se ven obligados a refugiarse en el autoempleo informal, el comercio callejero o actividades de subsistencia de muy baja productividad. En consecuencia, la tasa de desocupación abierta debe interpretarse siempre en conjunción con la tasa de subocupación (8,70%) y la calidad del empleo.
 2. **Restricciones de viabilidad fiscal y alternativas de intervención:** La implementación de programas de empleo juvenil basados en transferencias monetarias directas o subsidios salariales con cargo al Tesoro General de la Nación enfrenta severas limitaciones de liquidez presupuestaria. Las recomendaciones de política pública adquieren mayor viabilidad cuando se diseñan como incentivos no monetarios: simplificación de trámites de formalización empresarial, pasantías técnicas duales cofinanciadas por cámaras sectoriales y descentralización de centros de formación productiva orientados a las ventajas comparativas de Chuquisaca y Tarija.
+
+---
+
+# CONCLUSIONES Y RECOMENDACIONES
+
+## Conclusiones
+
+### Conclusión general
+A partir de los microdatos oficiales de la Encuesta Continua de Empleo (ECE) del cuarto trimestre de 2025, se determinó que la desocupación en jóvenes de 16 a 28 años en el área urbana de Bolivia constituye un fenómeno focalizado que afecta a 51.196 personas (3,71% de la PEA juvenil) y coexiste con una tasa de subocupación por horas del 8,70% (115.736 jóvenes).
+
+El análisis cuantitativo comprobó que la desocupación abierta afecta a la juventud con una intensidad 1,61 veces mayor respecto a la población adulta urbana (2,30%). Las pruebas de asociación confirmaron que la inserción laboral juvenil se encuentra condicionada por barreras de acceso al culminar la etapa escolar, una brecha persistente de género que penaliza a las mujeres, asimetrías marcadas de diversificación productiva regional con Chuquisaca a la cabeza y un desajuste estructural entre el nivel formativo alcanzado y las vacantes formales disponibles en las ciudades.
+
+### Conclusiones específicas
+
+#### 1. Ingesta, depuración y control muestral de microdatos oficiales (Objetivo Específico 1)
+Se consolidó una base de datos depurada de 6.649 registros correspondientes a jóvenes urbanos pertenecientes a la fuerza laboral, extraída del conjunto original de 52.650 observaciones de la ECE 4T-2025. La aplicación del factor de calibración trimestral (`fact_trim_act`) permitió expandir la muestra de forma representativa a 1.380.841 jóvenes.
+
+El control metodológico demostró que el cálculo de indicadores laborales requiere obligatoriamente el factor de expansión muestral. El empleo de recuentos no ponderados genera distorsiones en las proporciones reales de desocupación y en las ponderaciones demográficas de cada departamento. La calibración aplicada reprodujo con exactitud matemática las cifras oficiales del INE, garantizando la consistencia del punto de partida analítico.
+
+#### 2. Procesamiento estadístico, contrastes de hipótesis y significancia empírica (Objetivo Específico 2)
+Las pruebas estadísticas y el análisis bivariado identificaron los patrones determinantes del mercado laboral juvenil:
+
+- **Vulnerabilidad etaria:** El tramo de 18 a 20 años presentó la mayor tasa de desocupación urbana con 4,65% ($\chi^2 = 11,23; p = 0,0105$), reflejando la fricción de entrada al concluir la educación secundaria sin contar con experiencia laboral previa.
+- **Brecha de género:** Las mujeres jóvenes registraron una tasa de 4,69% frente al 2,85% en varones, marcando una brecha desfavorable de +1,84 puntos porcentuales ($\chi^2 = 5,24; p = 0,0221$). Esta disparidad explica que casi seis de cada diez desocupados urbanos sean mujeres (59,10%), asociado a la carga de cuidados en el hogar y a la segregación en ramas de servicios saturadas.
+- **Asimetría territorial:** Chuquisaca registró la tasa departamental más alta con 5,80%, seguida por Tarija (4,72%) y Cochabamba (4,71%), con una prueba Chi-cuadrado altamente significativa ($\chi^2 = 23,69; p = 0,0026$). La estructura económica de Sucre, concentrada en el sector público y el comercio minorista, no logra absorber a los contingentes formados en su sistema educativo.
+- **Paradoja del desempleo ilustrado:** La educación en categorías agregadas no arrojó significancia estadística ($\chi^2 = 3,64; p = 0,4576$). Sin embargo, la evaluación continua de la escolaridad demostró que los desocupados promedian más años de estudio que los ocupados (13,01 años frente a 12,64 años; $t = -2,39; p = 0,0174$). En una economía urbana con más del 75% de informalidad, las personas con menor instrucción se insertan de forma inmediata en labores precarias de subsistencia, mientras que los jóvenes con mayor nivel de instrucción prolongan su búsqueda hacia opciones acordes a sus competencias.
+- **Composición por trayectoria laboral:** El 89,62% de los desocupados corresponde a cesantes (45.882 personas) y el 10,38% a aspirantes que buscan trabajo por primera vez (5.314 personas). Esto evidencia que el desempleo juvenil urbano proviene de la inestabilidad y rotación en empleos previos, antes que de barreras exclusivas para ingresar al mercado.
+
+Los coeficientes V de Cramér oscilaron entre 0,028 y 0,060, lo que denota asociaciones estadísticas de baja magnitud. Este comportamiento confirma que la desocupación no depende de un único determinante aislado, sino de múltiples factores que interactúan en el mercado urbano.
+
+#### 3. Modelado dimensional en estrella e inteligencia de negocios (Objetivo Específico 3)
+Se implementó un modelo dimensional en estrella (*Star Schema*) compuesto por una tabla de hechos de 6.649 registros y seis dimensiones normalizadas, articulado mediante 36 medidas DAX ponderadas.
+
+La estructura garantizó el cálculo dinámico de tasas poblacionales sin incurrir en sumas planas erróneas al segmentar por filtros temporales o demográficos. El cuadro de mando de seis páginas en Power BI facilitó la navegación interactiva entre indicadores macro, tramos etarios, capital humano, brechas de género, perfiles de cesantía y focos de decisión pública.
+
+#### 4. Validación de consistencia frente a fuentes oficiales y literatura (Objetivo Específico 4)
+Los resultados del procesamiento matemático reprodujeron con 0,00 puntos porcentuales de discrepancia las cifras publicadas por el INE para el cuarto trimestre de 2025 (desocupación de 3,71% y subocupación de 8,70%).
+
+Los hallazgos concuerdan con la literatura regional de la OIT y la CEPAL respecto a la mayor vulnerabilidad de las mujeres jóvenes y el papel amortiguador del subempleo por horas en economías en desarrollo. La auditoría externa automatizada asignó al repositorio una calificación de 9,70 sobre 10,00 puntos, validando la reproducibilidad del código y la consistencia técnica de las estimaciones.
+
+---
+
+## Recomendaciones
+
+### Medidas orientadas a los factores determinantes identificados
+A partir de los factores asociados al desempleo juvenil en el área urbana (la salida de secundaria, la brecha femenina, la concentración en Chuquisaca y el sur, y la alta tasa de cesantía), las propuestas de intervención deben responder a la realidad boliviana de 2026, caracterizada por una informalidad superior al 75% y estrechez en las finanzas públicas. Las acciones prioritarias comprenden:
+
+### Recomendaciones prácticas de política pública e inserción laboral
+
+#### R1. Programa de formación dual e inserción inicial para bachilleres (Tramo 18 a 20 años)
+Ante la tasa de desocupación del 4,65% observada en el tramo de 18 a 20 años, se recomienda al Ministerio de Trabajo, Empleo y Previsión Social, en coordinación con el Ministerio de Educación y la Confederación de Empresarios Privados de Bolivia (CEPB), implementar esquemas formales de formación dual:
+- Establecer pasantías formativas remuneradas de seis meses en empresas privadas formales y entidades productivas, acreditables como experiencia laboral oficial en la hoja de vida.
+- Otorgar a las empresas participantes incentivos no monetarios y exenciones temporales en aportes patronales a la seguridad social de corto plazo durante los primeros seis meses de contratación de jóvenes sin trayectoria previa.
+- Incorporar en el último año de educación secundaria módulos obligatorios de competencias laborales transversales, orientados al armado de currículum vitae, entrevistas de trabajo y uso de herramientas digitales para la búsqueda de empleo.
+
+#### R2. Red municipal de centros infantiles de cuidado diurno (Brecha de género)
+Para mitigar la desocupación femenina (4,69%) y la carga de trabajo doméstico no remunerado que limita su inserción continua, se recomienda a los Gobiernos Autónomos Municipales de las principales áreas metropolitanas (La Paz, Santa Cruz de la Sierra, Cochabamba, El Alto y Sucre):
+- Implementar y ampliar la cobertura de centros municipales de cuidado infantil diurno en zonas de alta concentración comercial, mercados y áreas periurbanas, permitiendo a las madres jóvenes disponer de tiempo para la búsqueda de empleo formal y la capacitación laboral.
+- Diseñar programas de becas técnicas y formación en habilidades digitales, programación y comercio electrónico dirigidos prioritariamente a mujeres jóvenes jefas de hogar monoparental, con horarios compatibles con la vida familiar.
+- Ejecutar campañas municipales de fiscalización laboral que sancionen las exigencias ilegales de certificados de no gravidez y mitiguen la discriminación preventiva en la contratación de mujeres en edad reproductiva.
+
+#### R3. Articulación formativa y desarrollo de servicios digitales en Chuquisaca y regiones del sur
+Para contrarrestar la debilidad del mercado laboral en los departamentos del sur y aprovechar el capital humano acumulado en Sucre (5,80%) y Tarija (4,72%):
+- Articular una mesa de trabajo interinstitucional entre la Gobernación de Chuquisaca, la Alcaldía de Sucre, la Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca (USFX) y la Federación de Empresarios Privados para adecuar las mallas curriculares universitarias y técnicas a sectores con demanda efectiva.
+- Fomentar la creación de un Parque Tecnológico y Polo de Servicios Digitales en Sucre, aprovechando la infraestructura educativa de la ciudad para impulsar empresas de software, centros de servicios compartidos remotos, biotecnología aplicada a los valles y turismo patrimonial calificado.
+- Crear un fondo departamental de capital semilla con contraparte de cooperación internacional para iniciativas juveniles formalizadas que demuestren viabilidad financiera y generación de puestos de trabajo directos en la región.
+
+#### R4. Modernización del Servicio Público de Empleo y certificación técnica para personas cesantes
+Considerando que el 89,62% de los desocupados ya contaba con un trabajo anterior y que el 38,82% busca empleo a través de canales digitales:
+- Modernizar la plataforma digital del Servicio Público de Empleo (SENAPE) bajo la tutela del Ministerio de Trabajo, desarrollando una aplicación móvil accesible que conecte vacantes laborales formales con postulantes calificados, integrando verificación de identidad y legalidad patronal.
+- Establecer un servicio de certificación de competencias laborales adquiridas en empleos previos para jóvenes cesantes sin titulación universitaria, reconociendo aprendizajes prácticos en ventas, logística, atención al cliente y manufactura básica para facilitar su recolocación rápida.
+- Implementar talleres permanentes de orientación laboral y reconversión técnica en las jefaturas departamentales de trabajo, focalizados en jóvenes cesantes de comercio y servicios elementales que enfrentan dificultades para reinsertarse en el mercado formal.
+
+#### R5. Reglamentación del régimen laboral juvenil en el marco de la Ley N.º 342
+Se recomienda a la Asamblea Legislativa Plurinacional y al Órgano Ejecutivo promulgar un Decreto Supremo reglamentario específico para el régimen laboral de la Ley N.º 342 de la Juventud:
+- Definir la figura del "Contrato de Inserción Laboral Juvenil", estableciendo contratos a plazo fijo de hasta un año con estabilidad regulada, acceso a seguridad social a corto y largo plazo, y límites a las jornadas extraordinarias no compensadas.
+- Establecer un mecanismo simplificado y gratuito de registro en el Registro Obligatorio de Empleadores (ROE) para jóvenes profesionales y técnicos menores de 28 años que formalicen unidades productivas individuales o colectivas, otorgando un periodo de gracia tributaria de dos años para trámites de licencias de funcionamiento.
+- Organizar anualmente ferias departamentales de vinculación laboral y conferencias de inserción profesional auspiciadas por los ministerios del área económica, acercando a bachilleres y universitarios con empresas formalmente establecidas.
+
+---
+
+### Recomendaciones metodológicas y de modelado analítico
+
+#### R6. Incorporación de encuestas de panel longitudinal
+Dado que el corte transversal de la ECE 4T-2025 captura una fotografía puntual del mercado de trabajo, se recomienda al Instituto Nacional de Estadística (INE) y a los centros de analítica universitaria estructurar bases de datos con seguimiento tipo panel rotativo. Esta aproximación permitirá modelar la duración temporal exacta de los episodios de desocupación, las probabilidades de transición entre la inactividad, la informalidad y la ocupación formal, y evaluar si el primer empleo precario actúa como puente hacia la estabilidad o como una trampa de segmentación laboral.
+
+#### R7. Modelado predictivo supervisado con técnicas de Machine Learning explicable
+Se sugiere ampliar la fase analítica mediante algoritmos predictivos supervisados (Random Forest, Gradient Boosting y redes neuronales tabulares) entrenados con ponderación muestral. El objetivo consiste en estimar la probabilidad individual de que un joven activo caiga en situación de desempleo o subocupación horaria a partir de sus atributos sociodemográficos y educativos, utilizando valores SHAP (*SHapley Additive exPlanations*) para interpretar de forma transparente la contribución relativa de cada variable en las predicciones del modelo.
+
+#### R8. Interoperabilidad con registros administrativos de la seguridad social
+Se recomienda promover acuerdos de intercambio y anonimización de datos entre el INE, la Gestora Pública de la Seguridad Social de Largo Plazo, el Servicio de Impuestos Nacionales (SIN) y el Sistema de Información Educativa (SIE) del Ministerio de Educación. El cruce entre encuestas de hogares y registros administrativos de aportes previsionales brindará una medición exacta de la densidad de cotizaciones y la calidad contractual, superando los sesgos inherentes al autorreporte de ingresos en encuestas muestrales.
+
+---
+
+# REFERENCIAS BIBLIOGRÁFICAS
+
+- Agresti, A. (2018). *An introduction to categorical data analysis* (3rd ed.). John Wiley & Sons.
+- Arancibia, M. (2025). *Guía metodológica para la elaboración de monografías en Ciencia de Datos*. Sucre, Bolivia: Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca, Centro de Estudios de Posgrado e Investigación (CEPI).
+- Comisión Económica para América Latina y el Caribe [CEPAL] & Organización Internacional del Trabajo [OIT]. (2023). *Coyuntura Laboral en América Latina y el Caribe: Políticas de inserción laboral juvenil en contextos de informalidad persistente*. Santiago de Chile: CEPAL/OIT.
+- Estado Plurinacional de Bolivia. (2013). *Ley N.º 342 de la Juventud de 5 de febrero de 2013*. Gaceta Oficial del Estado Plurinacional de Bolivia.
+- Estado Plurinacional de Bolivia. (2014). *Ley N.º 548: Código Niña, Niño y Adolescente de 17 de julio de 2014*. Gaceta Oficial del Estado Plurinacional de Bolivia.
+- Instituto Nacional de Estadística [INE]. (2025). *Boletín Estadístico de la Encuesta Continua de Empleo: Cuarto Trimestre 2025*. La Paz, Bolivia: INE.
+- Instituto Nacional de Estadística [INE]. (2025). *Ficha Técnica y Diseño Muestral de la Encuesta Continua de Empleo (ECE)*. La Paz, Bolivia: INE.
+- Kimball, R., & Ross, M. (2013). *The data warehouse toolkit: The definitive guide to dimensional modeling* (3rd ed.). John Wiley & Sons.
+- McKinney, W. (2022). *Python for data analysis: Data wrangling with pandas, NumPy, and Jupyter* (3rd ed.). O'Reilly Media.
+- Organización Internacional del Trabajo [OIT]. (2024). *Tendencias mundiales del empleo juvenil 2024: Transiciones fluidas en tiempos de incertidumbre*. Ginebra: OIT.
+- Weller, J. (2007). *La inserción laboral de los jóvenes: características, tensiones y desafíos*. Revista de la CEPAL, 92, 61-82.
+- Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). *R for Data Science: Import, tidy, transform, visualize, and model data* (2nd ed.). O'Reilly Media.
 
 ---
 
@@ -737,7 +853,7 @@ El siguiente cuadro detalla las variables clave extraídas de la base bruta de l
 | `s1_03a` | `edad` | Numérico (`int64`) | Edad en años cumplidos | 0 a 98 años | **Filtro obligatorio:** conservación de personas entre 16 y 28 años inclusive (eliminó 34.436 casos fuera de rango). |
 | `pea` | `pea_val` | Categórico | Condición de actividad económica | 1 = PEA, 0 = Inactivo | **Filtro obligatorio:** selección exclusiva de personas activas con `pea == 1` (eliminó 2.963 inactivos). |
 | `peao` | `es_ocupado` | Booleano (0/1) | Persona ocupada en la semana de referencia | 1 = Ocupado, 0 = No ocupado | Clasificación dicotómica para cálculo del denominador de ocupación. |
-| `pead` | `es_desocupado` | Booleano (0/1) | Persona desocupada abierta en búsqueda activa | 1 = Desocupado, 0 = No desocupado | **Variable objetivo** de la investigación para el cálculo de tasas y contrastes. |
+| `pead` | `es_desocupado` | Booleano (0/1) | Persona desocupada abierta en búsqueda activa | 1 = Desocupado, 0 = No desocupado | **Variable objetivo** del proyecto para el cálculo de tasas y contrastes. |
 | `peadces` | `es_cesante` | Booleano (0/1) | Desocupado con experiencia laboral previa | 1 = Cesante, 0 = No cesante | Componente para descomponer la estructura interna del desempleo. |
 | `peadasp` | `es_aspirante` | Booleano (0/1) | Desocupado en búsqueda de primer empleo | 1 = Aspirante, 0 = No aspirante | Medición de la barrera de inserción inicial de bachilleres y egresados. |
 | `psubocup` | `es_subocupado`| Booleano (0/1) | Subocupado por insuficiencia de tiempo | 1 = Subocupado, 0 = No subocupado | Indicador de subutilización horaria sobre la población ocupada. |
@@ -861,7 +977,7 @@ Ambos contrastes confirman que los jóvenes desocupados poseen un promedio de es
 
 ## Anexo 5: Matriz de trazabilidad metodológica del ciclo de vida CRISP-DM
 
-El proyecto se organizó bajo las seis etapas estándar de la metodología CRISP-DM, asegurando la correspondencia entre los objetivos de la investigación y los artefactos computacionales generados:
+El proyecto se organizó bajo las seis etapas estándar de la metodología CRISP-DM, asegurando la correspondencia entre los objetivos del proyecto y los artefactos computacionales generados:
 
 | Fase CRISP-DM | Objetivo técnico de la fase | Tareas y procedimientos ejecutados | Artefacto reproducible generado |
 | :--- | :--- | :--- | :--- |

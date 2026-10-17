@@ -14,6 +14,16 @@
 **Sucre \- Bolivia**  
 **2026**
 
+---
+
+# RESUMEN
+
+La inserción laboral de la juventud en el área urbana de Bolivia presenta asimetrías estructurales asociadas a la transición entre el sistema educativo y el empleo productivo. Se analizaron los factores sociodemográficos, formativos, territoriales y de trayectoria laboral vinculados a la condición de desocupación en personas de 16 a 28 años pertenecientes a la Población Económicamente Activa. La metodología adaptó el ciclo de vida CRISP-DM a los microdatos oficiales de la Encuesta Continua de Empleo del cuarto trimestre de 2025 del Instituto Nacional de Estadística. Se procesó una muestra depurada de 6.649 registros individuales calibrados mediante el ponderador trimestral a un universo de 1.380.841 jóvenes, aplicando tabulaciones ponderadas, pruebas de independencia Chi-cuadrado de Pearson, coeficientes V de Cramér, contrastes paramétricos t de Student y un modelo dimensional en Power BI Desktop. Los resultados establecieron una tasa de desocupación juvenil del 3,71% y una subocupación por tiempo del 8,70%. Se constató una brecha de género estadísticamente significativa desfavorable hacia las mujeres de 1,84 puntos porcentuales (4,69% frente a 2,85% en varones), una mayor vulnerabilidad en el tramo de 18 a 20 años (4,65%), disparidades regionales encabezadas por Chuquisaca (5,80%) y Tarija (4,72%), un marcado predominio de desocupados cesantes (89,62% frente a 10,38% de aspirantes) y un promedio de escolaridad significativamente superior en jóvenes desocupados respecto a los ocupados (13,01 frente a 12,38 años de estudio). Se determinó que la desocupación juvenil no se origina en un déficit de instrucción formal, sino en dificultades de absorción en puestos calificados y cargas desproporcionadas de cuidado no remunerado, aportando una plataforma interactiva de inteligencia de negocios para orientar políticas públicas focalizadas en inserción temprana y formalización laboral.
+
+***Palabras clave:*** *Desocupación juvenil, mercado laboral urbano, microdatos ECE, análisis de asociación, inteligencia de negocios.*
+
+---
+
 **ÍNDICE DE CONTENIDO**
 
 RESUMEN ....................................................................................................................... i
@@ -289,7 +299,7 @@ La Ciencia de Datos no se limita a una única técnica o herramienta. Integra m�
 
 En el ámbito de las políticas públicas y el análisis social, la Ciencia de Datos ofrece un conjunto de técnicas que permiten pasar de la simple observación de cifras agregadas a un diagnóstico detallado de fenómenos complejos. Entre estas técnicas se encuentran el análisis descriptivo, que resume y organiza la información; el análisis diagnóstico, que busca identificar relaciones y diferencias entre grupos; y el análisis exploratorio, que permite descubrir patrones no evidentes a simple vista (Wickham & Grolemund, 2017).
 
-Para el presente trabajo, la Ciencia de Datos se aplica con un enfoque predominantemente descriptivo y diagnóstico. Identificar patrones, diferencias y asociaciones entre las características de los jóvenes y su condición de desocupación. Este enfoque resulta coherente con la naturaleza de la pregunta de investigación, que busca comprender qué está ocurriendo y qué grupos presentan mayores brechas, más que predecir comportamientos futuros. 
+Para el presente trabajo, la Ciencia de Datos se aplica con un enfoque predominantemente descriptivo y diagnóstico. Identificar patrones, diferencias y asociaciones entre las características de los jóvenes y su condición de desocupación. Este enfoque resulta coherente con la naturaleza de la pregunta rectora del proyecto, que busca comprender qué está ocurriendo y qué grupos presentan mayores brechas, más que predecir comportamientos futuros. 
 
 **TABLA N. 3: Técnicas de Ciencia de Datos aplicadas en el proyecto**
 
@@ -401,7 +411,7 @@ En el presente trabajo, las tasas de desocupación, las distribuciones por edad,
 
 CRISP-DM, por sus siglas en inglés Cross-Industry Standard Process for Data Mining, es una metodología que organiza los proyectos de análisis de datos en seis fases iterativas. Fue desarrollada como un estándar interindustrial que puede adaptarse a diferentes contextos y tipos de problemas. IBM señala que el proceso es flexible y puede ajustarse a proyectos en los que el objetivo principal sea la exploración y visualización de datos, sin que sea necesario recorrer todas las fases con la misma profundidad (IBM, s. f.).
 
-Las seis fases de CRISP-DM son: comprensión del negocio, comprensión de los datos, preparación de los datos, modelado, evaluación y despliegue. En el presente trabajo, estas fases se adaptan de la siguiente manera. La fase de comprensión del negocio se traduce en la definición del alcance, la población, la pregunta de investigación, los objetivos y los indicadores requeridos. La fase de comprensión de los datos abarca la revisión de los diccionarios de variables, la calidad de la información, la cobertura, las categorías y los factores de expansión. La fase de preparación incluye el filtrado por edad, área urbana y PEA, la limpieza, la recodificación, la integración de fuentes y la creación de segmentos. La fase de modelado se orienta al análisis estadístico, la construcción de indicadores y la evaluación de asociaciones, dado que el proyecto no incluye modelos predictivos. La fase de evaluación comprende las comprobaciones de consistencia, el contraste con cifras oficiales y la revisión de resultados poco estables. Y la fase de despliegue se traduce en la construcción del tablero interactivo en Power BI, la interpretación de los hallazgos y la formulación de recomendaciones.
+Las seis fases de CRISP-DM son: comprensión del negocio, comprensión de los datos, preparación de los datos, modelado, evaluación y despliegue. En el presente trabajo, estas fases se adaptan de la siguiente manera. La fase de comprensión del negocio se traduce en la definición del alcance, la población, la pregunta rectora del proyecto, los objetivos y los indicadores requeridos. La fase de comprensión de los datos abarca la revisión de los diccionarios de variables, la calidad de la información, la cobertura, las categorías y los factores de expansión. La fase de preparación incluye el filtrado por edad, área urbana y PEA, la limpieza, la recodificación, la integración de fuentes y la creación de segmentos. La fase de modelado se orienta al análisis estadístico, la construcción de indicadores y la evaluación de asociaciones, dado que el proyecto no incluye modelos predictivos. La fase de evaluación comprende las comprobaciones de consistencia, el contraste con cifras oficiales y la revisión de resultados poco estables. Y la fase de despliegue se traduce en la construcción del tablero interactivo en Power BI, la interpretación de los hallazgos y la formulación de recomendaciones.
 
 ### **2.1.12. Python y Pandas como herramientas de análisis**
 
