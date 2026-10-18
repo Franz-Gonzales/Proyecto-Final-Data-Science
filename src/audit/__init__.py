@@ -5,5 +5,18 @@ Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca — C
 """
 
 from .audit_engine import AuditEngine, run_full_audit
+from .expert_validation_analysis import (
+    calcular_v_aiken,
+    calcular_alfa_cronbach,
+    analizar_respuestas_expertos,
+    DIMENSIONES_DEFAULT
+)
 
-__all__ = ["AuditEngine", "run_full_audit"]
+__all__ = [
+    "AuditEngine", 
+    "run_full_audit",
+    "calcular_v_aiken",
+    "calcular_alfa_cronbach",
+    "analizar_respuestas_expertos",
+    "DIMENSIONES_DEFAULT"
+]
