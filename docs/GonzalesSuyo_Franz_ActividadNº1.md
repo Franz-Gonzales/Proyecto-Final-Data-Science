@@ -87,6 +87,25 @@ La base de datos original contiene 52.650 observaciones. El primer filtro elimin
 
 La variable del factor de expansión `fact_trim_act` presentaba valores textuales con coma decimal, por ejemplo `'207,52'`. Este formato requirió una conversión a tipo numérico de coma flotante (`float64`) para evitar errores en las operaciones de suma ponderada. Se verificó que ningún registro presentara un factor nulo, negativo o igual a cero. La suma total de los ponderadores reproduce con exactitud la cifra de 1.380.841 personas estimadas por el sistema estadístico nacional para la PEA juvenil urbana.
 
+A nivel computacional, el filtrado muestral y la calibración del ponderador se implementaron en Python mediante la siguiente rutina representativa:
+
+```python
+# Delimitación del universo analítico y estandarización del factor de expansión
+df_bruto = pd.read_csv("data/raw/ECE_4T2025.csv", sep=';', encoding='latin1')
+
+# Filtros normativos: área urbana (1), edad 16 a 28 años y PEA activa (1)
+df_pea = df_bruto[
+    (df_bruto['area'] == 1) & 
+    (df_bruto['s1_03a'] >= 16) & (df_bruto['s1_03a'] <= 28) & 
+    (df_bruto['pea'] == 1)
+].copy()
+
+# Conversión del ponderador muestral a punto flotante (float64)
+df_pea['peso_trimestral'] = df_pea['fact_trim_act'].astype(str).str.replace(',', '.').astype(float)
+```
+
+Para consultar la implementación completa del módulo de ingeniería de datos y recodificación de microdatos, dirigirse al Anexo 6.
+
 ### 3.1.4. Resultados del análisis descriptivo univariado
 La tasa de desocupación se calculó dividiendo la población desocupada ponderada entre la PEA juvenil urbana ponderada y multiplicando por cien:
 
@@ -109,6 +128,21 @@ TABLA N.º 4: *Indicadores del mercado laboral juvenil urbano en Bolivia (cuarto
 
 La Tabla N.º 4 traslada los datos de las encuestas a la escala de la población boliviana urbana. En ella, los casos observados ($n$) corresponden a las personas encuestadas en campo por el INE, mientras que la población ponderada ($N$) proyecta a cuántos jóvenes representan en las ciudades según el factor de expansión muestral. La columna de proporción indica el porcentaje estimado para cada condición laboral y la meta del boletín comprueba que los resultados del estudio coinciden con las cifras oficiales publicadas por el Estado.
 
+El cálculo vectorizado de los totales poblacionales ponderados y las tasas macroeconómicas de la Tabla N.º 4 se ejecutó mediante la siguiente función central:
+
+```python
+# Cálculo de macromagnitudes y tasas oficiales ponderadas
+pob_pea = df_pea['peso_trimestral'].sum()
+pob_ocup = (df_pea['es_ocupado'] * df_pea['peso_trimestral']).sum()
+pob_desoc = (df_pea['es_desocupado'] * df_pea['peso_trimestral']).sum()
+pob_suboc = (df_pea['es_subocupado'] * df_pea['peso_trimestral']).sum()
+
+tasa_desocupacion = (pob_desoc / pob_pea) * 100       # Resultado: 3.71%
+tasa_subocupacion = (pob_suboc / pob_ocup) * 100       # Resultado: 8.70%
+```
+
+Para examinar en detalle el script de agregación y tablas estadísticas de macromagnitudes, dirigirse al Anexo 7.
+
 La tasa de desocupación juvenil del cuarto trimestre de 2025 se sitúa en 3,71%, coincidente con el 3,7% reportado en el boletín oficial del INE. Por su parte, la subocupación juvenil alcanza el 8,70% sobre la población ocupada, lo que equivale a 115.736 jóvenes que trabajaron menos de la jornada habitual, desearon trabajar más horas y estaban disponibles para hacerlo.
 
 FIGURA N.º 1: *Comparación de la tasa de desocupación general urbana y juvenil (cuarto trimestre de 2025)*
@@ -118,6 +152,20 @@ FIGURA N.º 1: *Comparación de la tasa de desocupación general urbana y juveni
 *FUENTE: Elaboración con base en datos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
 La Figura N.º 1 expone la brecha generacional del mercado de trabajo urbano. La barra gris refleja la desocupación en la población general de 14 años o más (2,30%), mientras que la barra azul evidencia la tasa de los jóvenes de 16 a 28 años (3,71%). Esta diferencia gráfica confirma que el desempleo afecta con una intensidad 1,61 veces mayor al segmento juvenil en las ciudades bolivianas.
+
+El gráfico comparativo de barras fue programado en Python utilizando Matplotlib conforme al siguiente bloque de código:
+
+```python
+# Generación de la comparativa visual general urbana vs juvenil (300 DPI)
+fig, ax = plt.subplots(figsize=(7, 4.5), dpi=300)
+categorias = ['Población urbana\n(14 años o más)', 'Jóvenes\n(16 a 28 años)']
+tasas = [2.30, 3.71]
+barras = ax.bar(categorias, tasas, color=['#7f8c8d', '#0F2C59'], width=0.45)
+ax.set_ylabel('Tasa de desocupación (%)')
+plt.savefig('outputs/figures/figura_1_desocupacion_general_vs_juvenil.png', dpi=300)
+```
+
+Para ver la parametrización visual completa de este gráfico y del catálogo de figuras, dirigirse al Anexo 8.
 
 Al contrastar la tasa de desocupación juvenil (3,71%) con la tasa de desocupación general de la población urbana de 14 años o más (2,30%), se observa que los jóvenes registran una incidencia de desempleo 1,61 veces mayor que la población adulta general.
 
@@ -146,6 +194,22 @@ La Tabla N.º 5 sintetiza los contrastes de asociación estadística para cada d
 
 Las variables de edad, sexo, departamento, tipo de hogar y parentesco presentan un p-valor inferior a 0,05, lo que confirma diferencias estadísticamente significativas en la desocupación de estos grupos. En cambio, las categorías agregadas de nivel educativo y asistencia a centros de enseñanza no mostraron una asociación global significativa mediante la prueba Chi-cuadrado, lo cual motivó un análisis continuo complementario mediante años de escolaridad.
 
+El procedimiento computacional para computar la matriz de contrastes inferenciales y los coeficientes V de Cramér de la Tabla N.º 5 se programó mediante el siguiente módulo en Python:
+
+```python
+# Contraste de hipótesis Chi-cuadrado de Pearson y cálculo de la V de Cramér
+from scipy.stats import chi2_contingency
+
+tabla_cruzada = pd.crosstab(df_pea[variable_analizada], df_pea['es_desocupado'])
+chi2, p_val, dof, _ = chi2_contingency(tabla_cruzada)
+
+n_muestral = tabla_cruzada.values.sum()
+r, c = tabla_cruzada.shape
+v_cramer = np.sqrt(chi2 / (n_muestral * min(r - 1, c - 1)))
+```
+
+Para consultar la formulación matemática y el código del generador de tablas de asociación, dirigirse al Anexo 1 y Anexo 7.
+
 ### 3.1.6. Desagregaciones por dimensión analítica
 
 #### A. Dimensión etaria
@@ -165,6 +229,15 @@ TABLA N.º 6: *Tasa de desocupación juvenil según tramo etario (Bolivia urbana
 
 La Tabla N.º 6 distribuye la desocupación entre los cuatro grupos de edad. La columna de población PEA ($N$) representa a los jóvenes activos en cada tramo y la población desocupada ($N$) proyecta cuántos buscan empleo. La tasa mide el riesgo puntual de desempleo dentro de cada rango etario, mientras que el porcentaje de desocupados señala qué proporción del total nacional de jóvenes desempleados aporta cada segmento.
 
+El cálculo agrupado de las tasas ponderadas por tramo etario se obtuvo mediante la siguiente instrucción:
+
+```python
+# Agrupación y cálculo de tasa ponderada por grupo etario
+tasas_edad = df_pea.groupby('grupo_edad', observed=False).apply(
+    lambda g: (g['es_desocupado'] * g['peso_trimestral']).sum() / g['peso_trimestral'].sum() * 100
+)
+```
+
 El grupo de 18 a 20 años exhibe la tasa más alta con un 4,65%, seguido por el grupo de 25 a 28 años con 3,88% y el grupo de 21 a 24 años con 3,55%. El tramo de 16 y 17 años registra la tasa más baja (1,87%), explicada por una menor participación económica activa en ese segmento etario.
 
 FIGURA N.º 2: *Tasa de desocupación juvenil por tramo etario (cuarto trimestre de 2025)*
@@ -174,6 +247,19 @@ FIGURA N.º 2: *Tasa de desocupación juvenil por tramo etario (cuarto trimestre
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
 La Figura N.º 2 resalta en color rojo el pico de desocupación en el grupo de 18 a 20 años (4,65%), la etapa donde los bachilleres intentan colocarse laboralmente por primera vez sin contar con experiencia ni formación técnica. En las edades posteriores (21 a 24 y 25 a 28 años), las barras descienden y se estabilizan cerca del promedio general, mientras que el tramo de 16 a 17 años muestra el valor más bajo (1,87%) debido a que la gran mayoría aún permanece en la escuela secundaria fuera de la fuerza de trabajo.
+
+La visualización de las tasas etarias y el resaltado visual del pico crítico en 18 a 20 años se implementaron con el siguiente código:
+
+```python
+# Gráfico de barras por tramo de edad resaltando el tramo crítico (18 a 20 años)
+fig, ax = plt.subplots(figsize=(8, 4.8), dpi=300)
+colores_edad = ['#95a5a6', '#8B0000', '#0F2C59', '#34495e']
+ax.bar(tasas_edad.index, tasas_edad.values, color=colores_edad, width=0.55)
+ax.set_ylabel('Tasa de desocupación ponderada (%)')
+plt.savefig('outputs/figures/figura_2_desocupacion_por_tramo_etario.png', dpi=300)
+```
+
+Para consultar la rutina de exportación de figuras a alta resolución, dirigirse al Anexo 8.
 
 #### B. Dimensión de género
 La distribución de la desocupación según el sexo de la persona evidencia una brecha desfavorable para las mujeres jóvenes.
@@ -190,6 +276,15 @@ TABLA N.º 7: *Tasa de desocupación juvenil según sexo (Bolivia urbana, 4T-202
 
 La Tabla N.º 7 organiza la información laboral según el sexo de la persona joven. La columna de muestra (*n*) indica el conteo de encuestados en el operativo de campo, mientras que la población PEA (*N*) y desocupada (*N*) representan los totales expandidos para el área urbana de Bolivia. La tasa de desocupación refleja la incidencia del desempleo en cada grupo (4,69% en mujeres frente a 2,85% en hombres), y el porcentaje de desocupados muestra que casi seis de cada diez jóvenes sin trabajo en el país son mujeres (59,10%), a pesar de que su participación en la fuerza de trabajo activa es menor a la de los varones.
 
+El cálculo cuantitativo de la brecha de género y las estimaciones por sexo se ejecutaron mediante la siguiente rutina:
+
+```python
+# Cálculo de la tasa ponderada de desocupación por sexo y determinación de la brecha
+tasa_hombres = (df_pea[df_pea['sexo'] == 'Hombre']['es_desocupado'] * df_pea[df_pea['sexo'] == 'Hombre']['peso_trimestral']).sum() / df_pea[df_pea['sexo'] == 'Hombre']['peso_trimestral'].sum() * 100
+tasa_mujeres = (df_pea[df_pea['sexo'] == 'Mujer']['es_desocupado'] * df_pea[df_pea['sexo'] == 'Mujer']['peso_trimestral']).sum() / df_pea[df_pea['sexo'] == 'Mujer']['peso_trimestral'].sum() * 100
+brecha_genero = tasa_mujeres - tasa_hombres   # Brecha: +1.84 puntos porcentuales
+```
+
 FIGURA N.º 3: *Tasa de desocupación juvenil según sexo y brecha de género (cuarto trimestre de 2025)*
 
 ![Brecha de género en desocupación](figures/figura_3_brecha_genero.png)
@@ -197,6 +292,19 @@ FIGURA N.º 3: *Tasa de desocupación juvenil según sexo y brecha de género (c
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
 La Figura N.º 3 ilustra la disparidad de género mediante dos barras comparativas: la barra azul de los hombres registra 2,85%, mientras que la barra carmesí de las mujeres alcanza 4,69%. El cuadro superior destaca la brecha neta de +1,84 puntos porcentuales en desmedro de las mujeres jóvenes, confirmada como estadísticamente significativa en el pie de figura ($\chi^2 = 5,24; p = 0,022$). Esta representación visual evidencia que una mujer joven en el área urbana de Bolivia enfrenta una probabilidad 1,65 veces mayor de encontrarse desocupada respecto a un varón de su misma edad.
+
+El código empleado para graficar la brecha de género y trazar la flecha de anotación analítica es el siguiente:
+
+```python
+# Graficación de la brecha de género y cuadro anotativo en Matplotlib
+fig, ax = plt.subplots(figsize=(6.5, 4.5), dpi=300)
+ax.bar(['Hombre', 'Mujer'], [2.85, 4.69], color=['#2980b9', '#c0392b'], width=0.45)
+ax.annotate('Brecha de género:\n+1.84 pp para mujeres', xy=(1, 4.69), xytext=(0.5, 5.2),
+            arrowprops=dict(facecolor='black', arrowstyle='->', lw=1), ha='center')
+plt.savefig('outputs/figures/figura_3_brecha_genero.png', dpi=300)
+```
+
+Para examinar las especificaciones de estilo y colorimetría institucional, dirigirse al Anexo 8.
 
 #### C. Dimensión territorial y departamental
 El análisis por departamento revela marcadas disparidades entre las diferentes regiones urbanas de Bolivia.
@@ -220,6 +328,15 @@ TABLA N.º 8: *Tasa de desocupación juvenil por departamento (Bolivia urbana, 4
 
 La Tabla N.º 8 presenta el panorama laboral juvenil en los nueve departamentos del país. La columna de muestra (*n*) y de población PEA (*N*) dimensionan el tamaño de la fuerza de trabajo urbana departamental, mientras que la tasa (%) mide la probabilidad de desocupación dentro de cada mercado local. Por su parte, la columna de porcentaje de desocupados (%) muestra la contribución de cada territorio al desempleo nacional, evidenciando que el eje central (Santa Cruz, La Paz y Cochabamba) concentra el 78,46% de los desocupados absolutos por su volumen demográfico, aunque las tasas relativas más severas corresponden a Chuquisaca (5,80%) y Tarija (4,72%).
 
+El cálculo y ordenamiento de las tasas departamentales ponderadas se realizó mediante la siguiente rutina:
+
+```python
+# Tasa departamental ponderada y ordenamiento analítico
+tasas_depto = df_pea.groupby('departamento', observed=False).apply(
+    lambda g: (g['es_desocupado'] * g['peso_trimestral']).sum() / g['peso_trimestral'].sum() * 100
+).sort_values(ascending=True)
+```
+
 FIGURA N.º 4: *Tasa de desocupación juvenil por departamento (cuarto trimestre de 2025)*
 
 ![Desocupación por departamento](figures/figura_4_desocupacion_por_departamento.png)
@@ -228,19 +345,53 @@ FIGURA N.º 4: *Tasa de desocupación juvenil por departamento (cuarto trimestre
 
 La Figura N.º 4 ordena los nueve departamentos de forma descendente mediante barras horizontales y los compara frente a la línea vertical dorada que marca el promedio nacional juvenil (3,71%). La barra superior en color rojo oscuro resalta a Chuquisaca con la tasa más elevada de Bolivia (5,80%), seguida por Tarija (4,72%), Cochabamba (4,71%) y La Paz (3,84%), las cuatro regiones que rebasan el promedio urbano. En contraste, los departamentos mineros y amazónicos como Beni (2,07%), Pando (1,89%) y Potosí (1,64%) se sitúan a la izquierda de la referencia, reflejando marcadas asimetrías productivas validadas por una prueba Chi-cuadrado altamente significativa ($\chi^2 = 23,69; p = 0,0026$).
 
+El código de generación de las barras horizontales con la línea de referencia nacional se estructuró de la siguiente forma:
+
+```python
+# Generación del gráfico horizontal de barras departamentales destacando Chuquisaca
+fig, ax = plt.subplots(figsize=(8.5, 5.5), dpi=300)
+barras = ax.barh(tasas_depto.index, tasas_depto.values, color='#0F2C59', height=0.6)
+for i, depto in enumerate(tasas_depto.index):
+    if depto == "Chuquisaca":
+        barras[i].set_color('#8B0000')  # Rojo colonial USFX
+ax.axvline(3.71, color='#C59B27', linestyle='--', linewidth=1.5, label='Promedio nacional (3.71%)')
+plt.savefig('outputs/figures/figura_4_desocupacion_por_departamento.png', dpi=300)
+```
+
+Para consultar el código completo de la dimensión territorial, dirigirse al Anexo 7 y Anexo 8.
+
 #### D. Dimensión educativa y escolaridad acumulada
 Al evaluar la tasa de desocupación según el máximo nivel educativo alcanzado, se registra una relación ascendente: las personas sin instrucción formal tienen una tasa de 2,31%, quienes completaron primaria alcanzan 3,43%, quienes cuentan con nivel secundario registran 4,02% y quienes accedieron a estudios universitarios registran 4,04%.
 
 TABLA N.º 9: *Comparación de años de escolaridad entre jóvenes ocupados y desocupados*
 
 | Condición de actividad | Casos (*n*) | Media ponderada (años) | Desviación estándar | Prueba estadística | Estadístico | p-valor |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Jóvenes ocupados | 6.406 | 12,64 | 2,63 | t de Student (Welch) | t = -2,39 | 0,0174 |
 | Jóvenes desocupados | 243 | 13,01 | 2,41 | Mann-Whitney U | U = 714.498,5 | 0,0293 |
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
 La Tabla N.º 9 compara el capital educativo acumulado entre jóvenes ocupados y desocupados. Las columnas de media ponderada y desviación estándar resumen el promedio y la dispersión de los años de estudio formal expandidos con el factor muestral. Para comprobar si la brecha observada es estadísticamente sólida, se aplicaron tanto la prueba paramétrica t de Welch ($t = -2,39; p = 0,0174$) como la no paramétrica de Mann-Whitney ($U = 714.498,5; p = 0,0293$), confirmando con un $p$-valor inferior a 0,05 que los jóvenes desocupados poseen en promedio mayor escolaridad (13,01 años frente a 12,64 años), lo que equivale a casi cuatro meses lectivos adicionales de instrucción.
+
+El contraste inferencial de escolaridad entre ocupados y desocupados se programó en Python de la siguiente manera:
+
+```python
+# Cálculo de medias ponderadas de escolaridad y pruebas de hipótesis (Welch y Mann-Whitney)
+from scipy.stats import ttest_ind, mannwhitneyu
+
+df_esc = df_pea[df_pea['anios_estudio'] > 0]
+ocu = df_esc[df_esc['es_ocupado'] == 1]
+des = df_esc[df_esc['es_desocupado'] == 1]
+
+media_ocu_pond = (ocu['anios_estudio'] * ocu['peso_trimestral']).sum() / ocu['peso_trimestral'].sum()
+media_des_pond = (des['anios_estudio'] * des['peso_trimestral']).sum() / des['peso_trimestral'].sum()
+
+stat_t, p_t = ttest_ind(ocu['anios_estudio'], des['anios_estudio'], equal_var=False)
+stat_u, p_u = mannwhitneyu(ocu['anios_estudio'], des['anios_estudio'], alternative='two-sided')
+```
+
+Para examinar el protocolo formal de contrastación de hipótesis de escolaridad, dirigirse al Anexo 4.
 
 FIGURA N.º 5: *Distribución de años de estudio: jóvenes ocupados y desocupados urbanos*
 
@@ -249,6 +400,17 @@ FIGURA N.º 5: *Distribución de años de estudio: jóvenes ocupados y desocupad
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
 La Figura N.º 5 analiza la distribución de la escolaridad mediante un gráfico de doble panel. En el panel superior, el diagrama de cajas muestra que la caja de los desocupados (color salmón) se encuentra desplazada a la derecha con una mediana de 13 años respecto a los 12 años de los ocupados (color verde), observándose además que estos últimos presentan mayor dispersión hacia niveles educativos bajos con valores atípicos entre 0 y 7 años de estudio. En el panel inferior, las curvas de densidad kernel (KDE) evidencian que los jóvenes ocupados se concentran densamente en el bachillerato (12 años), mientras que los desocupados sostienen una masa superior en el tramo de 14 a 18 años de estudio, lo que demuestra visualmente que el desempleo urbano abierto afecta de forma desproporcionada a jóvenes con estudios superiores o técnicos que buscan inserción calificada.
+
+La distribución bivariada de la Figura N.º 5 se generó mediante la integración de boxplot y curvas KDE ponderadas en Seaborn:
+
+```python
+# Distribución ponderada de años de estudio: diagrama de cajas y estimación de densidad KDE
+fig, (ax_box, ax_kde) = plt.subplots(2, 1, figsize=(8, 6), sharex=True, gridspec_kw={'height_ratios': [0.35, 0.65]}, dpi=300)
+ax_box.boxplot([ocu['anios_estudio'], des['anios_estudio']], orientation='horizontal', patch_artist=True)
+sns.kdeplot(data=ocu, x='anios_estudio', weights='peso_trimestral', ax=ax_kde, label='Ocupados', color='#27ae60', fill=True)
+sns.kdeplot(data=des, x='anios_estudio', weights='peso_trimestral', ax=ax_kde, label='Desocupados', color='#c0392b', fill=True)
+plt.savefig('outputs/figures/figura_8_distribucion_anios_estudio.png', dpi=300)
+```
 
 FIGURA N.º 6: *Tasa de desocupación juvenil según nivel educativo formal*
 
@@ -266,6 +428,20 @@ FIGURA N.º 7: *Tasa de desocupación juvenil según asistencia escolar o acadé
 
 La Figura N.º 7 evalúa si la concurrencia activa a centros educativos incide en el desempleo de los jóvenes pertenecientes a la fuerza laboral. La barra azul de quienes asisten a clases registra una tasa de 3,54%, mientras que la barra gris de quienes no asisten se sitúa en 3,92%, marcando una diferencia moderada de 0,38 puntos porcentuales. Al no alcanzar significancia estadística en la prueba Chi-cuadrado ($p = 0,2166$), el gráfico demuestra que la condición de estudiante activo no constituye un factor diferenciador decisivo frente al riesgo de desocupación en el área urbana.
 
+El cálculo de las tasas por nivel de instrucción y asistencia escolar se sintetizó con el siguiente comando:
+
+```python
+# Tasas de desocupación según credencial educativa y asistencia escolar
+tasas_nivel = df_pea.groupby('nivel_educativo', observed=False).apply(
+    lambda g: (g['es_desocupado'] * g['peso_trimestral']).sum() / g['peso_trimestral'].sum() * 100
+)
+tasas_asiste = df_pea.groupby('asiste_estudio', observed=False).apply(
+    lambda g: (g['es_desocupado'] * g['peso_trimestral']).sum() / g['peso_trimestral'].sum() * 100
+)
+```
+
+Para revisar el código de diseño de las Figuras 6 y 7, dirigirse al Anexo 8.
+
 #### E. Dinámica previa y canales de búsqueda de empleo
 La composición interna del desempleo juvenil urbano muestra que 45.882 personas (89,62%) corresponden a desocupados cesantes, es decir, jóvenes que ya contaban con un empleo anterior y se desvincularon por renuncia, despido o culminación de contrato. Los desocupados aspirantes, que buscan trabajo por primera vez, representan a 5.314 personas (10,38%).
 
@@ -276,6 +452,22 @@ FIGURA N.º 8: *Composición de la desocupación juvenil: cesantes y aspirantes*
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
 La Figura N.º 8 expone la estructura interna de los 51.196 jóvenes desocupados mediante un gráfico circular según su trayectoria de trabajo. El sector mayoritario en color naranja muestra que el 89,6% (45.882 jóvenes) corresponde a cesantes que perdieron o renunciaron a un empleo previo, mientras que el segmento morado de aspirantes concentra el 10,4% (5.314 jóvenes) que buscan trabajo por primera vez. La distribución ilustra que el desempleo juvenil urbano en Bolivia deriva principalmente de la inestabilidad y rotación en puestos de trabajo precarios antes que de barreras exclusivas para ingresar al mercado laboral.
+
+El cálculo de proporciones entre cesantes y aspirantes y el trazado de la dona en Python se ejecutaron mediante la siguiente rutina:
+
+```python
+# Proporción ponderada de cesantes y aspirantes entre desocupados
+desoc = df_pea[df_pea['es_desocupado'] == 1]
+peso_ces = desoc[desoc['es_cesante'] == 1]['peso_trimestral'].sum()
+peso_asp = desoc[desoc['es_aspirante'] == 1]['peso_trimestral'].sum()
+pct_ces = (peso_ces / (peso_ces + peso_asp)) * 100    # 89.62%
+pct_asp = (peso_asp / (peso_ces + peso_asp)) * 100    # 10.38%
+
+fig, ax = plt.subplots(figsize=(6.5, 5), dpi=300)
+ax.pie([pct_ces, pct_asp], labels=['Cesantes', 'Aspirantes'], autopct='%1.1f%%',
+       colors=['#e67e22', '#8e44ad'], wedgeprops=dict(width=0.45, edgecolor='white'))
+plt.savefig('outputs/figures/figura_5_cesantes_vs_aspirantes.png', dpi=300)
+```
 
 TABLA N.º 10: *Canales de búsqueda de empleo utilizados por jóvenes desocupados urbanos*
 
@@ -309,6 +501,20 @@ FIGURA N.º 10: *Tasa de desocupación juvenil según tipología de hogar*
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
 La Figura N.º 10 presenta las tasas de desocupación en siete estructuras familiares contrastadas contra la línea dorada del promedio nacional (3,71%). Las barras más prolongadas corresponden a hogares sin núcleo conyugal (6,18%), nucleares monoparentales (5,68%) y extendidos (5,37%), donde los jóvenes enfrentan mayor vulnerabilidad económica. Por el contrario, los hogares nucleares biparentales con hijos (2,67%) y compuestos (1,79%) registran tasas significativamente menores, patrón que la prueba Chi-cuadrado valida como estadísticamente significativo ($\chi^2 = 17,43; p = 0,0078$) e indicativo de cómo el respaldo del núcleo familiar modula la inserción laboral.
+
+El cálculo de canales de búsqueda y tasas por estructura del hogar se resolvió mediante la siguiente rutina:
+
+```python
+# Distribución porcentual de canales de búsqueda y desocupación por tipo de hogar
+dist_canales = desoc.groupby('mecanismo_busqueda', observed=False)['peso_trimestral'].sum()
+dist_canales_pct = (dist_canales / dist_canales.sum()) * 100
+
+tasas_hogar = df_pea.groupby('tipo_hogar', observed=False).apply(
+    lambda g: (g['es_desocupado'] * g['peso_trimestral']).sum() / g['peso_trimestral'].sum() * 100
+)
+```
+
+Para consultar el código de las Figuras 9 y 10, dirigirse al Anexo 8.
 
 ### 3.1.7. Arquitectura del modelo dimensional para Power BI Desktop
 Para facilitar la exploración visual y la toma de decisiones basada en datos, los microdatos procesados se organizaron en un esquema en estrella (*Star Schema*) dentro del proyecto de Power BI (`powerbi/Visualizacion-Analisis-Desocupacion.pbip`). El modelo semántico, serializado bajo el estándar TMDL (*Tabular Model Definition Language*), sitúa en el centro una tabla de hechos conectada a seis tablas dimensionales mediante relaciones unidireccionales de uno a muchos (1:N) con integridad referencial activa:
@@ -372,6 +578,23 @@ FIGURA N.º 11: *Vista del cuadro de mando en Power BI: Panorama laboral juvenil
 
 La Figura N.º 11 estructura la visión general del mercado de trabajo juvenil en dos niveles analíticos. En la banda superior, cinco tarjetas de indicadores (KPIs) resumen las cifras ponderadas oficiales: una fuerza laboral de 1,38 millones de jóvenes, de los cuales 1,33 millones se encuentran ocupados y 51,20 mil desocupados, arrojando una tasa de desocupación de 3,71% y una subocupación de 8,70%. En la sección inferior, el gráfico de dona izquierdo evidencia que el desempleo abierto representa al 3,71% de la PEA frente al 96,29% de ocupación; el gráfico de barras central resalta que la tasa juvenil supera con creces a la tasa nacional general urbana (2,30%), confirmando una sobreexposición de 1,61 veces mayor; y el gráfico de barras horizontales derecho desglosa la subutilización de mano de obra, demostrando que al sumar el desempleo abierto y la subocupación por horas, la presión laboral global alcanza un 12,41% de la juventud activa.
 
+A nivel de arquitectura de Business Intelligence, la página opera con las siguientes especificaciones:
+- **Entidades dimensionales:** `Fact_MercadoLaboral` relacionada con `Dim_Departamento`, `Dim_Sexo` y `Dim_GrupoEdad`.
+- **Tarjetas y KPIs:** `[PEA Juvenil Ponderada]`, `[Poblacion Ocupada]`, `[Poblacion Desocupada]`, `[Tasa Desocupacion Ponderada]`, `[Tasa Subocupacion Ponderada]`.
+- **Fórmula DAX rectora:**
+
+```dax
+// Tasa de desocupación juvenil oficial ponderada
+Tasa Desocupacion Ponderada = 
+DIVIDE(
+    CALCULATE(SUM('Fact_MercadoLaboral'[peso_trimestral]), 'Fact_MercadoLaboral'[es_desocupado] = 1),
+    SUM('Fact_MercadoLaboral'[peso_trimestral]),
+    0
+)
+```
+
+Para consultar el catálogo completo de las medidas DAX del reporte, dirigirse al Anexo 3.
+
 #### 3.1.8.2. Página 2: Desocupación por tramo etario y trayectoria
 La segunda página aborda el análisis desagregado de los cuatro tramos de edad establecidos en el proyecto. Permite constatar visualmente que los jóvenes de 18 a 20 años enfrentan la tasa de desocupación más crítica del país (4,65%), superando en casi un punto porcentual el promedio nacional juvenil. Asimismo, evidencia que el grupo de 25 a 28 años concentra el mayor volumen absoluto de desocupados (19.988 personas), vinculado a la búsqueda de plazas técnicas y profesionales.
 
@@ -383,6 +606,22 @@ FIGURA N.º 12: *Vista del cuadro de mando en Power BI: Desocupación por tramo 
 
 La Figura N.º 12 detalla la fricción laboral por edades. En las tarjetas superiores se identifican el pico crítico de desocupación en el tramo de 18 a 20 años (4,65%), el volumen de 13,50 mil jóvenes desempleados en ese rango, la concentración máxima absoluta en el grupo de 25 a 28 años con 19,99 mil personas y la tasa promedio nacional de 3,71%. En el cuerpo inferior, el gráfico de barras vertical izquierdo muestra la curva etaria de desocupación, evidenciando el salto abrupto desde 1,87% en adolescentes de 16 a 17 años hasta el pico de 4,65% en los recién egresados de secundaria, para estabilizarse en 3,55% (21 a 24 años) y 3,88% (25 a 28 años). El gráfico de barras agrupadas derecho, trazado en escala logarítmica, dimensiona a los ocupados (barras azules) frente a los desocupados (barras rojas), demostrando que el volumen de jóvenes insertos crece progresivamente con la edad, alcanzando casi medio millón de ocupados en el tramo superior.
 
+La configuración analítica implementada en esta vista incluye:
+- **Entidades dimensionales:** `Fact_MercadoLaboral` conectada a `Dim_GrupoEdad` (ordenada por `OrdenEtario`).
+- **Tarjetas y KPIs:** `[Tasa Desocupacion 18-20]` (4,65%), `[Desocupados 18-20]` (13.504), `[Desocupados 25-28]` (19.988), `[Tasa Promedio]` (3,71%).
+- **Fórmula DAX rectora:**
+
+```dax
+// Desocupados ponderados específicos por tramo etario
+Desocupados Tramo Etario = 
+CALCULATE(
+    [Poblacion Desocupada],
+    KEEPFILTERS('Dim_GrupoEdad'[grupo_edad])
+)
+```
+
+Para ver la parametrización de las dimensiones etarias y jerarquías, dirigirse al Anexo 3.
+
 #### 3.1.8.3. Página 3: Nivel formativo, capital humano y escolaridad
 La tercera página examina la interacción entre el nivel educativo y la inserción laboral. Presenta la paradoja del desempleo según credenciales académicas, donde los jóvenes con formación secundaria (4,02%) y superior universitaria (4,04%) exhiben tasas superiores a quienes poseen solo instrucción primaria (3,43%) o carecen de ella (2,31%). Incluye también la comparativa de desocupación entre quienes asisten a un centro educativo (3,54%) y quienes no asisten (3,92%), evaluando la compatibilidad entre estudio y actividad económica.
 
@@ -390,9 +629,26 @@ FIGURA N.º 13: *Vista del cuadro de mando en Power BI: Capital humano y nivel f
 
 ![Cuadro de mando: Capital humano y nivel formativo](figures/dashboard_pagina_3.png)
 
-*FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
+*FUENTE: Elaboración con base en el cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
 La Figura N.º 13 ilustra la relación entre educación y desocupación abierta. En el bloque superior, las tarjetas reportan las tasas de desempleo en egresados de secundaria (4,02%) y con formación universitaria (4,04%), la escolaridad media de los desocupados (13,01 años) y la brecha adicional de estudio equivalente a +4,5 meses lectivos frente a los ocupados. En el panel inferior izquierdo, el gráfico de barras horizontales hace visible el gradiente del desempleo ilustrado: las personas sin instrucción formal (2,31%) y con primaria (3,43%) registran menores tasas porque la necesidad económica las fuerza a ocuparse en cualquier empleo disponible, mientras que la secundaria y la universidad superan el promedio urbano. En el panel derecho, el gráfico de barras verticales compara la desocupación de quienes asisten a clases (3,54%) frente a quienes no asisten (3,92%), mostrando una brecha menor de 0,38 puntos porcentuales sin significancia estadística global.
+
+La estructura técnica de soporte para esta página se define por:
+- **Entidades dimensionales:** `Fact_MercadoLaboral` conectada a `Dim_NivelEducativo` y segmentador por `asiste_estudio`.
+- **Tarjetas y KPIs:** `[Tasa Desocupacion Secundaria]`, `[Tasa Desocupacion Superior]`, `[Promedio Anios Estudio Ponderado]`.
+- **Fórmula DAX rectora:**
+
+```dax
+// Promedio ponderado de años de estudio aprobados
+Promedio Anios Estudio Ponderado = 
+DIVIDE(
+    SUMX('Fact_MercadoLaboral', 'Fact_MercadoLaboral'[anios_estudio] * 'Fact_MercadoLaboral'[peso_trimestral]),
+    [PEA Juvenil Ponderada],
+    0
+)
+```
+
+Para consultar la contrastación de supuestos de escolaridad, dirigirse al Anexo 3 y Anexo 4.
 
 #### 3.1.8.4. Página 4: Disparidades de género y brechas territoriales
 La cuarta página expone la doble asimetría sociodemográfica que caracteriza al mercado laboral boliviano. A la izquierda se presenta la brecha de género, donde las mujeres registran un 4,69% de desempleo abierto frente al 2,85% de los varones (brecha de 1,84 puntos porcentuales). A la derecha se visualiza el ranking de los nueve departamentos, encabezado por Chuquisaca (5,80%), Tarija (4,72%) y Cochabamba (4,71%), contrastando con las tasas menores registradas en los departamentos del oriente y norte del país.
@@ -401,9 +657,23 @@ FIGURA N.º 14: *Vista del cuadro de mando en Power BI: Género y disparidades d
 
 ![Cuadro de mando: Género y disparidades departamentales](figures/dashboard_pagina_4.png)
 
-*FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
+*FUENTE: Elaboración con base en el cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
 La Figura N.º 14 sintetiza la dimensión demográfica y geográfica del desempleo. Las tarjetas superiores cuantifican la tasa femenina (4,69%), la tasa masculina (2,85%), la brecha neta desfavorable para las mujeres (+1,84 puntos porcentuales) y la tasa departamental máxima registrada en Chuquisaca (5,80%). En el panel izquierdo, el gráfico de barras verticales compara el desempleo por sexo, haciendo tangible la penalización laboral femenina. A la derecha, el gráfico de barras horizontales rankea a los nueve departamentos urbanos, evidenciando que Chuquisaca (5,80%), Tarija (4,72%), Cochabamba (4,71%) y La Paz (3,84%) se ubican por encima de la media nacional, mientras que Potosí (1,64%), Pando (1,89%) y Beni (2,07%) registran las menores tasas relativas.
+
+Los componentes analíticos de esta página responden al siguiente diseño:
+- **Entidades dimensionales:** `Fact_MercadoLaboral` vinculada a `Dim_Sexo` y `Dim_Departamento`.
+- **Tarjetas y KPIs:** `[Tasa Desocupacion Mujeres]`, `[Tasa Desocupacion Hombres]`, `[Brecha Desocupacion Genero pp]`, `[Tasa Chuquisaca]`.
+- **Fórmula DAX rectora:**
+
+```dax
+// Brecha estructural de género en puntos porcentuales (Mujeres - Hombres)
+Brecha Desocupacion Genero pp = 
+CALCULATE([Tasa Desocupacion Ponderada], 'Dim_Sexo'[sexo] = "Mujer") - 
+CALCULATE([Tasa Desocupacion Ponderada], 'Dim_Sexo'[sexo] = "Hombre")
+```
+
+Para consultar el código DAX de las desagregaciones geográficas, dirigirse al Anexo 3.
 
 #### 3.1.8.5. Página 5: Perfil del joven desocupado y mecanismos de búsqueda
 La quinta página profundiza en la composición interna de los desocupados. Mediante un gráfico de dona y barras agrupadas se muestra que el 89,62% (45.882 personas) corresponde a desocupados cesantes con trayectoria laboral previa, mientras que solo el 10,38% (5.314 personas) busca trabajo por primera vez. Asimismo, detalla los canales de intermediación utilizados, destacando las redes de parentesco y amistades junto con la presentación directa de credenciales.
@@ -412,9 +682,26 @@ FIGURA N.º 15: *Vista del cuadro de mando en Power BI: Perfil de cesantes y asp
 
 ![Cuadro de mando: Perfil de cesantes y aspirantes](figures/dashboard_pagina_5.png)
 
-*FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
+*FUENTE: Elaboración con base en el cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
 La Figura N.º 15 desglosa la trayectoria ocupacional previa y las vías de postulación de la juventud desocupada. En la parte superior, las tarjetas precisan que 45.882 jóvenes son cesantes (89,62% del total) y 5.314 son aspirantes a un primer empleo (10,38%). El gráfico de dona izquierdo refleja este marcado desbalance interno. En el centro, el gráfico de barras agrupadas muestra la distribución etaria en personas, evidenciando que los aspirantes alcanzan su volumen más alto en el tramo de 18 a 20 años (2.560 personas), mientras que los cesantes crecen con la edad hasta concentrar 18.551 personas entre los 25 y 28 años. A la derecha, el gráfico de barras horizontales clasifica los mecanismos de búsqueda activa, donde la consulta de avisos digitales o de prensa (20.848 personas) y la entrega de solicitudes o currículum (15.647 personas) absorben la gran mayoría de las gestiones, frente a una mínima proporción de consultas a parientes (889 personas) o planes de negocio independiente (654 personas).
+
+Los parámetros de soporte para esta visualización corresponden a:
+- **Entidades dimensionales:** `Fact_MercadoLaboral` conectada a `Dim_CondicionLaboral` y segmentada por `mecanismo_busqueda`.
+- **Tarjetas y KPIs:** `[Desocupados Cesantes]`, `[Desocupados Aspirantes]`, `[Proporcion Cesantes %]`, `[Proporcion Aspirantes %]`.
+- **Fórmula DAX rectora:**
+
+```dax
+// Proporción porcentual de desocupados cesantes sobre el total de desocupación abierta
+Proporcion Cesantes % = 
+DIVIDE(
+    CALCULATE(SUM('Fact_MercadoLaboral'[peso_trimestral]), 'Fact_MercadoLaboral'[es_cesante] = 1),
+    [Poblacion Desocupada],
+    0
+)
+```
+
+Para examinar las medidas asociadas a los canales de búsqueda, dirigirse al Anexo 3.
 
 #### 3.1.8.6. Página 6: Síntesis ejecutiva y matriz de políticas públicas
 La sexta página traduce la evidencia estadística en directrices orientadas a la toma de decisiones. Articula una matriz de priorización cuadrantal (impacto potencial frente a factibilidad operativa) y presenta tres hojas de ruta concretas: el fomento al primer empleo formal para jóvenes de 18 a 20 años, medidas de corresponsabilidad en el cuidado para mujeres jóvenes, y fondos de dinamización productiva regional para Chuquisaca y Tarija.
@@ -423,9 +710,26 @@ FIGURA N.º 16: *Vista del cuadro de mando en Power BI: Síntesis estratégica y
 
 ![Cuadro de mando: Síntesis estratégica y políticas públicas](figures/dashboard_pagina_6.png)
 
-*FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
+*FUENTE: Elaboración con base en el cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
 La Figura N.º 16 integra los focos prioritarios para la formulación de políticas públicas. Las tarjetas superiores señalan las metas de intervención estratégica: 13.504 desocupados en el tramo etario crítico de 18 a 20 años, 30.258 mujeres jóvenes desocupadas que requieren acciones afirmativas de inserción, una brecha de género a mitigar de +1,84 puntos porcentuales y la tasa más crítica radicada en Chuquisaca (5,80%). En el panel izquierdo, la matriz estratégica cruza los cuatro grupos de edad con sus volúmenes y tasas ponderadas, evidenciando que el tramo de 21 a 24 años registra la mayor subocupación horaria de Bolivia (10,77%), indicando subempleo involuntario en jóvenes universitarios. En el panel derecho, el gráfico de barras horizontales desagrega la desocupación por macrorregión ecológica, destacando que los Valles lideran la desocupación urbana con 4,89%, superando al Altiplano (3,40%) y a los Llanos (3,16%), lo cual delimita el ámbito territorial de mayor urgencia para programas productivos.
+
+La configuración técnica de la síntesis analítica comprende:
+- **Entidades dimensionales:** `Fact_MercadoLaboral` cruzada con segmentación estratégica etaria y macrorregional (`RegionGeografica`).
+- **Tarjetas y KPIs:** `[Foco 18-20 Desocupados]` (13.504), `[Foco Mujeres Desocupadas]` (30.258), `[Tasa Subocupacion 21-24]` (10,77%), `[Tasa Valles]` (4,89%).
+- **Fórmula DAX rectora:**
+
+```dax
+// Tasa de subocupación por tiempo en tramo etario universitario (21 a 24 años)
+Tasa Subocupacion 21-24 = 
+DIVIDE(
+    CALCULATE(SUM('Fact_MercadoLaboral'[peso_trimestral]), 'Fact_MercadoLaboral'[es_subocupado] = 1, 'Dim_GrupoEdad'[grupo_edad] = "21 a 24 años"),
+    CALCULATE(SUM('Fact_MercadoLaboral'[peso_trimestral]), 'Fact_MercadoLaboral'[es_ocupado] = 1, 'Dim_GrupoEdad'[grupo_edad] = "21 a 24 años"),
+    0
+)
+```
+
+Para consultar la matriz completa de trazabilidad metodológica y políticas públicas, dirigirse al Anexo 3 y Anexo 5.
 
 ---
 
@@ -647,6 +951,19 @@ FIGURA N.º 17: *Diagrama de radar de la evaluación integral de ciencia de dato
 ![Diagrama de Radar de Auditoría Externa de Ciencia de Datos](figures/auditoria_radar_evaluacion.png)
 
 *FUENTE: Generación automatizada mediante `src/audit/report_generator.py` a 300 DPI.*
+
+La ejecución del motor automatizado de auditoría y la exportación de las métricas de control de calidad se implementaron en Python mediante la siguiente rutina:
+
+```python
+# Ejecución integral del motor de auditoría y evaluación algorítmica
+from src.audit import run_full_audit
+
+# Inspección de los 6 pilares: P1 a P6
+reporte_auditoria = run_full_audit(PROJECT_ROOT)
+puntuacion_global = reporte_auditoria["summary"]["global_score"]  # Calificación: 9.70 / 10.00
+```
+
+Para consultar la arquitectura del motor de auditoría y los seis evaluadores algorítmicos, dirigirse al Anexo 9.
 
 #### 3.3.2. Dictamen crítico por pilar e inspección de evidencias
 
@@ -987,5 +1304,233 @@ El proyecto se organizó bajo las seis etapas estándar de la metodología CRISP
 | **4. Modelado y cálculo analítico** | Calcular tasas ponderadas y contrastar hipótesis de asociación estadística. | Ejecución de rutinas de agregación ponderada con `peso_trimestral`, pruebas $\chi^2$ de Pearson, coeficientes $V$ de Cramér y pruebas de escolaridad. | Scripts modulares `src/statistical_analysis.py` y catálogo de 13 tablas en `outputs/tables/`. |
 | **5. Evaluación y validación** | Contrastar los resultados frente a las metas oficiales del INE y auditar el código. | Verificación exacta frente al boletín de línea base (3,71% desocupación, 8,70% subocupación) y ejecución de auditoría automatizada con IA. | Informe formal de auditoría `informe_evaluacion_experto_ia.md` con calificación 9,70/10,0. |
 | **6. Despliegue y visualización** | Construir el tablero interactivo de Business Intelligence y el cuaderno ejecutable. | Diseño de modelo dimensional Star Schema Kimball, formulación de 36 medidas DAX ponderadas y arquitectura de 6 páginas PBIR. | Proyecto `powerbi/Visualizacion-Analisis-Desocupacion.pbip` y cuaderno `Proyecto-Final.ipynb`. |
+
+---
+
+## Anexo 6: Código fuente del módulo de preparación y calibración de microdatos (`src/data_processing.py`)
+
+El siguiente script implementa el proceso de ingesta, depuración y transformación de la base original del INE (52.650 registros) para consolidar el subconjunto de jóvenes urbanos en la PEA (6.649 registros):
+
+```python
+"""
+Pipeline de ingesta, limpieza, recodificación y calibración muestral.
+Fuente: Microdatos ECE 4T-2025 (INE). Universo: PEA urbana 16-28 años.
+"""
+import pandas as pd
+import numpy as np
+from pathlib import Path
+from src.config import DATA_RAW_CSV, DATA_PROCESSED_CSV, MAP_DEPARTAMENTOS, MAP_NIVEL_EDUCATIVO
+
+def cargar_y_filtrar_ece() -> pd.DataFrame:
+    """Carga microdatos brutos del INE y aplica los tres filtros de delimitación."""
+    print("[INFO] Cargando microdatos brutos...")
+    df = pd.read_csv(DATA_RAW_CSV, sep=';', encoding='latin1', low_memory=False)
+    
+    # 1. Filtro geográfico: Área urbana (area == 1)
+    df_urb = df[df['area'] == 1].copy()
+    
+    # 2. Filtro normativo etario: 16 a 28 años cumplidos (Ley N.º 342)
+    df_joven = df_urb[(df_urb['s1_03a'] >= 16) & (df_urb['s1_03a'] <= 28)].copy()
+    
+    # 3. Filtro laboral: Población Económicamente Activa (pea == 1)
+    df_pea = df_joven[df_joven['pea'] == 1].copy()
+    
+    print(f"[OK] Muestra depurada: {len(df_pea):,} registros de la PEA juvenil urbana.")
+    return df_pea
+
+def calibrar_y_recodificar(df: pd.DataFrame) -> pd.DataFrame:
+    """Estandariza el ponderador muestral y crea variables analíticas derivadas."""
+    # Tipado numérico del factor de expansión trimestral
+    df['peso_trimestral'] = df['fact_trim_act'].astype(str).str.replace(',', '.').astype(float)
+    
+    # Banderas binarias de condición de actividad
+    df['es_ocupado'] = (df['peao'] == 1).astype(int)
+    df['es_desocupado'] = (df['pead'] == 1).astype(int)
+    df['es_cesante'] = (df['peadces'] == 1).astype(int)
+    df['es_aspirante'] = (df['peadasp'] == 1).astype(int)
+    df['es_subocupado'] = (df['psubocup'] == 1).astype(int)
+    
+    # Segmentación en los cuatro tramos etarios del proyecto
+    bins = [15, 17, 20, 24, 28]
+    labels = ['16 a 17 años', '18 a 20 años', '21 a 24 años', '25 a 28 años']
+    df['grupo_edad'] = pd.cut(df['s1_03a'], bins=bins, labels=labels, right=True)
+    
+    # Recodificación categórica
+    df['sexo'] = df['s1_02'].map({1: 'Hombre', 2: 'Mujer'})
+    df['departamento'] = df['depto'].map(MAP_DEPARTAMENTOS)
+    df['nivel_educativo'] = df['niv_ed_g'].map(MAP_NIVEL_EDUCATIVO)
+    df['anios_estudio'] = pd.to_numeric(df['aestudio'], errors='coerce').fillna(0)
+    
+    return df
+
+def ejecutar_pipeline_datos():
+    """Ejecuta el pipeline completo y exporta el dataset procesado."""
+    df_pea = cargar_y_filtrar_ece()
+    df_final = calibrar_y_recodificar(df_pea)
+    DATA_PROCESSED_CSV.parent.mkdir(parents=True, exist_ok=True)
+    df_final.to_csv(DATA_PROCESSED_CSV, sep=';', index=False, encoding='utf-8-sig')
+    print(f"[EXITO] Dataset exportado: {DATA_PROCESSED_CSV.name} ({len(df_final):,} filas)")
+
+if __name__ == '__main__':
+    ejecutar_pipeline_datos()
+```
+
+---
+
+## Anexo 7: Código fuente del módulo de análisis estadístico ponderado (`src/statistical_analysis.py`)
+
+El siguiente script calcula las tasas ponderadas, genera las tablas de contingencia, ejecuta las pruebas de independencia Chi-cuadrado con la $V$ de Cramér y evalúa los contrastes inferenciales de escolaridad:
+
+```python
+"""
+Módulo de cálculo de estadísticas univariadas y bivariadas ponderadas.
+Pruebas de independencia Chi-cuadrado, V de Cramér y diferencias de escolaridad.
+"""
+import pandas as pd
+import numpy as np
+from scipy.stats import chi2_contingency, mannwhitneyu, ttest_ind
+from pathlib import Path
+from src.config import DATA_PROCESSED_CSV, OUTPUTS_TABLES_DIR
+
+def calcular_tasa_ponderada(df_sub: pd.DataFrame, var_target: str = 'es_desocupado', col_peso: str = 'peso_trimestral') -> dict:
+    """Calcula el tamaño muestral n, población expandida N y la tasa ponderada porcentual."""
+    n_muestral = len(df_sub)
+    if n_muestral == 0:
+        return {'n_muestral': 0, 'pob_total': 0.0, 'pob_target': 0.0, 'tasa_pct': 0.0}
+    
+    pob_total = df_sub[col_peso].sum()
+    pob_target = (df_sub[var_target] * df_sub[col_peso]).sum()
+    tasa = (pob_target / pob_total * 100) if pob_total > 0 else 0.0
+    
+    return {
+        'n_muestral': int(n_muestral),
+        'pob_total': round(pob_total, 1),
+        'pob_target': round(pob_target, 1),
+        'tasa_pct': round(tasa, 2)
+    }
+
+def calcular_chi2_y_cramer(df: pd.DataFrame, var_x: str, var_y: str = 'es_desocupado') -> dict:
+    """Calcula la prueba Chi-cuadrado de Pearson y el tamaño del efecto V de Cramér."""
+    tabla_muestral = pd.crosstab(df[var_x], df[var_y])
+    chi2, p_val, dof, _ = chi2_contingency(tabla_muestral)
+    
+    n = tabla_muestral.values.sum()
+    r, c = tabla_muestral.shape
+    v_cramer = np.sqrt(chi2 / (n * min(r - 1, c - 1))) if min(r - 1, c - 1) > 0 else 0.0
+    
+    return {
+        'Variable': var_x,
+        'Muestra_n': n,
+        'Grados_Libertad': dof,
+        'Chi2_Estadistico': round(chi2, 4),
+        'p_valor': round(p_val, 6),
+        'V_Cramer': round(v_cramer, 4),
+        'Asociacion_Significativa': bool(p_val < 0.05)
+    }
+
+def comparar_escolaridad(df: pd.DataFrame) -> dict:
+    """Contrasta la escolaridad entre jóvenes ocupados y desocupados (Welch y Mann-Whitney)."""
+    df_valid = df[df['anios_estudio'] > 0].copy()
+    ocu = df_valid[df_valid['es_ocupado'] == 1]
+    des = df_valid[df_valid['es_desocupado'] == 1]
+    
+    media_ocu_pond = (ocu['anios_estudio'] * ocu['peso_trimestral']).sum() / ocu['peso_trimestral'].sum()
+    media_des_pond = (des['anios_estudio'] * des['peso_trimestral']).sum() / des['peso_trimestral'].sum()
+    
+    stat_t, p_t = ttest_ind(ocu['anios_estudio'], des['anios_estudio'], equal_var=False)
+    stat_u, p_u = mannwhitneyu(ocu['anios_estudio'], des['anios_estudio'], alternative='two-sided')
+    
+    return {
+        'Media_Ocupados_Pond': round(media_ocu_pond, 2),
+        'Media_Desocupados_Pond': round(media_des_pond, 2),
+        'Diferencia_Pond': round(media_des_pond - media_ocu_pond, 2),
+        't_Student': round(stat_t, 4),
+        'p_valor_t': round(p_t, 4),
+        'Mann_Whitney_U': round(stat_u, 1),
+        'p_valor_u': round(p_u, 4)
+    }
+```
+
+---
+
+## Anexo 8: Código fuente del catálogo de figuras analíticas (`src/visualization.py`)
+
+El siguiente fragmento reúne las funciones de parametrización estética y renderizado gráfico de alta resolución (300 DPI) correspondientes a las figuras analíticas del estudio:
+
+```python
+"""
+Módulo de generación de visualizaciones a 300 DPI en Python.
+Estilo formal académico y paleta corporativa USFX CEPI.
+"""
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+from pathlib import Path
+
+# Configuración de estilos visuales estándar para la monografía
+plt.style.use('seaborn-v0_8-whitegrid')
+plt.rcParams['font.sans-serif'] = 'DejaVu Sans'
+plt.rcParams['axes.edgecolor'] = '#cccccc'
+plt.rcParams['axes.linewidth'] = 0.8
+
+COLORS = {
+    'usfx_blue': '#0F2C59',
+    'usfx_red': '#8B0000',
+    'usfx_gold': '#C59B27',
+    'hombre': '#2980b9',
+    'mujer': '#c0392b'
+}
+
+def exportar_figura_brecha_genero(df: pd.DataFrame, out_path: Path):
+    """Genera la Figura 3: Comparativa de tasas por sexo y anotación de brecha."""
+    res = df.groupby('sexo', observed=False).apply(
+        lambda g: (g['es_desocupado'] * g['peso_trimestral']).sum() / g['peso_trimestral'].sum() * 100
+    )
+    
+    fig, ax = plt.subplots(figsize=(6.5, 4.5), dpi=300)
+    barras = ax.bar(['Hombre', 'Mujer'], [res['Hombre'], res['Mujer']], 
+                    color=[COLORS['hombre'], COLORS['mujer']], width=0.45)
+    
+    ax.annotate('Brecha de género:\n+1.84 pp para mujeres', xy=(1, res['Mujer']), xytext=(0.5, 5.2),
+                arrowprops=dict(facecolor='black', arrowstyle='->', lw=1), ha='center',
+                bbox=dict(boxstyle="round,pad=0.3", fc="#fdfefe", ec="#bdc3c7", lw=1))
+    
+    ax.set_ylabel('Tasa de desocupación ponderada (%)')
+    ax.set_ylim(0, 6.2)
+    plt.tight_layout()
+    plt.savefig(out_path, dpi=300)
+    plt.close()
+```
+
+---
+
+## Anexo 9: Arquitectura y código de ejecución del motor de auditoría (`run_audit.py`)
+
+El script principal de auditoría algorítmica ejecuta la inspección ciega del repositorio verificando la trazabilidad de los seis pilares metodológicos:
+
+```python
+"""
+Lanzador de Auditoría Externa Automatizada (Lead Data Scientist AI).
+Proyecto: Análisis de Desocupación Juvenil en Bolivia (ECE 4T-2025).
+"""
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.audit import run_full_audit
+
+if __name__ == "__main__":
+    try:
+        reporte = run_full_audit(PROJECT_ROOT)
+        nota_global = reporte["summary"]["global_score"]
+        print(f"\n[DICTAMEN]: Calificación global: {nota_global:.2f} / 10.00 pts.")
+        sys.exit(0 if nota_global >= 7.0 else 1)
+    except Exception as e:
+        print(f"[ERROR]: Fallo crítico en auditoría: {e}", file=sys.stderr)
+        sys.exit(2)
+```
 
 
