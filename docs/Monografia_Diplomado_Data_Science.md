@@ -6,7 +6,7 @@
 
 Ing. Marcelo Arancibia
 
-> *[Imagen: escudo de la Universidad Mayor Real y Pontificia de San Francisco Xavier de Chuquisaca — "Universidad Mayor Real y Pontificia de San Francisco Xavier — Chuquisaca — Fundada en 27 de marzo de 1624"]*
+> *[Imagen: escudo de la Universidad Mayor Real y Pontificia de San Francisco Xavier de Chuquisaca - "Universidad Mayor Real y Pontificia de San Francisco Xavier - Chuquisaca - Fundada en 27 de marzo de 1624"]*
 
 ---
 
@@ -32,8 +32,13 @@ Ing. Marcelo Arancibia
 
 ```text
 ╭──────────────────────────────────────────────╮
+│  Portada                                     │
+│  Cesión de Derechos                          │
 │  Resumen                                     │
-│  Índices                                     │
+│  Índices (con numeración romana)             │
+│     I.   Índice de Contenido                 │
+│     II.  Índice de Tablas                    │
+│     III. Índice de Figuras                   │
 │  CAPITULO I: INTRODUCCION                    │
 │     1.1.  Antecedentes                       │
 │     1.2.  Problema o asunto del trabajo      │
@@ -55,8 +60,10 @@ Ing. Marcelo Arancibia
 
 Estructura del formato (versión lista):
 
+- Portada
+- Cesión de Derechos
 - Resumen
-- Índices
+- Índices (I. Contenido, II. Tablas, III. Figuras - numeración preliminar romana: i, ii, iii, iv, v)
 - **CAPITULO I: INTRODUCCION**
   - 1.1. Antecedentes
   - 1.2. Problema o asunto del trabajo

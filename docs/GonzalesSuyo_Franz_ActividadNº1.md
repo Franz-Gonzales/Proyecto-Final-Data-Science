@@ -1,8 +1,164 @@
+**UNIVERSIDAD MAYOR, REAL Y PONTIFICIA DE**  
+**SAN FRANCISCO XAVIER DE CHUQUISACA**
+
+**VICERRECTORADO**
+
+**CENTRO DE ESTUDIOS DE POSGRADO E INVESTIGACIÓN**
+
+**ANÁLISIS DE LOS FACTORES ASOCIADOS A LA DESOCUPACIÓN EN JÓVENES DE 16 A 28 AÑOS EN BOLIVIA**
+
+**AUTOR**
+
+**GONZALES SUYO FRANZ REINALDO**
+
+**Sucre - Bolivia**  
+**2026**
+
+---
+
+# CESIÓN DE DERECHOS
+
+El presente trabajo de monografía titulado: **"Análisis de los factores asociados a la desocupación en jóvenes de 16 a 28 años en Bolivia"**, presentado como requisito para la obtención del Certificado de Diplomado en Data Science del Centro de Estudios de Posgrado e Investigación (CEPI) de la Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca, constituye un documento de investigación aplicada original.
+
+El autor declara la autoría académica e intelectual del contenido, tratamiento metodológico, códigos de procesamiento de datos, modelos analíticos y resultados expuestos en este informe.
+
+Asimismo, en conformidad con la normativa interna de la institución, el autor autoriza y cede a la **Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca**, a través del **Centro de Estudios de Posgrado e Investigación (CEPI)** y su sistema de bibliotecas, el derecho para que pueda utilizar, catalogar, publicar y difundir en formato físico o digital el presente informe de proyecto con fines estrictamente académicos e investigativos, siempre que no exista perjuicio de los derechos morales que le corresponden al autor según la legislación vigente.
+
+Sucre, 2026
+
+__________________________________  
+**Gonzales Suyo Franz Reinaldo**  
+Autor
+
+---
+
 # RESUMEN
 
 La inserción laboral de la juventud en el área urbana de Bolivia presenta asimetrías estructurales asociadas a la transición entre el sistema educativo y el empleo productivo. Se analizaron los factores sociodemográficos, formativos, territoriales y de trayectoria laboral vinculados a la condición de desocupación en personas de 16 a 28 años pertenecientes a la Población Económicamente Activa. La metodología adaptó el ciclo de vida CRISP-DM a los microdatos oficiales de la Encuesta Continua de Empleo del cuarto trimestre de 2025 del Instituto Nacional de Estadística. Se procesó una muestra depurada de 6.649 registros individuales calibrados mediante el ponderador trimestral a un universo de 1.380.841 jóvenes, aplicando tabulaciones ponderadas, pruebas de independencia Chi-cuadrado de Pearson, coeficientes V de Cramér, contrastes paramétricos t de Student y un modelo dimensional en Power BI Desktop. Los resultados establecieron una tasa de desocupación juvenil del 3,71% y una subocupación por tiempo del 8,70%. Se constató una brecha de género estadísticamente significativa desfavorable hacia las mujeres de 1,84 puntos porcentuales (4,69% frente a 2,85% en varones), una mayor vulnerabilidad en el tramo de 18 a 20 años (4,65%), disparidades regionales encabezadas por Chuquisaca (5,80%) y Tarija (4,72%), un marcado predominio de desocupados cesantes (89,62% frente a 10,38% de aspirantes) y un promedio de escolaridad significativamente superior en jóvenes desocupados respecto a los ocupados (13,01 frente a 12,38 años de estudio). Se determinó que la desocupación juvenil no se origina en un déficit de instrucción formal, sino en dificultades de absorción en puestos calificados y cargas desproporcionadas de cuidado no remunerado, aportando una plataforma interactiva de inteligencia de negocios para orientar políticas públicas focalizadas en inserción temprana y formalización laboral.
 
 ***Palabras clave:*** *Desocupación juvenil, mercado laboral urbano, microdatos ECE, análisis de asociación, inteligencia de negocios.*
+
+---
+
+# I. ÍNDICE DE CONTENIDO
+
+CESIÓN DE DERECHOS ................................................................................................. i
+
+RESUMEN ....................................................................................................................... ii
+
+I. ÍNDICE DE CONTENIDO ............................................................................................. iii
+
+II. ÍNDICE DE TABLAS ................................................................................................... iv
+
+III. ÍNDICE DE FIGURAS ................................................................................................. v
+
+**CAPÍTULO III: RESULTADOS** ...................................................................................... 1
+
+3.1. Presentación de resultados ......................................................................................... 1
+
+   3.1.1. Contexto metodológico y dimensional ................................................................ 1
+
+   3.1.2. Trazabilidad del desarrollo bajo la metodología CRISP-DM ............................... 3
+
+   3.1.3. Componentes del trabajo final e ingeniería de datos ........................................... 4
+
+   3.1.4. Caracterización sociodemográfica y laboral de la muestra ................................. 5
+
+   3.1.5. Contrastes estadísticos de asociación e independencia ..................................... 7
+
+   3.1.6. Paradoja formativa y brecha de capital humano ................................................. 9
+
+   3.1.7. Mecanismos de intermediación y búsqueda de empleo ..................................... 11
+
+   3.1.8. Despliegue interactivo del cuadro de mando en Power BI ................................. 13
+
+3.2. Análisis de Resultados ................................................................................................ 19
+
+   3.2.1. Interpretación de la vulnerabilidad etaria en la inserción inicial ........................... 19
+
+   3.2.2. La brecha estructural de género y la economía del cuidado .............................. 21
+
+   3.2.3. Asimetrías productivas departamentales y absorción terciaria ............................ 22
+
+   3.2.4. La paradoja del desempleo ilustrado en mercados informales ............................ 24
+
+   3.2.5. La desocupación cesante como problema de retención laboral ........................... 26
+
+**CONCLUSIONES Y RECOMENDACIONES** ................................................................. 28
+
+Conclusiones .................................................................................................................... 28
+
+Recomendaciones ............................................................................................................. 30
+
+**REFERENCIAS BIBLIOGRÁFICAS** ............................................................................ 33
+
+**ANEXOS** ....................................................................................................................... 35
+
+---
+
+# II. ÍNDICE DE TABLAS
+
+TABLA N.º 1: Dimensión metodológica y aplicación en ciencia de datos ........................ 1
+
+TABLA N.º 2: Cumplimiento de hitos del proceso metodológico (CRISP-DM) ................. 3
+
+TABLA N.º 3: Componentes técnicos de la solución en ciencia de datos ......................... 4
+
+TABLA N.º 4: Estimaciones puntuales de desocupación y subocupación ......................... 5
+
+TABLA N.º 5: Distribución de la población juvenil urbana por tramo etario ..................... 6
+
+TABLA N.º 6: Desocupación juvenil según sexo ............................................................... 6
+
+TABLA N.º 7: Desocupación juvenil urbana según departamento ................................... 7
+
+TABLA N.º 8: Matriz sintética de contrastes Chi-cuadrado y V de Cramér ...................... 8
+
+TABLA N.º 9: Desocupación según condición de asistencia escolar ................................ 9
+
+TABLA N.º 10: Comparativa de años de escolaridad entre ocupados y desocupados ..... 10
+
+TABLA N.º 11: Estructura y catálogo de páginas del cuadro de mando en Power BI ...... 14
+
+TABLA N.º 12: Matriz sintética de hallazgos del análisis del mercado laboral juvenil ..... 19
+
+TABLA N.º 13: Matriz de consistencia entre objetivos, hallazgos y recomendaciones ... 31
+
+---
+
+# III. ÍNDICE DE FIGURAS
+
+FIGURA N.º 1: Desocupación general urbana frente a desocupación juvenil ................. 2
+
+FIGURA N.º 2: Tasa de desocupación juvenil según tramo etario .................................... 5
+
+FIGURA N.º 3: Comparativa de tasas de desocupación por sexo y brecha de género ..... 6
+
+FIGURA N.º 4: Tasa de desocupación juvenil por departamento ..................................... 7
+
+FIGURA N.º 5: Distribución de desocupados según condición laboral previa ................. 8
+
+FIGURA N.º 6: Tasa de desocupación juvenil según nivel educativo alcanzado ............ 9
+
+FIGURA N.º 7: Tasa de desocupación según condición de asistencia escolar ................ 10
+
+FIGURA N.º 8: Distribución de años de escolaridad según condición laboral ................. 11
+
+FIGURA N.º 9: Mecanismos de búsqueda de empleo utilizados por desocupados ......... 12
+
+FIGURA N.º 10: Desocupación juvenil según tipología del hogar ................................... 13
+
+FIGURA N.º 11: Vista del cuadro de mando en Power BI: Panorama laboral juvenil ....... 15
+
+FIGURA N.º 12: Vista del cuadro de mando en Power BI: Tramo etario ........................... 16
+
+FIGURA N.º 13: Vista del cuadro de mando en Power BI: Capital humano y nivel formativo 16
+
+FIGURA N.º 14: Vista del cuadro de mando en Power BI: Género y territorio ................. 17
+
+FIGURA N.º 15: Vista del cuadro de mando en Power BI: Perfil de desocupados ........... 17
+
+FIGURA N.º 16: Vista del cuadro de mando en Power BI: Políticas públicas ................... 18
 
 ---
 
@@ -967,12 +1123,12 @@ Para consultar la arquitectura del motor de auditoría y los seis evaluadores al
 
 #### 3.3.2. Dictamen crítico por pilar e inspección de evidencias
 
-1. **Ingeniería de datos y muestreo (P1 — 9,8/10,0):** La base filtrada reproduce con precisión determinista las 6.649 observaciones del universo objetivo, sin valores perdidos espurios en identificadores ni pesos muestrales. El factor de expansión `fact_trim_act` expande a 1.380.841 jóvenes. Como observación metodológica, se hace notar que las funciones estándar de cálculo asumen muestreo aleatorio simple ponderado; para intervalos de confianza a nivel de subpoblaciones muy pequeñas se requeriría el vector completo de Unidades Primarias de Muestreo (UPM) y estratos de diseño del INE.
-2. **Consistencia matemática con el INE (P2 — 10,0/10,0):** La correspondencia frente al boletín oficial de la ECE 4T-2025 es exacta (discrepancia de 0,00 puntos porcentuales). Se reproduce la tasa de desocupación juvenil (3,71%), la tasa de subocupación (8,70% calculada sobre la población ocupada de 1.329.645 jóvenes), el volumen de cesantes (45.882 personas; 89,6%) y la brecha neta de género (+1,84 pp).
-3. **Inferencia estadística y pruebas de hipótesis (P3 — 9,6/10,0):** Se validó el contraste de siete variables mediante $\chi^2$ de Pearson y coeficientes V de Cramér. La evaluación resalta la cautela epistemológica de no atribuir causalidad a relaciones bivariadas. Como limitación analítica, los coeficientes V de Cramér oscilan entre 0,028 y 0,060, lo que evidencia que la condición de desocupación está condicionada por múltiples factores residuales no capturados en encuestas transversales de empleo (p. ej., redes de contactos informales o transferencias intrafamiliares).
-4. **Modelo dimensional y Power BI (P4 — 9,7/10,0):** Se constató la estructura en estrella (*Star Schema*) con 10 tablas activas y 36 medidas DAX ponderadas. Todas las medidas de tasa y población implementan `SUMX` con factor de expansión muestral, sin recurrir a recuentos simples no ponderados. Los 39 componentes visuales distribuidos en las seis páginas del reporte en formato PBIR sincronizan con las cifras del proyecto.
-5. **Storytelling y cumplimiento de la Guía CEPI (P5 — 9,7/10,0):** El documento respeta de forma estricta la subdivisión formal entre presentación técnica (3.1) y análisis crítico (3.2), asegurando la trazabilidad de las fases CRISP-DM y articulando las conclusiones con los cuatro objetivos específicos del trabajo.
-6. **Viabilidad de políticas en el mundo real (P6 — 9,3/10,0):** La propuesta identifica correctamente que nueve de cada diez desocupados son cesantes, desmitificando que el desempleo juvenil boliviano sea exclusivamente un obstáculo de acceso inicial. No obstante, el evaluador formula observaciones sobre la viabilidad fiscal de subsidios directos al salario en el contexto macroeconómico boliviano, sugiriendo sustituirlos por exenciones temporales de aportes patronales y convenios de educación dual público-privada.
+1. **Ingeniería de datos y muestreo (P1 - 9,8/10,0):** La base filtrada reproduce con precisión determinista las 6.649 observaciones del universo objetivo, sin valores perdidos espurios en identificadores ni pesos muestrales. El factor de expansión `fact_trim_act` expande a 1.380.841 jóvenes. Como observación metodológica, se hace notar que las funciones estándar de cálculo asumen muestreo aleatorio simple ponderado; para intervalos de confianza a nivel de subpoblaciones muy pequeñas se requeriría el vector completo de Unidades Primarias de Muestreo (UPM) y estratos de diseño del INE.
+2. **Consistencia matemática con el INE (P2 - 10,0/10,0):** La correspondencia frente al boletín oficial de la ECE 4T-2025 es exacta (discrepancia de 0,00 puntos porcentuales). Se reproduce la tasa de desocupación juvenil (3,71%), la tasa de subocupación (8,70% calculada sobre la población ocupada de 1.329.645 jóvenes), el volumen de cesantes (45.882 personas; 89,6%) y la brecha neta de género (+1,84 pp).
+3. **Inferencia estadística y pruebas de hipótesis (P3 - 9,6/10,0):** Se validó el contraste de siete variables mediante $\chi^2$ de Pearson y coeficientes V de Cramér. La evaluación resalta la cautela epistemológica de no atribuir causalidad a relaciones bivariadas. Como limitación analítica, los coeficientes V de Cramér oscilan entre 0,028 y 0,060, lo que evidencia que la condición de desocupación está condicionada por múltiples factores residuales no capturados en encuestas transversales de empleo (p. ej., redes de contactos informales o transferencias intrafamiliares).
+4. **Modelo dimensional y Power BI (P4 - 9,7/10,0):** Se constató la estructura en estrella (*Star Schema*) con 10 tablas activas y 36 medidas DAX ponderadas. Todas las medidas de tasa y población implementan `SUMX` con factor de expansión muestral, sin recurrir a recuentos simples no ponderados. Los 39 componentes visuales distribuidos en las seis páginas del reporte en formato PBIR sincronizan con las cifras del proyecto.
+5. **Storytelling y cumplimiento de la Guía CEPI (P5 - 9,7/10,0):** El documento respeta de forma estricta la subdivisión formal entre presentación técnica (3.1) y análisis crítico (3.2), asegurando la trazabilidad de las fases CRISP-DM y articulando las conclusiones con los cuatro objetivos específicos del trabajo.
+6. **Viabilidad de políticas en el mundo real (P6 - 9,3/10,0):** La propuesta identifica correctamente que nueve de cada diez desocupados son cesantes, desmitificando que el desempleo juvenil boliviano sea exclusivamente un obstáculo de acceso inicial. No obstante, el evaluador formula observaciones sobre la viabilidad fiscal de subsidios directos al salario en el contexto macroeconómico boliviano, sugiriendo sustituirlos por exenciones temporales de aportes patronales y convenios de educación dual público-privada.
 
 #### 3.3.3. Consideraciones críticas sobre el funcionamiento del mercado laboral boliviano
 El análisis externo efectuado por el agente enfatiza dos advertencias sustantivas que enmarcan la interpretación de los resultados en el contexto nacional:
@@ -1271,7 +1427,7 @@ Al evaluar la educación mediante categorías agregadas (primaria, secundaria, t
 | :--- | :---: | :---: | :---: | :---: |
 | **Jóvenes desocupados** | 243 | **13,01** | 2,74 | 12,0 |
 | **Jóvenes ocupados** | 6.406 | **12,64** | 2,98 | 12,0 |
-| **Diferencia de medias** | — | **+0,37 años** | — | — |
+| **Diferencia de medias** | - | **+0,37 años** | - | - |
 
 ### 4.2. Evaluación de normalidad y pruebas inferenciales
 La distribución de los años de estudio en la población juvenil exhibe concentración en valores enteros (12 años correspondientes a bachillerato concluido), por lo que se aplicaron tanto una prueba paramétrica como una no paramétrica:

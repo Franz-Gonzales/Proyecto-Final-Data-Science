@@ -16,6 +16,22 @@
 
 ---
 
+# CESIÓN DE DERECHOS
+
+El presente trabajo de monografía titulado: **"Análisis de los factores asociados a la desocupación en jóvenes de 16 a 28 años en Bolivia"**, presentado como requisito para la obtención del Certificado de Diplomado en Data Science del Centro de Estudios de Posgrado e Investigación (CEPI) de la Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca, constituye un documento de investigación aplicada original.
+
+El autor declara la autoría académica e intelectual del contenido, tratamiento metodológico, códigos de procesamiento de datos, modelos analíticos y resultados expuestos en este informe.
+
+Asimismo, en conformidad con la normativa interna de la institución, el autor autoriza y cede a la **Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca**, a través del **Centro de Estudios de Posgrado e Investigación (CEPI)** y su sistema de bibliotecas, el derecho para que pueda utilizar, catalogar, publicar y difundir en formato físico o digital el presente informe de proyecto con fines estrictamente académicos e investigativos, siempre que no exista perjuicio de los derechos morales que le corresponden al autor según la legislación vigente.
+
+Sucre, 2026
+
+__________________________________  
+**Gonzales Suyo Franz Reinaldo**  
+Autor
+
+---
+
 # RESUMEN
 
 La inserción laboral de la juventud en el área urbana de Bolivia presenta asimetrías estructurales asociadas a la transición entre el sistema educativo y el empleo productivo. Se analizaron los factores sociodemográficos, formativos, territoriales y de trayectoria laboral vinculados a la condición de desocupación en personas de 16 a 28 años pertenecientes a la Población Económicamente Activa. La metodología adaptó el ciclo de vida CRISP-DM a los microdatos oficiales de la Encuesta Continua de Empleo del cuarto trimestre de 2025 del Instituto Nacional de Estadística. Se procesó una muestra depurada de 6.649 registros individuales calibrados mediante el ponderador trimestral a un universo de 1.380.841 jóvenes, aplicando tabulaciones ponderadas, pruebas de independencia Chi-cuadrado de Pearson, coeficientes V de Cramér, contrastes paramétricos t de Student y un modelo dimensional en Power BI Desktop. Los resultados establecieron una tasa de desocupación juvenil del 3,71% y una subocupación por tiempo del 8,70%. Se constató una brecha de género estadísticamente significativa desfavorable hacia las mujeres de 1,84 puntos porcentuales (4,69% frente a 2,85% en varones), una mayor vulnerabilidad en el tramo de 18 a 20 años (4,65%), disparidades regionales encabezadas por Chuquisaca (5,80%) y Tarija (4,72%), un marcado predominio de desocupados cesantes (89,62% frente a 10,38% de aspirantes) y un promedio de escolaridad significativamente superior en jóvenes desocupados respecto a los ocupados (13,01 frente a 12,38 años de estudio). Se determinó que la desocupación juvenil no se origina en un déficit de instrucción formal, sino en dificultades de absorción en puestos calificados y cargas desproporcionadas de cuidado no remunerado, aportando una plataforma interactiva de inteligencia de negocios para orientar políticas públicas focalizadas en inserción temprana y formalización laboral.
@@ -24,15 +40,17 @@ La inserción laboral de la juventud en el área urbana de Bolivia presenta asim
 
 ---
 
-**ÍNDICE DE CONTENIDO**
+# I. ÍNDICE DE CONTENIDO
 
-RESUMEN ....................................................................................................................... i
+CESIÓN DE DERECHOS ................................................................................................. i
 
-ÍNDICE DE CONTENIDO ................................................................................................ ii
+RESUMEN ....................................................................................................................... ii
 
-ÍNDICE DE TABLAS ....................................................................................................... iii
+I. ÍNDICE DE CONTENIDO ............................................................................................. iii
 
-ÍNDICE DE FIGURAS ..................................................................................................... iv
+II. ÍNDICE DE TABLAS ................................................................................................... iv
+
+III. ÍNDICE DE FIGURAS ................................................................................................. v
 
 **CAPÍTULO I: INTRODUCCIÓN** ...................................................................................... 7
 
@@ -128,19 +146,31 @@ RESUMEN ........................................................................
 
 **REFERENCIAS BIBLIOGRÁFICAS** ............................................................................ 40
 
-**ÍNDICE DE TABLAS**
+---
 
-TABLA N.1: Fuentes de información previstas .............................................................. 11 
+# II. ÍNDICE DE TABLAS
 
-TABLA N.2: Fases de CRISP-DM adaptadas al proyecto ............................................. 13 TABLA N.3: Técnicas de Ciencia de Datos aplicadas en el proyecto ............................ 18 
+TABLA N.º 1: Fuentes de información previstas .............................................................. 11 
 
-TABLA N.4: Dimensiones y variables de análisis .......................................................... 25 TABLA N.5: Variables educativas disponibles en las fuentes de datos ……….............. 36
+TABLA N.º 2: Fases de CRISP-DM adaptadas al proyecto ............................................. 13 
 
-**ÍNDICE DE FIGURAS**
+TABLA N.º 3: Técnicas de Ciencia de Datos aplicadas en el proyecto ............................ 18 
 
-FIGURA N. 1: Bolivia urbana: tasa de desocupación general y juvenil, cuarto trimestre de 2025 ........................................................................................................................... 3 
+TABLA N.º 4: Dimensiones y variables de análisis .......................................................... 25 
 
-FIGURA N. 2: Ruta metodológica CRISP-DM adaptada al proyecto ............................. 14 FIGURA N. 3: Modelo conceptual del análisis de factores asociados a la desocupación juvenil ............................................................................................................................ 31
+TABLA N.º 5: Variables educativas disponibles en las fuentes de datos ......................... 36
+
+---
+
+# III. ÍNDICE DE FIGURAS
+
+FIGURA N.º 1: Bolivia urbana: tasa de desocupación general y juvenil, cuarto trimestre de 2025 ........................................................................................................................... 3 
+
+FIGURA N.º 2: Ruta metodológica CRISP-DM adaptada al proyecto ............................. 14 
+
+FIGURA N.º 3: Modelo conceptual del análisis de factores asociados a la desocupación juvenil ............................................................................................................................ 31
+
+---
 
 ## **CAPITULO I: INTRODUCCION**
 
