@@ -52,6 +52,8 @@ Ing. Marcelo Arancibia
 │  CAPITULO III: RESULTADOS                    │
 │     3.1. Presentación de resultados          │
 │     3.2. Análisis de Resultados              │
+│     3.3. Auditoría Externa de IA             │
+│     3.4. Validación por Panel de Expertos    │
 │  CONCLUSIONES Y RECOMENDACIONES              │
 │  REFERENCIAS BIBLIOGRAFICAS                  │
 │  ANEXOS                                      │
@@ -77,6 +79,8 @@ Estructura del formato (versión lista):
 - **CAPITULO III: RESULTADOS**
   - 3.1. Presentación de resultados
   - 3.2. Análisis de Resultados
+  - 3.3. Auditoría Externa de IA
+  - 3.4. Validación por Panel de Expertos
 - **CONCLUSIONES Y RECOMENDACIONES**
 - **REFERENCIAS BIBLIOGRAFICAS**
 - **ANEXOS**

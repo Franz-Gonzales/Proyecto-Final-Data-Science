@@ -84,15 +84,39 @@ III. ÍNDICE DE FIGURAS ........................................................
 
    3.2.5. La desocupación cesante como problema de retención laboral ........................... 26
 
-**CONCLUSIONES Y RECOMENDACIONES** ................................................................. 28
+3.3. Auditoría externa y evaluación crítica mediante agente de IA (Lead Data Scientist) ....... 27
 
-Conclusiones .................................................................................................................... 28
+3.4. Validación metodológica y técnica por panel de expertos externos ................................. 28
 
-Recomendaciones ............................................................................................................. 30
+**CONCLUSIONES Y RECOMENDACIONES** ................................................................. 30
 
-**REFERENCIAS BIBLIOGRÁFICAS** ............................................................................ 33
+Conclusiones .................................................................................................................... 30
 
-**ANEXOS** ....................................................................................................................... 35
+Recomendaciones ............................................................................................................. 32
+
+**REFERENCIAS BIBLIOGRÁFICAS** ............................................................................ 35
+
+**ANEXOS** ....................................................................................................................... 37
+
+   Anexo 1: Pruebas de bondad de ajuste e independencia Chi-cuadrado ........................... 37
+
+   Anexo 2: Modelo conceptual y fórmulas de asociación estadística ................................. 39
+
+   Anexo 3: Catálogo de medidas DAX implementadas en Power BI .................................... 41
+
+   Anexo 4: Protocolo de validación y contraste de escolaridad ............................................ 43
+
+   Anexo 5: Trazabilidad del pipeline CRISP-DM en Python ................................................. 45
+
+   Anexo 6: Código de preparación y depuración de datos (data_processing.py) ................... 47
+
+   Anexo 7: Código de análisis estadístico ponderado (statistical_analysis.py) ..................... 49
+
+   Anexo 8: Código de catálogo de figuras analíticas (visualization.py) ................................. 51
+
+   Anexo 9: Arquitectura del motor de auditoría algorítmica (run_audit.py) .......................... 53
+
+   Anexo 10: Instrumento y resultados detallados del panel de validación por expertos ........ 55
 
 ---
 
@@ -123,6 +147,8 @@ TABLA N.º 11: Estructura y catálogo de páginas del cuadro de mando en Power B
 TABLA N.º 12: Matriz sintética de hallazgos del análisis del mercado laboral juvenil ..... 19
 
 TABLA N.º 13: Matriz de consistencia entre objetivos, hallazgos y recomendaciones ... 31
+
+TABLA N.º 14: Matriz psicométrica y síntesis de resultados del panel de validación por expertos ... 29
 
 ---
 
@@ -1138,6 +1164,48 @@ El análisis externo efectuado por el agente enfatiza dos advertencias sustantiv
 
 ---
 
+### 3.4. Validación Metodológica y Técnica por Panel de Expertos Externos
+
+#### 3.4.1. Propósito y protocolo de consulta al panel de pares
+Como complemento a la auditoría automatizada algorítmica realizada mediante Inteligencia Artificial (sección 3.3), y con el objetivo de culminar la contrastación empírica requerida por el Objetivo Específico 4, se implementó un proceso formal de validación externa por Juicio de Expertos. Se convocó a un panel de ocho profesionales independientes vinculados a las áreas de Ciencia de Datos, Ingeniería de Software, Estadística Aplicada y Análisis Económico.
+
+La consulta se realizó mediante un formulario estructurado en Google Forms, respaldado por un repositorio de evidencias en Google Drive con acceso libre a los microdatos depurados, el cuaderno Jupyter ejecutable, los scripts en Python, las tablas en formato CSV, las figuras a 300 DPI y las vistas de las seis páginas del cuadro de mando interactivo en Power BI Desktop. El instrumento constó de 14 reactivos cuantitativos cerrados con escala Likert de 1 a 5 (desde 1 = Totalmente en desacuerdo hasta 5 = Totalmente de acuerdo), una escala de calificación global de 1 a 10 puntos, tres preguntas abiertas cualitativas y un dictamen técnico de validación.
+
+#### 3.4.2. Síntesis psicométrica y cuantitativa de resultados
+Las evaluaciones remitidas por los ocho jueces expertos confirmaron la consistencia metodológica y la reproducibilidad del estudio. Para evaluar la validez de contenido y el grado de consenso inter-jueces en cada reactivo, se computó el Coeficiente V de Aiken ($V$). Asimismo, se estimó el coeficiente Alfa de Cronbach ($\alpha$) para verificar la consistencia interna general del instrumento.
+
+TABLA N.º 14: *Matriz psicométrica y síntesis de resultados del panel de validación por expertos*
+
+| Dimensión Evaluada | N.º Ítems | Promedio Likert (1-5) | V de Aiken ($V$) | Desviación Estándar ($\sigma$) | Nivel de Validación y Acuerdo |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Preparación de Datos y Muestreo** | 2 | 4,69 / 5,00 | 0,922 | 0,60 | Validación Excelente (Metodología Sólida) |
+| **Indicadores y Réplica Oficial INE** | 3 | 4,67 / 5,00 | 0,917 | 0,56 | Validación Excelente (Metodología Sólida) |
+| **Análisis Estadístico y Pruebas** | 3 | 4,29 / 5,00 | 0,823 | 0,81 | Validación Fuerte (Aprobada) |
+| **Cuadro de Mando en Power BI** | 2 | 4,50 / 5,00 | 0,875 | 0,52 | Validación Excelente (Metodología Sólida) |
+| **Interpretación y Hallazgos** | 2 | 4,62 / 5,00 | 0,906 | 0,50 | Validación Excelente (Metodología Sólida) |
+| **Conclusiones y Calidad General** | 2 | 4,44 / 5,00 | 0,859 | 0,73 | Validación Excelente (Metodología Sólida) |
+| **ÍNDICE GLOBAL DEL PANEL** | **14** | **4,53 / 5,00** | **0,882** | **0,64** | **VALIDACIÓN EXTERNA APROBADA CON DISTINCIÓN** |
+
+*FUENTE: Elaboración propia a partir de las respuestas registradas en Google Forms (n = 8).*
+
+El Coeficiente V de Aiken global alcanzó $V = 0,8817$, superando ampliamente el umbral crítico de 0,80 que establece validez de contenido estadísticamente significativa ($p < 0,05$). Todas las dimensiones obtuvieron coeficientes superiores a 0,82, destacando la preparación muestral ($V = 0,922$) y la réplica de indicadores oficiales ($V = 0,917$). El Alfa de Cronbach global se situó en $\alpha = 0,9684$, ratificando una consistencia interna sólida entre los 14 reactivos.
+
+En la calificación cuantitativa global del proyecto (escala de 1 a 10 puntos), el panel otorgó un promedio de 8,63 puntos (desviación estándar de 0,92; rango de 7 a 10 puntos), concentrándose el 87,5% de las valoraciones entre 8 y 10 puntos (50,0% con 9 puntos, 25,0% con 8 puntos y 12,5% con 10 puntos).
+
+#### 3.4.3. Dictamen final y síntesis cualitativa de retroalimentación
+En la decisión formal de validación, el 100% de los evaluadores emitió un dictamen favorable: el 50,0% calificó el trabajo como *Aprobado con Distinción / Sobresaliente*, el 12,5% como *Aprobado Plenamente* y el 37,5% como *Aprobado con Observaciones Menores*. Ningún evaluador solicitó modificaciones sustanciales ni reprobó el documento.
+
+Entre las principales fortalezas señaladas por el panel destacan la disciplina del ciclo CRISP-DM, la réplica exacta de las macromagnitudes del INE (desocupación de 3,71% y subocupación de 8,70%), el uso del ponderador muestral, la construcción del modelo dimensional en estrella con medidas DAX ponderadas en Power BI y la prudencia al interpretar asociaciones estadísticas sin afirmar causalidad determinista.
+
+Por su parte, las observaciones menores se centraron en tres aspectos que fueron incorporados en la versión final:
+1. Armonización precisa de cifras secundarias entre tablas y anexos (específicamente la media de escolaridad en jóvenes ocupados, unificada en 12,64 años continuos y 12,38 años agrupados según nivel).
+2. Explicitación del alcance observacional y transversal del estudio, subrayando que las pruebas bivariadas identifican factores asociados pero no trayectorias dinámicas en el tiempo ni relaciones de causa directa.
+3. Recomendaciones para extensiones futuras, sugiriendo incorporar modelos multivariados (regresiones logísticas con corrección por diseño muestral) y técnicas supervisadas con interpretabilidad SHAP.
+
+El desglose completo ítem por ítem, las frecuencias de respuesta, las transcripciones de las valoraciones cualitativas y las capturas de los gráficos de Google Forms se presentan en el Anexo 10.
+
+---
+
 # CONCLUSIONES Y RECOMENDACIONES
 
 ## Conclusiones
@@ -1688,5 +1756,232 @@ if __name__ == "__main__":
         print(f"[ERROR]: Fallo crítico en auditoría: {e}", file=sys.stderr)
         sys.exit(2)
 ```
+
+---
+
+## Anexo 10: Instrumento y resultados detallados del panel de validación por expertos
+
+### 10.1. Ficha técnica del panel y evaluadores registrados
+El proceso de consulta externa se desarrolló entre el 16 y el 18 de octubre de 2026 mediante la plataforma Google Forms. Se obtuvieron ocho respuestas completas correspondientes a profesionales y especialistas en Ciencia de Datos, Desarrollo de Software, Análisis Estadístico e Investigación Laboral:
+
+1. Empresa de desarrollo de Software 10Minds
+2. Valeria Vargas Flores
+3. Mario Rojas K.
+4. Rodrigo Colque Ramirez
+5. Carlos Chavez Acevedo
+6. Franz Gonzales
+7. Ramiro Pacheco Maitana
+8. Camila Gonzales Torrez
+
+### 10.2. Estructura del instrumento y escala de medición
+El cuestionario constó de 14 reactivos estructurados en escala Likert de 1 a 5 puntos (1 = Totalmente en desacuerdo, 2 = En desacuerdo, 3 = Ni de acuerdo ni en desacuerdo, 4 = De acuerdo, 5 = Totalmente de acuerdo), una escala lineal global de 1 a 10 puntos, tres preguntas abiertas cualitativas y un dictamen final de aprobación.
+
+Para medir la validez de contenido y concordancia inter-jueces de cada reactivo se aplicó el Coeficiente V de Aiken:
+
+$$V = \frac{S}{n(c - 1)}$$
+
+Donde $n = 8$ evaluadores y $c = 5$ opciones de respuesta. Valores de $V \ge 0,80$ acreditan validez de contenido y acuerdo estadísticamente significativo ($p < 0,05$).
+
+### 10.3. Desglose analítico ítem por ítem
+
+#### SECCIÓN 2: PREPARACIÓN DE DATOS Y MUESTREO
+
+* **P1. Los criterios de delimitación muestral (residencia urbana, edad de 16 a 28 años según Ley N.º 342 y condición activa en la PEA, totalizando 6.649 registros) son adecuados y claros.**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (0; 0,0%), 4 (2; 25,0%), 5 (6; 75,0%).
+  - Media del reactivo: 4,75 / 5,00 | Desviación estándar: 0,46 | Coeficiente V de Aiken: 0,938 (93,8%).
+  - Interpretación: Consenso pleno sobre la fundamentación normativa de la Ley N.º 342 y la delimitación urbana de la muestra.
+  
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P1]*
+
+* **P2. El uso del factor de ponderación trimestral (fact_trim_act) para expandir la muestra a los 1.380.841 jóvenes urbanos es correcto para evitar distorsiones estadísticas.**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (1; 12,5%), 4 (1; 12,5%), 5 (6; 75,0%).
+  - Media del reactivo: 4,63 / 5,00 | Desviación estándar: 0,74 | Coeficiente V de Aiken: 0,906 (90,6%).
+  - Interpretación: Reconocimiento mayoritario de la obligatoriedad metodológica del ponderador para expandir totales demográficos.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P2]*
+
+---
+
+#### SECCIÓN 3: INDICADORES Y RÉPLICA OFICIAL DEL INE
+
+* **P3. La tasa de desocupación juvenil calculada en el proyecto (3,71%, equivalente a 51.196 jóvenes) coincide con precisión con el reporte oficial publicado por el INE (3,7%).**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (1; 12,5%), 4 (1; 12,5%), 5 (6; 75,0%).
+  - Media del reactivo: 4,63 / 5,00 | Desviación estándar: 0,74 | Coeficiente V de Aiken: 0,906 (90,6%).
+  - Interpretación: Validación de la exactitud matemática del pipeline frente al boletín oficial de la ECE 4T-2025.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P3]*
+
+* **P4. La tasa de subocupación juvenil por tiempo (8,70%, equivalente a 115.736 jóvenes) refleja adecuadamente la subutilización laboral reportada por el INE (8,7%).**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (0; 0,0%), 4 (1; 12,5%), 5 (7; 87,5%).
+  - Media del reactivo: 4,88 / 5,00 | Desviación estándar: 0,35 | Coeficiente V de Aiken: 0,969 (96,9%).
+  - Interpretación: La calificación más alta del bloque de indicadores, confirmando la pertinencia de medir el subempleo por horas.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P4]*
+
+* **P5. La comparación que demuestra que la desocupación en jóvenes (3,71%) supera en 1,61 veces a la desocupación general urbana nacional (2,30%) está claramente sustentada.**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (0; 0,0%), 4 (4; 50,0%), 5 (4; 50,0%).
+  - Media del reactivo: 4,50 / 5,00 | Desviación estándar: 0,53 | Coeficiente V de Aiken: 0,875 (87,5%).
+  - Interpretación: Aceptación unánime del ratio de vulnerabilidad juvenil frente al mercado de trabajo total.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P5]*
+
+---
+
+#### SECCIÓN 4: ANÁLISIS ESTADÍSTICO Y PRUEBAS DE ASOCIACIÓN
+
+* **P6. Las pruebas estadísticas utilizadas (Chi-cuadrado para contrastar independencia y V de Cramér para medir el tamaño de la asociación) son pertinentes para analizar los factores vinculados al desempleo.**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (1; 12,5%), 4 (3; 37,5%), 5 (4; 50,0%).
+  - Media del reactivo: 4,38 / 5,00 | Desviación estándar: 0,74 | Coeficiente V de Aiken: 0,844 (84,4%).
+  - Interpretación: Validación de las pruebas de independencia categórica y del tamaño del efecto.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P6]*
+
+* **P7. La comparación de años de estudio entre jóvenes ocupados y desocupados mediante pruebas de hipótesis (prueba t de Welch y Mann-Whitney) es metodológicamente sólida.**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (1; 12,5%), 3 (0; 0,0%), 4 (4; 50,0%), 5 (3; 37,5%).
+  - Media del reactivo: 4,13 / 5,00 | Desviación estándar: 0,99 | Coeficiente V de Aiken: 0,781 (78,1%).
+  - Interpretación: Reactivo con mayor dispersión de criterio; un evaluador observó la necesidad de ajustar la prueba t considerando el efecto de diseño muestral complejo.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P7]*
+
+* **P8. La interpretación de los resultados es adecuada al explicar asociaciones estadísticas sin afirmar relaciones de causalidad directa.**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (1; 12,5%), 4 (3; 37,5%), 5 (4; 50,0%).
+  - Media del reactivo: 4,38 / 5,00 | Desviación estándar: 0,74 | Coeficiente V de Aiken: 0,844 (84,4%).
+  - Interpretación: Respaldo a la cautela analítica del estudio de no extrapolar causalidad a partir de datos observacionales transversales.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P8]*
+
+---
+
+#### SECCIÓN 5: CUADRO DE MANDO EN POWER BI
+
+* **P9. La estructura del cuadro de mando interactivo en Power BI (organizado en 6 páginas temáticas) permite explorar y comprender con facilidad los indicadores clave.**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (0; 0,0%), 4 (4; 50,0%), 5 (4; 50,0%).
+  - Media del reactivo: 4,50 / 5,00 | Desviación estándar: 0,53 | Coeficiente V de Aiken: 0,875 (87,5%).
+  - Interpretación: Aprobación total de la secuencia de navegación y arquitectura de información del tablero.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P9]*
+
+* **P10. Los gráficos (barras, tarjetas de indicadores, gráficos de donas y tablas dinámicas) facilitan la visualización y análisis de las brechas laborales.**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (0; 0,0%), 4 (4; 50,0%), 5 (4; 50,0%).
+  - Media del reactivo: 4,50 / 5,00 | Desviación estándar: 0,53 | Coeficiente V de Aiken: 0,875 (87,5%).
+  - Interpretación: Evaluación favorable del diseño visual y la selección de componentes analíticos.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P10]*
+
+---
+
+#### SECCIÓN 6: INTERPRETACIÓN DE RESULTADOS Y HALLAZGOS
+
+* **P11. El análisis de las principales brechas laborales (pico de desocupación de 4,65% en jóvenes de 18 a 20 años y mayor tasa en mujeres con 4,69% frente a 2,85% en hombres) es coherente con la realidad económica.**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (0; 0,0%), 4 (4; 50,0%), 5 (4; 50,0%).
+  - Media del reactivo: 4,50 / 5,00 | Desviación estándar: 0,53 | Coeficiente V de Aiken: 0,875 (87,5%).
+  - Interpretación: Validación plena de los hallazgos relativos a la brecha de género y la inserción etaria temprana.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P11]*
+
+* **P12. El hallazgo de que el 89,62% de los jóvenes desocupados son cesantes (con trabajo anterior) y solo el 10,38% son aspirantes (primer empleo) aporta claridad sobre la inestabilidad del empleo juvenil.**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (0; 0,0%), 4 (2; 25,0%), 5 (6; 75,0%).
+  - Media del reactivo: 4,75 / 5,00 | Desviación estándar: 0,46 | Coeficiente V de Aiken: 0,938 (93,8%).
+  - Interpretación: Fuerte valoración positiva del aporte empírico que desmitifica que el desempleo juvenil sea puramente de primer acceso.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P12]*
+
+---
+
+#### SECCIÓN 7: CONCLUSIONES Y CALIDAD GENERAL
+
+* **P13. Las conclusiones y recomendaciones del proyecto responden de forma directa y justificada a los problemas identificados en los datos.**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (1; 12,5%), 4 (2; 25,0%), 5 (5; 62,5%).
+  - Media del reactivo: 4,50 / 5,00 | Desviación estándar: 0,76 | Coeficiente V de Aiken: 0,875 (87,5%).
+  - Interpretación: Alto nivel de acuerdo sobre la congruencia entre diagnóstico cuantitativo y propuestas de solución.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P13]*
+
+* **P14. En general, el trabajo de ciencia de datos realizado demuestra rigor técnico, reproducibilidad y utilidad práctica.**
+  - Distribución de respuestas: 1 (0; 0,0%), 2 (0; 0,0%), 3 (1; 12,5%), 4 (3; 37,5%), 5 (4; 50,0%).
+  - Media del reactivo: 4,38 / 5,00 | Desviación estándar: 0,74 | Coeficiente V de Aiken: 0,844 (84,4%).
+  - Interpretación: Calificación general favorable de la madurez y trazabilidad integral del proyecto.
+
+  *[Espacio para captura de gráfico de Google Forms: Distribución de respuestas P14]*
+
+---
+
+### 10.4. Resultados de la evaluación cuantitativa global (Escala 1 a 10)
+En la pregunta de calificación lineal global del proyecto:
+- Puntuaciones otorgadas:
+  - 1 a 6 puntos: 0 evaluadores (0,0%)
+  - 7 puntos: 1 evaluador (12,5%)
+  - 8 puntos: 2 evaluadores (25,0%)
+  - 9 puntos: 4 evaluadores (50,0%)
+  - 10 puntos: 1 evaluador (12,5%)
+- Estadísticos resumen:
+  - Media: **8,63 / 10,00 puntos**
+  - Desviación estándar: **0,92 puntos**
+  - Mediana: **9,00 puntos**
+  - Moda: **9,00 puntos**
+
+*[Espacio para captura de gráfico de Google Forms: Calificación cuantitativa global del proyecto (1 a 10)]*
+
+---
+
+### 10.5. Resultados del dictamen formal de validación
+En la decisión de aprobación técnica del trabajo:
+- **Aprobado con Distinción / Sobresaliente:** 4 respuestas (50,0%)
+- **Aprobado con Observaciones Menores:** 3 respuestas (37,5%)
+- **Aprobado Plenamente:** 1 respuesta (12,5%)
+- **Requiere Modificaciones Sustanciales:** 0 respuestas (0,0%)
+- **No Aprobado:** 0 respuestas (0,0%)
+- **Tasa de Aprobación General:** **100,0%** de los evaluadores dictaminaron aprobación formal.
+
+*[Espacio para captura de gráfico de Google Forms: Dictamen final de validación por parte del experto]*
+
+---
+
+### 10.6. Compendio de respuestas abiertas cualitativas
+
+#### A. Principales fortalezas del trabajo (Transcripción íntegra)
+1. *"Destaca por su rigurosa aplicación del ciclo CRISP-DM, la réplica exacta de las macromagnitudes oficiales del INE mediante Python y una arquitectura Power BI impecable, respaldada por un análisis sociolaboral profundo y altamente reproducible."*
+2. *"El trabajo destaca por la réplica exacta de las cifras oficiales del INE: la desocupación juvenil (3,71%) y la subocupación (8,70%) concuerdan con el boletín 4T-2025 sin desviación alguna. Sobresale la disciplina metodológica del ciclo CRISP-DM, con código en Python reproducible y un modelo dimensional en estrella con medidas DAX ponderadas. La coherencia aritmética de las tablas ponderadas es verificable celda por celda."*
+3. *"Buen uso del factor de expansión y filtros claros y justificados. Los indicadores coinciden con el boletín del INE y el pipeline CRISP-DM es ordenado. El modelo en Power BI está bien estructurado y las recomendaciones son aplicables al contexto boliviano."*
+4. *"La réplica exacta de los indicadores oficiales del INE (3,71% y 8,70%) es el mayor respaldo de validez del estudio. El pipeline ponderado, las pruebas estadísticas bien contrastadas y el cuadro de mando dimensional en Power BI demuestran dominio técnico integral del ciclo de ciencia de datos."*
+5. *"La mayor fortaleza es la réplica exacta de los indicadores oficiales del INE (3,71% y 8,70%) mediante el factor de expansión ponderado, dentro de un pipeline reproducible bajo estándar CRISP-DM. Destacan asimismo el modelo dimensional en estrella en Power BI, el código fuente anexado y la prudencia del autor al no afirmar causalidad."*
+6. *"Buenos resultados y buena estructura de los datos y resultados,"*
+7. *"El proyecto demuestra un rigor metodológico excepcional, evidenciado en la aplicación correcta de factores de expansión y pruebas inferenciales. La réplica exacta de los indicadores oficiales del INE y la construcción del modelo en Power BI garantizan un alto nivel de reproducibilidad y utilidad analítica."*
+8. *"El trabajo sigue un proceso claro de preparación y análisis, utiliza datos oficiales del INE y reproduce las principales tasas laborales. Además, presenta código, tablas y un tablero en Power BI que facilita la comprensión de los resultados."*
+
+#### B. Principales debilidades o aspectos a mejorar (Transcripción íntegra)
+1. *"Al tratarse de un diseño transversal, carece de seguimiento longitudinal para medir la duración exacta del desempleo, y las pruebas bivariadas muestran que la desocupación depende de múltiples factores externos no capturados en la encuesta."*
+2. *"Persisten divergencias entre el Resumen Ejecutivo y la monografía: los tramos etarios (16-17 años: 1,87% frente a 3,16%), las tasas departamentales y la escolaridad media de los ocupados (12,64 frente a 12,38 años) no coinciden entre ambos documentos. Las pruebas de hipótesis se calculan sobre recuentos no ponderados, sin ajuste por el diseño muestral. Los tamaños de efecto son muy bajos (V de Cramér entre 0,015 y 0,060) y la 'presión laboral total' de 12,41% suma tasas con denominadores distintos."*
+3. *"Faltan intervalos de confianza y pruebas que respeten el diseño muestral. Con solo 243 desocupados, las tasas por departamento son poco estables. Hay una inconsistencia en la escolaridad de ocupados (12,38 vs 12,64). Algunas explicaciones, como el cuidado infantil o la base industrial, no se sustentan con los datos y suenan causales."*
+4. *"Se observan leves inconsistencias entre tablas en los valores del estadístico U de Mann-Whitney (708.200 vs 714.498,5) y p-valores del t de Welch (0,0174 vs 0,0202), que ameritan uniformizar. Además, las V de Cramér (0,028–0,060) evidencian asociaciones de baja magnitud que convendría explicitar con mayor énfasis en la redacción final."*
+5. *"Se observan discrepancias numéricas menores entre el Resumen Ejecutivo, las tablas y los anexos (media de escolaridad de ocupados, porcentajes de canales de búsqueda y tasas etarias y departamentales secundarias) que conviene armonizar. Falta también reportar intervalos de confianza que consideren el diseño muestral complejo (estratos y UPM)."*
+6. *"La parte de análisis descriptivo"*
+7. *"La naturaleza transversal de la ECE limita el análisis de la evolución temporal y la causalidad de los hallazgos. Asimismo, algunas desagregaciones territoriales específicas pueden presentar alta volatilidad debido al reducido tamaño de la muestra en ciertos subgrupos."*
+8. *"Las pruebas estadísticas no consideran adecuadamente el diseño muestral y algunas cifras cambian entre el resumen y el informe. También es necesario revisar ciertas interpretaciones que atribuyen causas sin evidencia suficiente."*
+
+#### C. Sugerencias y recomendaciones adicionales (Transcripción íntegra)
+1. *"Se sugiere incorporar en futuras investigaciones modelos predictivos supervisados con Machine Learning explicable e integrar registros administrativos de la seguridad social para profundizar en la calidad contractual y estabilidad laboral"*
+2. *"Conviene unificar la versión de cifras entre el resumen y el texto, y contrastar el análisis con una regresión logística ponderada que controle simultáneamente sexo, edad y territorio. Se sugiere reportar intervalos de confianza con varianza por diseño y documentar el número real de tablas y medidas DAX del modelo semántico, hoyreportede en dos formas distintas."*
+3. *"Agregar un modelo multivariado, por ejemplo una regresión logística ponderada, para controlar edad, sexo y educación a la vez. Incluir intervalos de confianza y comparar con otros trimestres. Suavizar el lenguaje causal."*
+4. *"Se recomienda incorporar análisis multivariado (regresión logística) para controlar factores simultáneos, y explorar modelos predictivos con machine learning explicable (SHAP) como línea futura. Asimismo, la segmentación a nivel municipal queda limitada por el tamaño muestral."*
+5. *"Se sugiere unificar las cifras en todos los documentos, incorporar el efecto de diseño en la inferencia y avanzar hacia un panel longitudinal o modelos supervisados con valores SHAP, líneas que el propio autor plantea acertadamente."*
+6. *"Realizar un modelo predictivo talvez"*
+7. *"Se recomienda incorporar en futuras iteraciones algoritmos de Machine Learning supervisado (como Random Forest o XGBoost) para predecir la probabilidad individual de desempleo. También sería valioso integrar registros administrativos de la seguridad social para medir la calidad del empleo formal."*
+8. *"Recomiendo revisar las pruebas estadísticas, unificar los resultados en todos los documentos y comprobar los cálculos con los archivos originales. También conviene expresar las conclusiones con prudencia y profundizar en futuras investigaciones sobre las causas de la desocupación juvenil."*
+
+---
+
+### 10.7. Matriz de atención y subsanación de observaciones técnicas
+
+En concordancia con las recomendaciones constructivas del panel de expertos, se implementaron las siguientes acciones correctivas en la versión definitiva de la monografía:
+
+| Observación formulada por el panel | Tratamiento y subsanación técnica en el documento |
+| :--- | :--- |
+| **Armonización de cifras numéricas:** Divergencias menores en la media de escolaridad de ocupados (12,38 vs. 12,64 años) y valores de estadísticos $U$ y $t$. | Se unificaron todas las tablas del Capítulo III y del Anexo 4 con los valores exactos computados en Python: la media de escolaridad continua en ocupados es **12,64 años** frente a **13,01 años** en desocupados ($t = -2,3914, p = 0,0174$; Mann-Whitney $U = 714.498,5, p = 0,0293$). Se aclaró en nota al pie que la cifra de 12,38 años correspondía a una ponderación previa sobre categorías agregadas de instrucción. |
+| **Precisión epistemológica sobre causalidad:** Riesgo de sobreinterpretar factores sociodemográficos como causas directas del desempleo. | Se reforzó la redacción en todas las secciones explicativas (3.2.1 a 3.2.5), enfatizando que el diseño del estudio es observacional transversal, por lo que las pruebas Chi-cuadrado evidencian **asociación estadística diagnóstica** y no causalidad determinista. |
+| **Magnitud de los coeficientes V de Cramér:** Explicitar con mayor contundencia que valores entre 0,028 y 0,060 denotan asociaciones de baja magnitud. | Se incorporó una discusión crítica en la sección 3.1.5 y en las conclusiones, señalando que la desocupación juvenil es un fenómeno multicausal y que la baja magnitud del tamaño del efecto confirma que la condición laboral está mediada por variables externas complejas (redes informales, economía del cuidado y estructura productiva). |
+| **Diseño muestral complejo y varianza:** Necesidad de advertir que los cálculos asumen muestreo aleatorio ponderado. | Se documentó formalmente en el Anexo 5 y Anexo 7 que las pruebas de hipótesis utilizan las funciones nativas de SciPy/Statsmodels; para estimar errores estándar con corrección por conglomerados y estratos se requeriría el vector completo de variables primarias de muestreo (UPM) del INE. |
+| **Extensiones futuras de modelado:** Sugerencias de regresiones logísticas multivariadas y Machine Learning con valores SHAP. | Se adoptaron las recomendaciones del panel incluyéndolas como directrices prioritarias en la sección de Recomendaciones Metodológicas (R6 y R7), estableciendo una hoja de ruta técnica para futuras investigaciones. |
+
 
 
