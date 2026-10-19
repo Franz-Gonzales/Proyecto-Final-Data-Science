@@ -1211,89 +1211,58 @@ El desglose completo ítem por ítem, las frecuencias de respuesta, las transcri
 ## Conclusiones
 
 ### Conclusión general
-A partir de los microdatos oficiales de la Encuesta Continua de Empleo (ECE) del cuarto trimestre de 2025, se determinó que la desocupación en jóvenes de 16 a 28 años en el área urbana de Bolivia constituye un fenómeno focalizado que afecta a 51.196 personas (3,71% de la PEA juvenil) y coexiste con una tasa de subocupación por horas del 8,70% (115.736 jóvenes).
-
-El análisis cuantitativo comprobó que la desocupación abierta afecta a la juventud con una intensidad 1,61 veces mayor respecto a la población adulta urbana (2,30%). Las pruebas de asociación confirmaron que la inserción laboral juvenil se encuentra condicionada por barreras de acceso al culminar la etapa escolar, una brecha persistente de género que penaliza a las mujeres, asimetrías marcadas de diversificación productiva regional con Chuquisaca a la cabeza y un desajuste estructural entre el nivel formativo alcanzado y las vacantes formales disponibles en las ciudades.
+A partir de los microdatos oficiales de la Encuesta Continua de Empleo (ECE 4T-2025) del INE, se determinó que la desocupación en jóvenes de 16 a 28 años en el área urbana de Bolivia se situó en 3,71% (51.196 personas), coexistiendo con una tasa de subocupación por horas del 8,70% (115.736 jóvenes). Este desempleo juvenil superó en 1,61 veces al de la población adulta urbana (2,30%), viéndose impulsado principalmente por la falta de experiencia laboral al concluir la etapa escolar, una marcada brecha desfavorable para las mujeres, una baja diversificación productiva en departamentos del sur como Chuquisaca y la escasez de vacantes formales para jóvenes con mayor formación académica.
 
 ### Conclusiones específicas
 
 #### 1. Ingesta, depuración y control muestral de microdatos oficiales (Objetivo Específico 1)
-Se consolidó una base de datos depurada de 6.649 registros correspondientes a jóvenes urbanos pertenecientes a la fuerza laboral, extraída del conjunto original de 52.650 observaciones de la ECE 4T-2025. La aplicación del factor de calibración trimestral (`fact_trim_act`) permitió expandir la muestra de forma representativa a 1.380.841 jóvenes.
-
-El control metodológico demostró que el cálculo de indicadores laborales requiere obligatoriamente el factor de expansión muestral. El empleo de recuentos no ponderados genera distorsiones en las proporciones reales de desocupación y en las ponderaciones demográficas de cada departamento. La calibración aplicada reprodujo con exactitud matemática las cifras oficiales del INE, garantizando la consistencia del punto de partida analítico.
+Se consolidó una base de datos depurada de 6.649 jóvenes activos a partir de la muestra nacional de la ECE 4T-2025, la cual representó a 1.380.841 personas tras aplicar el factor de calibración trimestral (`fact_trim_act`). Este procedimiento demostró que el uso del ponderador muestral es indispensable para evitar distorsiones en los porcentajes de desocupación y en el peso demográfico de cada departamento, asegurando una réplica exacta de las estadísticas oficiales del país y garantizando un punto de partida consistente para el análisis.
 
 #### 2. Procesamiento estadístico, contrastes de hipótesis y significancia empírica (Objetivo Específico 2)
-Las pruebas estadísticas y el análisis bivariado identificaron los patrones determinantes del mercado laboral juvenil:
-
-- **Vulnerabilidad etaria:** El tramo de 18 a 20 años presentó la mayor tasa de desocupación urbana con 4,65% ($\chi^2 = 11,23; p = 0,0105$), reflejando la fricción de entrada al concluir la educación secundaria sin contar con experiencia laboral previa.
-- **Brecha de género:** Las mujeres jóvenes registraron una tasa de 4,69% frente al 2,85% en varones, marcando una brecha desfavorable de +1,84 puntos porcentuales ($\chi^2 = 5,24; p = 0,0221$). Esta disparidad explica que casi seis de cada diez desocupados urbanos sean mujeres (59,10%), asociado a la carga de cuidados en el hogar y a la segregación en ramas de servicios saturadas.
-- **Asimetría territorial:** Chuquisaca registró la tasa departamental más alta con 5,80%, seguida por Tarija (4,72%) y Cochabamba (4,71%), con una prueba Chi-cuadrado altamente significativa ($\chi^2 = 23,69; p = 0,0026$). La estructura económica de Sucre, concentrada en el sector público y el comercio minorista, no logra absorber a los contingentes formados en su sistema educativo.
-- **Paradoja del desempleo ilustrado:** La educación en categorías agregadas no arrojó significancia estadística ($\chi^2 = 3,64; p = 0,4576$). Sin embargo, la evaluación continua de la escolaridad demostró que los desocupados promedian más años de estudio que los ocupados (13,01 años frente a 12,64 años; $t = -2,39; p = 0,0174$). En una economía urbana con más del 75% de informalidad, las personas con menor instrucción se insertan de forma inmediata en labores precarias de subsistencia, mientras que los jóvenes con mayor nivel de instrucción prolongan su búsqueda hacia opciones acordes a sus competencias.
-- **Composición por trayectoria laboral:** El 89,62% de los desocupados corresponde a cesantes (45.882 personas) y el 10,38% a aspirantes que buscan trabajo por primera vez (5.314 personas). Esto evidencia que el desempleo juvenil urbano proviene de la inestabilidad y rotación en empleos previos, antes que de barreras exclusivas para ingresar al mercado.
-
-Los coeficientes V de Cramér oscilaron entre 0,028 y 0,060, lo que denota asociaciones estadísticas de baja magnitud. Este comportamiento confirma que la desocupación no depende de un único determinante aislado, sino de múltiples factores que interactúan en el mercado urbano.
+El procesamiento estadístico reveló que el desempleo juvenil se concentra con mayor fuerza en el tramo de 18 a 20 años (4,65%), en las mujeres frente a los varones (4,69% frente a 2,85%) y en el departamento de Chuquisaca (5,80%). Asimismo, el 89,62% de los jóvenes desocupados son cesantes con experiencia laboral previa y registran mayor escolaridad promedio que los ocupados (13,01 frente a 12,64 años). Estos resultados evidencian que, en un mercado urbano con alta informalidad, la desocupación responde a la inestabilidad del empleo precario y al desajuste entre la formación educativa y los puestos formales disponibles.
 
 #### 3. Modelado dimensional en estrella e inteligencia de negocios (Objetivo Específico 3)
-Se implementó un modelo dimensional en estrella (*Star Schema*) compuesto por una tabla de hechos de 6.649 registros y seis dimensiones normalizadas, articulado mediante 36 medidas DAX ponderadas.
-
-La estructura garantizó el cálculo dinámico de tasas poblacionales sin incurrir en sumas planas erróneas al segmentar por filtros temporales o demográficos. El cuadro de mando de seis páginas en Power BI facilitó la navegación interactiva entre indicadores macro, tramos etarios, capital humano, brechas de género, perfiles de cesantía y focos de decisión pública.
+Se estructuró un modelo dimensional en estrella enlazado a seis dimensiones y 36 medidas DAX calculadas con factor de expansión, implementado en un cuadro de mando de seis páginas en Power BI Desktop. Esta solución tecnológica garantizó el cálculo dinámico y correcto de tasas poblacionales bajo cualquier filtro demográfico o territorial, proporcionando una herramienta visual accesible e intuitiva para explorar brechas de género, perfiles de cesantía y respaldar la toma de decisiones informadas.
 
 #### 4. Validación de consistencia frente a fuentes oficiales y literatura (Objetivo Específico 4)
-Los resultados del procesamiento matemático reprodujeron con 0,00 puntos porcentuales de discrepancia las cifras publicadas por el INE para el cuarto trimestre de 2025 (desocupación de 3,71% y subocupación de 8,70%).
-
-Los hallazgos concuerdan con la literatura regional de la OIT y la CEPAL respecto a la mayor vulnerabilidad de las mujeres jóvenes y el papel amortiguador del subempleo por horas en economías en desarrollo. La auditoría externa automatizada asignó al repositorio una calificación de 9,70 sobre 10,00 puntos, validando la reproducibilidad del código y la consistencia técnica de las estimaciones.
+Las estimaciones del proyecto reprodujeron con exactitud las cifras oficiales del INE (3,71% de desocupación y 8,70% de subocupación) y coincidieron con la literatura laboral regional de la OIT y CEPAL. La calidad técnica fue confirmada mediante una doble validación externa: una auditoría algorítmica con Inteligencia Artificial que calificó el desarrollo con 9,70 sobre 10, y la consulta a un panel de ocho profesionales expertos independientes que otorgó un 100% de aprobación, un promedio de 8,63 sobre 10 y un coeficiente V de Aiken de 0,88, ratificando la solidez metodológica y la utilidad práctica de los resultados.
 
 ---
 
 ## Recomendaciones
 
 ### Medidas orientadas a los factores determinantes identificados
-A partir de los factores asociados al desempleo juvenil en el área urbana (la salida de secundaria, la brecha femenina, la concentración en Chuquisaca y el sur, y la alta tasa de cesantía), las propuestas de intervención deben responder a la realidad boliviana de 2026, caracterizada por una informalidad superior al 75% y estrechez en las finanzas públicas. Las acciones prioritarias comprenden:
+A partir de los factores asociados a la desocupación juvenil y considerando el contexto boliviano de 2026, marcado por una informalidad superior al 70%, restricciones fiscales y escasez de divisas, las propuestas deben priorizar soluciones prácticas y sostenibles. En lugar de depender de contrataciones estatales o subsidios con cargo al erario público, las medidas se orientan a dinamizar la iniciativa privada, modernizar los servicios de vinculación laboral y apoyar a los grupos más vulnerables.
 
 ### Recomendaciones prácticas de política pública e inserción laboral
 
 #### R1. Programa de formación dual e inserción inicial para bachilleres (Tramo 18 a 20 años)
-Ante la tasa de desocupación del 4,65% observada en el tramo de 18 a 20 años, se recomienda al Ministerio de Trabajo, Empleo y Previsión Social, en coordinación con el Ministerio de Educación y la Confederación de Empresarios Privados de Bolivia (CEPB), implementar esquemas formales de formación dual:
-- Establecer pasantías formativas remuneradas de seis meses en empresas privadas formales y entidades productivas, acreditables como experiencia laboral oficial en la hoja de vida.
-- Otorgar a las empresas participantes incentivos no monetarios y exenciones temporales en aportes patronales a la seguridad social de corto plazo durante los primeros seis meses de contratación de jóvenes sin trayectoria previa.
-- Incorporar en el último año de educación secundaria módulos obligatorios de competencias laborales transversales, orientados al armado de currículum vitae, entrevistas de trabajo y uso de herramientas digitales para la búsqueda de empleo.
+Ante el pico de desocupación en jóvenes de 18 a 20 años (4,65%), se recomienda implementar programas de formación técnica dual entre el Ministerio de Educación y las cámaras empresariales. Mediante pasantías formativas remuneradas de seis meses acreditables como experiencia laboral formal y con incentivos no monetarios para pequeñas empresas, se facilitará el tránsito directo desde las aulas hacia puestos productivos sin generar una carga financiera gravosa para el Estado.
 
-#### R2. Red municipal de centros infantiles de cuidado diurno (Brecha de género)
-Para mitigar la desocupación femenina (4,69%) y la carga de trabajo doméstico no remunerado que limita su inserción continua, se recomienda a los Gobiernos Autónomos Municipales de las principales áreas metropolitanas (La Paz, Santa Cruz de la Sierra, Cochabamba, El Alto y Sucre):
-- Implementar y ampliar la cobertura de centros municipales de cuidado infantil diurno en zonas de alta concentración comercial, mercados y áreas periurbanas, permitiendo a las madres jóvenes disponer de tiempo para la búsqueda de empleo formal y la capacitación laboral.
-- Diseñar programas de becas técnicas y formación en habilidades digitales, programación y comercio electrónico dirigidos prioritariamente a mujeres jóvenes jefas de hogar monoparental, con horarios compatibles con la vida familiar.
-- Ejecutar campañas municipales de fiscalización laboral que sancionen las exigencias ilegales de certificados de no gravidez y mitiguen la discriminación preventiva en la contratación de mujeres en edad reproductiva.
+#### R2. Red municipal de cuidado infantil diurno y capacitación para mujeres (Brecha de género)
+Frente a la brecha desfavorable que afecta a las mujeres jóvenes (4,69% frente a 2,85% en varones), se plantea que los gobiernos municipales amplíen centros de cuidado infantil diurno en mercados y zonas periurbanas. Esta acción liberará tiempo para que las madres jóvenes busquen empleo formal o se capaciten en oficios técnicos y herramientas digitales de alta demanda, reduciendo las barreras invisibles del cuidado no remunerado y promoviendo su autonomía económica.
 
-#### R3. Articulación formativa y desarrollo de servicios digitales en Chuquisaca y regiones del sur
-Para contrarrestar la debilidad del mercado laboral en los departamentos del sur y aprovechar el capital humano acumulado en Sucre (5,80%) y Tarija (4,72%):
-- Articular una mesa de trabajo interinstitucional entre la Gobernación de Chuquisaca, la Alcaldía de Sucre, la Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca (USFX) y la Federación de Empresarios Privados para adecuar las mallas curriculares universitarias y técnicas a sectores con demanda efectiva.
-- Fomentar la creación de un Parque Tecnológico y Polo de Servicios Digitales en Sucre, aprovechando la infraestructura educativa de la ciudad para impulsar empresas de software, centros de servicios compartidos remotos, biotecnología aplicada a los valles y turismo patrimonial calificado.
-- Crear un fondo departamental de capital semilla con contraparte de cooperación internacional para iniciativas juveniles formalizadas que demuestren viabilidad financiera y generación de puestos de trabajo directos en la región.
+#### R3. Ecosistema digital y articulación productiva en Chuquisaca y regiones del sur
+Dada la elevada desocupación en Chuquisaca (5,80%) y Tarija (4,72%), agravada por la caída de ingresos por hidrocarburos que limita la contratación pública, se aconseja articular a las universidades locales con el empresariado para impulsar un polo de servicios digitales y teletrabajo. Aprovechar el capital formativo de Sucre en software, diseño y servicios remotos permitirá captar ingresos y divisas externas sin depender del empleo estatal ni requerir costosas infraestructuras físicas.
 
-#### R4. Modernización del Servicio Público de Empleo y certificación técnica para personas cesantes
-Considerando que el 89,62% de los desocupados ya contaba con un trabajo anterior y que el 38,82% busca empleo a través de canales digitales:
-- Modernizar la plataforma digital del Servicio Público de Empleo (SENAPE) bajo la tutela del Ministerio de Trabajo, desarrollando una aplicación móvil accesible que conecte vacantes laborales formales con postulantes calificados, integrando verificación de identidad y legalidad patronal.
-- Establecer un servicio de certificación de competencias laborales adquiridas en empleos previos para jóvenes cesantes sin titulación universitaria, reconociendo aprendizajes prácticos en ventas, logística, atención al cliente y manufactura básica para facilitar su recolocación rápida.
-- Implementar talleres permanentes de orientación laboral y reconversión técnica en las jefaturas departamentales de trabajo, focalizados en jóvenes cesantes de comercio y servicios elementales que enfrentan dificultades para reinsertarse en el mercado formal.
+#### R4. Intermediación laboral digital y certificación técnica para personas cesantes
+Considerando que el 89,62% de los desocupados son cesantes con experiencia laboral previa, se sugiere modernizar el Servicio Público de Empleo mediante una plataforma móvil ágil y gratuita que conecte vacantes reales con postulantes en tiempo real. A la par, se debe certificar rápidamente las competencias prácticas adquiridas en trabajos anteriores (como ventas, logística y atención comercial), acortando los periodos de búsqueda y facilitando una pronta reinserción laboral.
 
-#### R5. Reglamentación del régimen laboral juvenil en el marco de la Ley N.º 342
-Se recomienda a la Asamblea Legislativa Plurinacional y al Órgano Ejecutivo promulgar un Decreto Supremo reglamentario específico para el régimen laboral de la Ley N.º 342 de la Juventud:
-- Definir la figura del "Contrato de Inserción Laboral Juvenil", estableciendo contratos a plazo fijo de hasta un año con estabilidad regulada, acceso a seguridad social a corto y largo plazo, y límites a las jornadas extraordinarias no compensadas.
-- Establecer un mecanismo simplificado y gratuito de registro en el Registro Obligatorio de Empleadores (ROE) para jóvenes profesionales y técnicos menores de 28 años que formalicen unidades productivas individuales o colectivas, otorgando un periodo de gracia tributaria de dos años para trámites de licencias de funcionamiento.
-- Organizar anualmente ferias departamentales de vinculación laboral y conferencias de inserción profesional auspiciadas por los ministerios del área económica, acercando a bachilleres y universitarios con empresas formalmente establecidas.
+#### R5. Simplificación normativa y formalización juvenil bajo la Ley N.º 342
+Para hacer frente a la persistente informalidad urbana, se propone reglamentar el régimen laboral de la Ley N.º 342 mediante modalidades de contratación juvenil a plazo fijo con estabilidad regulada y seguridad social. Asimismo, se deben eliminar trámites burocráticos y otorgar periodos de gracia en licencias de funcionamiento municipales para emprendimientos encabezados por menores de 28 años, estimulando la creación de fuentes de trabajo formales y sostenibles.
 
 ---
 
 ### Recomendaciones metodológicas y de modelado analítico
 
-#### R6. Incorporación de encuestas de panel longitudinal
-Dado que el corte transversal de la ECE 4T-2025 captura una fotografía puntual del mercado de trabajo, se recomienda al Instituto Nacional de Estadística (INE) y a los centros de analítica universitaria estructurar bases de datos con seguimiento tipo panel rotativo. Esta aproximación permitirá modelar la duración temporal exacta de los episodios de desocupación, las probabilidades de transición entre la inactividad, la informalidad y la ocupación formal, y evaluar si el primer empleo precario actúa como puente hacia la estabilidad o como una trampa de segmentación laboral.
+#### R6. Seguimiento longitudinal de trayectorias laborales mediante datos de panel
+Dado que la encuesta actual ofrece una fotografía estática en el tiempo, se recomienda al INE implementar un seguimiento periódico a los mismos hogares mediante paneles rotativos. Este enfoque longitudinal permitirá determinar con exactitud cuánto tiempo dura el desempleo en los jóvenes, con qué frecuencia transitan hacia la informalidad y si el primer empleo precario actúa como puente hacia la estabilidad o como una barrera prolongada.
 
-#### R7. Modelado predictivo supervisado con técnicas de Machine Learning explicable
-Se sugiere ampliar la fase analítica mediante algoritmos predictivos supervisados (Random Forest, Gradient Boosting y redes neuronales tabulares) entrenados con ponderación muestral. El objetivo consiste en estimar la probabilidad individual de que un joven activo caiga en situación de desempleo o subocupación horaria a partir de sus atributos sociodemográficos y educativos, utilizando valores SHAP (*SHapley Additive exPlanations*) para interpretar de forma transparente la contribución relativa de cada variable en las predicciones del modelo.
+#### R7. Modelos predictivos y analítica avanzada con Machine Learning explicable
+Para anticipar situaciones de vulnerabilidad en el empleo juvenil, se sugiere entrenar algoritmos supervisados de Machine Learning que estimen el riesgo individual de caer en desocupación o subocupación según atributos sociodemográficos. La incorporación de herramientas de interpretabilidad, como los valores SHAP, permitirá a los especialistas comprender con claridad qué factores influyen en cada predicción, respaldando el diseño oportuno de alertas y políticas preventivas.
 
-#### R8. Interoperabilidad con registros administrativos de la seguridad social
-Se recomienda promover acuerdos de intercambio y anonimización de datos entre el INE, la Gestora Pública de la Seguridad Social de Largo Plazo, el Servicio de Impuestos Nacionales (SIN) y el Sistema de Información Educativa (SIE) del Ministerio de Educación. El cruce entre encuestas de hogares y registros administrativos de aportes previsionales brindará una medición exacta de la densidad de cotizaciones y la calidad contractual, superando los sesgos inherentes al autorreporte de ingresos en encuestas muestrales.
+#### R8. Integración de encuestas con registros administrativos del Estado
+Se recomienda promover acuerdos interinstitucionales para cruzar las encuestas de empleo con registros oficiales de la Gestora Pública, el Servicio de Impuestos Nacionales y el Ministerio de Educación. Combinar estas fuentes bajo estrictos protocolos de confidencialidad permitirá conocer la densidad real de aportes jubilatorios y la estabilidad contractual, superando las limitaciones de la información declarativa y robusteciendo el análisis del mercado laboral.
 
 ---
 
