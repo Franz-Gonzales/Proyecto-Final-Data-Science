@@ -321,53 +321,47 @@ FIGURA N.º 20: Diagrama de radar de la evaluación integral de ciencia de datos
 ---
 
 
-## **CAPITULO I: INTRODUCCION**
+# **CAPÍTULO I: INTRODUCCIÓN**
 
-1. ## **ANTECEDENTES**
+## **1.1. ANTECEDENTES**
 
-**1.1.1. Contexto general**
+### **1.1.1. Contexto general**
 
-La incorporación de las personas jóvenes al mercado laboral forma parte de la transición entre la educación y la vida de trabajo. En este periodo pueden coincidir la conclusión de los estudios, la formación técnica o universitaria, la búsqueda del primer empleo y la adquisición de experiencia. Por ello, la situación laboral de la juventud no es uniforme y puede variar según la etapa de vida, el nivel educativo, la experiencia previa y el entorno en el que se busca trabajo.
+La incorporación de las personas jóvenes al mercado laboral constituye un hito determinante en la transición entre el sistema educativo y la vida productiva. Durante esta etapa coinciden la culminación de la formación escolar, técnica o universitaria, la búsqueda del primer empleo y la acumulación de experiencia laboral. No obstante, las oportunidades de inserción no son homogéneas y se encuentran condicionadas por el ciclo vital, las credenciales educativas, los recursos socioeconómicos del hogar y el entorno productivo donde se busca trabajo.
 
-En América Latina y el Caribe, la Organización Internacional del Trabajo ha señalado que las personas jóvenes continúan enfrentando mayores dificultades para acceder a empleos formales y estables, aun en periodos de mejora de los indicadores generales del mercado laboral. El informe regional Juventud en cambio combina indicadores cuantitativos con evidencia cualitativa y destaca la persistencia de brechas relacionadas con la informalidad, el género y las oportunidades de inserción OIT, (Organización Internacional del Trabajo, 2025b). Por su parte, la Comisión Económica para América Latina y el Caribe y la Organización Internacional del Trabajo han estudiado la transición de la escuela al trabajo como un proceso que puede tomar trayectorias diferentes y que no se explica únicamente por una característica individual (Comisión Económica para América Latina y el Caribe & Organización Internacional del Trabajo, 2017).
+En América Latina y el Caribe, la Organización Internacional del Trabajo (OIT) ha señalado que la juventud enfrenta mayores dificultades estructurales para acceder a empleos formales y estables respecto a la población adulta, aun en periodos de reactivación macroeconómica. El informe regional *Juventud en cambio* (OIT, 2025b) y los estudios sobre trayectorias laborales de la CEPAL y la OIT (2017, 2025) destacan la persistencia de barreras asociadas con la precariedad contractual, la segregación de género y las desigualdades en los procesos de transición hacia el trabajo decente.
 
 ### **1.1.2. Antecedentes del empleo juvenil en Bolivia**
 
-En Bolivia, la Ley N.º 342 de la Juventud establece que la población joven comprende a las personas de 16 a 28 años. La norma reconoce el derecho al trabajo digno, el reconocimiento de pasantías y prácticas como experiencia laboral y la generación de condiciones para la inserción y el primer empleo (Estado Plurinacional de Bolivia, 2013). Este rango reúne etapas diferentes, desde jóvenes que todavía cursan estudios hasta personas que ya cuentan con formación profesional y experiencia previa.
+En el Estado Plurinacional de Bolivia, el marco legal define como jóvenes a las personas de 16 a 28 años cumplidos conforme a la Ley N.º 342 de la Juventud de 2013 (Estado Plurinacional de Bolivia, 2013). La norma consagra el derecho al trabajo digno, la estabilidad laboral, el reconocimiento de prácticas profesionales como experiencia laboral previa y la creación de incentivos para la inserción en el primer empleo. Este intervalo abarca realidades diversas: desde adolescentes en transición secundaria hasta profesionales jóvenes en etapa de consolidación laboral.
 
-Un antecedente específico para Bolivia es el estudio de la Organización Internacional del Trabajo Entre el bono demográfico y los ninis: Empleo juvenil en Bolivia, que realiza un diagnóstico de jóvenes que no estudian ni trabajan y analiza su localización y características con el propósito de orientar acciones para la transición de la escuela al trabajo (Organización Internacional del Trabajo, 2019). Aunque dicho estudio aborda una población distinta de la que se analizará en este trabajo, aporta elementos para comprender que las trayectorias juveniles combinan educación, participación laboral, responsabilidades familiares y búsqueda de oportunidades.
-
-Los datos recientes del Instituto Nacional de Estadística muestran que en el cuarto trimestre de 2025 la tasa de desocupación del área urbana fue de 2,3%, mientras que para las personas de 16 a 28 años alcanzó 3,7%. El mismo boletín registró una tasa de subocupación juvenil de 8,7% (Instituto Nacional de Estadística, 2026a). Estas cifras describen un mercado laboral con una tasa agregada relativamente baja, pero con diferencias entre la población total y el grupo joven.
+Un antecedente sectorial relevante lo constituye el diagnóstico de la OIT sobre el empleo juvenil y el bono demográfico en Bolivia (OIT, 2019), el cual subraya que las trayectorias de los jóvenes combinan simultáneamente actividades educativas, obligaciones familiares y búsquedas activas de empleo en un entorno de alta informalidad. De acuerdo con las estadísticas oficiales del Instituto Nacional de Estadística (INE) correspondientes al cuarto trimestre de 2025, la tasa de desocupación general urbana se situó en 2,30%, mientras que en la población de 16 a 28 años alcanzó el 3,71%, coexistiendo con una tasa de subocupación juvenil por horas del 8,70% (INE, 2026a). Estas cifras evidencian que, a pesar de niveles agregados de desempleo moderados, la juventud soporta una sobreexposición sensible a la inestabilidad y subutilización de su mano de obra.
 
 **FIGURA N. 1: Bolivia urbana: tasa de desocupación general y juvenil, cuarto trimestre de 2025**
 
-*FUENTE: Elaboración propia con base en INE (2026a).*
+![Bolivia urbana: tasa de desocupación general y juvenil](figures/figura_1_desocupacion_general_vs_juvenil.png)
+
+*FUENTE: Elaboración propia con base en datos oficiales del INE (ECE 4T-2025).*
 
 ### **1.1.3. Información estadística disponible**
 
-El desarrollo del trabajo es viable porque existen fuentes estadísticas públicas con variables relacionadas con la población joven y su situación laboral. La Encuesta Continua de Empleo del cuarto trimestre de 2025 contiene 52.650 registros y 121 variables. Entre ellas se encuentran características sociodemográficas y educativas, condición de actividad, información sobre búsqueda de empleo, trayectoria laboral, variables derivadas y factores de expansión para estimaciones poblacionales (Instituto Nacional de Estadística, 2026b).
+El desarrollo del proyecto es viable gracias a la disponibilidad de los microdatos abiertos de la Encuesta Continua de Empleo (ECE) del cuarto trimestre de 2025, relevada por el INE (INE, 2026b). Esta base de datos cuenta con 52.650 registros brutos y 121 variables que describen características sociodemográficas, educativas, ocupacionales, canales de búsqueda, trayectoria laboral y los factores de expansión muestral indispensables para producir inferencias representativas a escala nacional y departamental.
 
-La Encuesta de Hogares puede complementar el análisis con información socioeconómica y educativa, mientras que la Encuesta de Niñas, Niños y Adolescentes que Realizan Actividad Laboral o Trabajan 2019 puede aportar contexto para el grupo de 16 y 17 años. Esta última contiene secciones de educación, empleo, tareas domésticas y derechos de recreación y asociación, por lo que su utilización sería complementaria y no sustituiría a la ECE como fuente principal (Instituto Nacional de Estadística, 2019).
-
-En conjunto, estos antecedentes permiten plantear un estudio centrado en transformar microdatos y estadísticas existentes en información analítica sobre la desocupación juvenil. El aporte esperado no consiste solamente en presentar una tasa general, sino en identificar qué diferencias aparecen cuando la población se desagrega por edad, sexo, educación, territorio y trayectoria laboral.
+Como fuentes complementarias, se dispone de la Encuesta de Hogares 2025 para el contraste de variables socioeconómicas y de la Encuesta de Niñas, Niños y Adolescentes que Realizan Actividad Laboral o Trabajan (ENNA 2019) para caracterizar al grupo de 16 y 17 años (INE, 2019, 2026c). Estos antecedentes permiten estructurar un estudio de ciencia de datos orientado a desagregar la desocupación juvenil por edad, sexo, educación, territorio y trayectoria, aportando evidencia cuantitativa más allá de los agregados oficiales.
 
 ## **1.2. PROBLEMA O ASUNTO DEL TRABAJO**
 
 ### **1.2.1. Descripción de la situación problemática**
 
-Durante los últimos años, la tasa de desocupación urbana de Bolivia ha disminuido. Sin embargo, la información disponible muestra que la población joven presenta una tasa superior a la registrada para el conjunto del área urbana. En el cuarto trimestre de 2025, la tasa general fue de 2,3% y la correspondiente a las personas de 16 a 28 años fue de 3,7% (Instituto Nacional de Estadística, 2026a).
+Durante los últimos años, la tasa de desocupación urbana agregada en Bolivia ha mostrado signos de estabilización. Sin embargo, las cifras oficiales revelan que la juventud de 16 a 28 años experimenta una tasa de desempleo abierto de 3,71%, cifra 1,61 veces mayor a la tasa general urbana (2,30%). Además, la subocupación horaria afecta al 8,70% de los jóvenes ocupados, elevando la presión laboral insatisfecha al 12,41% de la fuerza de trabajo juvenil.
 
-La población joven reúne situaciones diferentes. La edad puede coincidir con distintas etapas educativas y de ingreso al mercado de trabajo; el nivel educativo puede relacionarse con las oportunidades disponibles; y la experiencia previa permite diferenciar a quienes buscan su primer empleo de quienes ya tuvieron una ocupación. También pueden existir diferencias por sexo y territorio. Una tasa agregada, por sí sola, no permite observar con suficiente detalle cómo se distribuyen estas diferencias dentro del grupo juvenil.
-
-La ECE contiene variables que permiten examinar estas características, entre ellas edad, sexo, nivel educativo, asistencia, departamento, condición de actividad, tiempo y mecanismos de búsqueda, experiencia laboral previa y variables que distinguen entre desocupados cesantes y aspirantes. Por ello, el asunto central del trabajo se concentra en identificar los factores que aparecen asociados a la desocupación juvenil y determinar qué grupos muestran las diferencias más relevantes.
+El desempleo juvenil presenta una marcada heterogeneidad interna: varía según la salida escolar obligatoria, la culminación de estudios superiores, las cargas de cuidado que penalizan a las mujeres y las diferencias de dinamismo productivo entre departamentos. Evaluar una tasa global sin desagregación cuantitativa oculta las barreras específicas de inserción y limita la formulación de políticas focalizadas. Por tanto, el problema central radica en caracterizar los determinantes que se asocian sistemáticamente a la condición de desocupación en los jóvenes urbanos bolivianos.
 
 ### **1.2.2. Delimitación del problema**
 
-El ámbito geográfico será el área urbana de Bolivia. La población de estudio estará formada por personas de 16 a 28 años pertenecientes a la Población Económicamente Activa. Dentro de este universo, la desocupación constituirá la condición central de análisis y la población ocupada se utilizará como referencia estadística para calcular tasas y comparar características.
+El estudio se circunscribe al área urbana de Bolivia y toma como universo objetivo a las personas de 16 a 28 años pertenecientes a la Población Económicamente Activa (PEA). Dentro de este universo, la desocupación abierta constituye la condición de resultado, empleando a la población ocupada como grupo de referencia estadístico.
 
-Se considerarán principalmente la edad, el sexo, el nivel educativo, los años de estudio, la asistencia educativa, el territorio y la trayectoria laboral. La edad podrá organizarse inicialmente en los grupos 16 a 17, 18 a 20, 21 a 24 y 25 a 28 años para observar diferencias entre etapas de incorporación al mercado laboral. Según la disponibilidad de datos, también se examinarán el tiempo de búsqueda de empleo, los mecanismos de búsqueda y la condición de aspirante o cesante.
-
-El análisis utilizará como fuente principal los microdatos de la Encuesta Continua de Empleo del cuarto trimestre de 2025\. Para describir la evolución reciente se utilizarán series agregadas de otros trimestres y, cuando resulte pertinente, información complementaria de la Encuesta de Hogares, la ENNA 2019, ILOSTAT y publicaciones de la Organización Internacional del Trabajo. Las fuentes con definiciones o rangos de edad distintos se utilizarán como referencia contextual y no se combinarán directamente sin verificar su comparabilidad.
+Las variables analizadas comprenden la dimensión sociodemográfica (edad en cuatro cohortes: 16-17, 18-20, 21-24 y 25-28 años, y sexo), la dimensión educativa (nivel formativo, años de escolaridad y asistencia académica), la dimensión territorial (nueve departamentos y macrorregiones) y la trayectoria laboral (condición de cesante o aspirante y mecanismos de búsqueda activa). La investigación utiliza los microdatos de la ECE 4T-2025 procesados de forma transversal bajo factores de expansión muestral.
 
 ### **1.2.3. Planteamiento del problema**
 
@@ -375,7 +369,7 @@ El análisis utilizará como fuente principal los microdatos de la Encuesta Cont
 
 ### **1.2.4. Objeto de estudio**
 
-El objeto de estudio está constituido por los factores asociados a la desocupación de jóvenes de 16 a 28 años en el área urbana de Bolivia, considerando sus características sociodemográficas, educativas, territoriales y de trayectoria laboral. La unidad de análisis será cada persona joven perteneciente a la Población Económicamente Activa que cumpla con la delimitación establecida.
+El objeto de estudio está constituido por los factores asociados a la desocupación de jóvenes de 16 a 28 años en el área urbana de Bolivia, considerando sus características sociodemográficas, educativas, territoriales y de trayectoria laboral. La unidad de análisis corresponde a cada persona joven activa en la PEA urbana registrada en la encuesta oficial.
 
 ## **1.3. OBJETIVO GENERAL**
 
@@ -383,88 +377,98 @@ Analizar los factores sociodemográficos, educativos, territoriales y de trayect
 
 ## **1.4. OBJETIVOS ESPECÍFICOS**
 
-1. Recopilar y organizar datos estadísticos provenientes de fuentes oficiales del mercado laboral boliviano, aplicando procesos de selección, limpieza y estructuración que permitan disponer de un conjunto de información confiable y listo para su análisis.  
-2. Procesar y analizar los datos con herramientas de programación estadística en Python, aplicando técnicas de filtrado, transformación, segmentación por grupos de edad y análisis de asociaciones que permitan identificar los factores asociados a la desocupación juvenil.  
-3. Diseñar y construir visualizaciones e indicadores analíticos con herramientas de inteligencia de negocios que faciliten la interpretación de los patrones, brechas y perfiles identificados en el análisis de la desocupación juvenil.  
+1. Recopilar y organizar datos estadísticos provenientes de fuentes oficiales del mercado laboral boliviano, aplicando procesos de selección, limpieza y estructuración que permitan disponer de un conjunto de información confiable y listo para su análisis.
+2. Procesar y analizar los datos con herramientas de programación estadística en Python, aplicando técnicas de filtrado, transformación, segmentación por grupos de edad y análisis de asociaciones que permitan identificar los factores asociados a la desocupación juvenil.
+3. Diseñar y construir visualizaciones e indicadores analíticos con herramientas de inteligencia de negocios que faciliten la interpretación de los patrones, brechas y perfiles identificados en el análisis de la desocupación juvenil.
 4. Validar los resultados obtenidos, verificando la consistencia de los datos procesados, contrastándolos con indicadores oficiales publicados y revisando la coherencia entre los hallazgos y las fuentes utilizadas.
 
 ## **1.5. JUSTIFICACIÓN**
 
-La desocupación juvenil tiene importancia social porque el acceso a una primera experiencia de trabajo influye en la trayectoria económica y profesional de las personas jóvenes. La población de 16 a 28 años no constituye un grupo homogéneo: dentro de ella conviven adolescentes que continúan estudiando, jóvenes que buscan su primer empleo, estudiantes de educación superior y personas que ya han tenido una experiencia laboral. Analizar estas diferencias permite describir con mayor precisión la situación de quienes participan activamente en el mercado de trabajo.
+La justificación de la investigación se sustenta en tres dimensiones:
 
-Por un lado, la inserción laboral es parte esencial del desarrollo económico y social de las personas. Una ocupación permite obtener ingresos, adquirir experiencia, desarrollar competencias profesionales y avanzar hacia una mayor autonomía económica. Estas circunstancias pueden retrasar la adquisición de experiencia laboral cuando el acceso al empleo es difícil, afectando de forma negativa la continuidad de la carrera profesional en el largo plazo.
+*Justificación social y económica:* La desocupación en etapas tempranas genera efectos cicatriz en las carreras laborales, restringiendo la acumulación de experiencia y condenando a los jóvenes a empleos precarios o informales de baja productividad. En un país donde la informalidad urbana supera el 75%, el desempleo juvenil impacta directamente en el bienestar de los hogares y en la cohesión social, demandando diagnósticos que orienten programas de formalización e inserción laboral oportuna.
 
-En segundo lugar, la juventud es una etapa de transición particularmente sensible. Una parte importante de este grupo está en proceso de transición entre la educación y la vida laboral. Algunos jóvenes buscan trabajo al terminar la secundaria, otros continúan sus estudios en el nivel técnico o universitario, y otros más ya tienen cierta experiencia previa. Estas diferencias de origen generan condiciones desiguales de acceso al empleo y hacen necesario comprender con mayor precisión cuáles son los factores que dificultan la inserción laboral en cada caso.
+*Justificación práctica de políticas públicas:* Pasar de cifras agregadas a matrices bivariadas de riesgo permite a los órganos estatales, municipios e instituciones formativas priorizar recursos hacia los colectivos de mayor vulnerabilidad: bachilleres sin experiencia laboral (18 a 20 años), mujeres afectadas por cargas de cuidado y regiones del sur como Chuquisaca y Tarija con limitadas oportunidades de colocación formal.
 
-En tercer lugar, si bien los indicadores generales del mercado laboral boliviano muestran una reducción de la desocupación urbana, la tasa de desocupación de los jóvenes entre 16 y 28 años (3,7%) continúa siendo superior a la tasa general (2,3%). Esta diferencia, sumada a la subocupación juvenil del 8,7%, indica que la problemática laboral de los jóvenes no se resuelve solamente con la creación de empleo agregado, sino que necesita de una atención específica hacia las barreras que encuentra este grupo para acceder y permanecer en el mercado de trabajo.
-
-Desde el punto de vista práctico, este análisis aporta información concreta que puede servir de base para orientar decisiones relacionadas con la formación profesional, los mecanismos de intermediación laboral, las políticas de primer empleo y la generación de oportunidades dirigidas a la población joven. Identificar los factores que se asocian a la desocupación permite pasar de una visión general del problema a un diagnóstico más preciso, lo que facilita el diseño de acciones específicas.
-
-Con los datos de que se dispone se pueden analizar con detalle dichas características. La Encuesta Continua de Empleo incluye datos sobre edad, sexo, educación, residencia, disponibilidad para trabajar, búsqueda de empleo, tiempo de búsqueda y experiencia laboral anterior, junto con los factores de expansión necesarios para producir estimaciones representativas de la población.
-
-El proyecto consistirá en organizar y analizar dicha información mediante técnicas de Data Science, empleando para ello Python para el tratamiento y análisis de los datos, y Power BI para la presentación de los resultados. Se podrán usar, además de la Encuesta Continua de Empleo, otras fuentes de información sobre el tema, como la Encuesta de Hogares, estadísticas de la Organización Internacional del Trabajo y otros registros o bases de datos disponibles que sean compatibles con el análisis.
-
-Los resultados permitirán identificar los grupos con mayores niveles de desocupación y las características que se relacionan con esta situación. Esta información puede servir de referencia para plantear recomendaciones relacionadas con la formación, la búsqueda de empleo, la experiencia laboral y otras acciones orientadas a facilitar la incorporación de los jóvenes al mercado de trabajo.
+*Justificación metodológica en ciencia de datos:* En encuestas por muestreo probabilístico como la ECE, el uso de recuentos muestrales simples genera distorsiones severas en la magnitud de las brechas. La articulación de pipelines reproducibles en Python con ponderación muestral estricta y modelos dimensionales en Power BI ofrece un marco metodológico confiable para auditar, visualizar y replicar con exactitud los indicadores oficiales del mercado laboral.
 
 ## **1.6. ENFOQUE METODOLÓGICO**
 
 ### **1.6.1. Tipo y alcance del trabajo**
 
-El trabajo tendrá un enfoque cuantitativo, aplicado y no experimental. Su alcance será principalmente descriptivo-correlacional y diagnóstico: se describirá la distribución de la desocupación juvenil y se examinarán asociaciones entre esta condición y variables sociodemográficas, educativas, territoriales y de trayectoria laboral. 
-
-El análisis de microdatos tendrá un corte transversal correspondiente al cuarto trimestre de 2025\. De manera complementaria se utilizarán series agregadas de periodos anteriores para describir la evolución reciente de la desocupación. Esta combinación permite mantener un análisis individual consistente y, al mismo tiempo, ubicar los resultados dentro de un contexto temporal más amplio.
+El estudio adopta un enfoque cuantitativo, computacional, aplicado y no experimental, con alcance descriptivo, diagnóstico y de asociación estadística. Examina relaciones sistemáticas entre las variables del perfil juvenil y la condición de actividad económica mediante un corte transversal al cuarto trimestre de 2025.
 
 ### **1.6.2. Población y unidad de análisis**
 
-La población de interés estará conformada por jóvenes de 16 a 28 años residentes en el área urbana de Bolivia y pertenecientes a la Población Económicamente Activa. La unidad de análisis será la persona. El resultado principal será la condición de desocupación; las personas ocupadas del mismo universo funcionarán como grupo de referencia para estimar tasas y evaluar diferencias entre perfiles.
+La población de estudio está integrada por 1.380.841 jóvenes de 16 a 28 años residentes en el área urbana de Bolivia pertenecientes a la PEA, representados por una muestra efectiva observada de 6.649 registros individuales de la ECE 4T-2025. La unidad de análisis es la persona joven encuestada.
 
 ### **1.6.3. Fuentes de información**
 
-La Encuesta Continua de Empleo del cuarto trimestre de 2025 será la fuente principal por su periodicidad, cobertura laboral, disponibilidad de microdatos y presencia de variables derivadas y factores de expansión. Las fuentes adicionales se utilizarán según su pertinencia y compatibilidad con cada parte del análisis.
+La fuente primaria corresponde a los microdatos de la Encuesta Continua de Empleo del cuarto trimestre de 2025 provistos por el INE, complementada por fuentes sectoriales oficiales descritas en la Tabla N. 1.
 
 **TABLA N. 1: Fuentes de información previstas**
 
 | Fuente | Uso en el trabajo | Carácter |
-| ----- | ----- | ----- |
-| Encuesta Continua de Empleo 4T-2025 (INE) | Microdatos principales para condición de actividad, educación, búsqueda, trayectoria laboral, territorio y ponderaciones. | Principal |
-| Boletines y series ECE (INE) | Contexto histórico de tasas e indicadores agregados. | Complementaria |
-| Encuesta de Hogares 2025 (INE) | Contraste de variables socioeconómicas, educativas y laborales. | Complementaria |
-| ENNA 2019 (INE) | Contexto para adolescentes, especialmente el tramo de 16 y 17 años. | Complementaria |
-| OIT / ILOSTAT | Marco regional, conceptos de transición escuela-trabajo e indicadores comparativos. | Contextual |
-| Normativa y publicaciones del MTEPS | Marco legal e institucional de juventud e inserción laboral. | Contextual |
+| :---- | :---- | :---- |
+| **Encuesta Continua de Empleo 4T-2025 (INE)** | Microdatos principales para condición de actividad, educación, búsqueda, trayectoria laboral, territorio y ponderaciones. | Principal |
+| **Boletines y series ECE (INE)** | Contexto histórico de tasas e indicadores agregados. | Complementaria |
+| **Encuesta de Hogares 2025 (INE)** | Contraste de variables socioeconómicas, educativas y laborales. | Complementaria |
+| **ENNA 2019 (INE)** | Contexto para adolescentes, especialmente el tramo de 16 y 17 años. | Complementaria |
+| **OIT / ILOSTAT** | Marco regional, conceptos de transición escuela-trabajo e indicadores comparativos. | Contextual |
+| **Normativa y publicaciones del MTEPS** | Marco legal e institucional de juventud e inserción laboral. | Contextual |
 
 *FUENTE: Elaboración propia con base en INE, OIT y normativa boliviana.*
 
 ### **1.6.4. Ruta metodológica**
 
-Como ruta de trabajo se adoptará CRISP-DM de manera adaptada. Esta metodología organiza los proyectos de datos en seis fases y permite avanzar de forma iterativa entre ellas. IBM señala que el proceso es flexible y puede ajustarse a proyectos en los que el objetivo principal sea la exploración y visualización de datos (IBM, s. f.). En este proyecto, la fase de modelado se orientará al análisis estadístico, construcción de indicadores y evaluación de asociaciones.
+El proyecto adopta de manera adaptada el marco de trabajo estándar CRISP-DM (*Cross-Industry Standard Process for Data Mining*), organizando el proceso técnico en seis fases interactivas.
 
 **TABLA N. 2: Fases de CRISP-DM adaptadas al proyecto**
 
 | Fase | Aplicación en el perfil |
-| ----- | ----- |
-| 1\. Comprensión del problema | Definición del alcance, población, pregunta, objetivos e indicadores requeridos. |
-| 2\. Comprensión de los datos | Revisión de diccionarios, calidad, cobertura, variables, categorías y factores de expansión. |
-| 3\. Preparación de los datos | Filtrado 16-28 años, área urbana y PEA; limpieza, recodificación, integración y creación de segmentos. |
-| 4\. Análisis estadístico y diagnóstico | Tasas ponderadas, distribuciones, tablas cruzadas, comparación de grupos y medidas de asociación. |
-| 5\. Evaluación y validación | Comprobaciones de consistencia, contraste con cifras oficiales y revisión de resultados poco estables. |
-| 6\. Comunicación y visualización | Construcción de gráficos, tablero en Power BI, interpretación y recomendaciones. |
+| :---- | :---- |
+| **1. Comprensión del problema** | Definición del alcance, población, pregunta, objetivos e indicadores requeridos. |
+| **2. Comprensión de los datos** | Revisión de diccionarios, calidad, cobertura, variables, categorías y factores de expansión. |
+| **3. Preparación de los datos** | Filtrado 16-28 años, área urbana y PEA; limpieza, recodificación, integración y creación de segmentos. |
+| **4. Análisis estadístico y diagnóstico** | Tasas ponderadas, distribuciones, tablas cruzadas, comparación de grupos y medidas de asociación. |
+| **5. Evaluación y validación** | Comprobaciones de consistencia, contraste con cifras oficiales y revisión de resultados poco estables. |
+| **6. Comunicación y visualización** | Construcción de gráficos, tablero en Power BI, interpretación y recomendaciones. |
 
 *FUENTE: Elaboración propia con base en IBM (s. f.).*
 
 **FIGURA N. 2: Ruta metodológica CRISP-DM adaptada al proyecto**
 
+```mermaid
+flowchart TD
+    classDef stepBox fill:#F8FAFC,stroke:#334155,stroke-width:2px,color:#0F172A,font-size:13px;
+    classDef centerBox fill:#1E293B,stroke:#0284C7,stroke-width:2.5px,color:#F8FAFC,font-size:14px;
+
+    C1["<b>1. Comprensión del problema</b><br/>Delimitación y objetivos"]:::stepBox
+    C2["<b>2. Comprensión de los datos</b><br/>Auditoría ECE 4T-2025"]:::stepBox
+    C3["<b>3. Preparación de datos</b><br/>Filtrado PEA y calibración"]:::stepBox
+    C4["<b>4. Análisis estadístico</b><br/>Tasas, Chi2 y Cramér"]:::stepBox
+    C5["<b>5. Evaluación y validación</b><br/>Réplica oficial y doble auditoría"]:::stepBox
+    C6["<b>6. Comunicación visual</b><br/>Tablero Power BI y políticas"]:::stepBox
+
+    CORE["<b>CICLO DE CIENCIA<br/>DE DATOS</b><br/>(CRISP-DM Adaptada)"]:::centerBox
+
+    C1 --> C2 --> C3 --> C4 --> C5 --> C6 --> C1
+    C1 --- CORE
+    C3 --- CORE
+    C5 --- CORE
+```
+
 *FUENTE: Elaboración propia con base en IBM (s. f.).*
 
 ### **1.6.5. Técnicas y herramientas**
 
-La preparación de datos se realizará en Python mediante estructuras reproducibles de lectura, selección, limpieza y transformación. Para el análisis se emplearán frecuencias, proporciones, tasas ponderadas, distribuciones, tablas cruzadas y comparaciones entre grupos. Cuando el tipo de variable lo permita, podrán utilizarse pruebas de asociación como chi-cuadrado y medidas de intensidad como V de Cramér; las variables ordinales o numéricas podrán examinarse mediante medidas descriptivas y asociaciones apropiadas. La selección final dependerá de la calidad y distribución de los datos.
-
-En todos los cálculos poblacionales se considerarán los factores de expansión proporcionados por el Instituto Nacional de Estadística. Las desagregaciones con pocos casos muestrales se interpretarán con cautela y podrán agruparse cuando sea necesario. Power BI se utilizará como capa de comunicación, mediante indicadores, filtros y visualizaciones que permitan recorrer los resultados desde un panorama general hacia grupos específicos..
+La preparación y análisis de microdatos se desarrolla en Python (Pandas, NumPy, SciPy y Statsmodels), asegurando la vectorización de operaciones ponderadas por `peso_trimestral`. Se aplican contrastes de asociación Chi-cuadrado de Pearson, coeficientes V de Cramér y pruebas de comparación de escolaridad ($t$ de Welch y Mann-Whitney). Para la capa de comunicación y transferencia tecnológica se implementa Power BI Desktop con modelado en estrella (*Star Schema*) y medidas DAX ponderadas.
 
 ### **1.6.6. Validación**
 
-La validación combinará controles técnicos y contrastes externos. Se verificarán tipos de datos, valores faltantes, duplicados, rangos válidos, filtros de población y consistencia de las variables derivadas. Los indicadores principales se compararán con cifras oficiales publicadas por el Instituto Nacional de Estadística, especialmente la tasa general y la tasa juvenil del periodo. 
+La validación contempla controles técnicos de calidad muestral (ausencia de valores nulos o negativos en el ponderador), replicación exacta de las tasas del INE para el 4T-2025 (3,71% y 8,70%), evaluación ciega automatizada mediante agente evaluador de Inteligencia Artificial (calificación 9,70/10) y contrastación formal por panel externo de expertos independientes (100% de dictámenes favorables, nota 8,63/10 y V de Aiken de 0,88).
+
+---
 
 # **CAPÍTULO II - MARCO REFERENCIAL**
 
@@ -1439,18 +1443,87 @@ Se recomienda promover acuerdos interinstitucionales para cruzar las encuestas d
 
 # REFERENCIAS BIBLIOGRÁFICAS
 
-- Agresti, A. (2018). *An introduction to categorical data analysis* (3rd ed.). John Wiley & Sons.
-- Arancibia, M. (2025). *Guía metodológica para la elaboración de monografías en Ciencia de Datos*. Sucre, Bolivia: Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca, Centro de Estudios de Posgrado e Investigación (CEPI).
-- Comisión Económica para América Latina y el Caribe [CEPAL] & Organización Internacional del Trabajo [OIT]. (2023). *Coyuntura Laboral en América Latina y el Caribe: Políticas de inserción laboral juvenil en contextos de informalidad persistente*. Santiago de Chile: CEPAL/OIT.
-- Estado Plurinacional de Bolivia. (2013). *Ley N.º 342 de la Juventud de 5 de febrero de 2013*. Gaceta Oficial del Estado Plurinacional de Bolivia.
-- Estado Plurinacional de Bolivia. (2014). *Ley N.º 548: Código Niña, Niño y Adolescente de 17 de julio de 2014*. Gaceta Oficial del Estado Plurinacional de Bolivia.
-- Instituto Nacional de Estadística [INE]. (2025). *Boletín Estadístico de la Encuesta Continua de Empleo: Cuarto Trimestre 2025*. La Paz, Bolivia: INE.
-- Instituto Nacional de Estadística [INE]. (2025). *Ficha Técnica y Diseño Muestral de la Encuesta Continua de Empleo (ECE)*. La Paz, Bolivia: INE.
-- Kimball, R., & Ross, M. (2013). *The data warehouse toolkit: The definitive guide to dimensional modeling* (3rd ed.). John Wiley & Sons.
-- McKinney, W. (2022). *Python for data analysis: Data wrangling with pandas, NumPy, and Jupyter* (3rd ed.). O'Reilly Media.
-- Organización Internacional del Trabajo [OIT]. (2024). *Tendencias mundiales del empleo juvenil 2024: Transiciones fluidas en tiempos de incertidumbre*. Ginebra: OIT.
-- Weller, J. (2007). *La inserción laboral de los jóvenes: características, tensiones y desafíos*. Revista de la CEPAL, 92, 61-82.
-- Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). *R for Data Science: Import, tidy, transform, visualize, and model data* (2nd ed.). O'Reilly Media.
+Agresti, A. (2007). *An introduction to categorical data analysis* (2nd ed.). John Wiley & Sons.
+
+Agresti, A. (2018). *An introduction to categorical data analysis* (3rd ed.). John Wiley & Sons.
+
+Arancibia, M. (2025). *Guía metodológica para la elaboración de monografías en Ciencia de Datos*. Centro de Estudios de Posgrado e Investigación (CEPI), Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca.
+
+Chen, H., Chiang, R. H., & Storey, V. C. (2012). Business intelligence and analytics: From big data to big impact. *MIS Quarterly*, 36(4), 1165-1188.
+
+Cohen, J. (1988). *Statistical power analysis for the behavioral sciences* (2nd ed.). Lawrence Erlbaum Associates.
+
+Comisión Económica para América Latina y el Caribe [CEPAL] & Organización Internacional del Trabajo [OIT]. (2017). *Coyuntura Laboral en América Latina y el Caribe: La transición de los jóvenes de la escuela al mercado laboral*. CEPAL/OIT.
+
+Comisión Económica para América Latina y el Caribe [CEPAL] & Organización Internacional del Trabajo [OIT]. (2023). *Coyuntura Laboral en América Latina y el Caribe: Políticas de inserción laboral juvenil en contextos de informalidad persistente*. CEPAL/OIT.
+
+Comisión Económica para América Latina y el Caribe [CEPAL]. (2025). *Entre la escuela y el trabajo: juventudes en transición en América Latina*. CEPAL.
+
+Constitución Política del Estado Plurinacional de Bolivia. (2009). *Constitución Política del Estado*. Gaceta Oficial del Estado Plurinacional de Bolivia.
+
+Estado Plurinacional de Bolivia. (1939). *Ley General del Trabajo*. Gaceta Oficial de Bolivia.
+
+Estado Plurinacional de Bolivia. (2013). *Ley N.º 342 de la Juventud de 5 de febrero de 2013*. Gaceta Oficial del Estado Plurinacional de Bolivia.
+
+Estado Plurinacional de Bolivia. (2014). *Ley N.º 548: Código Niña, Niño y Adolescente de 17 de julio de 2014*. Gaceta Oficial del Estado Plurinacional de Bolivia.
+
+Estado Plurinacional de Bolivia. (2018). *Ley N.º 1139 de modificación a la Ley N.º 548, Código Niña, Niño y Adolescente*. Gaceta Oficial del Estado Plurinacional de Bolivia.
+
+Few, S. (2013). *Information dashboard design: Displaying data for at-a-glance monitoring* (2nd ed.). Analytics Press.
+
+IBM. (s. f.). *Conceptos básicos de ayuda de CRISP-DM*. IBM Documentation. https://www.ibm.com/docs/es/spss-modeler/saas?topic=dm-crisp-help-overview
+
+Instituto Nacional de Estadística [INE]. (2019). *Encuesta de Niñas, Niños y Adolescentes que Realizan Actividad Laboral o Trabajan 2019 (ENNA 2019): base de datos y metadatos*. Archivo Nacional de Datos (ANDA). https://anda.ine.gob.bo/index.php/home
+
+Instituto Nacional de Estadística [INE]. (2024). *Censo de Población y Vivienda 2024: resultados y datos demográficos*. INE Bolivia.
+
+Instituto Nacional de Estadística [INE]. (2026a). *Boletín Estadístico Encuesta Continua de Empleo, cuarto trimestre de 2025*. INE Bolivia.
+
+Instituto Nacional de Estadística [INE]. (2026b). *Encuesta Continua de Empleo, cuarto trimestre de 2025: base de datos y metadatos*. Archivo Nacional de Datos (ANDA). https://anda.ine.gob.bo/index.php/catalog/257
+
+Instituto Nacional de Estadística [INE]. (2026c). *Encuesta de Hogares 2025: base de datos y metadatos*. Archivo Nacional de Datos (ANDA). https://anda.ine.gob.bo/index.php/catalog/256
+
+Kimball, R., & Ross, M. (2013). *The data warehouse toolkit: The definitive guide to dimensional modeling* (3rd ed.). John Wiley & Sons.
+
+Knaflic, C. N. (2015). *Storytelling with data: A data visualization guide for business professionals*. John Wiley & Sons.
+
+McKinney, W. (2022). *Python for data analysis: Data wrangling with pandas, NumPy, and Jupyter* (3rd ed.). O'Reilly Media.
+
+Microsoft. (2026). *Documentación de Power BI: ¿Qué es Power BI?* Microsoft Learn. https://learn.microsoft.com/es-es/power-bi/fundamentals/power-bi-overview
+
+Ministerio de Trabajo, Empleo y Previsión Social [MTEPS]. (2026). *Trabajo proyecta acciones para la inserción laboral de jóvenes profesionales*. MTEPS Bolivia. https://mintrabajo.gob.bo/index.php/nota_prensa/la-paz-44/
+
+Organización Internacional del Trabajo [OIT]. (s. f.-a). *Labour market segmentation*. OIT. https://www.ilo.org/topics/employment-security/labour-market-segmentation
+
+Organización Internacional del Trabajo [OIT]. (s. f.-b). *Estadísticas del mercado laboral juvenil (YouthSTATS)*. ILOSTAT. https://ilostat.ilo.org/es/methods/concepts-and-definitions/description-youth-labour-market-statistics/
+
+Organización Internacional del Trabajo [OIT]. (2019). *Entre el bono demográfico y los ninis: Empleo juvenil en Bolivia*. Oficina Regional para América Latina y el Caribe.
+
+Organización Internacional del Trabajo [OIT]. (2024). *Tendencias mundiales del empleo juvenil 2024: Transiciones fluidas en tiempos de incertidumbre*. OIT.
+
+Organización Internacional del Trabajo [OIT]. (2025a). *Panorama Laboral 2024 de América Latina y el Caribe*. Oficina Regional para América Latina y el Caribe.
+
+Organización Internacional del Trabajo [OIT]. (2025b). *Juventud en cambio: Desafíos y oportunidades en el mercado laboral de América Latina y el Caribe*. Oficina Regional para América Latina y el Caribe.
+
+Provost, F., & Fawcett, T. (2013). *Data Science for Business: What you need to know about data mining and data-analytic thinking*. O'Reilly Media.
+
+Rea, L. M., & Parker, R. A. (2014). *Designing and conducting survey research: A comprehensive guide* (4th ed.). Jossey-Bass.
+
+Tufte, E. R. (2001). *The visual display of quantitative information* (2nd ed.). Graphics Press.
+
+Tukey, J. W. (1977). *Exploratory Data Analysis*. Addison-Wesley.
+
+Turban, E., Sharda, R., & Delen, D. (2019). *Business Intelligence, Analytics, and Data Science: A Managerial Perspective* (4th ed.). Pearson.
+
+Walpole, R. E., Myers, R. H., Myers, S. L., & Ye, K. (2012). *Probabilidad y estadística para ingeniería y ciencias* (9.ª ed.). Pearson Educación.
+
+Weller, J. (2007). La inserción laboral de los jóvenes: características, tensiones y desafíos. *Revista de la CEPAL*, 92, 61-82.
+
+Wickham, H., & Grolemund, G. (2017). *R for Data Science: Import, tidy, transform, visualize, and model data*. O'Reilly Media.
+
+Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). *R for Data Science: Import, tidy, transform, visualize, and model data* (2nd ed.). O'Reilly Media.
+
+Wirth, R., & Hipp, J. (2000). CRISP-DM: Towards a standard process model for data mining. En *Proceedings of the 4th International Conference on the Practical Applications of Knowledge Discovery and Data Mining* (pp. 29-39). Springer.
 
 ---
 
