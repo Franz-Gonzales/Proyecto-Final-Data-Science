@@ -1087,7 +1087,7 @@ Como componente de transferencia tecnológica y despliegue del proyecto de cienc
 
 El diseño visual adopta la identidad institucional de la Universidad San Francisco Xavier de Chuquisaca (USFX CEPI), aplicando una paleta armónica compuesta por azul marino institucional (`#0F2C59`), rojo colonial de alerta (`#8B0000`), dorado ocre (`#C59B27`) y verde esmeralda para ocupación (`#2E7D32`), sobre un lienzo gris claro suave (`#F8F9FA`) con tarjetas en blanco puro (`#FFFFFF`) y tipografía corporativa Segoe UI.
 
-TABLA N.º 11: *Estructura y catálogo de páginas del cuadro de mando analítico en Power BI Desktop*
+TABLA N.º 16: *Estructura y catálogo de páginas del cuadro de mando analítico en Power BI Desktop*
 
 | Página | Denominación temática | Foco analítico principal | Segmentadores activos | Medidas DAX rectoras |
 | :---: | :--- | :--- | :--- | :--- |
@@ -1100,171 +1100,85 @@ TABLA N.º 11: *Estructura y catálogo de páginas del cuadro de mando analític
 
 *FUENTE: Elaboración propia.*
 
-La Tabla N.º 11 detalla la organización temática y técnica de las seis páginas del cuadro de mando analítico. Las columnas estructuran el propósito de cada sección, los filtros interactivos puestos a disposición del usuario y las fórmulas DAX ponderadas que calculan los indicadores clave. Esta distribución permite transitar desde un diagnóstico general del mercado laboral urbano hasta la focalización específica de brechas de género, territorio y perfiles de cesantía, culminando en una matriz de propuestas de política pública aplicadas al contexto boliviano.
+La Tabla N.º 16 detalla la organización temática y técnica de las seis páginas del cuadro de mando analítico. Las columnas estructuran el propósito de cada sección, los filtros interactivos puestos a disposición del usuario y las fórmulas DAX ponderadas que calculan los indicadores clave. Esta distribución permite transitar desde un diagnóstico general del mercado laboral urbano hasta la focalización específica de brechas de género, territorio y perfiles de cesantía, culminando en una matriz de propuestas de política pública aplicadas al contexto boliviano.
 
 #### 3.1.8.1. Página 1: Panorama laboral juvenil urbano
 La primera página sintetiza la magnitud general del mercado laboral para la población de 16 a 28 años en el área urbana de Bolivia. En la fila superior se integran cinco tarjetas con indicadores clave que exponen el volumen ponderado de la PEA (1.380.841 personas), la población ocupada (1.329.645 personas), la población desocupada (51.196 personas), la tasa oficial de desocupación (3,71%) y la tasa de subocupación por tiempo (8,70%). En el cuerpo central se despliegan un gráfico de dona con la distribución porcentual de la PEA, un gráfico de barras comparativo entre la tasa de desocupación urbana general (2,30%) y la juvenil (3,71%), y un desglose de la subutilización laboral.
 
-FIGURA N.º 11: *Vista del cuadro de mando en Power BI: Panorama laboral juvenil urbano (Página 1)*
+FIGURA N.º 14: *Vista del cuadro de mando en Power BI: Panorama laboral juvenil urbano (Página 1)*
 
 ![Cuadro de mando: Panorama laboral juvenil](figures/dashboard_pagina_1.png)
 
 *FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
-La Figura N.º 11 estructura la visión general del mercado de trabajo juvenil en dos niveles analíticos. En la banda superior, cinco tarjetas de indicadores (KPIs) resumen las cifras ponderadas oficiales: una fuerza laboral de 1,38 millones de jóvenes, de los cuales 1,33 millones se encuentran ocupados y 51,20 mil desocupados, arrojando una tasa de desocupación de 3,71% y una subocupación de 8,70%. En la sección inferior, el gráfico de dona izquierdo evidencia que el desempleo abierto representa al 3,71% de la PEA frente al 96,29% de ocupación; el gráfico de barras central resalta que la tasa juvenil supera con creces a la tasa nacional general urbana (2,30%), confirmando una sobreexposición de 1,61 veces mayor; y el gráfico de barras horizontales derecho desglosa la subutilización de mano de obra, demostrando que al sumar el desempleo abierto y la subocupación por horas, la presión laboral global alcanza un 12,41% de la juventud activa.
+La Figura N.º 14 estructura la visión general del mercado de trabajo juvenil en dos niveles analíticos. En la banda superior, cinco tarjetas de indicadores (KPIs) resumen las cifras ponderadas oficiales: una fuerza laboral de 1,38 millones de jóvenes (1.380.841 personas), de los cuales 1,33 millones están ocupados (1.329.645 personas) y 51,20 mil se encuentran desocupados (51.196 personas), lo que arroja una tasa de desocupación del 3,71% y una tasa de subocupación por insuficiencia de tiempo de trabajo del 8,70%. En la sección inferior, el gráfico de dona izquierdo evidencia que el desempleo abierto representa al 3,71% de la PEA frente al 96,29% de ocupación; el gráfico de barras central resalta que la tasa juvenil supera a la tasa nacional general urbana (2,30%), confirmando una sobreexposición de 1,61 veces mayor; y el gráfico de barras horizontales derecho desglosa la subutilización laboral, demostrando que al sumar el desempleo abierto y la subocupación por horas, la presión laboral global alcanza al 12,41% de la juventud urbana activa.
 
-A nivel de arquitectura de Business Intelligence, la página opera con las siguientes especificaciones:
-- **Entidades dimensionales:** `Fact_MercadoLaboral` relacionada con `Dim_Departamento`, `Dim_Sexo` y `Dim_GrupoEdad`.
-- **Tarjetas y KPIs:** `[PEA Juvenil Ponderada]`, `[Poblacion Ocupada]`, `[Poblacion Desocupada]`, `[Tasa Desocupacion Ponderada]`, `[Tasa Subocupacion Ponderada]`.
-- **Fórmula DAX rectora:**
-
-```dax
-// Tasa de desocupación juvenil oficial ponderada
-Tasa Desocupacion Ponderada = 
-DIVIDE(
-    CALCULATE(SUM('Fact_MercadoLaboral'[peso_trimestral]), 'Fact_MercadoLaboral'[es_desocupado] = 1),
-    SUM('Fact_MercadoLaboral'[peso_trimestral]),
-    0
-)
-```
-
-Para consultar el catálogo completo de las medidas DAX del reporte, dirigirse al Anexo 3.
+A nivel de modelado analítico, las tarjetas y componentes visuales operan sobre la tabla de hechos `Fact_MercadoLaboral` conectada a las dimensiones de departamento, sexo y grupo etario. La medida rectora `[Tasa Desocupacion Ponderada]` aplica la función DAX `DIVIDE` sobre la sumatoria filtrada del factor de expansión muestral (`peso_trimestral`) para los casos donde `es_desocupado = 1`, dividida entre el total ponderado de la población activa. Esta formulación asegura que las estimaciones respeten con precisión el diseño muestral complejo del INE, evitando sesgos derivados de recuentos muestrales no ponderados. La parametrización técnica y el catálogo exhaustivo de las medidas DAX implementadas en esta vista se detallan formalmente en el Anexo 3.
 
 #### 3.1.8.2. Página 2: Desocupación por tramo etario y trayectoria
 La segunda página aborda el análisis desagregado de los cuatro tramos de edad establecidos en el proyecto. Permite constatar visualmente que los jóvenes de 18 a 20 años enfrentan la tasa de desocupación más crítica del país (4,65%), superando en casi un punto porcentual el promedio nacional juvenil. Asimismo, evidencia que el grupo de 25 a 28 años concentra el mayor volumen absoluto de desocupados (19.988 personas), vinculado a la búsqueda de plazas técnicas y profesionales.
 
-FIGURA N.º 12: *Vista del cuadro de mando en Power BI: Desocupación por tramo etario (Página 2)*
+FIGURA N.º 15: *Vista del cuadro de mando en Power BI: Desocupación por tramo etario (Página 2)*
 
 ![Cuadro de mando: Desocupación por tramo etario](figures/dashboard_pagina_2.png)
 
 *FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
-La Figura N.º 12 detalla la fricción laboral por edades. En las tarjetas superiores se identifican el pico crítico de desocupación en el tramo de 18 a 20 años (4,65%), el volumen de 13,50 mil jóvenes desempleados en ese rango, la concentración máxima absoluta en el grupo de 25 a 28 años con 19,99 mil personas y la tasa promedio nacional de 3,71%. En el cuerpo inferior, el gráfico de barras vertical izquierdo muestra la curva etaria de desocupación, evidenciando el salto abrupto desde 1,87% en adolescentes de 16 a 17 años hasta el pico de 4,65% en los recién egresados de secundaria, para estabilizarse en 3,55% (21 a 24 años) y 3,88% (25 a 28 años). El gráfico de barras agrupadas derecho, trazado en escala logarítmica, dimensiona a los ocupados (barras azules) frente a los desocupados (barras rojas), demostrando que el volumen de jóvenes insertos crece progresivamente con la edad, alcanzando casi medio millón de ocupados en el tramo superior.
+La Figura N.º 15 detalla la fricción laboral por edades. En las tarjetas superiores se identifican el pico crítico de desocupación en el tramo de 18 a 20 años (4,65%), el volumen de 13.504 jóvenes desempleados en ese rango, la concentración máxima absoluta en el grupo de 25 a 28 años con 19.988 personas y la tasa promedio nacional de 3,71%. En el cuerpo inferior, el gráfico de barras vertical izquierdo muestra la curva etaria de desocupación, evidenciando el salto abrupto desde 1,87% en adolescentes de 16 a 17 años hasta el pico de 4,65% en los recién egresados de secundaria, para estabilizarse en 3,55% (21 a 24 años) y 3,88% (25 a 28 años). El gráfico de barras agrupadas derecho, trazado en escala logarítmica, dimensiona a los ocupados frente a los desocupados, demostrando que el volumen de jóvenes insertos crece progresivamente con la edad, alcanzando casi medio millón de ocupados en el tramo superior.
 
-La configuración analítica implementada en esta vista incluye:
-- **Entidades dimensionales:** `Fact_MercadoLaboral` conectada a `Dim_GrupoEdad` (ordenada por `OrdenEtario`).
-- **Tarjetas y KPIs:** `[Tasa Desocupacion 18-20]` (4,65%), `[Desocupados 18-20]` (13.504), `[Desocupados 25-28]` (19.988), `[Tasa Promedio]` (3,71%).
-- **Fórmula DAX rectora:**
-
-```dax
-// Desocupados ponderados específicos por tramo etario
-Desocupados Tramo Etario = 
-CALCULATE(
-    [Poblacion Desocupada],
-    KEEPFILTERS('Dim_GrupoEdad'[grupo_edad])
-)
-```
-
-Para ver la parametrización de las dimensiones etarias y jerarquías, dirigirse al Anexo 3.
+El cálculo de estos indicadores descansa en la medida DAX `[Desocupados Tramo Etario]`, la cual utiliza la función `CALCULATE` combinada con `KEEPFILTERS` sobre la dimensión `Dim_GrupoEdad`, ordenada cronológicamente mediante el atributo auxiliar `OrdenEtario`. Este mecanismo previene solapamientos y asegura que la agregación del factor de expansión `peso_trimestral` responda con precisión al filtro dinámico seleccionado por el usuario en el reporte interactivo. Para consultar la parametrización técnica de las jerarquías etarias y sus expresiones DAX, dirigirse al Anexo 3.
 
 #### 3.1.8.3. Página 3: Nivel formativo, capital humano y escolaridad
 La tercera página examina la interacción entre el nivel educativo y la inserción laboral. Presenta la paradoja del desempleo según credenciales académicas, donde los jóvenes con formación secundaria (4,02%) y superior universitaria (4,04%) exhiben tasas superiores a quienes poseen solo instrucción primaria (3,43%) o carecen de ella (2,31%). Incluye también la comparativa de desocupación entre quienes asisten a un centro educativo (3,54%) y quienes no asisten (3,92%), evaluando la compatibilidad entre estudio y actividad económica.
 
-FIGURA N.º 13: *Vista del cuadro de mando en Power BI: Capital humano y nivel formativo (Página 3)*
+FIGURA N.º 16: *Vista del cuadro de mando en Power BI: Capital de personas y nivel formativo (Página 3)*
 
 ![Cuadro de mando: Capital humano y nivel formativo](figures/dashboard_pagina_3.png)
 
 *FUENTE: Elaboración con base en el cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
-La Figura N.º 13 ilustra la relación entre educación y desocupación abierta. En el bloque superior, las tarjetas reportan las tasas de desempleo en egresados de secundaria (4,02%) y con formación universitaria (4,04%), la escolaridad media de los desocupados (13,01 años) y la brecha adicional de estudio equivalente a +4,5 meses lectivos frente a los ocupados. En el panel inferior izquierdo, el gráfico de barras horizontales hace visible el gradiente del desempleo ilustrado: las personas sin instrucción formal (2,31%) y con primaria (3,43%) registran menores tasas porque la necesidad económica las fuerza a ocuparse en cualquier empleo disponible, mientras que la secundaria y la universidad superan el promedio urbano. En el panel derecho, el gráfico de barras verticales compara la desocupación de quienes asisten a clases (3,54%) frente a quienes no asisten (3,92%), mostrando una brecha menor de 0,38 puntos porcentuales sin significancia estadística global.
+La Figura N.º 16 ilustra la relación entre educación y desocupación abierta. En el bloque superior, las tarjetas reportan las tasas de desempleo en egresados de secundaria (4,02%) y con formación universitaria (4,04%), la escolaridad media de los desocupados (13,01 años) y la brecha adicional de estudio equivalente a 4,5 meses lectivos frente a los ocupados (12,64 años). En el panel inferior izquierdo, el gráfico de barras horizontales hace visible el gradiente del desempleo ilustrado: las personas sin instrucción formal (2,31%) y con primaria (3,43%) registran menores tasas porque la necesidad económica las fuerza a ocuparse en cualquier empleo disponible, mientras que la secundaria y la universidad superan el promedio urbano. En el panel derecho, el gráfico de barras verticales compara la desocupación de quienes asisten a clases (3,54%) frente a quienes no asisten (3,92%), mostrando una brecha menor de 0,38 puntos porcentuales sin significancia estadística global.
 
-La estructura técnica de soporte para esta página se define por:
-- **Entidades dimensionales:** `Fact_MercadoLaboral` conectada a `Dim_NivelEducativo` y segmentador por `asiste_estudio`.
-- **Tarjetas y KPIs:** `[Tasa Desocupacion Secundaria]`, `[Tasa Desocupacion Superior]`, `[Promedio Anios Estudio Ponderado]`.
-- **Fórmula DAX rectora:**
-
-```dax
-// Promedio ponderado de años de estudio aprobados
-Promedio Anios Estudio Ponderado = 
-DIVIDE(
-    SUMX('Fact_MercadoLaboral', 'Fact_MercadoLaboral'[anios_estudio] * 'Fact_MercadoLaboral'[peso_trimestral]),
-    [PEA Juvenil Ponderada],
-    0
-)
-```
-
-Para consultar la contrastación de supuestos de escolaridad, dirigirse al Anexo 3 y Anexo 4.
+La estimación del promedio de años de estudio se gestiona mediante la medida DAX `[Promedio Anios Estudio Ponderado]`, la cual ejecuta un iterador `SUMX` que multiplica la variable continua `anios_estudio` por el ponderador muestral `peso_trimestral` en cada fila de `Fact_MercadoLaboral`, dividiendo el resultado entre la población activa ponderada. De esta forma se corrigen las distorsiones que provocaría una media aritmética no ponderada. El código DAX complementario y las pruebas de hipótesis sobre escolaridad se encuentran documentados en el Anexo 3 y el Anexo 4.
 
 #### 3.1.8.4. Página 4: Disparidades de género y brechas territoriales
 La cuarta página expone la doble asimetría sociodemográfica que caracteriza al mercado laboral boliviano. A la izquierda se presenta la brecha de género, donde las mujeres registran un 4,69% de desempleo abierto frente al 2,85% de los varones (brecha de 1,84 puntos porcentuales). A la derecha se visualiza el ranking de los nueve departamentos, encabezado por Chuquisaca (5,80%), Tarija (4,72%) y Cochabamba (4,71%), contrastando con las tasas menores registradas en los departamentos del oriente y norte del país.
 
-FIGURA N.º 14: *Vista del cuadro de mando en Power BI: Género y disparidades departamentales (Página 4)*
+FIGURA N.º 17: *Vista del cuadro de mando en Power BI: Género y disparidades departamentales (Página 4)*
 
 ![Cuadro de mando: Género y disparidades departamentales](figures/dashboard_pagina_4.png)
 
 *FUENTE: Elaboración con base en el cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
-La Figura N.º 14 sintetiza la dimensión demográfica y geográfica del desempleo. Las tarjetas superiores cuantifican la tasa femenina (4,69%), la tasa masculina (2,85%), la brecha neta desfavorable para las mujeres (+1,84 puntos porcentuales) y la tasa departamental máxima registrada en Chuquisaca (5,80%). En el panel izquierdo, el gráfico de barras verticales compara el desempleo por sexo, haciendo tangible la penalización laboral femenina. A la derecha, el gráfico de barras horizontales rankea a los nueve departamentos urbanos, evidenciando que Chuquisaca (5,80%), Tarija (4,72%), Cochabamba (4,71%) y La Paz (3,84%) se ubican por encima de la media nacional, mientras que Potosí (1,64%), Pando (1,89%) y Beni (2,07%) registran las menores tasas relativas.
+La Figura N.º 17 sintetiza la dimensión demográfica y geográfica del desempleo. Las tarjetas superiores cuantifican la tasa femenina (4,69%), la tasa masculina (2,85%), la brecha neta desfavorable para las mujeres (+1,84 puntos porcentuales) y la tasa departamental máxima registrada en Chuquisaca (5,80%). En el panel izquierdo, el gráfico de barras verticales compara el desempleo por sexo, haciendo tangible la penalización laboral femenina. A la derecha, el gráfico de barras horizontales rankea a los nueve departamentos urbanos, evidenciando que Chuquisaca (5,80%), Tarija (4,72%), Cochabamba (4,71%) y La Paz (3,84%) se ubican por encima de la media nacional, mientras que Santa Cruz (3,33%), Oruro (2,22%), Beni (2,07%), Pando (1,89%) y Potosí (1,64%) registran las menores tasas relativas.
 
-Los componentes analíticos de esta página responden al siguiente diseño:
-- **Entidades dimensionales:** `Fact_MercadoLaboral` vinculada a `Dim_Sexo` y `Dim_Departamento`.
-- **Tarjetas y KPIs:** `[Tasa Desocupacion Mujeres]`, `[Tasa Desocupacion Hombres]`, `[Brecha Desocupacion Genero pp]`, `[Tasa Chuquisaca]`.
-- **Fórmula DAX rectora:**
-
-```dax
-// Brecha estructural de género en puntos porcentuales (Mujeres - Hombres)
-Brecha Desocupacion Genero pp = 
-CALCULATE([Tasa Desocupacion Ponderada], 'Dim_Sexo'[sexo] = "Mujer") - 
-CALCULATE([Tasa Desocupacion Ponderada], 'Dim_Sexo'[sexo] = "Hombre")
-```
-
-Para consultar el código DAX de las desagregaciones geográficas, dirigirse al Anexo 3.
+La brecha de género se computa mediante la medida DAX `[Brecha Desocupacion Genero pp]`, que resta la tasa ponderada de varones respecto a la de mujeres calculadas con la función `CALCULATE` sobre la dimensión `Dim_Sexo`. Por su parte, la distribución geográfica enlaza dinámicamente con `Dim_Departamento` y `Dim_RegionGeografica`, permitiendo segmentar por macrorregiones (Valles, Altiplano y Llanos) sin perder la trazabilidad de los factores de expansión departamentales. El detalle de las fórmulas DAX aplicadas a las dimensiones de género y territorio se presenta en el Anexo 3.
 
 #### 3.1.8.5. Página 5: Perfil del joven desocupado y mecanismos de búsqueda
 La quinta página profundiza en la composición interna de los desocupados. Mediante un gráfico de dona y barras agrupadas se muestra que el 89,62% (45.882 personas) corresponde a desocupados cesantes con trayectoria laboral previa, mientras que solo el 10,38% (5.314 personas) busca trabajo por primera vez. Asimismo, detalla los canales de intermediación utilizados, destacando las redes de parentesco y amistades junto con la presentación directa de credenciales.
 
-FIGURA N.º 15: *Vista del cuadro de mando en Power BI: Perfil de cesantes y aspirantes (Página 5)*
+FIGURA N.º 18: *Vista del cuadro de mando en Power BI: Perfil de cesantes y aspirantes (Página 5)*
 
 ![Cuadro de mando: Perfil de cesantes y aspirantes](figures/dashboard_pagina_5.png)
 
 *FUENTE: Elaboración con base en el cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
-La Figura N.º 15 desglosa la trayectoria ocupacional previa y las vías de postulación de la juventud desocupada. En la parte superior, las tarjetas precisan que 45.882 jóvenes son cesantes (89,62% del total) y 5.314 son aspirantes a un primer empleo (10,38%). El gráfico de dona izquierdo refleja este marcado desbalance interno. En el centro, el gráfico de barras agrupadas muestra la distribución etaria en personas, evidenciando que los aspirantes alcanzan su volumen más alto en el tramo de 18 a 20 años (2.560 personas), mientras que los cesantes crecen con la edad hasta concentrar 18.551 personas entre los 25 y 28 años. A la derecha, el gráfico de barras horizontales clasifica los mecanismos de búsqueda activa, donde la consulta de avisos digitales o de prensa (20.848 personas) y la entrega de solicitudes o currículum (15.647 personas) absorben la gran mayoría de las gestiones, frente a una mínima proporción de consultas a parientes (889 personas) o planes de negocio independiente (654 personas).
+La Figura N.º 18 desglosa la trayectoria ocupacional previa y las vías de postulación de la juventud desocupada. En la parte superior, las tarjetas precisan que 45.882 jóvenes son cesantes (89,62% del total) y 5.314 son aspirantes a un primer empleo (10,38%). El gráfico de dona izquierdo refleja este marcado desbalance interno. En el centro, el gráfico de barras agrupadas muestra la distribución etaria en personas, evidenciando que los aspirantes alcanzan su volumen más alto en el tramo de 18 a 20 años (2.560 personas), mientras que los cesantes crecen con la edad hasta concentrar 18.551 personas entre los 25 y 28 años. A la derecha, el gráfico de barras horizontales clasifica los mecanismos de búsqueda activa, donde la consulta de avisos digitales o de prensa (20.848 personas; 38,82%) y la entrega de solicitudes o currículum (15.647 personas; 31,62%) absorben la gran mayoría de las gestiones, frente a una menor proporción de consultas a parientes o planes de negocio independiente.
 
-Los parámetros de soporte para esta visualización corresponden a:
-- **Entidades dimensionales:** `Fact_MercadoLaboral` conectada a `Dim_CondicionLaboral` y segmentada por `mecanismo_busqueda`.
-- **Tarjetas y KPIs:** `[Desocupados Cesantes]`, `[Desocupados Aspirantes]`, `[Proporcion Cesantes %]`, `[Proporcion Aspirantes %]`.
-- **Fórmula DAX rectora:**
-
-```dax
-// Proporción porcentual de desocupados cesantes sobre el total de desocupación abierta
-Proporcion Cesantes % = 
-DIVIDE(
-    CALCULATE(SUM('Fact_MercadoLaboral'[peso_trimestral]), 'Fact_MercadoLaboral'[es_cesante] = 1),
-    [Poblacion Desocupada],
-    0
-)
-```
-
-Para examinar las medidas asociadas a los canales de búsqueda, dirigirse al Anexo 3.
+La proporción de desocupación cesante se modela mediante la medida DAX `[Proporcion Cesantes %]`, aplicando la relación ponderada entre los desocupados con experiencia laboral previa (`es_cesante = 1`) y la población total desocupada mediante la función `DIVIDE`. El análisis de canales vincula a la dimensión `Dim_CondicionLaboral` con la variable de búsqueda activa de la encuesta, posibilitando analizar la efectividad de las vías institucionales y digitales frente a los canales informales. El repertorio completo de expresiones DAX para perfiles y canales se detalla en el Anexo 3.
 
 #### 3.1.8.6. Página 6: Síntesis ejecutiva y matriz de políticas públicas
 La sexta página traduce la evidencia estadística en directrices orientadas a la toma de decisiones. Articula una matriz de priorización cuadrantal (impacto potencial frente a factibilidad operativa) y presenta tres hojas de ruta concretas: el fomento al primer empleo formal para jóvenes de 18 a 20 años, medidas de corresponsabilidad en el cuidado para mujeres jóvenes, y fondos de dinamización productiva regional para Chuquisaca y Tarija.
 
-FIGURA N.º 16: *Vista del cuadro de mando en Power BI: Síntesis estratégica y políticas públicas (Página 6)*
+FIGURA N.º 19: *Vista del cuadro de mando en Power BI: Síntesis estratégica y políticas públicas (Página 6)*
 
 ![Cuadro de mando: Síntesis estratégica y políticas públicas](figures/dashboard_pagina_6.png)
 
 *FUENTE: Elaboración con base en el cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
-La Figura N.º 16 integra los focos prioritarios para la formulación de políticas públicas. Las tarjetas superiores señalan las metas de intervención estratégica: 13.504 desocupados en el tramo etario crítico de 18 a 20 años, 30.258 mujeres jóvenes desocupadas que requieren acciones afirmativas de inserción, una brecha de género a mitigar de +1,84 puntos porcentuales y la tasa más crítica radicada en Chuquisaca (5,80%). En el panel izquierdo, la matriz estratégica cruza los cuatro grupos de edad con sus volúmenes y tasas ponderadas, evidenciando que el tramo de 21 a 24 años registra la mayor subocupación horaria de Bolivia (10,77%), indicando subempleo involuntario en jóvenes universitarios. En el panel derecho, el gráfico de barras horizontales desagrega la desocupación por macrorregión ecológica, destacando que los Valles lideran la desocupación urbana con 4,89%, superando al Altiplano (3,40%) y a los Llanos (3,16%), lo cual delimita el ámbito territorial de mayor urgencia para programas productivos.
+La Figura N.º 19 integra los focos prioritarios para la formulación de políticas públicas. Las tarjetas superiores señalan las metas de intervención estratégica: 13.504 desocupados en el tramo etario crítico de 18 a 20 años, 30.258 mujeres jóvenes desocupadas que requieren acciones afirmativas de inserción, una brecha de género a mitigar de +1,84 puntos porcentuales y la tasa más crítica radicada en Chuquisaca (5,80%). En el panel izquierdo, la matriz estratégica cruza los cuatro grupos de edad con sus volúmenes y tasas ponderadas, evidenciando que el tramo de 21 a 24 años registra la mayor subocupación horaria de Bolivia (10,77%), indicando subempleo involuntario en jóvenes universitarios. En el panel derecho, el gráfico de barras horizontales desagrega la desocupación por macrorregión ecológica, destacando que los Valles lideran la desocupación urbana con 4,89%, superando al Altiplano (3,40%) y a los Llanos (3,16%), lo cual delimita el ámbito territorial de mayor urgencia para programas productivos.
 
-La configuración técnica de la síntesis analítica comprende:
-- **Entidades dimensionales:** `Fact_MercadoLaboral` cruzada con segmentación estratégica etaria y macrorregional (`RegionGeografica`).
-- **Tarjetas y KPIs:** `[Foco 18-20 Desocupados]` (13.504), `[Foco Mujeres Desocupadas]` (30.258), `[Tasa Subocupacion 21-24]` (10,77%), `[Tasa Valles]` (4,89%).
-- **Fórmula DAX rectora:**
-
-```dax
-// Tasa de subocupación por tiempo en tramo etario universitario (21 a 24 años)
-Tasa Subocupacion 21-24 = 
-DIVIDE(
-    CALCULATE(SUM('Fact_MercadoLaboral'[peso_trimestral]), 'Fact_MercadoLaboral'[es_subocupado] = 1, 'Dim_GrupoEdad'[grupo_edad] = "21 a 24 años"),
-    CALCULATE(SUM('Fact_MercadoLaboral'[peso_trimestral]), 'Fact_MercadoLaboral'[es_ocupado] = 1, 'Dim_GrupoEdad'[grupo_edad] = "21 a 24 años"),
-    0
-)
-```
-
-Para consultar la matriz completa de trazabilidad metodológica y políticas públicas, dirigirse al Anexo 3 y Anexo 5.
+La configuración técnica de la síntesis analítica comprende medidas combinadas de focalización, destacando `[Tasa Subocupacion 21-24]`, que calcula el cociente entre desocupados por insuficiencia de jornada laboral y ocupados dentro de ese tramo etario utilizando filtros compuestos en `CALCULATE`. La segmentación macrorregional agrupa los nueve departamentos en unidades geográficas mayores para orientar políticas de desarrollo regional diferenciadas. La matriz analítica de impacto y viabilidad para la formulación de políticas públicas se encuentra desarrollada en el Anexo 3 y el Anexo 5.
 
 ---
 
@@ -1385,48 +1299,6 @@ Los hallazgos empíricos del análisis responden de forma puntual a cada uno de 
 3. En relación con el tercer objetivo específico (diseñar y construir visualizaciones analíticas y un modelo dimensional en Power BI): se produjo un catálogo de diez figuras a 300 DPI y se implementó un modelo en estrella (*Star Schema*) con 20 medidas analíticas DAX ponderadas que sustentan las seis páginas del cuadro de mando interactivo.
 4. En relación con el cuarto objetivo específico (validar los resultados frente a los boletines del INE y la literatura laboral): se comprobó la correspondencia exacta con las estimaciones oficiales de línea base (3,7% y 8,7%), y se contrastaron las brechas observadas de género y edad con los estudios regionales de la OIT y la CEPAL.
 
-DIAGRAMA N.º 5: *Alineación metodológica entre objetivos específicos, pipeline analítico y resultados validados*
-
-```mermaid
-flowchart LR
-    %% ESTILOS MONOCROMÁTICOS CON ACENTO
-    classDef objBox fill:#F8FAFC,stroke:#334155,stroke-width:2px,color:#0F172A,font-size:13px;
-    classDef toolBox fill:#EFF6FF,stroke:#2563EB,stroke-width:2px,color:#1E3A8A,font-size:13px;
-    classDef resBox fill:#F0FDF4,stroke:#16A34A,stroke-width:2px,color:#14532D,font-size:13px;
-
-    subgraph O1["Objetivo 1: Ingestión y Muestreo"]
-        A1["ECE 4T-2025 INE<br/>52.650 registros"]:::objBox
-        A2["Filtro PEA urbana<br/>16 a 28 años"]:::toolBox
-        A3["Muestra: n = 6.649<br/>Población: N = 1.380.841"]:::resBox
-        A1 --> A2 --> A3
-    end
-
-    subgraph O2["Objetivo 2: Análisis Estadístico"]
-        B1["Pipeline en Python<br/>Pandas / SciPy"]:::objBox
-        B2["Ponderación muestral<br/>Pruebas Chi2 y Cramér"]:::toolBox
-        B3["Desocupación: 3,71%<br/>Subocupación: 8,70%"]:::resBox
-        B1 --> B2 --> B3
-    end
-
-    subgraph O3["Objetivo 3: Business Intelligence"]
-        C1["Power BI Desktop<br/>Modelo Star Schema"]:::objBox
-        C2["36 Medidas DAX<br/>6 Páginas analíticas"]:::toolBox
-        C3["Cuadro de mando PBIR<br/>10 Figuras a 300 DPI"]:::resBox
-        C1 --> C2 --> C3
-    end
-
-    subgraph O4["Objetivo 4: Validación Externa"]
-        D1["Boletines INE y OIT<br/>Literatura regional"]:::objBox
-        D2["Contrastación empírica<br/>Auditoría externa IA"]:::toolBox
-        D3["Discrepancia: 0,00 pp<br/>Auditoría: 9,70 / 10,00"]:::resBox
-        D1 --> D2 --> D3
-    end
-```
-
-*FUENTE: Elaboración propia a partir de la formulación metodológica del estudio.*
-
-El Diagrama N.º 5 resume la correspondencia entre los cuatro objetivos específicos del trabajo, las herramientas técnicas aplicadas y los resultados obtenidos. Cada fase conecta de manera directa la depuración de microdatos con ponderadores muestrales, el análisis inferencial en Python, la arquitectura del cuadro de mando en Power BI y la contrastación final con las estadísticas oficiales del INE.
-
 ### 3.2.7. Implicaciones prácticas y metodológicas de los resultados
 
 #### Implicaciones prácticas para la toma de decisiones
@@ -1443,7 +1315,7 @@ En la aplicación de ciencia de datos a políticas públicas, los resultados evi
 2. Alcance del indicador de desocupación: la tasa de desocupación abierta (3,71%) considera únicamente a quienes realizaron gestiones activas de búsqueda. Requiere complementarse con la tasa de subocupación (8,70%) y con el seguimiento a personas inactivas desalentadas que dejaron de buscar trabajo formal.
 3. Nivel de desagregación geográfica: si bien el diseño muestral garantiza representatividad estadística para el ámbito urbano de cada departamento, el tamaño de la muestra no permite desagregar las estimaciones a nivel de municipios específicos o localidades intermedias.
 
-TABLA N.º 12: *Matriz sintética de hallazgos del análisis del mercado laboral juvenil urbano*
+TABLA N.º 17: *Matriz sintética de hallazgos del análisis del mercado laboral juvenil urbano*
 
 | Eje de análisis | Hallazgo cuantitativo y técnico | Evidencia y métrica clave | Implicancia operativa y toma de decisiones |
 | :--- | :--- | :--- | :--- |
@@ -1456,7 +1328,7 @@ TABLA N.º 12: *Matriz sintética de hallazgos del análisis del mercado laboral
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-La Tabla N.º 12 resume los resultados empíricos del estudio agrupados en cuatro columnas estructuradas para la toma de decisiones. El *Eje de análisis* identifica la variable sociodemográfica evaluada; el *Hallazgo cuantitativo y técnico* sintetiza el patrón observado en los microdatos; la *Evidencia y métrica clave* expone las cifras ponderadas y la significancia del contraste estadístico ($\chi^2$ o $t$); y la *Implicancia operativa* detalla la recomendación concreta orientada a mitigar la problemática identificada.
+La Tabla N.º 17 resume los resultados empíricos del estudio agrupados en cuatro columnas estructuradas para la toma de decisiones. El *Eje de análisis* identifica la variable sociodemográfica evaluada; el *Hallazgo cuantitativo y técnico* sintetiza el patrón observado en los microdatos; la *Evidencia y métrica clave* expone las cifras ponderadas y la significancia del contraste estadístico ($\chi^2$ o $t$); y la *Implicancia operativa* detalla la recomendación concreta orientada a mitigar la problemática identificada.
 
 ---
 
@@ -1467,7 +1339,7 @@ Como mecanismo de control de calidad, reproducibilidad y aseguramiento metodoló
 
 La evaluación se estructuró en torno a seis pilares de control técnico ponderados, asignando calificaciones en una escala de 1,0 a 10,0 puntos sobre la base de pruebas de validación automatizadas y criterios de aplicabilidad empírica en el contexto socioeconómico boliviano.
 
-TABLA N.º 13: *Matriz de evaluación, rúbrica y calificaciones por pilar técnico (Lead Data Scientist AI)*
+TABLA N.º 18: *Matriz de evaluación, rúbrica y calificaciones por pilar técnico (Lead Data Scientist AI)*
 
 | Pilar | Dimensión Evaluada | Ponderación | Calificación (1-10) | Contribución Ponderada | Estado de Validación |
 | :---: | :--- | :---: | :---: | :---: | :--- |
@@ -1481,24 +1353,13 @@ TABLA N.º 13: *Matriz de evaluación, rúbrica y calificaciones por pilar técn
 
 *FUENTE: Elaboración propia a partir del framework de auditoría automatizada `src/audit/`.*
 
-FIGURA N.º 17: *Diagrama de radar de la evaluación integral de ciencia de datos por pilares analíticos*
+FIGURA N.º 20: *Diagrama de radar de la evaluación integral de ciencia de datos por pilares analíticos*
 
 ![Diagrama de Radar de Auditoría Externa de Ciencia de Datos](figures/auditoria_radar_evaluacion.png)
 
 *FUENTE: Generación automatizada mediante `src/audit/report_generator.py` a 300 DPI.*
 
-La ejecución del motor automatizado de auditoría y la exportación de las métricas de control de calidad se implementaron en Python mediante la siguiente rutina:
-
-```python
-# Ejecución integral del motor de auditoría y evaluación algorítmica
-from src.audit import run_full_audit
-
-# Inspección de los 6 pilares: P1 a P6
-reporte_auditoria = run_full_audit(PROJECT_ROOT)
-puntuacion_global = reporte_auditoria["summary"]["global_score"]  # Calificación: 9.70 / 10.00
-```
-
-Para consultar la arquitectura del motor de auditoría y los seis evaluadores algorítmicos, dirigirse al Anexo 9.
+La ejecución del motor automatizado de auditoría y la exportación de las métricas de control de calidad se implementaron en Python a través del módulo de auditoría integral, inspeccionando algorítmicamente la fidelidad matemática de las réplicas del INE, la convergencia del modelo dimensional y la robustez inferencial. Para examinar la arquitectura técnica del motor evaluador y el código fuente ejecutable, remitirse al Anexo 9.
 
 #### 3.3.2. Dictamen crítico por pilar e inspección de evidencias
 
@@ -1517,7 +1378,7 @@ El análisis externo efectuado por el agente enfatiza dos advertencias sustantiv
 
 ---
 
-### 3.4. Validación Metodológica y Técnica por Panel de Expertos Externos
+### 3.4. Validación Metodológica y Técnica por Panel de Personas Expertas
 
 #### 3.4.1. Propósito y protocolo de consulta al panel de pares
 Como complemento a la auditoría automatizada algorítmica realizada mediante Inteligencia Artificial (sección 3.3), y con el objetivo de culminar la contrastación empírica requerida por el Objetivo Específico 4, se implementó un proceso formal de validación externa por Juicio de Expertos. Se convocó a un panel de ocho profesionales independientes vinculados a las áreas de Ciencia de Datos, Ingeniería de Software, Estadística Aplicada y Análisis Económico.
@@ -1527,7 +1388,7 @@ La consulta se realizó mediante un formulario estructurado en Google Forms, res
 #### 3.4.2. Síntesis psicométrica y cuantitativa de resultados
 Las evaluaciones remitidas por los ocho jueces expertos confirmaron la consistencia metodológica y la reproducibilidad del estudio. Para evaluar la validez de contenido y el grado de consenso inter-jueces en cada reactivo, se computó el Coeficiente V de Aiken ($V$). Asimismo, se estimó el coeficiente Alfa de Cronbach ($\alpha$) para verificar la consistencia interna general del instrumento.
 
-TABLA N.º 14: *Matriz psicométrica y síntesis de resultados del panel de validación por expertos*
+TABLA N.º 19: *Matriz psicométrica y síntesis de resultados del panel de validación por expertos*
 
 | Dimensión Evaluada | N.º Ítems | Promedio Likert (1-5) | V de Aiken ($V$) | Desviación Estándar ($\sigma$) | Nivel de Validación y Acuerdo |
 | :--- | :---: | :---: | :---: | :---: | :--- |
