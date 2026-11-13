@@ -52,7 +52,7 @@ II. ÍNDICE DE TABLAS ..........................................................
 
 III. ÍNDICE DE FIGURAS ................................................................................................ ix
 
-**CAPÍTULO I: INTRODUCCIÓN** ...................................................................................... 1
+CAPÍTULO I: INTRODUCCIÓN ...................................................................................... 1
 
 1.1. Antecedentes ........................................................................................................... 1
 
@@ -92,7 +92,7 @@ III. ÍNDICE DE FIGURAS ........................................................
 
    1.6.6. Validez, limitaciones y alcance del análisis ....................................................... 10
 
-**CAPÍTULO II: MARCO REFERENCIAL** ....................................................................... 11
+CAPÍTULO II: MARCO REFERENCIAL ....................................................................... 11
 
 2.1. Marco teórico .......................................................................................................... 11
 
@@ -144,7 +144,7 @@ III. ÍNDICE DE FIGURAS ........................................................
 
    2.2.8. Síntesis del marco contextual ........................................................................... 31
 
-**CAPÍTULO III: RESULTADOS** ..................................................................................... 33
+CAPÍTULO III: RESULTADOS ..................................................................................... 33
 
 3.1. Presentación de resultados .................................................................................... 33
 
@@ -170,7 +170,7 @@ III. ÍNDICE DE FIGURAS ........................................................
 
    3.2.2. La brecha estructural de género en el mercado laboral juvenil ........................ 85
 
-   3.2.3. Asimetría territorial y fragilidad laboral en Chuquisaca y regiones del sur ...... 86
+   3.2.3. Asimetría territorial y fragilidad laboral en Chuquisaca y regiones del sur ....... 86
 
    3.2.4. La paradoja del desempleo ilustrado en el mercado informal ........................... 87
 
@@ -188,9 +188,9 @@ III. ÍNDICE DE FIGURAS ........................................................
 
    3.3.2. Dictamen crítico por pilar e inspección de evidencias ...................................... 96
 
-   3.3.3. Consideraciones críticas sobre el funcionamiento del mercado laboral en Bolivia 98
+   3.3.3. Consideraciones críticas sobre el funcionamiento del mercado laboral en Bolivia ............................................................................................................................ 98
 
-3.4. Validación metodológica y técnica por panel de personas expertas ........................ 98
+3.4. Validación Metodológica y Técnica por Panel de Personas Expertas ................. 98
 
    3.4.1. Propósito y protocolo de consulta al panel de pares ......................................... 98
 
@@ -198,11 +198,11 @@ III. ÍNDICE DE FIGURAS ........................................................
 
    3.4.3. Dictamen final y síntesis cualitativa de retroalimentación ............................. 100
 
-**CONCLUSIONES Y RECOMENDACIONES** .............................................................. 102
+CONCLUSIONES Y RECOMENDACIONES .............................................................. 102
 
-**REFERENCIAS BIBLIOGRÁFICAS** .......................................................................... 107
+REFERENCIAS BIBLIOGRÁFICAS .......................................................................... 107
 
-**ANEXOS** ..................................................................................................................... 110
+ANEXOS ..................................................................................................................... 110
 
    Anexo 1: Fundamentación teórica y formulación matemática de las pruebas estadísticas de asociación ................................................................................................................. 110
 
@@ -214,7 +214,7 @@ III. ÍNDICE DE FIGURAS ........................................................
 
    Anexo 5: Matriz de trazabilidad metodológica del ciclo CRISP-DM ........................... 119
 
-   Anexo 6: Código fuente del módulo de preparación de microdatos (data_processing.py) 121
+   Anexo 6: Código fuente del módulo de preparación de microdatos (data_processing.py) ....................................................................................................................................... 121
 
    Anexo 7: Código fuente del módulo de análisis estadístico (statistical_analysis.py) ... 123
 
@@ -238,31 +238,31 @@ TABLA N. 4: Dimensiones y variables de análisis ...............................
 
 TABLA N. 5: Variables educativas disponibles en las fuentes de datos ........................ 30
 
-TABLA N.º 6: Dimensión metodológica y aplicación en ciencia de datos ....................... 33
+TABLA N. 6: Dimensión metodológica y aplicación en ciencia de datos ....................... 33
 
-TABLA N.º 7: Cumplimiento de hitos del proceso metodológico (CRISP-DM) ............... 36
+TABLA N. 7: Cumplimiento de hitos del proceso metodológico (CRISP-DM) ............... 36
 
-TABLA N.º 8: Componentes técnicos de la solución en ciencia de datos ....................... 37
+TABLA N. 8: Componentes técnicos de la solución en ciencia de datos ....................... 37
 
-TABLA N.º 9: Indicadores del mercado laboral juvenil urbano en Bolivia (cuarto trimestre de 2025) ............................................................................................................................ 40
+TABLA N. 9: Indicadores del mercado laboral juvenil urbano en Bolivia (cuarto trimestre de 2025) ............................................................................................................................ 40
 
-TABLA N.º 10: Matriz de pruebas de asociación estadística con la condición de desocupación juvenil ............................................................................................................................ 44
+TABLA N. 10: Matriz de pruebas de asociación estadística con la condición de desocupación juvenil ............................................................................................................................ 44
 
-TABLA N.º 11: Tasa de desocupación juvenil según tramo etario (Bolivia urbana, 4T-2025) ......................................................................................................................................... 46
+TABLA N. 11: Tasa de desocupación juvenil según tramo etario (Bolivia urbana, 4T-2025) ......................................................................................................................................... 46
 
-TABLA N.º 12: Tasa de desocupación juvenil según sexo (Bolivia urbana, 4T-2025) .... 48
+TABLA N. 12: Tasa de desocupación juvenil según sexo (Bolivia urbana, 4T-2025) .... 48
 
-TABLA N.º 13: Tasa de desocupación juvenil por departamento (Bolivia urbana, 4T-2025) ......................................................................................................................................... 50
+TABLA N. 13: Tasa de desocupación juvenil por departamento (Bolivia urbana, 4T-2025) ......................................................................................................................................... 50
 
-TABLA N.º 14: Comparación de años de escolaridad entre jóvenes ocupados y desocupados ......................................................................................................................................... 53
+TABLA N. 14: Comparación de años de escolaridad entre jóvenes ocupados y desocupados ......................................................................................................................................... 53
 
-TABLA N.º 15: Canales de búsqueda de empleo utilizados por jóvenes desocupados urbanos ......................................................................................................................................... 60
+TABLA N. 15: Canales de búsqueda de empleo utilizados por jóvenes desocupados urbanos ......................................................................................................................................... 60
 
-TABLA N.º 16: Estructura y catálogo de páginas del cuadro de mando analítico en Power BI Desktop ........................................................................................................................... 65
+TABLA N. 16: Estructura y catálogo de páginas del cuadro de mando analítico en Power BI Desktop ........................................................................................................................... 65
 
-TABLA N.º 17: Matriz sintética de hallazgos del análisis del mercado laboral juvenil urbano ......................................................................................................................................... 91
+TABLA N. 17: Matriz sintética de hallazgos del análisis del mercado laboral juvenil urbano ......................................................................................................................................... 91
 
-TABLA N.º 18: Matriz de evaluación, rúbrica y calificaciones por pilar técnico (Lead Data Scientist AI) .................................................................................................................... 93
+TABLA N. 18: Matriz de evaluación, rúbrica y calificaciones por pilar técnico (Lead Data Scientist AI) .................................................................................................................... 93
 
 TABLA N.º 19: Matriz psicométrica y síntesis de resultados del panel de validación por expertos ............................................................................................................................ 99
 
@@ -276,50 +276,49 @@ FIGURA N. 2: Ruta metodológica CRISP-DM adaptada al proyecto ..................
 
 FIGURA N. 3: Modelo conceptual del análisis de factores asociados a la desocupación juvenil ......................................................................................................................................... 24
 
-DIAGRAMA N.º 1: Flujo metodológico de preparación y calibración de microdatos (ECE 4T-2025) ............................................................................................................................ 35
+DIAGRAMA N. 1: Flujo metodológico de preparación y calibración de microdatos (ECE 4T-2025) ............................................................................................................................ 35
 
-FIGURA N.º 4: Comparación de la tasa de desocupación general urbana y juvenil (cuarto trimestre de 2025) ............................................................................................................ 42
+FIGURA N. 4: Comparación de la tasa de desocupación general urbana y juvenil (cuarto trimestre de 2025) ............................................................................................................ 42
 
-FIGURA N.º 5: Tasa de desocupación juvenil por tramo etario (cuarto trimestre de 2025) ......................................................................................................................................... 47
+FIGURA N. 5: Tasa de desocupación juvenil por tramo etario (cuarto trimestre de 2025) ......................................................................................................................................... 47
 
-FIGURA N.º 6: Tasa de desocupación juvenil según sexo y brecha de género (cuarto trimestre de 2025) ............................................................................................................ 49
+FIGURA N. 6: Tasa de desocupación juvenil según sexo y brecha de género (cuarto trimestre de 2025) ............................................................................................................ 49
 
-FIGURA N.º 7: Tasa de desocupación juvenil por departamento (cuarto trimestre de 2025) ......................................................................................................................................... 52
+FIGURA N. 7: Tasa de desocupación juvenil por departamento (cuarto trimestre de 2025) ......................................................................................................................................... 52
 
-FIGURA N.º 8: Distribución de años de estudio: jóvenes ocupados y desocupados urbanos ......................................................................................................................................... 55
+FIGURA N. 8: Distribución de años de estudio: jóvenes ocupados y desocupados urbanos ......................................................................................................................................... 55
 
-FIGURA N.º 9: Tasa de desocupación juvenil según nivel educativo formal .................. 56
+FIGURA N. 9: Tasa de desocupación juvenil según nivel educativo formal .................. 56
 
-FIGURA N.º 10: Tasa de desocupación juvenil según asistencia escolar o académica ... 57
+FIGURA N. 10: Tasa de desocupación juvenil según asistencia escolar o académica ... 57
 
-FIGURA N.º 11: Composición de la desocupación juvenil: cesantes y aspirantes ......... 59
+FIGURA N. 11: Composición de la desocupación juvenil: cesantes y aspirantes ......... 59
 
-FIGURA N.º 12: Mecanismos principales de búsqueda de empleo en jóvenes desocupados ......................................................................................................................................... 61
+FIGURA N. 12: Mecanismos principales de búsqueda de empleo en jóvenes desocupados ......................................................................................................................................... 61
 
-FIGURA N.º 13: Tasa de desocupación juvenil según tipología de hogar ...................... 62
+FIGURA N. 13: Tasa de desocupación juvenil según tipología de hogar ...................... 62
 
-DIAGRAMA N.º 2: Arquitectura del modelo dimensional en estrella (Star Schema) implementado en Power BI Desktop .................................................................................... 64
+DIAGRAMA N. 2: Arquitectura del modelo dimensional en estrella (Star Schema) implementado en Power BI Desktop .................................................................................... 64
 
-FIGURA N.º 14: Vista del cuadro de mando en Power BI: Panorama laboral juvenil urbano (Página 1) ........................................................................................................................... 67
+FIGURA N. 14: Vista del cuadro de mando en Power BI: Panorama laboral juvenil urbano (Página 1) ........................................................................................................................... 67
 
-FIGURA N.º 15: Vista del cuadro de mando en Power BI: Desocupación por tramo etario (Página 2) ........................................................................................................................... 70
+FIGURA N. 15: Vista del cuadro de mando en Power BI: Desocupación por tramo etario (Página 2) ........................................................................................................................... 70
 
-FIGURA N.º 16: Vista del cuadro de mando en Power BI: Capital de personas y nivel formativo (Página 3) ............................................................................................................ 73
+FIGURA N. 16: Vista del cuadro de mando en Power BI: Capital de personas y nivel formativo (Página 3) ............................................................................................................ 73
 
-FIGURA N.º 17: Vista del cuadro de mando en Power BI: Género y disparidades departamentales (Página 4) ................................................................................................ 76
+FIGURA N. 17: Vista del cuadro de mando en Power BI: Género y disparidades departamentales (Página 4) ................................................................................................ 76
 
-FIGURA N.º 18: Vista del cuadro de mando en Power BI: Perfil de cesantes y aspirantes (Página 5) ........................................................................................................................... 79
+FIGURA N. 18: Vista del cuadro de mando en Power BI: Perfil de cesantes y aspirantes (Página 5) ........................................................................................................................... 79
 
-FIGURA N.º 19: Vista del cuadro de mando en Power BI: Síntesis estratégica y políticas públicas (Página 6) ............................................................................................................ 82
+FIGURA N. 19: Vista del cuadro de mando en Power BI: Síntesis estratégica y políticas públicas (Página 6) ............................................................................................................ 82
 
-DIAGRAMA N.º 3: Modelo conceptual de interrelación entre factores determinantes y la desocupación juvenil urbana ............................................................................................ 84
+DIAGRAMA N. 3: Modelo conceptual de interrelación entre factores determinantes y la desocupación juvenil urbana ............................................................................................ 84
 
-DIAGRAMA N.º 4: Mecanismo de divergencia laboral y la paradoja del desempleo ilustrado en el entorno urbano boliviano ............................................................................................ 88
+DIAGRAMA N. 4: Mecanismo de divergencia laboral y la paradoja del desempleo ilustrado en el entorno urbano boliviano ............................................................................................ 88
 
-FIGURA N.º 20: Diagrama de radar de la evaluación integral de ciencia de datos por pilares analíticos ............................................................................................................................ 95
+FIGURA N. 20: Diagrama de radar de la evaluación integral de ciencia de datos por pilares analíticos ............................................................................................................................ 95
 
 ---
-
 
 # **CAPÍTULO I: INTRODUCCIÓN**
 
@@ -464,7 +463,7 @@ flowchart TD
 
 La preparación y análisis de microdatos se desarrolla en Python (Pandas, NumPy, SciPy y Statsmodels), asegurando la vectorización de operaciones ponderadas por `peso_trimestral`. Se aplican contrastes de asociación Chi-cuadrado de Pearson, coeficientes V de Cramér y pruebas de comparación de escolaridad ($t$ de Welch y Mann-Whitney). Para la capa de comunicación y transferencia tecnológica se implementa Power BI Desktop con modelado en estrella (*Star Schema*) y medidas DAX ponderadas.
 
-### **1.6.6. Validación**
+### **1.6.6. Validez, limitaciones y alcance del análisis**
 
 La validación contempla controles técnicos de calidad muestral (ausencia de valores nulos o negativos en el ponderador), replicación exacta de las tasas del INE para el 4T-2025 (3,71% y 8,70%), evaluación ciega automatizada mediante agente evaluador de Inteligencia Artificial (calificación 9,70/10) y contrastación formal por panel externo de expertos independientes (100% de dictámenes favorables, nota 8,63/10 y V de Aiken de 0,88).
 
@@ -775,7 +774,7 @@ La base de datos original contiene 52.650 observaciones. El primer filtro elimin
 
 La variable del factor de expansión `fact_trim_act` presentaba valores textuales con coma decimal, por ejemplo `'207,52'`. Este formato requirió una conversión a tipo numérico de punto flotante (`float64`) para evitar errores en las operaciones de suma ponderada. Se verificó que ningún registro presentara un factor nulo, negativo o igual a cero. La suma total de los ponderadores reproduce con exactitud la cifra de 1.380.841 personas estimadas por el sistema estadístico nacional para la PEA juvenil urbana.
 
-*(Para consultar la implementación técnica completa del script de preparación y depuración de microdatos en Python, dirigirse al Anexo 6).*
+*(Para consultar el diccionario metodológico y las reglas de depuración de microdatos de la encuesta, dirigirse al Anexo 2; para la implementación técnica completa del script de preparación en Python, dirigirse al Anexo 6).*
 
 ### 3.1.4. Resultados del análisis descriptivo univariado
 La tasa de desocupación se calculó dividiendo la población desocupada ponderada entre la PEA juvenil urbana ponderada y multiplicando por cien:
@@ -1293,7 +1292,7 @@ La Tabla N.º 17 resume los resultados empíricos del estudio agrupados en cuatr
 
 ---
 
-### 3.3. Auditoría Externa y Evaluación Crítica mediante Agente Experto de Inteligencia Artificial (Lead Data Scientist)
+### 3.3. Auditoría externa y evaluación experto de inteligencia artificial (Lead Data Scientist)
 
 #### 3.3.1. Justificación y metodología de la evaluación automatizada
 Como mecanismo de control de calidad, reproducibilidad y aseguramiento metodológico, se implementó un sistema de auditoría externa ejecutado por un agente automatizado de Inteligencia Artificial configurado con el rol de evaluador ciego e independiente (*Lead Data Scientist*). La herramienta inspeccionó de forma directa los archivos fuente del repositorio, verificando la consistencia entre los microdatos crudos, el pipeline de depuración en Python, las salidas estadísticas, el modelo semántico en Power BI y el presente texto académico.
