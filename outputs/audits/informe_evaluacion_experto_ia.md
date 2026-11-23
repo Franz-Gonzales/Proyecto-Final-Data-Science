@@ -114,7 +114,7 @@ El presente informe recoge la evaluación técnica, matemática, estadística y 
 
 **Evidencia Técnica Verificada:**
 - Tablas del Modelo Semántico TMDL verificadas: 7/11 tablas activas.
-- Catálogo de Medidas DAX: 38 medidas analíticas compiladas.
+- Catálogo de Medidas DAX: 39 medidas analíticas compiladas.
 - Regla inquebrantable de DAX validada: Todas las tasas ponderan mediante factor de expansión.
 - Páginas de Business Intelligence configuradas: 6 páginas oficiales.
 - Contenedores visuales PBIR auditados: 39 visuales interactivos.
@@ -135,10 +135,10 @@ El presente informe recoge la evaluación técnica, matemática, estadística y 
 **Estado:** `APROBADO CON EXCELENCIA` | **Ponderación:** `15%`
 
 **Evidencia Técnica Verificada:**
-- Monografía formal inspeccionada: 1956 líneas de redacción académica.
+- Monografía formal inspeccionada: 2199 líneas de redacción académica.
 - Estructura formal USFX CEPI validada: Secciones 3.1 (Presentación) y 3.2 (Análisis Crítico) implementadas.
 - Trazabilidad metodológica validada: Marco CRISP-DM explícito en la estructura del documento.
-- Artefactos integrados en texto: 28 tablas normalizadas y 33 referencias a figuras analíticas.
+- Artefactos integrados en texto: 15 tablas normalizadas y 17 referencias a figuras analíticas.
 
 **Fortalezas Metodológicas:**
 - Apego riguroso al estándar de titulación de posgrado del CEPI USFX (2024).
