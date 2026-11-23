@@ -44,10 +44,29 @@
                   "Property": "Poblacion Desocupada"
                 }
               },
-              "queryRef": "_Medidas.Poblacion Desocupada"
+              "queryRef": "_Medidas.Poblacion Desocupada",
+              "nativeQueryRef": "Poblacion Desocupada"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "Poblacion Desocupada"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -287,5 +306,23 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "96c8830c13b53c08da72",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_MercadoLaboral"
+              }
+            },
+            "Property": "mecanismo_busqueda"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

@@ -278,6 +278,25 @@ table _Medidas
 		displayFolder: 02_Tasas_Analiticas
 		lineageTag: a1b2c3d4-0018-4000-8000-000000000018
 
+	measure '% Distribución Canales' = ```
+			
+			DIVIDE(
+			    -- NUMERADOR: El peso de la categoría actual en el gráfico
+			    SUM('Fact_MercadoLaboral'[peso_trimestral]),
+			    
+			    -- DENOMINADOR: El peso total de TODOS los desocupados (ignorando el filtro del canal)
+			    CALCULATE(
+			        SUM('Fact_MercadoLaboral'[peso_trimestral]),
+			        'Fact_MercadoLaboral'[es_desocupado] = 1,
+			        REMOVEFILTERS('Fact_MercadoLaboral'[mecanismo_busqueda]) 
+			    )
+			)
+			```
+		displayFolder: 01_Volumenes_Poblacionales
+		lineageTag: c92bbcbc-13c3-4c67-a2a5-c8a328d25082
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Indice
 		lineageTag: ae48dc84-4f39-4485-9351-e563f361e8a3
 		isNameInferred
