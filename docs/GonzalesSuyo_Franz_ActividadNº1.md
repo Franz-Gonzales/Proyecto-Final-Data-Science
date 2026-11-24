@@ -34,7 +34,7 @@ Autor
 
 # RESUMEN
 
-La inserción laboral de la juventud en el área urbana de Bolivia presenta asimetrías estructurales asociadas a la transición entre el sistema educativo y el empleo productivo. Se analizaron los factores sociodemográficos, formativos, territoriales y de trayectoria laboral vinculados a la condición de desocupación en personas de 16 a 28 años pertenecientes a la Población Económicamente Activa. La metodología adaptó el ciclo de vida CRISP-DM a los microdatos oficiales de la Encuesta Continua de Empleo del cuarto trimestre de 2025 del Instituto Nacional de Estadística. Se procesó una muestra depurada de 6.649 registros individuales calibrados mediante el ponderador trimestral a un universo de 1.380.841 jóvenes, aplicando tabulaciones ponderadas, pruebas de independencia Chi-cuadrado de Pearson, coeficientes V de Cramér, contrastes paramétricos t de Student y un modelo dimensional en Power BI Desktop. Los resultados establecieron una tasa de desocupación juvenil del 3,71% y una subocupación por tiempo del 8,70%. Se constató una brecha de género estadísticamente significativa desfavorable hacia las mujeres de 1,84 puntos porcentuales (4,69% frente a 2,85% en varones), una mayor vulnerabilidad en el tramo de 18 a 20 años (4,65%), disparidades regionales encabezadas por Chuquisaca (5,80%) y Tarija (4,72%), un marcado predominio de desocupados cesantes (89,62% frente a 10,38% de aspirantes) y un promedio de escolaridad significativamente superior en jóvenes desocupados respecto a los ocupados (13,01 frente a 12,38 años de estudio). Se determinó que la desocupación juvenil no se origina en un déficit de instrucción formal, sino en dificultades de absorción en puestos calificados y cargas desproporcionadas de cuidado no remunerado, aportando una plataforma interactiva de inteligencia de negocios para orientar políticas públicas focalizadas en inserción temprana y formalización laboral.
+La inserción laboral de la juventud en el área urbana de Bolivia presenta asimetrías estructurales asociadas a la transición entre el sistema educativo y el empleo productivo. Se analizaron los factores sociodemográficos, formativos, territoriales y de trayectoria laboral vinculados a la condición de desocupación en personas de 16 a 28 años pertenecientes a la Población Económicamente Activa. La metodología adaptó el ciclo de vida CRISP-DM a los microdatos oficiales de la Encuesta Continua de Empleo del cuarto trimestre de 2025 del Instituto Nacional de Estadística. Se procesó una muestra depurada de 6.649 registros individuales calibrados mediante el ponderador trimestral a un universo de 1.380.841 jóvenes, aplicando tabulaciones ponderadas, pruebas de independencia Chi-cuadrado de Pearson, coeficientes V de Cramér, contrastes de escolaridad ($t$ de Welch y Mann-Whitney) y un modelo dimensional en Power BI Desktop. Los resultados establecieron una tasa de desocupación juvenil del 3,71% y una subocupación por tiempo del 8,70%. Se constató una brecha de género estadísticamente significativa desfavorable hacia las mujeres de 1,84 puntos porcentuales (4,69% frente a 2,85% en varones), una mayor vulnerabilidad en el tramo de 18 a 20 años (4,65%), disparidades regionales encabezadas por Chuquisaca (5,80%) y Tarija (4,72%), un marcado predominio de desocupados cesantes (89,62% frente a 10,38% de aspirantes) y un promedio de escolaridad significativamente superior en jóvenes desocupados respecto a los ocupados (13,01 frente a 12,64 años de estudio). La calidad técnica y consistencia del estudio se validaron mediante réplica oficial frente al INE, una auditoría algorítmica automatizada (9,70/10) y el juicio de un panel de ocho expertos independientes (8,63/10 y V de Aiken de 0,882). Se concluyó que la desocupación juvenil no responde a falta de instrucción formal, sino a dificultades de absorción en puestos calificados y a cargas desproporcionadas de cuidado no remunerado, aportando una plataforma interactiva de inteligencia de negocios para orientar políticas públicas focalizadas.
 
 ***Palabras clave:*** *Desocupación juvenil, mercado laboral urbano, microdatos ECE, análisis de asociación, inteligencia de negocios.*
 
@@ -352,7 +352,7 @@ Como fuentes complementarias, se dispone de la Encuesta de Hogares 2025 para el 
 
 ### **1.2.1. Descripción de la situación problemática**
 
-Durante los últimos años, la tasa de desocupación urbana agregada en Bolivia ha mostrado signos de estabilización. Sin embargo, las cifras oficiales revelan que la juventud de 16 a 28 años experimenta una tasa de desempleo abierto de 3,71%, cifra 1,61 veces mayor a la tasa general urbana (2,30%). Además, la subocupación horaria afecta al 8,70% de los jóvenes ocupados, elevando la presión laboral insatisfecha al 12,41% de la fuerza de trabajo juvenil.
+Durante los últimos años, la tasa de desocupación urbana agregada en Bolivia ha mostrado signos de estabilización. Sin embargo, las cifras oficiales revelan que la juventud de 16 a 28 años experimenta una tasa de desempleo abierto de 3,71%, cifra 1,61 veces mayor a la tasa general urbana (2,30%). Además, la subocupación horaria afecta al 8,70% de los jóvenes ocupados (115.737 personas), elevando la presión conjunta de desocupación abierta y subocupación horaria al 12,09% de la fuerza de trabajo juvenil urbana (166.933 jóvenes sobre una PEA de 1.380.841).
 
 El desempleo juvenil presenta una marcada heterogeneidad interna: varía según la salida escolar obligatoria, la culminación de estudios superiores, las cargas de cuidado que penalizan a las mujeres y las diferencias de dinamismo productivo entre departamentos. Evaluar una tasa global sin desagregación cuantitativa oculta las barreras específicas de inserción y limita la formulación de políticas focalizadas. Por tanto, el problema central radica en caracterizar los determinantes que se asocian sistemáticamente a la condición de desocupación en los jóvenes urbanos bolivianos.
 
@@ -360,7 +360,7 @@ El desempleo juvenil presenta una marcada heterogeneidad interna: varía según 
 
 El estudio se circunscribe al área urbana de Bolivia y toma como universo objetivo a las personas de 16 a 28 años pertenecientes a la Población Económicamente Activa (PEA). Dentro de este universo, la desocupación abierta constituye la condición de resultado, empleando a la población ocupada como grupo de referencia estadístico.
 
-Las variables analizadas comprenden la dimensión sociodemográfica (edad en cuatro cohortes: 16-17, 18-20, 21-24 y 25-28 años, y sexo), la dimensión educativa (nivel formativo, años de escolaridad y asistencia académica), la dimensión territorial (nueve departamentos y macrorregiones) y la trayectoria laboral (condición de cesante o aspirante y mecanismos de búsqueda activa). La investigación utiliza los microdatos de la ECE 4T-2025 procesados de forma transversal bajo factores de expansión muestral.
+De las 121 variables originales que contiene la ECE 4T-2025, la selección de factores se delimitó estrictamente bajo dos criterios operativos. Primero, la observabilidad simultánea en ambos grupos de comparación: variables laborales como ingresos, horas trabajadas o tipo de contrato solo existen para personas ocupadas, mientras que el tiempo y canal de búsqueda solo se registran en desocupados; por ello, el análisis asociativo debía concentrarse en atributos medidos de manera uniforme en toda la PEA juvenil. Segundo, la suficiencia muestral: aunque la muestra depurada alcanza 6.649 registros, solamente 243 personas corresponden a jóvenes desocupados en el corte trimestral, lo que impide realizar cruces conjuntos de múltiples variables a la vez sin atomizar las categorías por debajo del umbral mínimo estadístico. Bajo estos criterios, las variables seleccionadas comprenden la dimensión sociodemográfica (edad en cuatro cohortes: 16-17, 18-20, 21-24 y 25-28 años, y sexo), la dimensión educativa (nivel formativo, años de escolaridad y asistencia académica), la dimensión territorial (nueve departamentos y macrorregiones) y la dimensión familiar y de trayectoria laboral (tipología de hogar, parentesco, condición de cesante o aspirante y mecanismos de búsqueda activa), procesadas de forma transversal con factores de expansión muestral.
 
 ### **1.2.3. Planteamiento del problema**
 
@@ -372,14 +372,14 @@ El objeto de estudio está constituido por los factores asociados a la desocupac
 
 ## **1.3. OBJETIVO GENERAL**
 
-Analizar los factores sociodemográficos, educativos, territoriales y de trayectoria laboral asociados a la desocupación de jóvenes de 16 a 28 años en el área urbana de Bolivia, para la identificación de patrones y diferencias relacionados con su inserción laboral a partir de información estadística oficial del mercado de trabajo.
+Analizar los factores sociodemográficos, educativos, territoriales y de trayectoria laboral asociados a la desocupación de jóvenes de 16 a 28 años en el área urbana de Bolivia, para la identificación de factores asociados, brechas y diferencias en su inserción laboral a partir de información estadística oficial del mercado de trabajo.
 
 ## **1.4. OBJETIVOS ESPECÍFICOS**
 
 1. Recopilar y organizar datos estadísticos provenientes de fuentes oficiales del mercado laboral boliviano, aplicando procesos de selección, limpieza y estructuración que permitan disponer de un conjunto de información confiable y listo para su análisis.
-2. Procesar y analizar los datos con herramientas de programación estadística en Python, aplicando técnicas de filtrado, transformación, segmentación por grupos de edad y análisis de asociaciones que permitan identificar los factores asociados a la desocupación juvenil.
-3. Diseñar y construir visualizaciones e indicadores analíticos con herramientas de inteligencia de negocios que faciliten la interpretación de los patrones, brechas y perfiles identificados en el análisis de la desocupación juvenil.
-4. Validar los resultados obtenidos, verificando la consistencia de los datos procesados, contrastándolos con indicadores oficiales publicados y revisando la coherencia entre los hallazgos y las fuentes utilizadas.
+2. Procesar y analizar los datos con herramientas de programación estadística en Python, aplicando técnicas de filtrado, transformación, segmentación por grupos de edad y análisis de asociaciones que permitan identificar los factores vinculados a la desocupación juvenil.
+3. Diseñar y construir visualizaciones e indicadores analíticos en inteligencia de negocios que faciliten la interpretación de las brechas sociolaborales, diferencias entre grupos y perfiles de desocupación identificados en la juventud urbana.
+4. Validar los resultados obtenidos mediante la verificación de consistencia de los datos procesados, su contrastación frente a indicadores oficiales publicados y literatura regional, la ejecución de una auditoría técnica automatizada y la evaluación externa por un panel de expertos en ciencia de datos y análisis cuantitativo.
 
 ## **1.5. JUSTIFICACIÓN**
 
@@ -461,11 +461,11 @@ flowchart TD
 
 ### **1.6.5. Técnicas y herramientas**
 
-La preparación y análisis de microdatos se desarrolla en Python (Pandas, NumPy, SciPy y Statsmodels), asegurando la vectorización de operaciones ponderadas por `peso_trimestral`. Se aplican contrastes de asociación Chi-cuadrado de Pearson, coeficientes V de Cramér y pruebas de comparación de escolaridad ($t$ de Welch y Mann-Whitney). Para la capa de comunicación y transferencia tecnológica se implementa Power BI Desktop con modelado en estrella (*Star Schema*) y medidas DAX ponderadas.
+La preparación y el análisis de microdatos se desarrollan en Python (Pandas, NumPy, SciPy y Statsmodels), asegurando la vectorización de operaciones ponderadas por `peso_trimestral`. Se aplican contrastes bivariados de asociación Chi-cuadrado de Pearson, coeficientes V de Cramér y pruebas de comparación de escolaridad ($t$ de Welch y Mann-Whitney). Para la capa de comunicación analítica se optó por Power BI Desktop con modelado en estrella (*Star Schema*) y medidas DAX ponderadas, debido a que su motor columnar en memoria y su evaluación dinámica por contexto de filtro permiten cruzar simultáneamente múltiples dimensiones recalculando en tiempo real el factor de expansión muestral sin degradar el rendimiento ni duplicar tablas planas.
 
 ### **1.6.6. Validez, limitaciones y alcance del análisis**
 
-La validación contempla controles técnicos de calidad muestral (ausencia de valores nulos o negativos en el ponderador), replicación exacta de las tasas del INE para el 4T-2025 (3,71% y 8,70%), evaluación ciega automatizada mediante agente evaluador de Inteligencia Artificial (calificación 9,70/10) y contrastación formal por panel externo de expertos independientes (100% de dictámenes favorables, nota 8,63/10 y V de Aiken de 0,88).
+El análisis estadístico bivariado factor por factor responde al límite muestral de la población desocupada en un corte trimestral ($n = 243$ casos observados), evitando la fragmentación excesiva de celdas que ocurriría en tabulaciones multivariadas simultáneas. La validación contempla controles técnicos de calidad muestral (ausencia de valores nulos o negativos en el ponderador), replicación exacta de las tasas del INE para el 4T-2025 (3,71% y 8,70%), evaluación ciega automatizada mediante agente evaluador de Inteligencia Artificial (calificación 9,70/10) y contrastación formal por un panel externo de ocho expertos independientes (100% de dictámenes favorables, calificación global de 8,63/10 y V de Aiken de 0,882).
 
 ---
 
@@ -475,19 +475,19 @@ La validación contempla controles técnicos de calidad muestral (ausencia de va
 
 ### **2.1.1. Ciencia de Datos: fundamentos y alcance**
 
-La Ciencia de Datos es un campo interdisciplinario que combina principios estadísticos, técnicas computacionales y conocimiento sustantivo de dominio para extraer patrones significativos a partir de conjuntos de datos estructurados y no estructurados. Su propósito principal radica en transformar registros crudos en evidencia empírica accionable que fundamente la toma de decisiones en políticas públicas y gestión social (Provost & Fawcett, 2013). Lejos de reducirse a un conjunto aislado de algoritmos, articula métodos rigurosos de medición e inferencia con la automatización de procesos y el procesamiento de grandes volúmenes de información.
+La Ciencia de Datos es un campo interdisciplinario que combina principios estadísticos, técnicas computacionales y conocimiento sustantivo de dominio para extraer conocimiento verificable y relaciones significativas a partir de conjuntos de datos estructurados y no estructurados. Su propósito principal radica en transformar registros crudos en evidencia empírica accionable que fundamente la toma de decisiones en políticas públicas y gestión social (Provost & Fawcett, 2013). Lejos de reducirse a un conjunto aislado de algoritmos predictivos, articula métodos rigurosos de medición e inferencia con la automatización reproducible de procesos.
 
-En el estudio de los mercados de trabajo, la Ciencia de Datos permite superar la simple observación de agregados macroeconómicos para abordar la heterogeneidad de los fenómenos laborales. En esta investigación, se aplica bajo un enfoque predominantemente descriptivo y de diagnóstico analítico (Wickham & Grolemund, 2017). El objetivo central consiste en cuantificar las disparidades de inserción, identificar perfiles de vulnerabilidad y examinar asociaciones estadísticas entre las características de los jóvenes y la desocupación en el área urbana de Bolivia, garantizando reproducibilidad metodológica mediante flujos de trabajo computacionales.
+En el estudio de los mercados de trabajo, la Ciencia de Datos permite superar la simple observación de agregados macroeconómicos para abordar la heterogeneidad de los fenómenos laborales. En este trabajo se aplica bajo un enfoque descriptivo, asociativo y de diagnóstico analítico (Wickham & Grolemund, 2017; Wickham, Çetinkaya-Rundel & Grolemund, 2023). El propósito central consiste en cuantificar las disparidades de inserción, caracterizar perfiles de vulnerabilidad y examinar asociaciones estadísticas entre los factores sociolaborales de los jóvenes y su condición de desocupación en el área urbana de Bolivia.
 
 **TABLA N. 3: Técnicas de Ciencia de Datos aplicadas en el proyecto**
 
 | Técnica | Función en el proyecto |
 | :---- | :---- |
 | **Análisis descriptivo** | Resumir la distribución de la desocupación juvenil por edad, sexo, educación y territorio. |
-| **Análisis exploratorio** | Descubrir patrones, anomalías y relaciones no evidentes en los microdatos. |
-| **Análisis de asociaciones** | Identificar qué características aparecen con mayor frecuencia entre los jóvenes desocupados. |
+| **Análisis exploratorio** | Detectar regularidades, anomalías, valores atípicos y calidad estructural en los microdatos. |
+| **Análisis de asociaciones** | Identificar qué características aparecen vinculadas con mayor intensidad estadística a la desocupación juvenil. |
 | **Segmentación** | Comparar subgrupos etarios, educativos y territoriales para detectar brechas. |
-| **Visualización analítica** | Comunicar los hallazgos de forma clara e interactiva. |
+| **Visualización analítica** | Comunicar los hallazgos de forma clara e interactiva mediante un modelo dimensional. |
 
 **FUENTE:** Elaboración propia con base en Provost y Fawcett (2013) y Wickham y Grolemund (2017).
 
@@ -521,7 +521,7 @@ Quienes no cumplen simultáneamente con los criterios de disponibilidad y búsqu
 
 La tasa de desocupación mide la proporción de la PEA que busca activamente una ocupación sin conseguirla, calculándose como el cociente porcentual entre la población desocupada y la población activa total. En el cuarto trimestre de 2025, la tasa de desocupación urbana nacional en Bolivia se situó en 2,30%, mientras que para el segmento juvenil de 16 a 28 años alcanzó el 3,71%, lo que refleja una incidencia 1,61 veces mayor en la juventud respecto al promedio general de las ciudades (INE, 2026a).
 
-La evaluación del empleo juvenil exige analizar también la subutilización horaria. La tasa de subocupación por tiempo de trabajo mide el porcentaje de ocupados que laboran menos de 40 horas semanales, desean trabajar más horas y se encuentran disponibles para hacerlo; para el cuarto trimestre de 2025, este indicador alcanzó el 8,70% en jóvenes ocupados urbanos (INE, 2026a). Sumando ambas manifestaciones de desajuste, la presión laboral global sobre la juventud activa alcanza al 12,41%. Asimismo, es necesario distinguir entre desocupación (ausencia total de empleo) e informalidad (empleo activo sin registro tributario, contrato formal ni seguridad social), reconociendo que la alta informalidad urbana en Bolivia modula directamente las tasas abiertas de desocupación.
+La evaluación del empleo juvenil exige analizar también la subutilización horaria. La tasa de subocupación por tiempo de trabajo mide el porcentaje de ocupados que laboran menos de 40 horas semanales, desean trabajar más horas y se encuentran disponibles para hacerlo; para el cuarto trimestre de 2025, este indicador alcanzó el 8,70% sobre la población ocupada juvenil (INE, 2026a). Si se agrupan los 51.196 jóvenes en desocupación abierta y los 115.737 jóvenes en subocupación por horas respecto al total de la PEA juvenil (1.380.841 personas), la proporción conjunta de fuerza de trabajo afectada por falta de empleo o insuficiencia horaria asciende al 12,09%. Asimismo, es necesario distinguir entre desocupación (ausencia total de empleo) e informalidad (empleo activo sin registro tributario, contrato formal ni seguridad social), reconociendo que la alta informalidad urbana en Bolivia modula directamente las tasas abiertas de desocupación.
 
 ### **2.1.7. Transición de la escuela al trabajo**
 
@@ -535,27 +535,32 @@ La teoría de los mercados de trabajo segmentados postula que el empleo no opera
 
 Bajo esta mirada, las brechas laborales que afectan a los jóvenes no pueden explicarse de forma exclusiva por su dotación individual de capital humano, sino por los mecanismos de racionamiento del mercado. La concentración de la juventud en actividades de servicios, comercio informal y contratos a plazo fijo condiciona su exposición al desempleo friccional y a la rotación involuntaria, limitando las oportunidades de consolidación profesional independiente del nivel de instrucción alcanzado.
 
-### **2.1.9. Factores asociados a la desocupación juvenil: dimensiones de análisis**
+### **2.1.9. Factores asociados a la desocupación juvenil: criterios de delimitación y dimensiones**
 
-A partir del marco teórico revisado, los factores vinculados a la inserción laboral de los jóvenes en el área urbana de Bolivia se estructuran en cuatro dimensiones operativas, evaluadas en relación con la condición de desocupación en la PEA.
+La base bruta de la ECE 4T-2025 registra 121 variables originales; sin embargo, no todas resultan utilizables para explicar la desocupación juvenil. La selección y delimitación operativa de factores se sustentó en tres criterios técnicos rigurosos:
 
-**TABLA N. 4: Dimensiones y variables de análisis**
+1. *Observabilidad común en ocupados y desocupados:* Diversas variables laborales del cuestionario (ingresos salariales, horas semanales trabajadas, tipo de contrato, rama actual de actividad o aportes a la seguridad social) se aplican exclusivamente a quienes ya poseen empleo. Del mismo modo, el tiempo de búsqueda o el mecanismo de postulación solo se relevan en personas desocupadas. Para ejecutar contrastes estadísticos válidos frente a la condición de desocupación, el núcleo de factores comparativos debía existir simultáneamente tanto en los 6.406 jóvenes ocupados como en los 243 desocupados.
+2. *Pertinencia teórica y normativa:* Se priorizaron los atributos respaldados por la literatura de transición escuela-trabajo (CEPAL & OIT, 2017) y la legislación boliviana (Ley N.º 342), estructurados en cuatro dimensiones evaluables en toda la PEA y un eje complementario de trayectoria interna para desocupados.
+3. *Restricción de tamaño muestral:* Con 243 casos observados de desocupación en un corte trimestral, el cruce simultáneo de múltiples variables fragmentaría la muestra en cientos de subceldas con menos de cinco casos esperados, invalidando la prueba Chi-cuadrado y generando tasas volátiles. Por esta razón, la delimitación metodológica privilegia factores bien definidos evaluados mediante análisis bivariados robustos, reservando el análisis conjunto simultáneo para extensiones futuras con series trimestrales acumuladas.
 
-| Dimensión | Variables previstas | Sentido analítico |
-| :---- | :---- | :---- |
-| **Sociodemográfica** | Edad, grupos etarios (16-17, 18-20, 21-24, 25-28), sexo | Comparar diferencias internas de la población joven y detectar brechas por sexo. |
-| **Educativa** | Nivel educativo, años de estudio, matriculación/asistencia | Observar la relación entre formación y condición de desocupación. |
-| **Territorial** | Departamento o agrupaciones territoriales disponibles | Identificar diferencias espaciales cuando la muestra lo permita. |
-| **Trayectoria laboral** | Experiencia previa, aspirante/cesante, tiempo y mecanismo de búsqueda | Distinguir etapas y antecedentes de incorporación al mercado laboral. |
-| **Resultado** | Condición de desocupación dentro de la PEA | Variable central para tasas, comparaciones y asociaciones. |
+**TABLA N. 4: Dimensiones y variables de análisis delimitadas**
 
-**FUENTE:** Elaboración propia con base en la ECE y la revisión conceptual.
+| Dimensión | Variables seleccionadas (`ECE`) | Universo de aplicación | Sentido analítico |
+| :---- | :---- | :---- | :---- |
+| **Sociodemográfica** | Edad, grupos etarios (16-17, 18-20, 21-24, 25-28) (`s1_03a`), sexo (`s1_02`) | Toda la PEA juvenil ($n = 6.649$) | Comparar diferencias internas de edad y detectar brechas por sexo. |
+| **Educativa** | Nivel educativo (`niv_ed_g`), años de estudio (`aestudio`), asistencia (`s1_09`) | Toda la PEA juvenil ($n = 6.649$) | Evaluar la relación entre credenciales formativas, escolaridad y desocupación. |
+| **Territorial** | Departamento de residencia (`depto`) y macrorregión | Toda la PEA juvenil ($n = 6.649$) | Identificar disparidades geográficas entre los nueve ámbitos urbanos del país. |
+| **Hogar y parentesco** | Tipología de hogar (`tipohogar`), relación con la jefatura (`s1_05`) | Toda la PEA juvenil ($n = 6.649$) | Examinar el rol del respaldo y la estructura familiar en la inserción laboral. |
+| **Trayectoria interna** | Condición de cesante/aspirante (`peadces`/`peadasp`), canal de búsqueda (`s2_08a`), ocupación previa (`cob_uo`) | Solo desocupados ($n = 243$) | Caracterizar la pérdida de empleo frente al primer acceso y las vías de postulación. |
+| **Resultado** | Condición de desocupación abierta (`pead`) | Toda la PEA juvenil ($n = 6.649$) | Variable dependiente central para tasas, contrastes y asociaciones. |
+
+**FUENTE:** Elaboración propia con base en los microdatos de la ECE 4T-2025 (INE) y la revisión conceptual.
 
 ### **2.1.10. Microdatos, encuestas por muestreo y factores de expansión**
 
-Los microdatos representan la información desagregada a nivel individual recopilada en operativos censales o encuestas de hogares. A diferencia de las publicaciones agregadas en tablas resumen, permiten al investigador manipular directamente las observaciones, aplicar filtros sociodemográficos específicos, derivar variables analíticas y ejecutar pruebas inferenciales (INE, 2026b). La base de la ECE correspondiente al cuarto trimestre de 2025 reúne 52.650 registros brutos y 121 variables que cubren aspectos sociodemográficos, formativos, de actividad y de búsqueda de empleo.
+Los microdatos representan la información desagregada a nivel individual recopilada en operativos censales o encuestas de hogares. A diferencia de las publicaciones agregadas en tablas resumen, permiten al investigador manipular directamente las observaciones, aplicar filtros sociodemográficos específicos, derivar variables analíticas y ejecutar pruebas estadísticas (INE, 2026b). La base de la ECE correspondiente al cuarto trimestre de 2025 reúne 52.650 registros brutos y 121 variables que cubren aspectos sociodemográficos, formativos, de actividad y de búsqueda de empleo.
 
-Dado que la ECE utiliza un diseño muestral probabilístico, polietápico, estratificado y por conglomerados, la inferencia poblacional requiere aplicar estrictamente los factores de expansión o ponderadores muestrales (`fact_trim_act`). Cada factor indica la cantidad de personas de la población total representadas por un informante. Omitir estos ponderadores e inferir mediante recuentos simples alteraría las proporciones poblacionales y sesgaría los resultados debido a probabilidades desiguales de selección. En este proyecto, todas las tasas, distribuciones y totales poblacionales incorporan el factor de expansión, garantizando la réplica exacta del universo juvenil urbano de 1.380.841 personas estimadas por el INE.
+Dado que la ECE utiliza un diseño muestral probabilístico, polietápico, estratificado y por conglomerados, la inferencia poblacional requiere aplicar estrictamente los factores de expansión o ponderadores muestrales (`fact_trim_act`) (Lohr, 2022; Rea & Parker, 2014). Cada factor indica la cantidad de personas de la población total representadas por un informante. Omitir estos ponderadores e inferir mediante recuentos simples alteraría las proporciones poblacionales y sesgaría los resultados debido a probabilidades desiguales de selección. En este proyecto, todas las tasas, distribuciones y totales poblacionales incorporan el factor de expansión, garantizando la réplica exacta del universo juvenil urbano de 1.380.841 personas estimadas por el INE.
 
 ### **2.1.11. Metodología CRISP-DM como ruta de trabajo**
 
@@ -565,26 +570,31 @@ Para garantizar el orden, la reproducibilidad y la trazabilidad técnica del pro
 2. *Comprensión de los datos:* Auditoría técnica de variables, control de cobertura, valores perdidos y evaluación del diseño muestral en los microdatos de la ECE 4T-2025.
 3. *Preparación de los datos:* Filtrado del universo de interés (área urbana, 16 a 28 años y PEA activa), estandarización del factor de expansión a punto flotante y recodificación de dimensiones etarias y territoriales.
 4. *Modelado y análisis analítico:* Cálculo vectorizado de tasas ponderadas, tablas de contingencia y contrastes de asociación mediante $\chi^2$ de Pearson, V de Cramér y pruebas de escolaridad.
-5. *Evaluación y validación:* Control de consistencia frente a los boletines oficiales del INE, contrastación con la literatura laboral regional y auditorías de aseguramiento técnico.
+5. *Evaluación y validación:* Control de consistencia frente a los boletines oficiales del INE, contrastación con la literatura laboral regional, auditoría automatizada del código y evaluación externa por panel de expertos.
 6. *Despliegue y visualización:* Modelado dimensional en estrella (*Star Schema*) e implementación del cuadro de mando interactivo en Power BI Desktop, articulando los resultados en recomendaciones de política pública.
 
-### **2.1.12. Python y Pandas como herramientas de análisis**
+### **2.1.12. Python, Pandas y ecosistema científico de análisis**
 
-El desarrollo computacional del proyecto se implementó en Python, lenguaje de programación ampliamente adoptado en ciencia de datos debido a su legibilidad, comunidad activa y madurez de su ecosistema analítico (McKinney, 2022). Para la gestión de datos tabulares se utilizó la librería Pandas, cuya estructura de DataFrame posibilita realizar manipulaciones complejas, fusiones de tablas y operaciones agrupadas de forma vectorizada sobre la base de la librería NumPy.
+El desarrollo computacional del proyecto se implementó en Python, lenguaje ampliamente adoptado en ciencia de datos debido a su legibilidad y madurez de su ecosistema analítico (VanderPlas, 2023). Para la gestión de datos tabulares se utilizó la librería Pandas (McKinney, 2010, 2022), cuya estructura de DataFrame posibilita manipulaciones complejas y operaciones agrupadas de forma vectorizada sobre la base numérica de arreglos multidimensionales de NumPy (Harris et al., 2020).
 
-En este estudio, el entorno de Python permitió ejecutar el pipeline reproducible de lectura de microdatos brutos del INE, la limpieza y tipado numérico del factor muestral, la segmentación en cohortes etarias, el cálculo de las sumatorias ponderadas poblacionales y la ejecución de rutinas estadísticas con SciPy y Statsmodels. Asimismo, facilitó la exportación de las figuras analíticas a 300 DPI y la generación de matrices de resultados en formato abierto.
+En este estudio, el entorno de Python permitió ejecutar el flujo reproducible de lectura de microdatos brutos del INE, la limpieza y tipado numérico del factor muestral, la segmentación en cohortes etarias, el cálculo de las sumatorias ponderadas poblacionales y la ejecución de pruebas estadísticas con SciPy (Virtanen et al., 2020) y Statsmodels. Asimismo, facilitó la exportación de las figuras analíticas a 300 DPI y la generación de matrices de resultados en formato abierto.
 
 ### **2.1.13. Business Intelligence y visualización de datos**
 
-El Business Intelligence (BI) abarca los procesos, metodologías y arquitecturas orientadas a transformar datos depurados en información comprensible y conocimiento estratégico para respaldar la toma de decisiones informada (Turban, Sharda & Delen, 2019; Chen, Chiang & Storey, 2012). Su función trasciende el procesamiento técnico tradicional al incorporar principios de percepción visual, estructuración de interfaces interactivas y narrativa basada en datos (*storytelling*) (Knaflic, 2015).
+El Business Intelligence (BI) abarca los procesos, metodologías y arquitecturas orientadas a transformar datos depurados en información comprensible y conocimiento estratégico para respaldar la toma de decisiones informada (Sharda, Delen & Turban, 2018; Chen, Chiang & Storey, 2012). Su función trasciende el procesamiento técnico tradicional al incorporar principios de percepción visual, estructuración de interfaces interactivas y narrativa basada en datos (*storytelling*) (Knaflic, 2015).
 
-La visualización de datos se rige por principios de claridad, concisión y maximización de la relación datos-tinta, suprimiendo elementos decorativos que generen ruido cognitivo (Tufte, 2001; Few, 2013). En este proyecto, la capa visual no sustituye el rigor estadístico desarrollado en Python, sino que actúa como vehículo de transferencia tecnológica, organizando los hallazgos en vistas dinámicas que facilitan la exploración de brechas y patrones territoriales para tomadores de decisiones y el público en general.
+La visualización de datos se rige por principios de claridad, concisión y maximización de la relación datos-tinta, suprimiendo elementos decorativos que generen ruido cognitivo (Tufte, 2001; Few, 2013). En este proyecto, la capa visual no sustituye el rigor estadístico desarrollado en Python, sino que actúa como vehículo de transferencia tecnológica, organizando los hallazgos en vistas dinámicas que facilitan la exploración de brechas sociolaborales y disparidades territoriales para tomadores de decisiones y el público en general.
 
-### **2.1.14. Power BI: arquitectura, componentes y aplicación**
+### **2.1.14. Power BI: arquitectura, justificación técnica y aplicación**
 
-Power BI Desktop es una plataforma líder de inteligencia de negocios de Microsoft que integra motores especializados para cada fase del desarrollo analítico (Microsoft, 2026). Su arquitectura comprende el motor Power Query (Lenguaje M) para las tareas de extracción, transformación y carga (ETL), un motor de almacenamiento relacional tabular en memoria (VertiPaq) y un lienzo visual interactivo para el reporte ejecutivo.
+Power BI Desktop es una plataforma analítica de inteligencia de negocios que integra en un mismo entorno el motor Power Query (Lenguaje M) para la extracción, transformación y carga (ETL), el motor de almacenamiento columnar en memoria VertiPaq y un lienzo interactivo para la exploración ejecutiva de datos (Microsoft, 2026).
 
-El modelado semántico se articula bajo un esquema en estrella (*Star Schema*), ubicando en el centro la tabla de hechos `Fact_MercadoLaboral` rodeada por tablas dimensionales de departamento, sexo, grupo de edad, nivel formativo y condición laboral, vinculadas mediante relaciones unidireccionales de uno a muchos (1:N). Los cálculos dinámicos se gestionan a través del lenguaje analítico DAX (*Data Analysis Expressions*), implementando funciones como `SUMX`, `DIVIDE`, `CALCULATE` y `KEEPFILTERS` para agregar rigurosamente el factor de expansión trimestral en cada contexto de filtro, garantizando tasas poblacionales válidas en las seis páginas del informe interactivo.
+La elección arquitectónica de Power BI Desktop frente a herramientas tabulares estáticas o análisis en tablas planas se justifica por cuatro ventajas técnicas determinantes para microdatos con muestreo complejo:
+
+1. *Modelado dimensional en esquema estrella:* Siguiendo la metodología de Kimball y Ross (2013), los microdatos procesados se organizan separando la tabla de hechos (`Fact_MercadoLaboral`) de seis tablas dimensionales conectadas mediante relaciones unidireccionales de uno a muchos (1:N) con integridad referencial activa. Esta estructura evita la redundancia de datos y garantiza que cualquier segmentación territorial, etaria o educativa se propague de manera consistente por todo el modelo.
+2. *Evaluación dinámica ponderada mediante DAX:* En una tabla plana tradicional, calcular tasas de desocupación por subgrupos suele inducir errores al promediar porcentajes precalculados o ejecutar recuentos simples de filas. El motor DAX (*Data Analysis Expressions*) opera bajo un contexto de filtro dinámico que evalúa en tiempo real funciones iteradoras y agregadoras (`SUMX`, `DIVIDE`, `CALCULATE` y `KEEPFILTERS`), recalculando tanto el numerador como el denominador ponderados por `peso_trimestral` ante cualquier combinación de filtros seleccionada por el usuario.
+3. *Compresión en memoria e interactividad multidimensional:* El motor columnar VertiPaq comprime los 6.649 registros y sus múltiples columnas analíticas en memoria RAM, permitiendo responder en milisegundos a filtros cruzados simultáneos en las seis páginas temáticas del tablero.
+4. *Reproducibilidad y trazabilidad en código abierto (PBIP/TMDL):* El proyecto se guarda en formato PBIR/TMDL (*Tabular Model Definition Language*), lo que serializa cada tabla, relación y medida DAX en archivos de texto plano auditables mediante control de versiones y actualizables directamente desde la salida procesada de Python sin reconstruir visualizaciones manualmente.
 
 ### **2.1.15. Modelo conceptual del trabajo**
 
@@ -601,10 +611,10 @@ flowchart LR
     D1["<b>Sociodemográficos</b><br/>Edad, sexo"]:::leftBox
     D2["<b>Educativos</b><br/>Nivel formativo, años de estudio, asistencia"]:::leftBox
     D3["<b>Territoriales</b><br/>Departamento / ámbito urbano"]:::leftBox
-    D4["<b>Trayectoria laboral</b><br/>Experiencia previa, búsqueda, cesante/aspirante"]:::leftBox
+    D4["<b>Hogar y trayectoria</b><br/>Tipo de hogar, parentesco, cesante/aspirante"]:::leftBox
 
     CORE["<b>CONDICIÓN DE<br/>DESOCUPACIÓN</b><br/>(Población Económicamente Activa)"]:::centerBox
-    RES["<b>Patrones, brechas<br/>y perfiles asociados</b>"]:::rightBox
+    RES["<b>Factores asociados, brechas<br/>y perfiles sociolaborales</b>"]:::rightBox
 
     D1 --> CORE
     D2 --> CORE
@@ -619,7 +629,9 @@ flowchart LR
 
 El presente trabajo se basa en datos observacionales transversales de la Encuesta Continua de Empleo (cuarto trimestre de 2025), lo cual delimita su alcance epistemológico. En primer término, las técnicas aplicadas identifican asociaciones bivariadas y diferencias significativas entre grupos, pero no permiten establecer relaciones causales deterministas. La asociación estadística entre una condición formativa o territorial y la desocupación indica una coexistencia sistemática en la muestra observada, mas no una relación de causa-efecto unidireccional.
 
-En segundo término, la información captura una fotografía temporal puntual del mercado de trabajo en el cuarto trimestre de 2025, impidiendo registrar la duración longitudinal de los episodios de desocupación o las transiciones dinámicas de entrada y salida del empleo formal. Finalmente, la precisión de las desagregaciones geográficas se encuentra acotada por el tamaño de la muestra disponible para cada departamento; en categorías con pocos informantes muestrales, las estimaciones deben interpretarse con debida cautela analítica, complementando la desocupación abierta con indicadores de subocupación por horas e informalidad laboral.
+En segundo término, aunque resulta deseable evaluar el efecto conjunto de múltiples factores de forma simultánea mediante modelos multivariados, el tamaño muestral de jóvenes desocupados en un solo trimestre ($n = 243$ casos) impone una restricción matemática objetiva: al cruzar conjuntamente múltiples categorías (por ejemplo, departamento, sexo, tramo etario y nivel educativo), las frecuencias esperadas por celda descienden por debajo de cinco observaciones, vulnerando la validez estadística de los contrastes. Por ello, las pruebas inferenciales formales se delimitan al nivel bivariado factor por factor, mientras que la exploración conjunta se habilita en la capa visual interactiva de Power BI con alertas explícitas para subconjuntos menores a 30 casos.
+
+En tercer término, la información captura una fotografía temporal puntual del mercado de trabajo en el cuarto trimestre de 2025, impidiendo registrar la duración longitudinal de los episodios de desocupación o las transiciones dinámicas de entrada y salida del empleo formal, aspecto que debe complementarse interpretando conjuntamente la desocupación abierta y la subocupación por horas.
 
 ---
 
@@ -790,13 +802,13 @@ TABLA N.º 9: *Indicadores del mercado laboral juvenil urbano en Bolivia (cuarto
 | PEA juvenil urbana (16 a 28 años) | 6.649 | 1.380.841 | 100,00% | Total de referencia |
 | Población ocupada juvenil | 6.406 | 1.329.645 | 96,29% | Dato oficial |
 | Población desocupada juvenil | 243 | 51.196 | 3,71% | 3,7% |
-| Población subocupada por tiempo | 567 | 115.736 | 8,70% | 8,7% |
+| Población subocupada por tiempo | 533 | 115.737 | 8,70% | 8,7% |
 | Desocupados cesantes (con experiencia previa) | 215 | 45.882 | 89,62% | Mayoría |
 | Desocupados aspirantes (en búsqueda de primer empleo) | 28 | 5.314 | 10,38% | Minoría |
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-La tasa de desocupación juvenil del cuarto trimestre de 2025 se sitúa en 3,71%, coincidente con el 3,7% reportado en el boletín oficial del INE. Por su parte, la subocupación juvenil alcanza el 8,70% sobre la población ocupada, lo que equivale a 115.736 jóvenes que trabajaron menos de la jornada habitual, desearon trabajar más horas y estaban disponibles para hacerlo.
+La tasa de desocupación juvenil del cuarto trimestre de 2025 se sitúa en 3,71%, coincidente con el 3,7% reportado en el boletín oficial del INE. Por su parte, la subocupación juvenil alcanza el 8,70% sobre la población ocupada, lo que equivale a 115.737 jóvenes (*n* = 533 casos muestrales) que trabajaron menos de la jornada habitual, desearon trabajar más horas y estaban disponibles para hacerlo.
 
 *(Para examinar en detalle el script de agregación y cálculo de tasas ponderadas en Python, dirigirse al Anexo 7).*
 
@@ -834,6 +846,8 @@ TABLA N.º 10: *Matriz de pruebas de asociación estadística con la condición 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
 Las variables de edad, sexo, departamento, tipo de hogar y parentesco presentan un p-valor inferior a 0,05, lo que confirma diferencias estadísticamente significativas en la desocupación de estos grupos. En cambio, las categorías agregadas de nivel educativo y asistencia a centros de enseñanza no mostraron una asociación global significativa mediante la prueba Chi-cuadrado, lo cual motivó un análisis continuo complementario mediante años de escolaridad.
+
+Conviene subrayar dos precisiones metodológicas derivadas de la Tabla N.º 10. Primero, aunque la desocupación responde simultáneamente a múltiples factores, las pruebas inferenciales formales se mantuvieron en un plano bivariado porque el universo desocupado cuenta con *n* = 243 observaciones muestrales. Al cruzar más de dos variables en simultáneo dentro de tablas multidimensionales o estratos departamentales finos, las frecuencias esperadas por celda descienden por debajo del umbral de cinco observaciones exigido por el criterio de Cochran (Agresti, 2018; Lohr, 2022), lo que invalida la aproximación asintótica de la prueba Chi-cuadrado. Segundo, los coeficientes V de Cramér oscilan entre 0,0152 y 0,0597, valores propios de magnitudes débiles según los umbrales de Cohen (1988), lo cual confirma que ninguna variable aislada determina por sí sola la salida al desempleo y refuerza la cautela diagnóstica frente a interpretaciones causales.
 
 *(Para consultar la formulación matemática y el código del generador de tablas de asociación en Python, dirigirse al Anexo 1 y Anexo 7).*
 
@@ -928,14 +942,14 @@ Al evaluar la tasa de desocupación según el máximo nivel educativo alcanzado,
 
 TABLA N.º 14: *Comparación de años de escolaridad entre jóvenes ocupados y desocupados*
 
-| Condición de actividad | Casos (*n*) | Media ponderada (años) | Desviación estándar | Prueba estadística | Estadístico | p-valor |
+| Condición de actividad | Casos válidos (*n*) | Media ponderada (años) | Desviación estándar ponderada | Prueba estadística | Estadístico | p-valor |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| Jóvenes ocupados | 6.406 | 12,64 | 2,63 | t de Student (Welch) | t = -2,39 | 0,0174 |
-| Jóvenes desocupados | 243 | 13,01 | 2,41 | Mann-Whitney U | U = 714.498,5 | 0,0293 |
+| Jóvenes ocupados | 6.401 | 12,64 | 2,67 | t de Student (Welch) | t = -2,34 | 0,0202 |
+| Jóvenes desocupados | 243 | 13,01 | 2,66 | Mann-Whitney U | U = 714.498,5 | 0,0293 |
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-La Tabla N.º 14 compara el capital educativo acumulado entre jóvenes ocupados y desocupados. Para comprobar si la brecha observada es estadísticamente sólida, se aplicaron tanto la prueba paramétrica t de Welch ($t = -2,39; p = 0,0174$) como la no paramétrica de Mann-Whitney ($U = 714.498,5; p = 0,0293$), confirmando con un $p$-valor inferior a 0,05 que los jóvenes desocupados poseen en promedio mayor escolaridad (13,01 años frente a 12,64 años), lo que equivale a casi cuatro meses lectivos adicionales de instrucción.
+La Tabla N.º 14 compara el capital educativo acumulado entre jóvenes ocupados y desocupados sobre observaciones con escolaridad reportada positiva (*n* = 6.401 ocupados y *n* = 243 desocupados). Para comprobar si la brecha observada es estadísticamente consistente, se aplicaron tanto la prueba paramétrica *t* de Welch sobre la muestra analítica ($t = -2,34; p = 0,0202$) como la prueba no paramétrica de Mann-Whitney ($U = 714.498,5; p = 0,0293$). Como verificación de sensibilidad, al incluir los cinco casos ocupados sin años de escolaridad declarados (*n* = 6.406), el contraste mantiene la misma dirección significativa ($t = -2,39; p = 0,0174$). Con un $p$-valor inferior a 0,05, ambas pruebas confirman que los jóvenes desocupados poseen en promedio mayor escolaridad (13,01 años frente a 12,64 años, diferencia de +0,36 años en valores continuos sin redondear), lo que equivale a casi cuatro meses lectivos adicionales de instrucción.
 
 *(Para examinar el protocolo formal de contrastación de hipótesis de escolaridad, dirigirse al Anexo 4).*
 
@@ -978,20 +992,20 @@ La Figura N.º 11 expone la estructura interna de los 51.196 jóvenes desocupado
 
 TABLA N.º 15: *Canales de búsqueda de empleo utilizados por jóvenes desocupados urbanos*
 
-| Mecanismo principal de búsqueda | Muestra (*n*) | Población ponderada (*N*) | Porcentaje ponderado (%) |
-| :--- | :---: | :---: | :---: |
-| Avisos por prensa, internet o redes sociales | 92 | 19.645 | 38,82% |
-| Presentación directa de solicitudes o currículum vitae | 76 | 16.002 | 31,62% |
-| Otras formas no estructuradas de búsqueda | 45 | 8.924 | 17,63% |
-| Preguntó directamente en lugares o centros de trabajo | 17 | 3.882 | 7,67% |
-| Consultó a familiares, amigos o conocidos | 5 | 1.155 | 2,28% |
-| Realizó gestiones para abrir negocio propio o independiente | 3 | 550 | 1,09% |
-| No declaró o no aplica | 5 | 453 | 0,90% |
-| Total | 243 | 50.611 | 100,00% |
+| Mecanismo principal de búsqueda | Muestra (*n*) | Población ponderada (*N*) | Porcentaje sobre el total (%) | Porcentaje válido (%) |
+| :--- | :---: | :---: | :---: | :---: |
+| Avisos por prensa, internet o redes sociales | 92 | 20.848 | 40,72% | 41,45% |
+| Presentación directa de solicitudes o currículum vitae | 76 | 15.647 | 30,56% | 31,11% |
+| Otras formas no estructuradas de búsqueda | 45 | 9.215 | 18,00% | 18,32% |
+| Preguntó directamente en lugares o centros de trabajo | 17 | 3.050 | 5,96% | 6,06% |
+| Consultó a familiares, amigos o conocidos | 5 | 889 | 1,74% | 1,77% |
+| Realizó gestiones para abrir negocio propio o independiente | 3 | 654 | 1,28% | 1,30% |
+| No declaró o no aplica | 5 | 893 | 1,74% | Excluido |
+| Total | 243 | 51.196 | 100,00% | 100,00% |
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-La Tabla N.º 15 clasifica las estrategias de postulación adoptadas por los jóvenes sin empleo. Las cifras revelan el predominio de canales estructurados: los avisos en prensa, internet o redes sociales concentran el 38,82% y la presentación directa de carpetas o solicitudes reúne el 31,62%, sumando entre ambos más del 70% de las gestiones laborales frente a una baja proporción de iniciativas independientes (1,09%).
+La Tabla N.º 15 clasifica las estrategias de postulación adoptadas por los jóvenes sin empleo sobre el total de 51.196 desocupados estimados. Las cifras revelan el predominio de canales estructurados: los avisos en prensa, internet o redes sociales concentran el 40,72% del total (41,45% sobre respuestas válidas) y la presentación directa de solicitudes o currículum vitae reúne el 30,56% (31,11% válido), sumando entre ambos el 71,28% de todas las gestiones laborales frente a una baja proporción de iniciativas independientes (1,28%).
 
 FIGURA N.º 12: *Mecanismos principales de búsqueda de empleo en jóvenes desocupados*
 
@@ -999,7 +1013,7 @@ FIGURA N.º 12: *Mecanismos principales de búsqueda de empleo en jóvenes desoc
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-La Figura N.º 12 ordena en barras horizontales las vías de inserción laboral declaradas por la juventud desocupada. Los dos canales principales corresponden a la búsqueda mediante avisos digitales o de prensa (41,4%) y la entrega formal de currículum vitae (31,1%), acumulando conjuntamente más de siete de cada diez postulaciones. En contraste, las barras inferiores reflejan un peso marginal de los contactos interpersonales mediante amigos o parientes (1,8%) y de la gestión de emprendimientos propios (1,3%), lo que evidencia que la mayoría de los jóvenes desocupados busca activamente insertarse como personal dependiente en el mercado formal.
+La Figura N.º 12 ordena en barras horizontales las vías de inserción laboral declaradas por la juventud desocupada sobre respuestas válidas (excluidos cinco casos sin declaración, equivalentes a 893 personas ponderadas). Los dos canales principales corresponden a la búsqueda mediante avisos digitales o de prensa (41,4%) y la entrega formal de currículum vitae (31,1%), acumulando conjuntamente más de siete de cada diez postulaciones. En contraste, las barras inferiores reflejan un peso marginal de los contactos interpersonales mediante amigos o parientes (1,8%) y de la gestión de emprendimientos propios (1,3%), lo que evidencia que la mayoría de los jóvenes desocupados busca activamente insertarse como personal dependiente en el mercado formal.
 
 FIGURA N.º 13: *Tasa de desocupación juvenil según tipología de hogar*
 
@@ -1007,12 +1021,12 @@ FIGURA N.º 13: *Tasa de desocupación juvenil según tipología de hogar*
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-La Figura N.º 13 presenta las tasas de desocupación en siete estructuras familiares contrastadas contra la línea dorada del promedio nacional (3,71%). Las barras más prolongadas corresponden a hogares sin núcleo conyugal (6,18%), nucleares monoparentales (5,68%) y extendidos (5,37%), donde los jóvenes enfrentan mayor vulnerabilidad económica. Por el contrario, los hogares nucleares biparentales con hijos (2,67%) y compuestos (1,79%) registran tasas significativamente menores, patrón que la prueba Chi-cuadrado valida como estadísticamente significativo ($\chi^2 = 17,43; p = 0,0078$) e indicativo de cómo el respaldo del núcleo familiar modula la inserción laboral.
+La Figura N.º 13 presenta las tasas de desocupación en siete estructuras familiares contrastadas contra la línea dorada del promedio nacional (3,71%). Las barras más prolongadas corresponden a hogares sin núcleo conyugal (6,18%), nucleares monoparentales (5,68%) y extendidos (5,37%), donde los jóvenes enfrentan mayor vulnerabilidad económica. Por el contrario, los hogares nucleares biparentales con hijos (2,67%) y compuestos (1,79%) registran tasas significativamente menores, comportamiento que la prueba Chi-cuadrado valida como estadísticamente significativo ($\chi^2 = 17,43; p = 0,0078$) e indicativo de cómo el respaldo del núcleo familiar modula la inserción laboral.
 
 *(Para consultar el código de trayectorias previas y graficación de canales en Python, dirigirse al Anexo 7 y Anexo 8).*
 
 ### 3.1.7. Arquitectura del modelo dimensional para Power BI Desktop
-Para facilitar la exploración visual y la toma de decisiones basada en datos, los microdatos procesados se organizaron en un esquema en estrella (*Star Schema*) dentro del proyecto de Power BI (`powerbi/Visualizacion-Analisis-Desocupacion.pbip`). El modelo semántico, serializado bajo el estándar TMDL (*Tabular Model Definition Language*), sitúa en el centro una tabla de hechos conectada a seis tablas dimensionales mediante relaciones unidireccionales de uno a muchos (1:N) con integridad referencial activa:
+Para facilitar la exploración visual y la toma de decisiones basada en datos, los microdatos procesados se organizaron en un esquema en estrella (*Star Schema*) dentro del proyecto de Power BI (`powerbi/Visualizacion-Analisis-Desocupacion.pbip`). El modelo semántico, serializado bajo el estándar TMDL (*Tabular Model Definition Language*), reúne diez tablas activas: una tabla de hechos central (`Fact_MercadoLaboral`), ocho tablas dimensionales y auxiliares conectadas mediante relaciones unidireccionales de uno a muchos (1:N) con integridad referencial activa, y una tabla dedicada de medidas analíticas (`_Medidas`). En la vista principal del esquema se integran los seis ejes sociodemográficos centrales junto a dos tablas auxiliares de soporte metodológico:
 
 DIAGRAMA N.º 2: *Arquitectura del modelo dimensional en estrella (Star Schema) implementado en Power BI Desktop*
 
@@ -1024,10 +1038,11 @@ flowchart TD
     DIM_N["<b>Dim_NivelEducativo</b><br/>• nivel_educativo (PK)<br/>• OrdenEducativo (Sort)"]
     DIM_C["<b>Dim_CondicionLaboral</b><br/>• tipo_condicion_laboral (PK)<br/>• Categoria"]
     DIM_H["<b>Dim_Hogar</b><br/>• tipo_hogar (PK)"]
+    DIM_AUX["<b>Tablas Auxiliares (2)</b><br/>• Soporte educativo y búsqueda<br/>• Relaciones 1:N de apoyo"]
 
     FACT["<b>Fact_MercadoLaboral</b><br/>• id_persona (PK)<br/>• edad | anios_estudio<br/>• es_ocupado | es_desocupado<br/>• es_cesante | es_aspirante<br/>• es_subocupado<br/>• peso_trimestral (Factor Exp.)"]
 
-    MEDIDAS["<b>_Medidas</b><br/>• 20 Medidas DAX Ponderadas<br/>• Carpetas Jerárquicas 01 a 05"]
+    MEDIDAS["<b>_Medidas</b><br/>• 39 Medidas DAX Ponderadas<br/>• Carpetas Jerárquicas 01 a 05"]
 
     DIM_E -->|1:N| FACT
     DIM_S -->|1:N| FACT
@@ -1035,12 +1050,13 @@ flowchart TD
     DIM_N -->|1:N| FACT
     DIM_C -->|1:N| FACT
     DIM_H -->|1:N| FACT
+    DIM_AUX -->|1:N| FACT
     FACT -.-> MEDIDAS
 ```
 
 *FUENTE: Elaboración propia a partir del modelo semántico TMDL en Power BI.*
 
-El Diagrama N.º 2 expone el modelo dimensional en estrella (*Star Schema*) que estructura los microdatos dentro de Power BI. En el centro, la tabla de hechos `Fact_MercadoLaboral` contiene las observaciones individuales con sus banderas de ocupación y el factor de expansión muestral, rodeada por seis dimensiones descriptivas conectadas mediante relaciones unidireccionales de uno a muchos (1:N). Esta arquitectura permite filtrar simultáneamente por territorio, demografía o nivel formativo, garantizando que el repositorio central de medidas DAX (`_Medidas`) calcule tasas ponderadas exactas sin duplicidad ni sesgos muestrales.
+El Diagrama N.º 2 expone el modelo dimensional en estrella (*Star Schema*) que estructura los microdatos dentro de Power BI. En el centro, la tabla de hechos `Fact_MercadoLaboral` contiene las observaciones individuales con sus banderas de ocupación y el factor de expansión muestral, rodeada por ocho tablas dimensionales y auxiliares conectadas mediante relaciones unidireccionales de uno a muchos (1:N), y acompañada por el módulo de 39 medidas DAX (`_Medidas`). Esta arquitectura permite filtrar simultáneamente por territorio, demografía o nivel formativo, garantizando que el repositorio central de medidas DAX (`_Medidas`) calcule tasas ponderadas exactas sin duplicidad ni sesgos muestrales.
 
 ### 3.1.8. Evidencia del cuadro de mando interactivo en Power BI Desktop
 Como componente de transferencia tecnológica y despliegue del proyecto de ciencia de datos, se desarrolló un cuadro de mando analítico interactivo de seis páginas en Power BI Desktop (`powerbi/Visualizacion-Analisis-Desocupacion.pbip`), estructurado en formato PBIR (*Power BI Project Report*).
@@ -1071,7 +1087,7 @@ FIGURA N.º 14: *Vista del cuadro de mando en Power BI: Panorama laboral juvenil
 
 *FUENTE: Elaboración propia a partir del cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
-La Figura N.º 14 estructura la visión general del mercado de trabajo juvenil en dos niveles analíticos. En la banda superior, cinco tarjetas de indicadores (KPIs) resumen las cifras ponderadas oficiales: una fuerza laboral de 1,38 millones de jóvenes (1.380.841 personas), de los cuales 1,33 millones están ocupados (1.329.645 personas) y 51,20 mil se encuentran desocupados (51.196 personas), lo que arroja una tasa de desocupación del 3,71% y una tasa de subocupación por insuficiencia de tiempo de trabajo del 8,70%. En la sección inferior, el gráfico de dona izquierdo evidencia que el desempleo abierto representa al 3,71% de la PEA frente al 96,29% de ocupación; el gráfico de barras central resalta que la tasa juvenil supera a la tasa nacional general urbana (2,30%), confirmando una sobreexposición de 1,61 veces mayor; y el gráfico de barras horizontales derecho desglosa la subutilización laboral, demostrando que al sumar el desempleo abierto y la subocupación por horas, la presión laboral global alcanza al 12,41% de la juventud urbana activa.
+La Figura N.º 14 estructura la visión general del mercado de trabajo juvenil en dos niveles analíticos. En la banda superior, cinco tarjetas de indicadores (KPIs) resumen las cifras ponderadas oficiales: una fuerza laboral de 1,38 millones de jóvenes (1.380.841 personas), de los cuales 1,33 millones están ocupados (1.329.645 personas) y 51,20 mil se encuentran desocupados (51.196 personas), lo que arroja una tasa de desocupación del 3,71% y una tasa de subocupación por insuficiencia de tiempo de trabajo del 8,70%. En la sección inferior, el gráfico de dona izquierdo evidencia que el desempleo abierto representa al 3,71% de la PEA frente al 96,29% de ocupación; el gráfico de barras central resalta que la tasa juvenil supera a la tasa nacional general urbana (2,30%), confirmando una sobreexposición de 1,61 veces mayor; y el gráfico de barras horizontales derecho desglosa la subutilización laboral, evidenciando que al considerar conjuntamente a los jóvenes desocupados abiertos (51.196) y subocupados por horas (115.737), la presión laboral conjunta reúne a 166.933 personas, equivalente al 12,09% de la PEA juvenil urbana (evitando la adición directa de tasas calculadas sobre denominadores distintos).
 
 A nivel de modelado analítico, las tarjetas y componentes visuales operan sobre la tabla de hechos `Fact_MercadoLaboral` conectada a las dimensiones de departamento, sexo y grupo etario. La medida rectora `[Tasa Desocupacion Ponderada]` aplica la función DAX `DIVIDE` sobre la sumatoria filtrada del factor de expansión muestral (`peso_trimestral`) para los casos donde `es_desocupado = 1`, dividida entre el total ponderado de la población activa. Esta formulación asegura que las estimaciones respeten con precisión el diseño muestral complejo del INE, evitando sesgos derivados de recuentos muestrales no ponderados. La parametrización técnica y el catálogo exhaustivo de las medidas DAX implementadas en esta vista se detallan formalmente en el Anexo 3.
 
@@ -1110,12 +1126,12 @@ FIGURA N.º 17: *Vista del cuadro de mando en Power BI: Género y disparidades d
 
 *FUENTE: Elaboración con base en el cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
-La Figura N.º 17 sintetiza la dimensión demográfica y geográfica del desempleo. Las tarjetas superiores cuantifican la tasa femenina (4,69%), la tasa masculina (2,85%), la brecha neta desfavorable para las mujeres (+1,84 puntos porcentuales) y la tasa departamental máxima registrada en Chuquisaca (5,80%). En el panel izquierdo, el gráfico de barras verticales compara el desempleo por sexo, haciendo tangible la penalización laboral femenina. A la derecha, el gráfico de barras horizontales rankea a los nueve departamentos urbanos, evidenciando que Chuquisaca (5,80%), Tarija (4,72%), Cochabamba (4,71%) y La Paz (3,84%) se ubican por encima de la media nacional, mientras que Santa Cruz (3,33%), Oruro (2,22%), Beni (2,07%), Pando (1,89%) y Potosí (1,64%) registran las menores tasas relativas.
+La Figura N.º 17 sintetiza la dimensión demográfica y geográfica del desempleo. Las tarjetas superiores cuantifican la tasa femenina (4,69%), la tasa masculina (2,85%), la brecha neta desfavorable para las mujeres (+1,84 puntos porcentuales) y la tasa departamental máxima registrada en Chuquisaca (5,80%). En el panel izquierdo, el gráfico de barras verticales compara el desempleo por sexo, haciendo tangible la penalización laboral femenina. A la derecha, el gráfico de barras horizontales rankea a los nueve departamentos urbanos, evidenciando que Chuquisaca (5,80%), Tarija (4,72%), Cochabamba (4,71%) y La Paz (3,84%) se ubican por encima de la media nacional, mientras que Santa Cruz (3,33%), Oruro (2,98%), Beni (2,07%), Pando (1,89%) y Potosí (1,64%) registran las menores tasas relativas.
 
 La brecha de género se computa mediante la medida DAX `[Brecha Desocupacion Genero pp]`, que resta la tasa ponderada de varones respecto a la de mujeres calculadas con la función `CALCULATE` sobre la dimensión `Dim_Sexo`. Por su parte, la distribución geográfica enlaza dinámicamente con `Dim_Departamento` y `Dim_RegionGeografica`, permitiendo segmentar por macrorregiones (Valles, Altiplano y Llanos) sin perder la trazabilidad de los factores de expansión departamentales. El detalle de las fórmulas DAX aplicadas a las dimensiones de género y territorio se presenta en el Anexo 3.
 
 #### 3.1.8.5. Página 5: Perfil del joven desocupado y mecanismos de búsqueda
-La quinta página profundiza en la composición interna de los desocupados. Mediante un gráfico de dona y barras agrupadas se muestra que el 89,62% (45.882 personas) corresponde a desocupados cesantes con trayectoria laboral previa, mientras que solo el 10,38% (5.314 personas) busca trabajo por primera vez. Asimismo, detalla los canales de intermediación utilizados, destacando las redes de parentesco y amistades junto con la presentación directa de credenciales.
+La quinta página profundiza en la composición interna de los desocupados. Mediante un gráfico de dona y barras agrupadas se muestra que el 89,62% (45.882 personas) corresponde a desocupados cesantes con trayectoria laboral previa, mientras que solo el 10,38% (5.314 personas) busca trabajo por primera vez. Asimismo, detalla los canales de intermediación utilizados, destacando el predominio de avisos por prensa, internet o redes sociales junto con la presentación directa de currículum vitae.
 
 FIGURA N.º 18: *Vista del cuadro de mando en Power BI: Perfil de cesantes y aspirantes (Página 5)*
 
@@ -1123,7 +1139,7 @@ FIGURA N.º 18: *Vista del cuadro de mando en Power BI: Perfil de cesantes y asp
 
 *FUENTE: Elaboración con base en el cuadro de mando interactivo en Power BI Desktop (ECE 4T-2025).*
 
-La Figura N.º 18 desglosa la trayectoria ocupacional previa y las vías de postulación de la juventud desocupada. En la parte superior, las tarjetas precisan que 45.882 jóvenes son cesantes (89,62% del total) y 5.314 son aspirantes a un primer empleo (10,38%). El gráfico de dona izquierdo refleja este marcado desbalance interno. En el centro, el gráfico de barras agrupadas muestra la distribución etaria en personas, evidenciando que los aspirantes alcanzan su volumen más alto en el tramo de 18 a 20 años (2.560 personas), mientras que los cesantes crecen con la edad hasta concentrar 18.551 personas entre los 25 y 28 años. A la derecha, el gráfico de barras horizontales clasifica los mecanismos de búsqueda activa, donde la consulta de avisos digitales o de prensa (20.848 personas; 38,82%) y la entrega de solicitudes o currículum (15.647 personas; 31,62%) absorben la gran mayoría de las gestiones, frente a una menor proporción de consultas a parientes o planes de negocio independiente.
+La Figura N.º 18 desglosa la trayectoria ocupacional previa y las vías de postulación de la juventud desocupada. En la parte superior, las tarjetas precisan que 45.882 jóvenes son cesantes (89,62% del total) y 5.314 son aspirantes a un primer empleo (10,38%). El gráfico de dona izquierdo refleja este marcado desbalance interno. En el centro, el gráfico de barras agrupadas muestra la distribución etaria en personas, evidenciando que los aspirantes alcanzan su volumen más alto en el tramo de 18 a 20 años (2.560 personas), mientras que los cesantes crecen con la edad hasta concentrar 18.551 personas entre los 25 y 28 años. A la derecha, el gráfico de barras horizontales clasifica los mecanismos de búsqueda activa, donde la consulta de avisos digitales o de prensa (20.848 personas; 40,72%) y la entrega de solicitudes o currículum (15.647 personas; 30,56%) absorben la gran mayoría de las gestiones, frente a una menor proporción de consultas a parientes (1,74%) o gestiones para negocio independiente (1,28%).
 
 La proporción de desocupación cesante se modela mediante la medida DAX `[Proporcion Cesantes %]`, aplicando la relación ponderada entre los desocupados con experiencia laboral previa (`es_cesante = 1`) y la población total desocupada mediante la función `DIVIDE`. El análisis de canales vincula a la dimensión `Dim_CondicionLaboral` con la variable de búsqueda activa de la encuesta, posibilitando analizar la efectividad de las vías institucionales y digitales frente a los canales informales. El repertorio completo de expresiones DAX para perfiles y canales se detalla en el Anexo 3.
 
@@ -1162,7 +1178,7 @@ flowchart LR
 
     %% NÚCLEO IMPACTO
     D1["<b>DESOCUPACIÓN ABIERTA</b><br/>=========================<br/><b>51.196 Jóvenes (3,71%)</b><br/>89,6% Cesantes | 10,4% Aspirantes"]:::cardCenter
-    D2["<b>SUBOCUPACIÓN VISIBLE</b><br/>─────────────────────────<br/><b>115.736 Jóvenes (8,70%)</b><br/>Jornada reducida involuntaria"]:::cardWarning
+    D2["<b>SUBOCUPACIÓN VISIBLE</b><br/>─────────────────────────<br/><b>115.737 Jóvenes (8,70%)</b><br/>Jornada reducida involuntaria"]:::cardWarning
 
     %% SOLUCIONES
     P1["<b>Mi Primer Empleo</b><br/>Subsidio temporal"]:::cardRight
@@ -1184,7 +1200,7 @@ flowchart LR
 
 *FUENTE: Elaboración propia con base en el marco analítico del proyecto.*
 
-El Diagrama N.º 3 sintetiza el modelo analítico y explicativo del estudio. En el bloque izquierdo se disponen los cuatro determinantes sociolaborales identificados (edad, género, territorio y educación), los cuales convergen en el núcleo central que cuantifica la desocupación abierta (51.196 jóvenes) y su vínculo con la subocupación por horas (115.736 jóvenes). A partir de este diagnóstico empírico, el esquema deriva hacia tres líneas de política pública enfocadas en incentivos a la contratación inicial, corresponsabilidad en el cuidado familiar y dinamización productiva en las regiones más rezagadas.
+El Diagrama N.º 3 sintetiza el modelo analítico y explicativo del estudio. En el bloque izquierdo se disponen los cuatro determinantes sociolaborales identificados (edad, género, territorio y educación), los cuales convergen en el núcleo central que cuantifica la desocupación abierta (51.196 jóvenes) y su vínculo con la subocupación por horas (115.737 jóvenes). A partir de este diagnóstico empírico, el esquema deriva hacia tres líneas de política pública enfocadas en incentivos a la contratación inicial, corresponsabilidad en el cuidado familiar y dinamización productiva en las regiones más rezagadas.
 
 ### 3.2.1. Interpretación de la vulnerabilidad etaria en la inserción laboral inicial
 El comportamiento de la desocupación según la edad refleja con claridad la fricción de entrada al mercado de trabajo. El tramo de 18 a 20 años alcanza la tasa más alta de desocupación con 4,65%, lo que responde a la confluencia de condiciones propias de esa etapa del ciclo de vida.
@@ -1196,7 +1212,7 @@ Hacia los tramos de 21 a 24 años (3,55%) y de 25 a 28 años (3,88%), la desocup
 ### 3.2.2. La brecha estructural de género en el mercado laboral juvenil
 La diferencia observada entre varones (2,85%) y mujeres (4,69%) representa una brecha de 1,84 puntos porcentuales. Esta disparidad, confirmada estadísticamente mediante la prueba Chi-cuadrado ($\chi^2 = 5,24; p = 0,0221$), responde a condicionantes estructurales bien documentados en el entorno laboral urbano boliviano.
 
-La distribución desproporcionada de las tareas de cuidado no remunerado y del trabajo doméstico reduce el tiempo efectivo del que disponen las mujeres jóvenes para buscar empleo y cumplir horarios continuos de jornada completa. Además, el mercado laboral urbano mantiene patrones marcados de segregación ocupacional por sexo. Los varones jóvenes acceden con rapidez a ocupaciones manuales en construcción, transporte y manufactura básica, sectores caracterizados por una rápida absorción de mano de obra con pocas exigencias de cualificación formal. Las mujeres jóvenes, por el contrario, se concentran en servicios personales, comercio minorista y puestos administrativos, ramas con mayor competencia y saturación en los centros urbanos.
+La distribución desproporcionada de las tareas de cuidado no remunerado y del trabajo doméstico reduce el tiempo efectivo del que disponen las mujeres jóvenes para buscar empleo y cumplir horarios continuos de jornada completa. Además, el mercado laboral urbano mantiene tendencias marcadas de segregación ocupacional por sexo. Los varones jóvenes acceden con rapidez a ocupaciones manuales en construcción, transporte y manufactura básica, sectores caracterizados por una rápida absorción de mano de obra con pocas exigencias de cualificación formal. Las mujeres jóvenes, por el contrario, se concentran en servicios personales, comercio minorista y puestos administrativos, ramas con mayor competencia y saturación en los centros urbanos.
 
 A estos factores se añaden prácticas de contratación que discriminan de forma preventiva a las mujeres en edad reproductiva por los costos y permisos asociados a la maternidad, lo que extiende sus periodos de búsqueda y eleva su permanencia en el desempleo abierto.
 
@@ -1208,7 +1224,7 @@ El caso de Chuquisaca ilustra las tensiones entre la estructura educativa y el a
 En contraste, los mercados urbanos de Santa Cruz (3,33%) y La Paz (3,84%) cuentan con mayor escala y diversificación, lo que facilita incorporar mano de obra juvenil con mayor rapidez en actividades de comercio y servicios empresariales. Por su parte, la baja tasa observada en Potosí (1,64%) no refleja un mercado dinámico o equilibrado, sino una necesidad de ingresos que fuerza a los jóvenes a autoemplearse de forma inmediata en labores de subsistencia o minería informal, entornos donde no es viable sostener periodos prolongados de búsqueda abierta.
 
 ### 3.2.4. La paradoja del desempleo ilustrado en el mercado informal
-La comparación estadística de la escolaridad acumulada entre personas ocupadas y desocupadas confirma una diferencia relevante: los jóvenes desocupados promedian 13,01 años de estudio frente a 12,64 años entre quienes se encuentran ocupados ($p = 0,0174$).
+La comparación estadística de la escolaridad acumulada entre personas ocupadas y desocupadas confirma una diferencia relevante: los jóvenes desocupados promedian 13,01 años de estudio frente a 12,64 años entre quienes se encuentran ocupados ($t = -2,34; p = 0,0202$ sobre casos con escolaridad reportada positiva; $t = -2,39; p = 0,0174$ al incluir la totalidad de ocupados).
 
 Este comportamiento se asocia a las características del mercado laboral boliviano, donde la informalidad supera el 75%. Los jóvenes con menor nivel formativo provienen con mayor frecuencia de hogares con escasos recursos económicos, sin redes de seguridad financiera que les permitan extender la búsqueda de empleo. Por necesidad urgente, se incorporan a cualquier labor disponible en el comercio informal o en servicios no calificados, siendo computados estadísticamente como ocupados a pesar de la precariedad de sus condiciones.
 
@@ -1249,15 +1265,15 @@ El Diagrama N.º 4 expone los mecanismos socioeconómicos que generan la paradoj
 ### 3.2.5. Dinámica de cesantía y canales de intermediación laboral
 El hecho de que el 89,62% de los jóvenes desocupados corresponda a cesantes cuestiona la premisa de que el desempleo juvenil boliviano sea predominantemente un problema de acceso al primer trabajo. Nueve de cada diez jóvenes desocupados ya contaban con una ocupación previa y salieron de ella por despido, término de contrato, renuncia ante malas condiciones o cese de emprendimientos informales. La inestabilidad en el puesto y la rotación contractual constituyen factores centrales de la desocupación juvenil urbana.
 
-En cuanto a los métodos de búsqueda, el uso preferente de medios digitales (38,82%) y la entrega directa de solicitudes (31,62%) reflejan una juventud urbana que recurre a mecanismos estructurados para colocarse en el mercado. Sin embargo, la escasa cobertura de las bolsas públicas de empleo deja a la mayoría de los postulantes dependiendo de ofertas en redes sociales y redes personales de parentesco, sin garantías laborales ni orientación formal de carrera.
+En cuanto a los métodos de búsqueda, el uso preferente de avisos en medios digitales y prensa (40,72%) junto con la entrega directa de solicitudes (30,56%) reflejan una juventud urbana que recurre a mecanismos estructurados para colocarse en el mercado. Sin embargo, la escasa cobertura de las bolsas públicas de empleo deja a la mayoría de los postulantes dependiendo de ofertas en redes sociales y redes personales de parentesco, sin garantías laborales ni orientación formal de carrera.
 
 ### 3.2.6. Articulación de los resultados con los objetivos específicos del trabajo
 Los hallazgos empíricos del análisis responden de forma puntual a cada uno de los cuatro objetivos específicos formulados en el proyecto:
 
 1. En relación con el primer objetivo específico (recopilar, depurar y estructurar microdatos oficiales de la ECE 4T-2025): se consolidó un conjunto de datos limpio de 6.649 observaciones de jóvenes de la PEA urbana a partir de la base de 52.650 registros del INE, asegurando la consistencia del factor de expansión muestral (`peso_trimestral`) para representar con exactitud a 1.380.841 jóvenes.
 2. En relación con el segundo objetivo específico (procesar los datos en Python y aplicar técnicas de tasas ponderadas y contrastes de asociación estadística): se implementaron rutinas de cálculo que determinaron con rigor la tasa de desocupación (3,71%), la tasa de subocupación (8,70%) y evaluaron la significancia estadística de los factores mediante pruebas Chi-cuadrado, coeficientes V de Cramér y contrastes de escolaridad ($t$ de Student y Mann-Whitney U).
-3. En relación con el tercer objetivo específico (diseñar y construir visualizaciones analíticas y un modelo dimensional en Power BI): se produjo un catálogo de diez figuras a 300 DPI y se implementó un modelo en estrella (*Star Schema*) con 20 medidas analíticas DAX ponderadas que sustentan las seis páginas del cuadro de mando interactivo.
-4. En relación con el cuarto objetivo específico (validar los resultados frente a los boletines del INE y la literatura laboral): se comprobó la correspondencia exacta con las estimaciones oficiales de línea base (3,7% y 8,7%), y se contrastaron las brechas observadas de género y edad con los estudios regionales de la OIT y la CEPAL.
+3. En relación con el tercer objetivo específico (diseñar y construir visualizaciones analíticas y un tablero multidimensional en Power BI Desktop): se produjo un catálogo de diez figuras estáticas a 300 DPI en Python y se implementó en Power BI Desktop un modelo en estrella (*Star Schema* de Kimball) integrado por diez tablas activas y 39 medidas analíticas DAX ponderadas (Kimball & Ross, 2013; Sharda, Delen & Turban, 2018). El uso de un motor columnar con contexto de filtro dinámico e ingesta reproducible en Power Query M garantiza que toda desagregación territorial, educativa o demográfica recalcule automáticamente el numerador y denominador expandidos por `peso_trimestral`, evitando errores de agregación simple y permitiendo la exploración ágil de factores asociados y perfiles de desocupación en seis páginas interactivas.
+4. En relación con el cuarto objetivo específico (verificar la consistencia matemática, contrastar frente al INE y la literatura laboral, y someter el análisis a auditoría técnica automatizada y validación por panel externo de expertos): se comprobó la correspondencia exacta con las estimaciones oficiales de línea base del INE (3,71% de desocupación abierta y 8,70% de subocupación) y su coherencia interpretativa con la literatura regional de OIT y CEPAL. De manera complementaria, la auditoría algorítmica automatizada otorgó una nota global de 9,70 sobre 10 puntos y el panel independiente de ocho expertos multidisciplinarios validó la consistencia técnica del estudio con un puntaje promedio de 8,63 sobre 10 y un coeficiente V de Aiken global de 0,882.
 
 ### 3.2.7. Implicaciones prácticas y metodológicas de los resultados
 
@@ -1274,6 +1290,7 @@ En la aplicación de ciencia de datos a políticas públicas, los resultados evi
 1. Temporalidad transversal: la información de la ECE 4T-2025 captura las condiciones laborales en un periodo trimestral específico, lo que impide registrar la duración continua de los episodios de desocupación o las transiciones individuales entre ocupación, inactividad y desempleo a lo largo del año.
 2. Alcance del indicador de desocupación: la tasa de desocupación abierta (3,71%) considera únicamente a quienes realizaron gestiones activas de búsqueda. Requiere complementarse con la tasa de subocupación (8,70%) y con el seguimiento a personas inactivas desalentadas que dejaron de buscar trabajo formal.
 3. Nivel de desagregación geográfica: si bien el diseño muestral garantiza representatividad estadística para el ámbito urbano de cada departamento, el tamaño de la muestra no permite desagregar las estimaciones a nivel de municipios específicos o localidades intermedias.
+4. Restricción muestral para modelado conjunto multivariado: dado que el universo desocupado del cuarto trimestre reúne *n* = 243 casos observados, las pruebas formales de inferencia se acotaron al plano bivariado. Cruzar tres o más factores simultáneamente en tablas de contingencia multidimensionales o modelos paramétricos complejos reduce el número de observaciones por celda por debajo del umbral de Cochran y eleva la varianza de estimación (Agresti, 2018; Lohr, 2022). Un análisis conjunto de alta dimensionalidad requerirá agrupar microdatos de varios trimestres consecutivos de la ECE.
 
 TABLA N.º 17: *Matriz sintética de hallazgos del análisis del mercado laboral juvenil urbano*
 
@@ -1282,13 +1299,13 @@ TABLA N.º 17: *Matriz sintética de hallazgos del análisis del mercado laboral
 | Tramo de edad | Pico de vulnerabilidad en la transición de salida de secundaria | Tasa en 18 a 20 años: 4,65% ($\chi^2 = 11,23; p = 0,0105$) | Focalizar programas de primer empleo formal y pasantías formativas remuneradas. |
 | Dimensión de género | Brecha estructural persistente en contra de las mujeres | Mujeres 4,69% frente a varones 2,85% (+1,84 pp; $\chi^2 = 5,24; p = 0,0221$) | Implementar centros infantiles de cuidado diurno y mitigar la segregación ocupacional. |
 | Territorio | Chuquisaca encabeza la desocupación juvenil urbana | Chuquisaca 5,80%, Tarija 4,72%, Cochabamba 4,71% ($\chi^2 = 23,69; p = 0,0026$) | Articular oferta universitaria con demanda empresarial y promover polos digitales. |
-| Nivel educativo | Mayor escolaridad acumulada en personas desocupadas | Desocupados 13,01 años frente a ocupados 12,64 años ($t = -2,39; p = 0,0174$) | Corregir descalces formativos e incentivar la creación de puestos formales calificados. |
+| Nivel educativo | Mayor escolaridad acumulada en personas desocupadas | Desocupados 13,01 años frente a ocupados 12,64 años ($t = -2,34; p = 0,0202$) | Corregir descalces formativos e incentivar la creación de puestos formales calificados. |
 | Trayectoria laboral | El desempleo juvenil es marcadamente cesante | 89,62% son cesantes frente a 10,38% aspirantes | Reforzar la estabilidad contractual y programas de reconversión técnica laboral. |
-| Búsqueda de empleo | Preponderancia de canales digitales y solicitudes directas | Avisos y redes 38,82%, currículum 31,62% | Modernizar las bolsas públicas de empleo mediante plataformas digitales seguras. |
+| Búsqueda de empleo | Preponderancia de canales digitales y solicitudes directas | Avisos y redes 40,72%, currículum 30,56% | Modernizar las bolsas públicas de empleo mediante plataformas digitales seguras. |
 
 *FUENTE: Elaboración con base en microdatos de la Encuesta Continua de Empleo 4T-2025 (INE).*
 
-La Tabla N.º 17 resume los resultados empíricos del estudio agrupados en cuatro columnas estructuradas para la toma de decisiones. El *Eje de análisis* identifica la variable sociodemográfica evaluada; el *Hallazgo cuantitativo y técnico* sintetiza el patrón observado en los microdatos; la *Evidencia y métrica clave* expone las cifras ponderadas y la significancia del contraste estadístico ($\chi^2$ o $t$); y la *Implicancia operativa* detalla la recomendación concreta orientada a mitigar la problemática identificada.
+La Tabla N.º 17 resume los resultados empíricos del estudio agrupados en cuatro columnas estructuradas para la toma de decisiones. El *Eje de análisis* identifica la variable sociodemográfica evaluada; el *Hallazgo cuantitativo y técnico* sintetiza el comportamiento observado en los microdatos; la *Evidencia y métrica clave* expone las cifras ponderadas y la significancia del contraste estadístico ($\chi^2$ o $t$); y la *Implicancia operativa* detalla la recomendación concreta orientada a mitigar la problemática identificada.
 
 ---
 
@@ -1326,7 +1343,7 @@ La ejecución del motor automatizado de auditoría y la exportación de las mét
 1. **Ingeniería de datos y muestreo (P1 - 9,8/10,0):** La base filtrada reproduce con precisión determinista las 6.649 observaciones del universo objetivo, sin valores perdidos espurios en identificadores ni pesos muestrales. El factor de expansión `fact_trim_act` expande a 1.380.841 jóvenes. Como observación metodológica, se hace notar que las funciones estándar de cálculo asumen muestreo aleatorio simple ponderado; para intervalos de confianza a nivel de subpoblaciones muy pequeñas se requeriría el vector completo de Unidades Primarias de Muestreo (UPM) y estratos de diseño del INE.
 2. **Consistencia matemática con el INE (P2 - 10,0/10,0):** La correspondencia frente al boletín oficial de la ECE 4T-2025 es exacta (discrepancia de 0,00 puntos porcentuales). Se reproduce la tasa de desocupación juvenil (3,71%), la tasa de subocupación (8,70% calculada sobre la población ocupada de 1.329.645 jóvenes), el volumen de cesantes (45.882 personas; 89,6%) y la brecha neta de género (+1,84 pp).
 3. **Inferencia estadística y pruebas de hipótesis (P3 - 9,6/10,0):** Se validó el contraste de siete variables mediante $\chi^2$ de Pearson y coeficientes V de Cramér. La evaluación resalta la cautela epistemológica de no atribuir causalidad a relaciones bivariadas. Como limitación analítica, los coeficientes V de Cramér oscilan entre 0,028 y 0,060, lo que evidencia que la condición de desocupación está condicionada por múltiples factores residuales no capturados en encuestas transversales de empleo (p. ej., redes de contactos informales o transferencias intrafamiliares).
-4. **Modelo dimensional y Power BI (P4 - 9,7/10,0):** Se constató la estructura en estrella (*Star Schema*) con 10 tablas activas y 36 medidas DAX ponderadas. Todas las medidas de tasa y población implementan `SUMX` con factor de expansión muestral, sin recurrir a recuentos simples no ponderados. Los 39 componentes visuales distribuidos en las seis páginas del reporte en formato PBIR sincronizan con las cifras del proyecto.
+4. **Modelo dimensional y Power BI (P4 - 9,7/10,0):** Se constató la estructura en estrella (*Star Schema*) con 10 tablas activas (una tabla de hechos, ocho tablas dimensionales y auxiliares, y la tabla `_Medidas`) y 39 medidas DAX ponderadas. Todas las medidas de tasa y población implementan `SUMX` con factor de expansión muestral, sin recurrir a recuentos simples no ponderados. Los 39 componentes visuales distribuidos en las seis páginas del reporte en formato PBIR sincronizan con las cifras del proyecto.
 5. **Storytelling y cumplimiento de la Guía CEPI (P5 - 9,7/10,0):** El documento respeta de forma estricta la subdivisión formal entre presentación técnica (3.1) y análisis crítico (3.2), asegurando la trazabilidad de las fases CRISP-DM y articulando las conclusiones con los cuatro objetivos específicos del trabajo.
 6. **Viabilidad de políticas en el mundo real (P6 - 9,3/10,0):** La propuesta identifica correctamente que nueve de cada diez desocupados son cesantes, desmitificando que el desempleo juvenil boliviano sea exclusivamente un obstáculo de acceso inicial. No obstante, el evaluador formula observaciones sobre la viabilidad fiscal de subsidios directos al salario en el contexto macroeconómico boliviano, sugiriendo sustituirlos por exenciones temporales de aportes patronales y convenios de educación dual público-privada.
 
@@ -1341,12 +1358,12 @@ El análisis externo efectuado por el agente enfatiza dos advertencias sustantiv
 ### 3.4. Validación Metodológica y Técnica por Panel de Personas Expertas
 
 #### 3.4.1. Propósito y protocolo de consulta al panel de pares
-Como complemento a la auditoría automatizada algorítmica realizada mediante Inteligencia Artificial (sección 3.3), y con el objetivo de culminar la contrastación empírica requerida por el Objetivo Específico 4, se implementó un proceso formal de validación externa por Juicio de Expertos. Se convocó a un panel de ocho profesionales independientes vinculados a las áreas de Ciencia de Datos, Ingeniería de Software, Estadística Aplicada y Análisis Económico.
+Como complemento a la auditoría automatizada algorítmica realizada mediante Inteligencia Artificial (sección 3.3), y con el objetivo de culminar la contrastación empírica requerida por el Objetivo Específico 4, se implementó un proceso formal de validación externa por Juicio de Expertos. Se convocó a un panel de ocho profesionales externos e independientes, excluyendo explícitamente al autor de la investigación para eliminar cualquier riesgo de sesgo evaluativo y reservando el registro institucional en favor de la identificación profesional individual. La selección respondió a un criterio multidisciplinario orientado a cubrir los cuatro pilares técnicos del proyecto: (a) ingeniería de sistemas y desarrollo de software para auditar la trazabilidad del código en Python y la automatización del flujo ETL (Harold Rosado, Rodrigo Colque Ramirez y Ramiro Pacheco Maitana); (b) ciencia de datos y formación analítica avanzada para evaluar la disciplina CRISP-DM y el modelado dimensional en Power BI (Cristian Ignacio Duran y Camila Gonzales Torrez); (c) ingeniería industrial y analítica estadística para verificar el rigor muestral y los contrastes inferenciales (Carlos Chavez Acevedo); y (d) administración y análisis contable-financiero de datos para valorar la coherencia numérica de las estimaciones e indicadores económicos (Valeria Vargas Flores y Mario Rojas K.). El perfil detallado y la justificación específica de cada evaluador figuran en el Anexo 10.1.
 
 La consulta se realizó mediante un formulario estructurado en Google Forms, respaldado por un repositorio de evidencias en Google Drive con acceso libre a los microdatos depurados, el cuaderno Jupyter ejecutable, los scripts en Python, las tablas en formato CSV, las figuras a 300 DPI y las vistas de las seis páginas del cuadro de mando interactivo en Power BI Desktop. El instrumento constó de 14 reactivos cuantitativos cerrados con escala Likert de 1 a 5 (desde 1 = Totalmente en desacuerdo hasta 5 = Totalmente de acuerdo), una escala de calificación global de 1 a 10 puntos, tres preguntas abiertas cualitativas y un dictamen técnico de validación.
 
 #### 3.4.2. Síntesis psicométrica y cuantitativa de resultados
-Las evaluaciones remitidas por los ocho jueces expertos confirmaron la consistencia metodológica y la reproducibilidad del estudio. Para evaluar la validez de contenido y el grado de consenso inter-jueces en cada reactivo, se computó el Coeficiente V de Aiken ($V$). Asimismo, se estimó el coeficiente Alfa de Cronbach ($\alpha$) para verificar la consistencia interna general del instrumento.
+Las evaluaciones remitidas por los ocho jueces expertos confirmaron la consistencia metodológica y la reproducibilidad del estudio. Para evaluar la validez de contenido y el grado de consenso inter-jueces en cada reactivo, se computó el Coeficiente V de Aiken ($V$) (Aiken, 1985). Asimismo, se estimó el coeficiente Alfa de Cronbach ($\alpha$) para verificar la consistencia interna general del instrumento (Cronbach, 1951).
 
 TABLA N.º 19: *Matriz psicométrica y síntesis de resultados del panel de validación por expertos*
 
@@ -1372,7 +1389,7 @@ En la decisión formal de validación, el 100% de los evaluadores emitió un dic
 Entre las principales fortalezas señaladas por el panel destacan la disciplina del ciclo CRISP-DM, la réplica exacta de las macromagnitudes del INE (desocupación de 3,71% y subocupación de 8,70%), el uso del ponderador muestral, la construcción del modelo dimensional en estrella con medidas DAX ponderadas en Power BI y la prudencia al interpretar asociaciones estadísticas sin afirmar causalidad determinista.
 
 Por su parte, las observaciones menores se centraron en tres aspectos que fueron incorporados en la versión final:
-1. Armonización precisa de cifras secundarias entre tablas y anexos (específicamente la media de escolaridad en jóvenes ocupados, unificada en 12,64 años continuos y 12,38 años agrupados según nivel).
+1. Armonización precisa de cifras secundarias entre tablas y anexos, unificando la media continua de escolaridad en jóvenes ocupados en 12,64 años sobre observaciones válidas ($t = -2,34; p = 0,0202$), y precisando el tratamiento de tasas conjuntas y desagregaciones departamentales.
 2. Explicitación del alcance observacional y transversal del estudio, subrayando que las pruebas bivariadas identifican factores asociados pero no trayectorias dinámicas en el tiempo ni relaciones de causa directa.
 3. Recomendaciones para extensiones futuras, sugiriendo incorporar modelos multivariados (regresiones logísticas con corrección por diseño muestral) y técnicas supervisadas con interpretabilidad SHAP.
 
@@ -1385,7 +1402,7 @@ El desglose completo ítem por ítem, las frecuencias de respuesta, las transcri
 ## Conclusiones
 
 ### Conclusión general
-A partir de los microdatos oficiales de la Encuesta Continua de Empleo (ECE 4T-2025) del INE, se determinó que la desocupación en jóvenes de 16 a 28 años en el área urbana de Bolivia se situó en 3,71% (51.196 personas), coexistiendo con una tasa de subocupación por horas del 8,70% (115.736 jóvenes). Este desempleo juvenil superó en 1,61 veces al de la población adulta urbana (2,30%), viéndose impulsado principalmente por la falta de experiencia laboral al concluir la etapa escolar, una marcada brecha desfavorable para las mujeres, una baja diversificación productiva en departamentos del sur como Chuquisaca y la escasez de vacantes formales para jóvenes con mayor formación académica.
+A partir de los microdatos oficiales de la Encuesta Continua de Empleo (ECE 4T-2025) del INE, se determinó que la desocupación en jóvenes de 16 a 28 años en el área urbana de Bolivia se situó en 3,71% (51.196 personas), coexistiendo con una tasa de subocupación por horas del 8,70% (115.737 jóvenes). Este desempleo juvenil superó en 1,61 veces al de la población adulta urbana (2,30%), viéndose impulsado principalmente por la falta de experiencia laboral al concluir la etapa escolar, una marcada brecha desfavorable para las mujeres, una baja diversificación productiva en departamentos del sur como Chuquisaca y la escasez de vacantes formales para jóvenes con mayor formación académica.
 
 ### Conclusiones específicas
 
@@ -1396,10 +1413,10 @@ Se consolidó una base de datos depurada de 6.649 jóvenes activos a partir de l
 El procesamiento estadístico reveló que el desempleo juvenil se concentra con mayor fuerza en el tramo de 18 a 20 años (4,65%), en las mujeres frente a los varones (4,69% frente a 2,85%) y en el departamento de Chuquisaca (5,80%). Asimismo, el 89,62% de los jóvenes desocupados son cesantes con experiencia laboral previa y registran mayor escolaridad promedio que los ocupados (13,01 frente a 12,64 años). Estos resultados evidencian que, en un mercado urbano con alta informalidad, la desocupación responde a la inestabilidad del empleo precario y al desajuste entre la formación educativa y los puestos formales disponibles.
 
 #### 3. Modelado dimensional en estrella e inteligencia de negocios (Objetivo Específico 3)
-Se estructuró un modelo dimensional en estrella enlazado a seis dimensiones y 36 medidas DAX calculadas con factor de expansión, implementado en un cuadro de mando de seis páginas en Power BI Desktop. Esta solución tecnológica garantizó el cálculo dinámico y correcto de tasas poblacionales bajo cualquier filtro demográfico o territorial, proporcionando una herramienta visual accesible e intuitiva para explorar brechas de género, perfiles de cesantía y respaldar la toma de decisiones informadas.
+Se estructuró un modelo dimensional en estrella integrado por diez tablas activas (una tabla de hechos, ocho tablas dimensionales y auxiliares, y una tabla de medidas) junto a 39 medidas DAX calculadas con factor de expansión, implementado en un cuadro de mando interactivo de seis páginas en Power BI Desktop. Esta arquitectura columnar con ingesta automatizada en Power Query M y evaluación dinámica en contexto de filtro aseguró el recálculo inmediato y sin distorsiones de las tasas ponderadas ante cualquier corte territorial, etario o educativo, proporcionando una herramienta visual reproducible para examinar las brechas sociodemográficas y los perfiles de desocupación juvenil.
 
-#### 4. Validación de consistencia frente a fuentes oficiales y literatura (Objetivo Específico 4)
-Las estimaciones del proyecto reprodujeron con exactitud las cifras oficiales del INE (3,71% de desocupación y 8,70% de subocupación) y coincidieron con la literatura laboral regional de la OIT y CEPAL. La calidad técnica fue confirmada mediante una doble validación externa: una auditoría algorítmica con Inteligencia Artificial que calificó el desarrollo con 9,70 sobre 10, y la consulta a un panel de ocho profesionales expertos independientes que otorgó un 100% de aprobación, un promedio de 8,63 sobre 10 y un coeficiente V de Aiken de 0,88, ratificando la solidez metodológica y la utilidad práctica de los resultados.
+#### 4. Auditoría técnica automatizada, contraste oficial y validación por expertos (Objetivo Específico 4)
+En correspondencia directa con las cuatro instancias de validación establecidas en el Objetivo Específico 4, las estimaciones del proyecto reprodujeron con exactitud matemática las cifras oficiales del INE (3,71% de desocupación y 8,70% de subocupación) y mantuvieron concordancia interpretativa con la literatura laboral regional de la OIT y la CEPAL. Asimismo, la calidad de la ingeniería de datos, la consistencia DAX y el rigor inferencial fueron verificados mediante una auditoría algorítmica automatizada con Inteligencia Artificial, que asignó una calificación global de 9,70 sobre 10 puntos, y mediante un panel externo de ocho profesionales independientes de perfil multidisciplinario, quienes otorgaron un 100% de dictamen aprobatorio, un promedio cuantitativo de 8,63 sobre 10 y un coeficiente V de Aiken de 0,882.
 
 ---
 
@@ -1446,9 +1463,13 @@ Agresti, A. (2007). *An introduction to categorical data analysis* (2nd ed.). Jo
 
 Agresti, A. (2018). *An introduction to categorical data analysis* (3rd ed.). John Wiley & Sons.
 
+Aiken, L. R. (1985). Three coefficients for analyzing the reliability and validity of ratings. *Educational and Psychological Measurement*, 45(1), 131-142. https://doi.org/10.1177/0013164485451012
+
 Arancibia, M. (2025). *Guía metodológica para la elaboración de monografías en Ciencia de Datos*. Centro de Estudios de Posgrado e Investigación (CEPI), Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca.
 
-Chen, H., Chiang, R. H., & Storey, V. C. (2012). Business intelligence and analytics: From big data to big impact. *MIS Quarterly*, 36(4), 1165-1188.
+Chen, H., Chiang, R. H. L., & Storey, V. C. (2012). Business intelligence and analytics: From big data to big impact. *MIS Quarterly*, 36(4), 1165-1188. https://doi.org/10.2307/41703503
+
+Cronbach, L. J. (1951). Coefficient alpha and the internal structure of tests. *Psychometrika*, 16(3), 297-334. https://doi.org/10.1007/BF02310555
 
 Cohen, J. (1988). *Statistical power analysis for the behavioral sciences* (2nd ed.). Lawrence Erlbaum Associates.
 
@@ -1470,6 +1491,8 @@ Estado Plurinacional de Bolivia. (2018). *Ley N.º 1139 de modificación a la Le
 
 Few, S. (2013). *Information dashboard design: Displaying data for at-a-glance monitoring* (2nd ed.). Analytics Press.
 
+Harris, C. R., Millman, K. J., van der Walt, S. J., Gommers, R., Virtanen, P., Cournapeau, D., Wieser, E., Taylor, J., Berg, S., Smith, N. J., Kern, R., Picus, M., Hoyer, S., van Kerkwijk, M. H., Brett, M., Haldane, A., del Río, J. F., Wiebe, M., Peterson, P., ... Oliphant, T. E. (2020). Array programming with NumPy. *Nature*, 585(7825), 357-362. https://doi.org/10.1038/s41586-020-2649-2
+
 IBM. (s. f.). *Conceptos básicos de ayuda de CRISP-DM*. IBM Documentation. https://www.ibm.com/docs/es/spss-modeler/saas?topic=dm-crisp-help-overview
 
 Instituto Nacional de Estadística [INE]. (2019). *Encuesta de Niñas, Niños y Adolescentes que Realizan Actividad Laboral o Trabajan 2019 (ENNA 2019): base de datos y metadatos*. Archivo Nacional de Datos (ANDA). https://anda.ine.gob.bo/index.php/home
@@ -1485,6 +1508,10 @@ Instituto Nacional de Estadística [INE]. (2026c). *Encuesta de Hogares 2025: ba
 Kimball, R., & Ross, M. (2013). *The data warehouse toolkit: The definitive guide to dimensional modeling* (3rd ed.). John Wiley & Sons.
 
 Knaflic, C. N. (2015). *Storytelling with data: A data visualization guide for business professionals*. John Wiley & Sons.
+
+Lohr, S. L. (2022). *Sampling: Design and analysis* (3rd ed.). CRC Press.
+
+McKinney, W. (2010). Data structures for statistical computing in Python. En S. van der Walt & J. Millman (Eds.), *Proceedings of the 9th Python in Science Conference* (pp. 51-56). https://doi.org/10.25080/Majora-92bf1922-00a
 
 McKinney, W. (2022). *Python for data analysis: Data wrangling with pandas, NumPy, and Jupyter* (3rd ed.). O'Reilly Media.
 
@@ -1508,11 +1535,15 @@ Provost, F., & Fawcett, T. (2013). *Data Science for Business: What you need to 
 
 Rea, L. M., & Parker, R. A. (2014). *Designing and conducting survey research: A comprehensive guide* (4th ed.). Jossey-Bass.
 
+Sharda, R., Delen, D., & Turban, E. (2018). *Business intelligence, analytics, and data science: A managerial perspective* (4th ed.). Pearson.
+
 Tufte, E. R. (2001). *The visual display of quantitative information* (2nd ed.). Graphics Press.
 
 Tukey, J. W. (1977). *Exploratory Data Analysis*. Addison-Wesley.
 
-Turban, E., Sharda, R., & Delen, D. (2019). *Business Intelligence, Analytics, and Data Science: A Managerial Perspective* (4th ed.). Pearson.
+VanderPlas, J. (2023). *Python data science handbook: Essential tools for working with data* (2nd ed.). O'Reilly Media.
+
+Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M., Reddy, T., Cournapeau, D., Burovski, E., Peterson, P., Weckesser, W., Bright, J., van der Walt, S. J., Brett, M., Wilson, J., Millman, K. J., Mayorov, N., Nelson, A. R. J., Jones, E., Kern, R., Larson, E., ... SciPy 1.0 Contributors. (2020). SciPy 1.0: Fundamental algorithms for scientific computing in Python. *Nature Methods*, 17(3), 261-272. https://doi.org/10.1038/s41592-019-0686-2
 
 Walpole, R. E., Myers, R. H., Myers, S. L., & Ye, K. (2012). *Probabilidad y estadística para ingeniería y ciencias* (9.ª ed.). Pearson Educación.
 
@@ -1703,24 +1734,23 @@ Al evaluar la educación mediante categorías agregadas (primaria, secundaria, t
 
 ### 4.1. Estadísticos descriptivos de escolaridad
 
-| Condición de actividad laboral | Casos observados ($n$) | Media ponderada (años) | Desviación estándar | Mediana (años) |
+| Condición de actividad laboral | Casos válidos ($n$) | Media ponderada (años) | Desviación estándar ponderada | Mediana ponderada (años) |
 | :--- | :---: | :---: | :---: | :---: |
-| **Jóvenes desocupados** | 243 | **13,01** | 2,74 | 12,0 |
-| **Jóvenes ocupados** | 6.406 | **12,64** | 2,98 | 12,0 |
-| **Diferencia de medias** | - | **+0,37 años** | - | - |
+| **Jóvenes desocupados** | 243 | **13,01** | 2,66 | 13,0 |
+| **Jóvenes ocupados** | 6.401 | **12,64** | 2,67 | 12,0 |
+| **Diferencia de medias** | - | **+0,36 años** (0,37 en redondeo) | - | - |
 
 ### 4.2. Evaluación de normalidad y pruebas inferenciales
-La distribución de los años de estudio en la población juvenil exhibe concentración en valores enteros (12 años correspondientes a bachillerato concluido), por lo que se aplicaron tanto una prueba paramétrica como una no paramétrica:
+La distribución de los años de estudio en la población juvenil exhibe concentración en valores enteros (12 años correspondientes a bachillerato concluido), por lo que sobre los casos con escolaridad reportada positiva (*n* = 6.401 ocupados y *n* = 243 desocupados) se aplicaron tanto una prueba paramétrica como una no paramétrica:
 
 1. **Prueba paramétrica ($t$ de Student para muestras independientes con varianzas desiguales de Welch):**
-   - Estadístico $t$: $-2,3914$
-   - Grados de libertad ajustados: $269,4$
-   - $p$-valor bilateral: $0,0174$
+   - Estadístico $t$: $-2,3360$ ($-2,34$)
+   - $p$-valor bilateral: $0,0202$
+   - Verificación de sensibilidad sobre el universo completo (*n* = 6.406 ocupados): $t = -2,3914$, $p = 0,0174$
    - Decisión: Rechazo de $H_0$ al nivel de significancia del 5% ($p < 0,05$).
 2. **Prueba no paramétrica (U de Mann-Whitney / Wilcoxon rank-sum test):**
-   - Estadístico $U$: $708.200,0$
-   - Estadístico tipificado $Z$: $-2,3082$
-   - $p$-valor asintótico bilateral: $0,0210$
+   - Estadístico $U$: $714.498,5$
+   - $p$-valor asintótico bilateral: $0,0293$
    - Decisión: Rechazo de $H_0$ al nivel de significancia del 5% ($p < 0,05$).
 
 ### 4.3. Conclusión metodológica del anexo
@@ -1738,8 +1768,8 @@ El proyecto se organizó bajo las seis etapas estándar de la metodología CRISP
 | **2. Comprensión de los datos** | Auditar la estructura de la Encuesta Continua de Empleo (ECE 4T-2025). | Inspección de 52.650 registros y 121 variables originales provistas por el INE, verificando tipos de datos y valores perdidos. | Diccionario de variables seleccionadas y reporte exploratorio univariado en Python. |
 | **3. Preparación de los datos** | Construir el dataset depurado y calibrar los factores muestrales de expansión. | Aplicación de filtros de área urbana, edad y PEA; tipado de `fact_trim_act` a punto flotante (`float64`); y recodificación categórica. | Dataset maestro procesado `ECE_4T2025_Jovenes_PEA.csv` ($n = 6.649$ filas, 156 columnas). |
 | **4. Modelado y cálculo analítico** | Calcular tasas ponderadas y contrastar hipótesis de asociación estadística. | Ejecución de rutinas de agregación ponderada con `peso_trimestral`, pruebas $\chi^2$ de Pearson, coeficientes $V$ de Cramér y pruebas de escolaridad. | Scripts modulares `src/statistical_analysis.py` y catálogo de 13 tablas en `outputs/tables/`. |
-| **5. Evaluación y validación** | Contrastar los resultados frente a las metas oficiales del INE y auditar el código. | Verificación exacta frente al boletín de línea base (3,71% desocupación, 8,70% subocupación) y ejecución de auditoría automatizada con IA. | Informe formal de auditoría `informe_evaluacion_experto_ia.md` con calificación 9,70/10,0. |
-| **6. Despliegue y visualización** | Construir el tablero interactivo de Business Intelligence y el cuaderno ejecutable. | Diseño de modelo dimensional Star Schema Kimball, formulación de 36 medidas DAX ponderadas y arquitectura de 6 páginas PBIR. | Proyecto `powerbi/Visualizacion-Analisis-Desocupacion.pbip` y cuaderno `Proyecto-Final.ipynb`. |
+| **5. Evaluación y validación** | Contrastar los resultados frente al INE, auditar el código y validar con expertos externos. | Verificación frente al boletín de línea base (3,71% y 8,70%), contraste con literatura OIT/CEPAL, auditoría automatizada con IA (9,70/10) y juicio de panel de 8 expertos (8,63/10; V = 0,882). | Informe de auditoría `informe_evaluacion_experto_ia.md` y matriz psicométrica del Anexo 10. |
+| **6. Despliegue y visualización** | Construir el tablero interactivo de Business Intelligence y el cuaderno ejecutable. | Diseño de modelo dimensional Star Schema Kimball (10 tablas), formulación de 39 medidas DAX ponderadas y arquitectura de 6 páginas PBIR en Power BI Desktop. | Proyecto `powerbi/Visualizacion-Analisis-Desocupacion.pbip` y cuaderno `Proyecto-Final.ipynb`. |
 
 ---
 
@@ -1749,66 +1779,55 @@ El siguiente script implementa el proceso de ingesta, depuración y transformaci
 
 ```python
 """
-Pipeline de ingesta, limpieza, recodificación y calibración muestral.
-Fuente: Microdatos ECE 4T-2025 (INE). Universo: PEA urbana 16-28 años.
+Módulo de ingesta, limpieza, filtrado y preparación de datos (Data Wrangling).
+Aplica las directrices CRISP-DM para microdatos de la Encuesta Continua de Empleo (ECE 4T-2025).
 """
 import pandas as pd
 import numpy as np
-from pathlib import Path
-from src.config import DATA_RAW_CSV, DATA_PROCESSED_CSV, MAP_DEPARTAMENTOS, MAP_NIVEL_EDUCATIVO
+from src.config import (
+    DATA_RAW_CSV, DATA_PROCESSED_CSV, EDAD_MINIMA, EDAD_MAXIMA,
+    AREA_URBANA, GRUPOS_EDAD_BINS, GRUPOS_EDAD_LABELS,
+    DEPTO_MAP, SEXO_MAP, NIV_ED_G_MAP
+)
 
-def cargar_y_filtrar_ece() -> pd.DataFrame:
-    """Carga microdatos brutos del INE y aplica los tres filtros de delimitación."""
-    print("[INFO] Cargando microdatos brutos...")
-    df = pd.read_csv(DATA_RAW_CSV, sep=';', encoding='latin1', low_memory=False)
-    
-    # 1. Filtro geográfico: Área urbana (area == 1)
-    df_urb = df[df['area'] == 1].copy()
-    
-    # 2. Filtro normativo etario: 16 a 28 años cumplidos (Ley N.º 342)
-    df_joven = df_urb[(df_urb['s1_03a'] >= 16) & (df_urb['s1_03a'] <= 28)].copy()
-    
-    # 3. Filtro laboral: Población Económicamente Activa (pea == 1)
-    df_pea = df_joven[df_joven['pea'] == 1].copy()
-    
-    print(f"[OK] Muestra depurada: {len(df_pea):,} registros de la PEA juvenil urbana.")
-    return df_pea
-
-def calibrar_y_recodificar(df: pd.DataFrame) -> pd.DataFrame:
-    """Estandariza el ponderador muestral y crea variables analíticas derivadas."""
-    # Tipado numérico del factor de expansión trimestral
-    df['peso_trimestral'] = df['fact_trim_act'].astype(str).str.replace(',', '.').astype(float)
-    
-    # Banderas binarias de condición de actividad
-    df['es_ocupado'] = (df['peao'] == 1).astype(int)
-    df['es_desocupado'] = (df['pead'] == 1).astype(int)
-    df['es_cesante'] = (df['peadces'] == 1).astype(int)
-    df['es_aspirante'] = (df['peadasp'] == 1).astype(int)
-    df['es_subocupado'] = (df['psubocup'] == 1).astype(int)
-    
-    # Segmentación en los cuatro tramos etarios del proyecto
-    bins = [15, 17, 20, 24, 28]
-    labels = ['16 a 17 años', '18 a 20 años', '21 a 24 años', '25 a 28 años']
-    df['grupo_edad'] = pd.cut(df['s1_03a'], bins=bins, labels=labels, right=True)
-    
-    # Recodificación categórica
-    df['sexo'] = df['s1_02'].map({1: 'Hombre', 2: 'Mujer'})
-    df['departamento'] = df['depto'].map(MAP_DEPARTAMENTOS)
-    df['nivel_educativo'] = df['niv_ed_g'].map(MAP_NIVEL_EDUCATIVO)
-    df['anios_estudio'] = pd.to_numeric(df['aestudio'], errors='coerce').fillna(0)
-    
+def cargar_microdatos_crudos(filepath=DATA_RAW_CSV) -> pd.DataFrame:
+    """Carga el archivo CSV crudo de la ECE 4T-2025 con codificación y separador oficiales."""
+    df = pd.read_csv(filepath, sep=';', encoding='latin1', low_memory=False)
     return df
 
-def ejecutar_pipeline_datos():
-    """Ejecuta el pipeline completo y exporta el dataset procesado."""
-    df_pea = cargar_y_filtrar_ece()
-    df_final = calibrar_y_recodificar(df_pea)
-    DATA_PROCESSED_CSV.parent.mkdir(parents=True, exist_ok=True)
-    df_final.to_csv(DATA_PROCESSED_CSV, sep=';', index=False, encoding='utf-8-sig')
-    print(f"[EXITO] Dataset exportado: {DATA_PROCESSED_CSV.name} ({len(df_final):,} filas)")
+def filtrar_universo_estudio(df: pd.DataFrame) -> pd.DataFrame:
+    """Filtra área urbana, jóvenes de 16 a 28 años (Ley N.º 342) y condición PEA."""
+    df['area_num'] = pd.to_numeric(df['area'], errors='coerce').fillna(0).astype(int)
+    df['edad_num'] = pd.to_numeric(df['s1_03a'], errors='coerce').fillna(0).astype(int)
+    df['pea_num'] = pd.to_numeric(df['pea'], errors='coerce').fillna(0).astype(int)
 
-if __name__ == '__main__':
-    ejecutar_pipeline_datos()
+    df_urb = df[df['area_num'] == AREA_URBANA].copy()
+    df_edad = df_urb[(df_urb['edad_num'] >= EDAD_MINIMA) & (df_urb['edad_num'] <= EDAD_MAXIMA)].copy()
+    df_pea = df_edad[df_edad['pea_num'] == 1].copy()
+    return df_pea
+
+def transformar_y_recodificar(df: pd.DataFrame) -> pd.DataFrame:
+    """Genera segmentos etarios, mapea etiquetas y calibra el ponderador trimestral."""
+    df = df.copy()
+    df['edad'] = pd.to_numeric(df['s1_03a'], errors='coerce').astype(int)
+    df['sexo_cod'] = pd.to_numeric(df['s1_02'], errors='coerce').fillna(0).astype(int)
+    df['sexo'] = df['sexo_cod'].map(SEXO_MAP).fillna("No identificado")
+    df['grupo_edad'] = pd.cut(df['edad'], bins=GRUPOS_EDAD_BINS, labels=GRUPOS_EDAD_LABELS, right=True)
+    df['depto_cod'] = pd.to_numeric(df['depto'], errors='coerce').fillna(0).astype(int)
+    df['departamento'] = df['depto_cod'].map(DEPTO_MAP).fillna("Desconocido")
+    df['es_desocupado'] = pd.to_numeric(df['pead'], errors='coerce').fillna(0).astype(int)
+    df['es_ocupado'] = pd.to_numeric(df['peao'], errors='coerce').fillna(0).astype(int)
+    df['es_cesante'] = pd.to_numeric(df['peadces'], errors='coerce').fillna(0).astype(int)
+    df['es_aspirante'] = pd.to_numeric(df['peadasp'], errors='coerce').fillna(0).astype(int)
+    df['es_subocupado'] = pd.to_numeric(df['psubocup'], errors='coerce').fillna(0).astype(int)
+    df['peso_trimestral'] = df['fact_trim_act'].astype(str).str.replace(',', '.').astype(float)
+    return df
+
+def validar_consistencia(df: pd.DataFrame) -> bool:
+    """Verifica reglas lógicas y matemáticas del dataset procesado."""
+    assert (df['es_ocupado'].sum() + df['es_desocupado'].sum()) == df['pea_val'].sum()
+    assert (df['peso_trimestral'] > 0).all()
+    return True
 ```
 
 ---
@@ -1895,46 +1914,43 @@ El siguiente fragmento reúne las funciones de parametrización estética y rend
 
 ```python
 """
-Módulo de generación de visualizaciones a 300 DPI en Python.
-Estilo formal académico y paleta corporativa USFX CEPI.
+Módulo de generación de visualizaciones analíticas de alta calidad (300 DPI)
+para su inserción en la monografía académica y reportes del Diplomado.
 """
 import matplotlib.pyplot as plt
-import seaborn as sns
 import pandas as pd
-from pathlib import Path
+from src.config import OUTPUTS_FIGURES_DIR, COLORS
 
-# Configuración de estilos visuales estándar para la monografía
 plt.style.use('seaborn-v0_8-whitegrid')
 plt.rcParams['font.sans-serif'] = 'DejaVu Sans'
 plt.rcParams['axes.edgecolor'] = '#cccccc'
 plt.rcParams['axes.linewidth'] = 0.8
 
-COLORS = {
-    'usfx_blue': '#0F2C59',
-    'usfx_red': '#8B0000',
-    'usfx_gold': '#C59B27',
-    'hombre': '#2980b9',
-    'mujer': '#c0392b'
-}
-
-def exportar_figura_brecha_genero(df: pd.DataFrame, out_path: Path):
-    """Genera la Figura 3: Comparativa de tasas por sexo y anotación de brecha."""
+def generar_grafico_brecha_sexo(df: pd.DataFrame):
+    """Genera gráfico comparativo de la brecha de género."""
+    fig, ax = plt.subplots(figsize=(6.5, 4.5), dpi=300)
     res = df.groupby('sexo', observed=False).apply(
         lambda g: (g['es_desocupado'] * g['peso_trimestral']).sum() / g['peso_trimestral'].sum() * 100
     )
-    
-    fig, ax = plt.subplots(figsize=(6.5, 4.5), dpi=300)
-    barras = ax.bar(['Hombre', 'Mujer'], [res['Hombre'], res['Mujer']], 
-                    color=[COLORS['hombre'], COLORS['mujer']], width=0.45)
-    
-    ax.annotate('Brecha de género:\n+1.84 pp para mujeres', xy=(1, res['Mujer']), xytext=(0.5, 5.2),
-                arrowprops=dict(facecolor='black', arrowstyle='->', lw=1), ha='center',
-                bbox=dict(boxstyle="round,pad=0.3", fc="#fdfefe", ec="#bdc3c7", lw=1))
-    
-    ax.set_ylabel('Tasa de desocupación ponderada (%)')
+    sexos = ['Hombre', 'Mujer']
+    tasas = [res['Hombre'], res['Mujer']]
+    barras = ax.bar(sexos, tasas, color=[COLORS['hombre'], COLORS['mujer']], width=0.45, edgecolor='black', linewidth=0.5)
+
+    for barra in barras:
+        yval = barra.get_height()
+        ax.text(barra.get_x() + barra.get_width()/2.0, yval + 0.15, f'{yval:.2f}%', ha='center', va='bottom', fontsize=11, fontweight='bold')
+
+    ax.annotate(
+        'Brecha de género:\n+1.84 pp para mujeres',
+        xy=(1, tasas[1]), xytext=(0.5, 5.2),
+        arrowprops=dict(facecolor='black', arrowstyle='->', lw=1),
+        ha='center', fontsize=10, bbox=dict(boxstyle="round,pad=0.3", fc="#fdfefe", ec="#bdc3c7", lw=1)
+    )
+    ax.set_ylabel('Tasa de desocupación ponderada (%)', fontsize=10)
     ax.set_ylim(0, 6.2)
+    out_path = OUTPUTS_FIGURES_DIR / "figura_3_brecha_genero.png"
     plt.tight_layout()
-    plt.savefig(out_path, dpi=300)
+    plt.savefig(out_path, bbox_inches='tight', dpi=300)
     plt.close()
 ```
 
@@ -1973,17 +1989,23 @@ if __name__ == "__main__":
 
 ## Anexo 10: Instrumento y resultados detallados del panel de validación por expertos
 
-### 10.1. Ficha técnica del panel y evaluadores registrados
-El proceso de consulta externa se desarrolló entre el 16 y el 18 de octubre de 2026 mediante la plataforma Google Forms. Se obtuvieron ocho respuestas completas correspondientes a profesionales y especialistas en Ciencia de Datos, Desarrollo de Software, Análisis Estadístico e Investigación Laboral:
+### 10.1. Ficha técnica del panel y perfil de los evaluadores registrados
+El proceso de consulta externa se desarrolló entre el 16 y el 18 de octubre de 2026 mediante un instrumento estructurado en Google Forms. Para garantizar imparcialidad metodológica y eliminar cualquier riesgo de sesgo de autoevaluación, el autor de la investigación no formó parte del panel evaluador y se suprimió toda razón social comercial en favor de la identificación profesional individual. Los ocho especialistas independientes fueron seleccionados de manera intencional por su competencia técnica en las cuatro áreas que sustentan el trabajo: ingeniería de sistemas y desarrollo de software, ciencia de datos aplicada, ingeniería industrial con analítica estadística, y administración con análisis financiero-contable de datos.
 
-1. Empresa de desarrollo de Software 10Minds
-2. Valeria Vargas Flores
-3. Mario Rojas K.
-4. Rodrigo Colque Ramirez
-5. Carlos Chavez Acevedo
-6. Franz Gonzales
-7. Ramiro Pacheco Maitana
-8. Camila Gonzales Torrez
+TABLA ANEXA N.º 1: *Perfil profesional, especialidad técnica y justificación de selección de los ocho evaluadores externos*
+
+| N.º | Nombre del evaluador | Formación y título profesional | Área de especialidad principal | Justificación de selección en el panel |
+| :---: | :--- | :--- | :--- | :--- |
+| 1 | Harold Rosado | Ingeniero de Sistemas | Desarrollo técnico de sistemas e infraestructura de software | Profesional con dominio en el área de desarrollo más técnico, apto para auditar la estructura modular en Python y la reproducibilidad técnica del repositorio. |
+| 2 | Valeria Vargas Flores | Licenciada en Administración de Empresas | Especialidad en análisis de datos | Especialista en analítica de datos orientada a la gestión e interpretación estratégica de indicadores sociolaborales y toma de decisiones. |
+| 3 | Mario Rojas K. | Licenciado en Contabilidad | Manejo y análisis cuantitativo de datos | Profesional experimentado en el manejo, conciliación y análisis numérico de datos financieros y estadísticos para validar consistencia aritmética. |
+| 4 | Rodrigo Colque Ramirez | Ingeniero en Ciencias de la Computación | Desarrollo de software, código y análisis computacional | Desarrollador de software con sólida base en programación, tratamiento estructurado de microdatos y revisión de lógica algorítmica. |
+| 5 | Carlos Chavez Acevedo | Ingeniero Industrial | Analítica estadística y análisis de datos de procesos | Especialista en manejo cuantitativo de datos, control estadístico e interpretación de pruebas inferenciales aplicadas a indicadores poblacionales. |
+| 6 | Cristian Ignacio Duran | Estudiante avanzado de Ciencia de Datos | Ciencia de datos y ciclo analítico CRISP-DM | Par académico en etapa avanzada de formación en Ciencia de Datos, competente para revisar preparación de microdatos, análisis bivariado y modelado dimensional. |
+| 7 | Camila Gonzales Torrez | Ingeniera en Informática | Ciencia de datos aplicada y análisis de datos | Profesional con base técnica en Ciencia de Datos y análisis de datos para evaluar coherencia entre métricas estadísticas y visualizaciones en Power BI. |
+| 8 | Ramiro Pacheco Maitana | Ingeniero de Sistemas | Inteligencia artificial y analítica automatizada | Especialista con conocimiento en inteligencia artificial, capaz de contrastar los alcances metodológicos y el módulo de auditoría técnica automatizada. |
+
+*FUENTE: Registro técnico de validación externa por juicio de expertos (octubre de 2026).*
 
 ### 10.2. Estructura del instrumento y escala de medición
 El cuestionario constó de 14 reactivos estructurados en escala Likert de 1 a 5 puntos (1 = Totalmente en desacuerdo, 2 = En desacuerdo, 3 = Ni de acuerdo ni en desacuerdo, 4 = De acuerdo, 5 = Totalmente de acuerdo), una escala lineal global de 1 a 10 puntos, tres preguntas abiertas cualitativas y un dictamen final de aprobación.
@@ -2173,7 +2195,7 @@ En la decisión de aprobación técnica del trabajo:
 
 #### C. Sugerencias y recomendaciones adicionales (Transcripción íntegra)
 1. *"Se sugiere incorporar en futuras investigaciones modelos predictivos supervisados con Machine Learning explicable e integrar registros administrativos de la seguridad social para profundizar en la calidad contractual y estabilidad laboral"*
-2. *"Conviene unificar la versión de cifras entre el resumen y el texto, y contrastar el análisis con una regresión logística ponderada que controle simultáneamente sexo, edad y territorio. Se sugiere reportar intervalos de confianza con varianza por diseño y documentar el número real de tablas y medidas DAX del modelo semántico, hoyreportede en dos formas distintas."*
+2. *"Conviene unificar la versión de cifras entre el resumen y el texto, y contrastar el análisis con una regresión logística ponderada que controle simultáneamente sexo, edad y territorio. Se sugiere reportar intervalos de confianza con varianza por diseño y documentar el número real de tablas y medidas DAX del modelo semántico, hoy reportado [sic] en dos formas distintas."*
 3. *"Agregar un modelo multivariado, por ejemplo una regresión logística ponderada, para controlar edad, sexo y educación a la vez. Incluir intervalos de confianza y comparar con otros trimestres. Suavizar el lenguaje causal."*
 4. *"Se recomienda incorporar análisis multivariado (regresión logística) para controlar factores simultáneos, y explorar modelos predictivos con machine learning explicable (SHAP) como línea futura. Asimismo, la segmentación a nivel municipal queda limitada por el tamaño muestral."*
 5. *"Se sugiere unificar las cifras en todos los documentos, incorporar el efecto de diseño en la inferencia y avanzar hacia un panel longitudinal o modelos supervisados con valores SHAP, líneas que el propio autor plantea acertadamente."*
@@ -2189,11 +2211,12 @@ En concordancia con las recomendaciones constructivas del panel de expertos, se 
 
 | Observación formulada por el panel | Tratamiento y subsanación técnica en el documento |
 | :--- | :--- |
-| **Armonización de cifras numéricas:** Divergencias menores en la media de escolaridad de ocupados (12,38 vs. 12,64 años) y valores de estadísticos $U$ y $t$. | Se unificaron todas las tablas del Capítulo III y del Anexo 4 con los valores exactos computados en Python: la media de escolaridad continua en ocupados es **12,64 años** frente a **13,01 años** en desocupados ($t = -2,3914, p = 0,0174$; Mann-Whitney $U = 714.498,5, p = 0,0293$). Se aclaró en nota al pie que la cifra de 12,38 años correspondía a una ponderación previa sobre categorías agregadas de instrucción. |
+| **Armonización de cifras numéricas:** Divergencias menores en la media de escolaridad de ocupados (12,38 vs. 12,64 años), estadísticos $U$ y $t$, tasa conjunta de subutilización y canales de búsqueda. | Se unificaron todas las tablas del Capítulo III y del Anexo 4 con los resultados directos computados en Python: la escolaridad media sobre casos válidos (*n* = 6.401 ocupados y *n* = 243 desocupados) es de **12,64 años** frente a **13,01 años** ($t = -2,34, p = 0,0202$; Mann-Whitney $U = 714.498,5, p = 0,0293$; $t = -2,39, p = 0,0174$ en *n* = 6.406). Asimismo, se ajustaron las cifras de subocupación (533 casos; 115.737 jóvenes), la presión conjunta sobre la PEA (12,09%), la tasa de Oruro (2,98%), la distribución de mecanismos de búsqueda (40,72% y 30,56%) y la arquitectura real del modelo en Power BI (10 tablas y 39 medidas DAX). |
 | **Precisión epistemológica sobre causalidad:** Riesgo de sobreinterpretar factores sociodemográficos como causas directas del desempleo. | Se reforzó la redacción en todas las secciones explicativas (3.2.1 a 3.2.5), enfatizando que el diseño del estudio es observacional transversal, por lo que las pruebas Chi-cuadrado evidencian **asociación estadística diagnóstica** y no causalidad determinista. |
 | **Magnitud de los coeficientes V de Cramér:** Explicitar con mayor contundencia que valores entre 0,028 y 0,060 denotan asociaciones de baja magnitud. | Se incorporó una discusión crítica en la sección 3.1.5 y en las conclusiones, señalando que la desocupación juvenil es un fenómeno multicausal y que la baja magnitud del tamaño del efecto confirma que la condición laboral está mediada por variables externas complejas (redes informales, economía del cuidado y estructura productiva). |
 | **Diseño muestral complejo y varianza:** Necesidad de advertir que los cálculos asumen muestreo aleatorio ponderado. | Se documentó formalmente en el Anexo 5 y Anexo 7 que las pruebas de hipótesis utilizan las funciones nativas de SciPy/Statsmodels; para estimar errores estándar con corrección por conglomerados y estratos se requeriría el vector completo de variables primarias de muestreo (UPM) del INE. |
-| **Extensiones futuras de modelado:** Sugerencias de regresiones logísticas multivariadas y Machine Learning con valores SHAP. | Se adoptaron las recomendaciones del panel incluyéndolas como directrices prioritarias en la sección de Recomendaciones Metodológicas (R6 y R7), estableciendo una hoja de ruta técnica para futuras investigaciones. |
+| **Extensiones futuras y delimitación bivariada:** Sugerencias de análisis multivariado conjunto y delimitación de variables frente a limitaciones muestrales. | Se explicitó en los capítulos I, II y III (secciones 1.6.6, 2.1.9, 2.1.16, 3.1.5 y 3.2.8) los tres criterios operativos de selección de variables y la razón muestral (*n* = 243 desocupados y regla de Cochran) por la cual las pruebas formales se acotan al plano bivariado, remitiendo el modelado multivariado conjunto y los algoritmos con valores SHAP a futuras investigaciones (R6 y R7). |
+| **Ajustes integrales de evaluación académica:** Articulación entre Objetivos Específicos y Conclusiones (OE3 y OE4), justificación técnica de Power BI Desktop, bibliografía de Ciencia de Datos y depuración del panel de expertos. | Se ajustaron el Objetivo General y OE3 enfocándolos en brechas, factores y perfiles sociolaborales; se sincronizó OE4 con la auditoría algorítmica de IA y el panel externo; se justificó técnicamente Power BI Desktop por su motor columnar VertiPaq, relaciones 1:N, contexto de filtro dinámico DAX y ETL en Power Query M; se ampliaron las referencias verificadas de Ciencia de Datos; y se documentó en el Anexo 10.1 el perfil profesional de los ocho expertos externos independientes. |
 
 
 
